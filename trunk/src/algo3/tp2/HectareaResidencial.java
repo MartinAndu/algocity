@@ -6,9 +6,10 @@ public class HectareaResidencial extends Hectarea {
 	public int CONSUMO_ELECTRICO = 1;
 	public int CAPACIDAD_ALOJAMIENTO = 100;
 	
-	public HectareaResidencial(){
+	public HectareaResidencial(Ubicacion ubicacionDada){
 		costo = COSTO;
 		consumo = CONSUMO_ELECTRICO;
+		this.ubicacion = ubicacionDada;
 	}
 	
 	public int devolverCapacidadAlojamiento(){
