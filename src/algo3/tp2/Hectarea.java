@@ -4,6 +4,7 @@ public class Hectarea {
 
 	public int costo;
 	public int consumo;
+	public Ubicacion ubicacion;
 	
 	public int devolverCosto(){
 		return this.costo;
@@ -12,6 +13,4 @@ public class Hectarea {
 	public int devolverConsumo(){
 		return this.consumo;
 	}
-	
-	
 }
