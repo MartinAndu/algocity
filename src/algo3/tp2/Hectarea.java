@@ -6,6 +6,7 @@ public class Hectarea {
 	public int consumo;
 	public Ubicacion ubicacion;
 	
+	//tener cuidado con devolver propiedades de los objetos
 	public int devolverCosto(){
 		return this.costo;
 	}
