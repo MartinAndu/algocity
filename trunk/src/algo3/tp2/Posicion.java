@@ -1,8 +1,9 @@
 package algo3.tp2;
 
 public class Posicion {
-	public int coordenadaX;
-	public int coordenadaY;
+	
+	protected int coordenadaX;
+	protected int coordenadaY;
 	
 	public Posicion(int x, int y){
 		this.coordenadaX = x;

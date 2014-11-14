@@ -33,4 +33,34 @@ public class EdificiosTest {
 		int costo = unEdificioIndustrial.devolverCosto();
 		Assert.assertEquals(10, costo);
 	}
+	
+	@Test
+	public void edificiosCreadosNoPoseenServiciosAlPrincipio(){
+		Edificio unoResidencial = new EdificioResidencial();
+		Edificio unoComercial = new EdificioComercial();
+		Edificio unoIndustrial = new EdificioIndustrial();
+
+		Assert.assertFalse(unoResidencial.tieneElectricidad());
+		Assert.assertFalse(unoResidencial.tieneAgua());
+		Assert.assertFalse(unoResidencial.tieneAccesoAlTransito());
+		Assert.assertFalse(unoComercial.tieneElectricidad());
+		Assert.assertFalse(unoComercial.tieneAgua());
+		Assert.assertFalse(unoComercial.tieneAccesoAlTransito());
+		Assert.assertFalse(unoIndustrial.tieneElectricidad());
+		Assert.assertFalse(unoIndustrial.tieneAgua());
+		Assert.assertFalse(unoIndustrial.tieneAccesoAlTransito());
+	}
+	
+	@Test
+	public void edificioHabilitaServiciosCorrectamente(){
+		Edificio unoResidencial = new EdificioResidencial();
+		
+		unoResidencial.habilitarAccesoAlTransito();
+		unoResidencial.habilitarAgua();
+		unoResidencial.habilitarElectricidad();
+		
+		Assert.assertTrue(unoResidencial.tieneElectricidad());
+		Assert.assertTrue(unoResidencial.tieneAgua());
+		Assert.assertTrue(unoResidencial.tieneAccesoAlTransito());
+	}
 }
