@@ -1,9 +1,11 @@
 package algo3.tp2;
 
 public class Construccion {
-	public int costoDeConstruccion;
-	public int estadoConstruccion;
-	public int danio;
+	
+	protected Posicion unaPosicion;
+	protected int costoDeConstruccion;
+	protected int estadoConstruccion;
+	protected int danio;
 	
 	public int devolverCosto(){
 		return costoDeConstruccion;
