@@ -1,4 +1,4 @@
-package Planos;
+package Plano;
 
 import Conectores.Conexion;
 
