@@ -1,9 +1,9 @@
 package CentralesElectricas;
 
+import planoGeneral.Plano;
 import Edificios.Construccion;
 import Edificios.Destruible;
 import Edificios.Reconstruible;
-import Plano.Plano;
 
 
 

@@ -1,4 +1,4 @@
-package Plano;
+package planoGeneral;
 
 public class Hectarea {
 
