@@ -1,6 +1,6 @@
 package CentralesElectricas;
 
-import Plano.Plano;
+import planoGeneral.Plano;
 
 public class CentralEolica extends CentralElectrica {
 	static int COSTO_DE_PRODUCCION=1000;
