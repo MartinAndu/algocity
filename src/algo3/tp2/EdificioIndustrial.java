@@ -11,6 +11,7 @@ public class EdificioIndustrial extends Edificio {
 		tieneAgua = false;
 		tieneElectricidad = false;
 		tieneAccesoAlTransito = false;
+		costoDeConstruccion = COSTO_CONSTRUCCION;
 		cantidadEmpleados = 0;
 	}
 	
