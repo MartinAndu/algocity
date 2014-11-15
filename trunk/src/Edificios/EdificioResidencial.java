@@ -5,6 +5,7 @@ public class EdificioResidencial extends Edificio {
 	static int COSTO = 5;
 	static int CONSUMO_ELECTRICO = 1;
 	static int CAPACIDAD_MAXIMA_HABITANTES = 100;
+	static int PORCENTAJE_REPARACION_POR_BOMBEROS = 10;
 	protected int cantidadHabitantes;
 	
 	public EdificioResidencial(){

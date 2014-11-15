@@ -34,4 +34,10 @@ public class Edificio extends Construccion implements Reconstruible, Destruible 
 	public boolean tieneAccesoAlTransito(){
 		return tieneElectricidad;
 	}
+
+	@Override
+	public void reconstruir() {
+		// TODO Auto-generated method stub
+		
+	}
 }
