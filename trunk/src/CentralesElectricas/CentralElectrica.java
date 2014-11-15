@@ -3,6 +3,8 @@ package CentralesElectricas;
 import Edificios.Construccion;
 import Edificios.Destruible;
 import Edificios.Reconstruible;
+import Planos.Plano;
+
 
 
 public abstract class CentralElectrica extends Construccion implements Reconstruible,Destruible {
@@ -10,5 +12,5 @@ public abstract class CentralElectrica extends Construccion implements Reconstru
 	protected int capacidadDeAbastecimientoEnMW;
 	protected int capacidadMaxDeAbastecimientoEnMW;
 	
-//	protected void proveerElectricidadZona(Plano unPlano);
+	abstract void proveerElectricidadZona(Plano unPlano);
 }
