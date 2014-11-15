@@ -10,7 +10,7 @@ public class PlanoTest {
 	@Test
 	public void testPlanoCrear(){
 		
-		Plano plano = new Plano(5,5);
+		Plano plano = new Plano(100,100);
 		assertNotNull(plano);
 	}
 	

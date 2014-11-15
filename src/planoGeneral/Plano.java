@@ -2,6 +2,8 @@ package planoGeneral;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import Edificios.Posicion;
+
 
 public class Plano {
 
