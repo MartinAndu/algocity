@@ -1,7 +1,7 @@
 package algo3.tp2;
 
 public class Edificio extends Construccion implements Reconstruible, Destruible {
-//Prueba	
+	
 	protected boolean tieneElectricidad;
 	protected boolean tieneAgua;
 	protected boolean tieneAccesoAlTransito;
