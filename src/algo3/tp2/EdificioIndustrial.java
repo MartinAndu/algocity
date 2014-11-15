@@ -11,6 +11,7 @@ public class EdificioIndustrial extends Edificio {
 		tieneAgua = false;
 		tieneElectricidad = false;
 		tieneAccesoAlTransito = false;
+		cantidadEmpleados = 0;
 	}
 	
 	public int devolverCapacidadEmpleo(){
