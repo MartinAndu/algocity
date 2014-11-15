@@ -1,6 +1,6 @@
 package CentralesElectricas;
 
-import Planos.Plano;
+import Plano.Plano;
 
 
 public class CentralMineral extends CentralElectrica{
