@@ -1,4 +1,4 @@
-package planoGeneral;
+package Edificios;
 
 public class Posicion { 
 	// Cada hectarea va a tener su ubicacion en la "cuadrilla" con sus respectivas coordenadas.

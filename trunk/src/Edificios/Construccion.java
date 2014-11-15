@@ -1,6 +1,5 @@
 package Edificios;
 
-import planoGeneral.Posicion;
 
 public class Construccion {
 	
