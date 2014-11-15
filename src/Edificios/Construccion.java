@@ -1,5 +1,7 @@
 package Edificios;
 
+import Plano.Posicion;
+
 public class Construccion {
 	
 	protected Posicion unaPosicion;
@@ -13,5 +15,9 @@ public class Construccion {
 	
 	public void recibirDanio(int unDanio){
 		this.danio += unDanio;
+	}
+	
+	public int devolverDanioRecibido(){
+		return danio;
 	}
 }
