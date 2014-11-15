@@ -1,4 +1,4 @@
-package algo3.tp2;
+package Edificios;
 
 public interface Destruible {
 

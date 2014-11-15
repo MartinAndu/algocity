@@ -1,8 +1,13 @@
-package algo3.tp2;
+package src;
 
 import junit.framework.Assert;
 
 import org.junit.Test;
+
+import Edificios.Edificio;
+import Edificios.EdificioComercial;
+import Edificios.EdificioIndustrial;
+import Edificios.EdificioResidencial;
 
 public class EdificiosTest {
 	
