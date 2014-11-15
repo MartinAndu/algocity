@@ -1,4 +1,4 @@
-package algo3.tp2;
+package Edificios;
 
 public class Edificio extends Construccion implements Reconstruible, Destruible {
 	

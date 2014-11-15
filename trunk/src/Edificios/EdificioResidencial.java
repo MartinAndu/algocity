@@ -1,4 +1,4 @@
-package algo3.tp2;
+package Edificios;
 
 public class EdificioResidencial extends Edificio {
 
@@ -13,6 +13,7 @@ public class EdificioResidencial extends Edificio {
 		tieneAgua = false;
 		tieneElectricidad = false;
 		tieneAccesoAlTransito = false;
+		cantidadHabitantes = 0;
 	}
 	
 	public int devolverCapacidadAlojamiento(){

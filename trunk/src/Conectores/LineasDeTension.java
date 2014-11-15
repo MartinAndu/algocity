@@ -1,4 +1,4 @@
-package Conexion;
+package Conectores;
 
 public class LineasDeTension extends Conexion{
 
