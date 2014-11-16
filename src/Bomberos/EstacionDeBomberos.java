@@ -22,6 +22,7 @@ public class EstacionDeBomberos {
 		while(it.hasNext()){
 			Reconstruible edificioAReconstruir = (Reconstruible)it.next();
 			edificioAReconstruir.reconstruir();
+			edificioAReconstruir.reconstruir();
 			//Esto es lo que voy a cambiar para pasarle el parametro de puntos a reconstruir.
 		}
 	}
