@@ -8,6 +8,9 @@ import Edificios.Edificio;
 import Edificios.EdificioComercial;
 import Edificios.EdificioIndustrial;
 import Edificios.EdificioResidencial;
+import Superficies.Superficie;
+import Superficies.SuperficieConAgua;
+import Superficies.SuperficieConTerrenoLlano;
 
 public class EdificiosTest {
 	
@@ -67,5 +70,15 @@ public class EdificiosTest {
 		Assert.assertTrue(unoResidencial.tieneElectricidad());
 		Assert.assertTrue(unoResidencial.tieneAgua());
 		Assert.assertTrue(unoResidencial.tieneAccesoAlTransito());
+	}
+	
+	@Test
+	public void edificioPuedeConstruirseEnSuperficieLlanaPeroNoEnUnaConAgua(){
+		Superficie unaSuperficieLlana = new SuperficieConTerrenoLlano();
+		Superficie unaSuperficieConAgua = new SuperficieConAgua();
+		
+		Edificio unoResidencial = new EdificioResidencial();
+		Assert.assertTrue(unaSuperficieLlana.puedoConstruir(unoResidencial));
+		Assert.assertFalse(unaSuperficieConAgua.puedoConstruir(unoResidencial));
 	}
 }

@@ -1,9 +1,9 @@
 package CentralesElectricas;
 
-import planoGeneral.Plano;
 import Edificios.Construccion;
 import Edificios.Destruible;
 import Edificios.Reconstruible;
+import PlanoGeneral.Plano;
 
 
 
@@ -30,6 +30,14 @@ public abstract  class CentralElectrica extends Construccion implements Reconstr
 	public void acumularCapacidadDeAbastecimiento(){
 		//Recibe la cuota de energia consumia por los edificios y la va acumulando
 		
+	}
+	
+	public boolean esConstruibleSobreTierra(){
+		return true;
+	}
+	
+	public boolean esConstruibleSobreAgua(){
+		return false;
 	}
 
 	@Override

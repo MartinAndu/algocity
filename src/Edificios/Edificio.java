@@ -1,6 +1,6 @@
 package Edificios;
 
-import planoGeneral.Hectarea;
+import PlanoGeneral.Hectarea;
 
 public class Edificio extends Construccion implements Reconstruible, Destruible {
 	
@@ -34,7 +34,23 @@ public class Edificio extends Construccion implements Reconstruible, Destruible 
 	}
 	
 	public boolean tieneAccesoAlTransito(){
-		return tieneElectricidad;
+		return tieneAccesoAlTransito;
+	}
+	
+    public void inspeccionarHectarea(Hectarea unaHectarea) {
+        //corrobora que la hectarea contenga todos los servicios necesarios para su construccion
+        //o alguna otra caracteristica que inhabilite para construir.
+        //si no se puede construir se espera la siguiente excepcion
+        //ExceptionHectareaNoHabilitadaParaConstruirEdificio
+       
+    }
+
+	public boolean esConstruibleSobreTierra(){
+		return true;
+	}
+	
+	public boolean esConstruibleSobreAgua(){
+		return false;
 	}
 
 	@Override
@@ -43,11 +59,4 @@ public class Edificio extends Construccion implements Reconstruible, Destruible 
 		
 	}
 
-	public void inspeccionarHectarea(Hectarea hectarea) {
-		//corrobora que la hectarea contenga todos los servicios necesarios para su construccion
-		//o alguna otra caracteristica que inhabilite para construir.
-		//si no se puede construir se espera la siguiente excepcion
-		//ExceptionHectareaNoHabilitadaParaConstruirEdificio
-		
-	}
 }

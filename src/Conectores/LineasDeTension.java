@@ -1,6 +1,6 @@
 package Conectores;
 
-import planoGeneral.Plano;
+import PlanoGeneral.Plano;
 
 public class LineasDeTension extends Conexion{
 	
@@ -14,5 +14,15 @@ public class LineasDeTension extends Conexion{
 	public void reconstruir() {
 		// TODO Auto-generated method stub
 		
+	}
+	@Override
+	public boolean esConstruibleSobreTierra() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public boolean esConstruibleSobreAgua() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }
