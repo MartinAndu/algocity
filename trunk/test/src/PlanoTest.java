@@ -4,8 +4,8 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import Edificios.Posicion;
-import planoGeneral.Plano;
-import planoGeneral.Recorrido;
+import PlanoGeneral.Plano;
+import PlanoGeneral.Recorrido;
 
 
 public class PlanoTest {
