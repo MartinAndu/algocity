@@ -3,8 +3,8 @@ package Edificios;
 import planoGeneral.Plano;
 
 
-public class Construccion {
-	//esta deberia ser una clase abstracta y no esta definida como tal.....porque?
+public abstract class Construccion {
+
 	protected Posicion unaPosicion;
 	protected int costoDeConstruccion;
 	protected int estadoConstruccion;
@@ -29,6 +29,10 @@ public class Construccion {
 
 	public void realizarTareasSobrePlano(Plano plano) {
 		//la construccion debe saber que acciones posteriores a sus construccion realizar
-		
 	}
+
+	public abstract boolean esConstruibleSobreAgua();
+
+	public abstract boolean esConstruibleSobreTierra();
+
 }

@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 import Edificios.Posicion;
+import Superficies.Superficie;
+import Superficies.SuperficieConTerrenoLlano;
 
 
 public class Plano {
@@ -84,11 +86,13 @@ public class Plano {
 
 	private void construirHectareas(int dimensionN, int dimensionM) {
 		
+		Superficie unaSuperficieConTierra = new SuperficieConTerrenoLlano();
+		
 		for (int i = 1; i <= dimensionN; i++) {
 			for (int j = 1; j <= dimensionM; j++) {
 				
 				String posicionEnString = (new Posicion(i, j)).enString();
-				Hectarea hectarea = new Hectarea();
+				Hectarea hectarea = new Hectarea(unaSuperficieConTierra);
 				hectareas.put(posicionEnString, hectarea);	
 			}
 		}

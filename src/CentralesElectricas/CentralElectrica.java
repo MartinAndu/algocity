@@ -3,7 +3,7 @@ package CentralesElectricas;
 import Edificios.Construccion;
 import Edificios.Destruible;
 import Edificios.Reconstruible;
-import PlanoGeneral.Plano;
+import planoGeneral.Plano;
 
 
 

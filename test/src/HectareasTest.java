@@ -9,7 +9,7 @@ import Edificios.PozoDeAgua;
 import Excepciones.ExcepcionHectareaYaContieneUnaConstruccion;
 import Excepciones.ExcepcionHectareaNoBrindaLosServiciosNecesarios;
 import Excepciones.ExcepcionNoSePuedeConstruirEnEsteTerreno;
-import PlanoGeneral.Hectarea;
+import planoGeneral.Hectarea;
 import Superficies.Superficie;
 import Superficies.SuperficieConTerrenoLlano;
 import junit.framework.Assert;
