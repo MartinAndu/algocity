@@ -1,4 +1,7 @@
-package PlanoGeneral;
+package PlanoGeneradores;
+
+import PlanoDireccion.Direccion;
+
 
 public abstract class GeneradorDireccion {
 

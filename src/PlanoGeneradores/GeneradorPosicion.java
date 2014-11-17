@@ -1,6 +1,7 @@
-package PlanoGeneral;
+package PlanoGeneradores;
 
 import Edificios.Posicion;
+import PlanoGeneral.Plano;
 
 public abstract class GeneradorPosicion {
 

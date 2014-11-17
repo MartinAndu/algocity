@@ -1,6 +1,9 @@
-package PlanoGeneral;
+package PlanoGeneradores;
 
 import Edificios.Posicion;
+import PlanoDireccion.Direccion;
+import PlanoGeneral.Plano;
+import PlanoGeneral.Recorrido;
 
 public abstract class GeneradorRecorrido {
 

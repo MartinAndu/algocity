@@ -1,5 +1,7 @@
 package PlanoGeneral;
 
+import PlanoDireccion.Direccion;
+
 public class ZigZag {
 
 	private int direccionInicial;

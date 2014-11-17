@@ -4,6 +4,14 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 import Edificios.Posicion;
+import PlanoDireccion.Direccion;
+import PlanoDireccion.Norte;
+import PlanoGeneradores.GeneradorDireccion;
+import PlanoGeneradores.GeneradorDireccionDeterminista;
+import PlanoGeneradores.GeneradorPosicion;
+import PlanoGeneradores.GeneradorPosicionDeterminista;
+import PlanoGeneradores.GeneradorRecorrido;
+import PlanoGeneradores.GeneradorRecorridoDeterminista;
 import Superficies.Superficie;
 import Superficies.SuperficieConTerrenoLlano;
 
@@ -12,11 +20,16 @@ public class Plano {
 
 	private HashMap<String, Hectarea> hectareas;
 	private HashMap<Hectarea, ArrayList<Hectarea>> caminos;
+	private GeneradorPosicion generadorPosicion;
+	private GeneradorDireccion generadorDireccion;
+	private GeneradorRecorrido generadorRecorrido;
  
 	public Plano(int dimensionN, int dimensionM) {
 		hectareas = new HashMap<String, Hectarea>();
 		caminos = new HashMap<Hectarea, ArrayList<Hectarea>>();
-		
+		generadorPosicion = new GeneradorPosicionDeterminista();
+		generadorDireccion = new GeneradorDireccionDeterminista();
+		generadorRecorrido = new GeneradorRecorridoDeterminista();
 		construirPlano(dimensionN, dimensionM);
 	}
 
@@ -153,4 +166,63 @@ public class Plano {
 		
 		return entornoParcial;
 	}
+	
+	public Recorrido generarRecorridolAleatorio() {
+		
+		Posicion posicionBorde = new Posicion(0, 0);
+		Direccion direccion = new Norte();
+		Recorrido recorrido = new Recorrido(new ArrayList<Hectarea>());
+		boolean recorridoMuyCorto = false;
+		
+		do {
+			posicionBorde = this.generadorPosicion.generarPosicionEnBordePlano(this);
+			direccion = this.generadorDireccion.generarDireccion();
+			recorrido = this.generadorRecorrido.gerenerarRecorrido(this, posicionBorde, direccion);
+			recorridoMuyCorto = (recorrido.longDelRecorridoEnHectareas() < 2);
+		} while (recorridoMuyCorto);
+		
+		return recorrido;
+	}
+	
+	public Recorrido recorrerLinealmente(Posicion posicion, Direccion direccion) {
+		
+		Hectarea hectarea = hectareas.get(posicion.enString());
+		ArrayList<Hectarea> recorrido = new ArrayList<Hectarea>();
+		recorrido.add(hectarea);
+		ArrayList<Hectarea> entorno = this.caminos.get(hectarea);
+		int direccionEnInt = direccion.enInt();
+		
+		while ((entorno.get(direccionEnInt)) != null) {
+			hectarea = entorno.get(direccionEnInt);
+			recorrido.add(hectarea);
+			entorno = this.caminos.get(hectarea);		
+		}
+		
+		return new Recorrido(recorrido);
+	}
+	
+	public Recorrido recorrerEnZigZag(Posicion posicion, Direccion direccion) {
+		
+		Hectarea hectarea = hectareas.get(posicion.enString());
+		ArrayList<Hectarea> recorrido = new ArrayList<Hectarea>();
+		recorrido.add(hectarea);
+		ArrayList<Hectarea> entorno = this.caminos.get(hectarea);
+		ZigZag zigZag = new ZigZag(direccion);
+		int direccionEnInt = zigZag.zigZagear();
+		
+		while ((entorno.get(direccionEnInt)) != null) {
+			hectarea = entorno.get(direccionEnInt);
+			recorrido.add(hectarea);
+			entorno = this.caminos.get(hectarea);
+			direccionEnInt = zigZag.zigZagear();		
+		}
+		
+		return new Recorrido(recorrido);
+	}
+
+	public Hectarea devolverHectarea(Posicion posicion) {
+		
+		return this.hectareas.get(posicion.enString());
+	}
+
 }

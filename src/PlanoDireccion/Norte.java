@@ -1,4 +1,5 @@
-package PlanoGeneral;
+package PlanoDireccion;
+
 
 public class Norte extends Direccion {
 	
