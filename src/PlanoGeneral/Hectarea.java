@@ -1,4 +1,4 @@
-package planoGeneral;
+package PlanoGeneral;
 
 import CentralesElectricas.CentralElectrica;
 import Conectores.Conexion;

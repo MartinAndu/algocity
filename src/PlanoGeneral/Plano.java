@@ -1,4 +1,4 @@
-package planoGeneral;
+package PlanoGeneral;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;

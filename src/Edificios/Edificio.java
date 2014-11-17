@@ -1,6 +1,6 @@
 package Edificios;
 
-import planoGeneral.Hectarea;
+import PlanoGeneral.Hectarea;
 
 public class Edificio extends Construccion implements Reconstruible, Destruible {
 	

@@ -1,6 +1,6 @@
 package Conectores;
 
-import planoGeneral.Plano;
+import PlanoGeneral.Plano;
 
 public abstract class LineasDeTension extends Conexion{
 	

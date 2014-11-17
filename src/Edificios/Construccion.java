@@ -1,6 +1,6 @@
 package Edificios;
 
-import planoGeneral.Plano;
+import PlanoGeneral.Plano;
 
 
 public abstract class Construccion {
