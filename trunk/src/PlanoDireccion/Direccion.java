@@ -1,10 +1,10 @@
-package PlanoGeneral;
+package PlanoDireccion;
 
 public abstract class Direccion {
 
 	protected int direccionEnInt;
 
-	protected int enInt() {
+	public int enInt() {
 		return direccionEnInt;
 	}
 	

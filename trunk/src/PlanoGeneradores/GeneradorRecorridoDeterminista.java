@@ -1,4 +1,4 @@
-package PlanoGeneral;
+package PlanoGeneradores;
 
 public class GeneradorRecorridoDeterminista extends GeneradorRecorrido {
 

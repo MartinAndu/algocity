@@ -1,4 +1,5 @@
-package PlanoGeneral;
+package PlanoGeneradores;
+
 
 public class GeneradorDireccionDeterminista extends GeneradorDireccion {
 
