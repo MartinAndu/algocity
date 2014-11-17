@@ -1,5 +1,7 @@
 package Edificios;
 
+import planoGeneral.Hectarea;
+
 public class Edificio extends Construccion implements Reconstruible, Destruible {
 	
 	protected boolean tieneElectricidad;
@@ -38,6 +40,14 @@ public class Edificio extends Construccion implements Reconstruible, Destruible 
 	@Override
 	public void reconstruir() {
 		// TODO Auto-generated method stub
+		
+	}
+
+	public void inspeccionarHectarea(Hectarea hectarea) {
+		//corrobora que la hectarea contenga todos los servicios necesarios para su construccion
+		//o alguna otra caracteristica que inhabilite para construir.
+		//si no se puede construir se espera la siguiente excepcion
+		//ExceptionHectareaNoHabilitadaParaConstruirEdificio
 		
 	}
 }
