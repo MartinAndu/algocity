@@ -27,7 +27,7 @@ public class Plano {
 	public Plano(int dimensionN, int dimensionM) {
 		hectareas = new HashMap<String, Hectarea>();
 		caminos = new HashMap<Hectarea, ArrayList<Hectarea>>();
-		generadorPosicion = new GeneradorPosicionDeterminista();
+		generadorPosicion = new GeneradorPosicionDeterminista(dimensionN, dimensionM);
 		generadorDireccion = new GeneradorDireccionDeterminista();
 		generadorRecorrido = new GeneradorRecorridoDeterminista();
 		construirPlano(dimensionN, dimensionM);
@@ -182,6 +182,11 @@ public class Plano {
 		} while (recorridoMuyCorto);
 		
 		return recorrido;
+	}
+	
+	public Posicion generarPosicionAleatoria() {
+		
+		return this.generadorPosicion.generarPosicion();	
 	}
 	
 	public Recorrido recorrerLinealmente(Posicion posicion, Direccion direccion) {
