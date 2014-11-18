@@ -1,0 +1,28 @@
+package Edificios;
+
+public class EdificioResidencial extends Edificio {
+
+	static int COSTO = 5;
+	static int CONSUMO_ELECTRICO = 1;
+	static int CAPACIDAD_MAXIMA_HABITANTES = 100;
+	static int PORCENTAJE_REPARACION_POR_BOMBEROS = 10;
+	protected int cantidadHabitantes;
+	
+	public EdificioResidencial(){
+		costoDeConstruccion = COSTO;
+		consumoElectrico = CONSUMO_ELECTRICO;
+		tieneAgua = false;
+		tieneElectricidad = false;
+		tieneAccesoAlTransito = false;
+		cantidadHabitantes = 0;
+	}
+	
+	public int devolverCapacidadAlojamiento(){
+		return CAPACIDAD_MAXIMA_HABITANTES;
+	}
+	
+	public int devolverCantidadHabitantes(){
+		return cantidadHabitantes;
+	}
+	
+}
