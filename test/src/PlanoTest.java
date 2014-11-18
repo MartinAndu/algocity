@@ -4,6 +4,9 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import Edificios.Posicion;
+import PlanoDireccion.Direccion;
+import PlanoDireccion.NorEste;
+import PlanoDireccion.Norte;
 import PlanoGeneral.Plano;
 import PlanoGeneral.Recorrido;
 
@@ -66,6 +69,40 @@ public class PlanoTest {
 		}
 		
 		assertEquals(48, i);
+	}
+	
+	@Test
+	public void testPlanoRecorrerLinealmenteDebePasarPorSeisHectareas() {
+		
+		Plano plano = new Plano(7, 7);
+		Posicion posicion = new Posicion(1, 1);
+		Direccion noreste = new NorEste();
+		Recorrido recorrido = plano.recorrerLinealmente(posicion, noreste);
+		int i = 0;
+		
+		while (recorrido.tieneSiguiente()) {
+			recorrido.siguiente();
+			i++;
+		}
+		
+		assertEquals(6, i);
+	}
+	
+	@Test
+	public void testPlanoRecorrerZigZagDebePasarPorSeisHectareas() {
+		
+		Plano plano = new Plano(7, 7);
+		Posicion posicion = new Posicion(1, 2);
+		Direccion norte = new Norte();
+		Recorrido recorrido = plano.recorrerEnZigZag(posicion, norte);
+		int i = 0;
+		
+		while (recorrido.tieneSiguiente()) {
+			recorrido.siguiente();
+			i++;
+		}
+		
+		assertEquals(6, i);
 	}
 	
 	
