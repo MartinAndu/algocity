@@ -7,10 +7,7 @@ import PlanoGeneral.Recorrido;
 
 public abstract class GeneradorRecorrido {
 
-	public Recorrido gerenerarRecorrido(Plano plano, Posicion posicionBorde,
-			Direccion direccion) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public abstract Recorrido gerenerarRecorrido(Plano plano, Posicion posicionBorde,
+			Direccion direccion);
 
 }
