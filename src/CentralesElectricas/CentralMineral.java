@@ -14,7 +14,7 @@ public class CentralMineral extends CentralElectrica{
 		capacidadMaxDeAbastecimientoEnMW = CAPACIDAD_MAXIMA_DE_ABASTECIMIENTO;
 	}
 	public void proveerElectricidadZona(Plano unPlano){
-	
+		
 		
 	}
 	@Override

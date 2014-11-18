@@ -3,7 +3,6 @@ package Conectores;
 import PlanoGeneral.Plano;
 
 public abstract class LineasDeTension extends Conexion{
-	
 	public void proveerServicioZona(Plano unPlano){
 		
 	}

@@ -1,9 +1,13 @@
 package CentralesElectricas;
 
+import java.util.ArrayList;
+
 import Edificios.Construccion;
 import Edificios.Destruible;
 import Edificios.Reconstruible;
+import PlanoGeneral.Hectarea;
 import PlanoGeneral.Plano;
+import PlanoGeneral.Recorrido;
 
 
 
@@ -12,7 +16,17 @@ public abstract  class CentralElectrica extends Construccion implements Reconstr
 	protected int capacidadDeAbastecimientoEnMW;
 	protected int capacidadMaxDeAbastecimientoEnMW;
 	
-	protected abstract void proveerElectricidadZona(Plano unPlano);
+	ArrayList <Hectarea> hectareas;
+	
+	public void proveerElectricidadZona(Plano unPlano){
+		Recorrido zonaCircundante= unPlano.recorrerEntorno(unaPosicion, radioDeAbastecimientoEnHectareas);
+		int cantidadDeConsumoActual=0;
+		while (zonaCircundante.tieneSiguiente()){
+			Hectarea hectareaActual=zonaCircundante.siguiente();
+			hectareaActual.establecerCentral(this);
+		}
+
+	}
 	
 	public int obtenerRadioDeAbastecimientoEnHectareas(){
 		return radioDeAbastecimientoEnHectareas;
@@ -27,10 +41,6 @@ public abstract  class CentralElectrica extends Construccion implements Reconstr
 	}
 	
 	
-	public void acumularCapacidadDeAbastecimiento(){
-		//Recibe la cuota de energia consumia por los edificios y la va acumulando
-		
-	}
 	
 	public boolean esConstruibleSobreTierra(){
 		return true;

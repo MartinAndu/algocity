@@ -51,6 +51,10 @@ public class Hectarea {
 		return (construccionHectarea != null);
 	}
 	
+	public Construccion obtenerConstruccion(){
+		return construccionHectarea;
+	}
+	
 
 	public void establecerEdificio(Edificio unEdificio){
 		if(this.poseeConstruccion()){
