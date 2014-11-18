@@ -93,6 +93,11 @@ public class Hectarea {
 		if(this.poseeConstruccion()){
 			throw new ExcepcionHectareaYaContieneUnaConstruccion();
 		}
+		else if(!(this.superficieHectarea).puedoConstruir(unaCentral)){
+			throw new ExcepcionNoSePuedeConstruirEnEsteTerreno();
+		}
+		this.construccionHectarea = unaCentral;
+		this.habilitarElectricidad();
 	}
 	
 	public void establecerConexion(Conexion unaConexion){
