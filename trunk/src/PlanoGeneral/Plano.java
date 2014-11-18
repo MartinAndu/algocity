@@ -188,7 +188,6 @@ public class Plano {
 		
 		Hectarea hectarea = hectareas.get(posicion.enString());
 		ArrayList<Hectarea> recorrido = new ArrayList<Hectarea>();
-		recorrido.add(hectarea);
 		ArrayList<Hectarea> entorno = this.caminos.get(hectarea);
 		int direccionEnInt = direccion.enInt();
 		
@@ -205,7 +204,6 @@ public class Plano {
 		
 		Hectarea hectarea = hectareas.get(posicion.enString());
 		ArrayList<Hectarea> recorrido = new ArrayList<Hectarea>();
-		recorrido.add(hectarea);
 		ArrayList<Hectarea> entorno = this.caminos.get(hectarea);
 		ZigZag zigZag = new ZigZag(direccion);
 		int direccionEnInt = zigZag.zigZagear();
