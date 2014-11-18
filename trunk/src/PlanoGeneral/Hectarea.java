@@ -9,19 +9,22 @@ import Excepciones.ExcepcionHectareaYaContieneUnaConstruccion;
 import Excepciones.ExcepcionHectareaNoBrindaLosServiciosNecesarios;
 import Excepciones.ExcepcionNoSePuedeConstruirEnEsteTerreno;
 import Superficies.Superficie;
+import SuperficiesGeneradores.GeneradorSuperficieDeterminista;
 
 public class Hectarea {
 	public String identi;
+	protected GeneradorSuperficieDeterminista generadorSuperficie;
 	protected Superficie superficieHectarea;
 	protected Construccion construccionHectarea;
 	protected boolean servicioElectrico;
 	protected boolean servicioAgua;
 	protected boolean accesoAlTransito;
 	
-	public Hectarea(Superficie unaSuperficie){ // Hectarea recibiria la superficie por parametro? no estaba seguro, pero no me parece mal
-		this.superficieHectarea = unaSuperficie;
+	public Hectarea(){
 		this.construccionHectarea = null;
 		this.identi = java.util.UUID.randomUUID().toString(); 
+		this.generadorSuperficie = new GeneradorSuperficieDeterminista();
+		this.superficieHectarea = generadorSuperficie.generarSuperficie();
 	}
 	
     @Override
@@ -53,6 +56,10 @@ public class Hectarea {
 	
 	public Construccion obtenerConstruccion(){
 		return construccionHectarea;
+	}
+	
+	public Superficie obtenerSuperficie(){
+		return superficieHectarea;
 	}
 	
 

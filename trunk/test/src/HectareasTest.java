@@ -10,24 +10,20 @@ import Excepciones.ExcepcionHectareaYaContieneUnaConstruccion;
 import Excepciones.ExcepcionHectareaNoBrindaLosServiciosNecesarios;
 import Excepciones.ExcepcionNoSePuedeConstruirEnEsteTerreno;
 import PlanoGeneral.Hectarea;
-import Superficies.Superficie;
-import Superficies.SuperficieConTerrenoLlano;
 import junit.framework.Assert;
 
 public class HectareasTest {
 	
 	@Test
 	public void hectareaSeCreaCorrectamente(){
-		Superficie unaSuperficie  = new SuperficieConTerrenoLlano();
-		Hectarea unaHectarea = new Hectarea(unaSuperficie);
+		Hectarea unaHectarea = new Hectarea();
 		Assert.assertFalse(unaHectarea.poseeConstruccion());
 		Assert.assertFalse(unaHectarea.poseeLos3Servicios());
 	}
 	
 	@Test
 	public void hectareaNoAgregaEdificioSiNoEstanLosServiciosBasicosYLanzaExcepcion(){
-		Superficie unaSuperficie  = new SuperficieConTerrenoLlano();
-		Hectarea unaHectarea = new Hectarea(unaSuperficie);
+		Hectarea unaHectarea = new Hectarea();
         Edificio unEdificioComercial = new EdificioComercial();
         
         boolean excepcionAtrapada = false;
@@ -44,8 +40,7 @@ public class HectareasTest {
 	
 	@Test
 	public void hectareaAgregaUnEdificioComercialAlTenerLos3ServiciosHabilitados(){
-		Superficie unaSuperficie  = new SuperficieConTerrenoLlano();
-		Hectarea unaHectarea = new Hectarea(unaSuperficie);
+		Hectarea unaHectarea = new Hectarea();
 		
 		unaHectarea.habilitarAccesoAlTransito();
 		unaHectarea.habilitarAgua();
@@ -61,8 +56,7 @@ public class HectareasTest {
 	
 	@Test
 	public void hectareaLanzaExcepcionAlEstablecerUnPozoDeAguaEnUnaSuperficieDeTierra(){
-		Superficie unaSuperficie  = new SuperficieConTerrenoLlano();
-		Hectarea unaHectarea = new Hectarea(unaSuperficie);
+		Hectarea unaHectarea = new Hectarea();
 		
 		PozoDeAgua unPozoDeAgua = new PozoDeAgua();
 		
@@ -81,8 +75,7 @@ public class HectareasTest {
 	
 	@Test
 	public void hectareaLanzaExcepcionAlEstablecerUnEdificioConLaConstruccionOcupada(){
-		Superficie unaSuperficie  = new SuperficieConTerrenoLlano();
-		Hectarea unaHectarea = new Hectarea(unaSuperficie);
+		Hectarea unaHectarea = new Hectarea();
 		
         Edificio unEdificioResidencial = new EdificioResidencial();
         Edificio unEdificioComercial = new EdificioComercial();

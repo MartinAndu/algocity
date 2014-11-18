@@ -3,7 +3,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import Edificios.Construccion;
 import Edificios.Posicion;
 import PlanoDireccion.Direccion;
 import PlanoDireccion.Norte;
@@ -13,8 +12,6 @@ import PlanoGeneradores.GeneradorPosicion;
 import PlanoGeneradores.GeneradorPosicionDeterminista;
 import PlanoGeneradores.GeneradorRecorrido;
 import PlanoGeneradores.GeneradorRecorridoDeterminista;
-import Superficies.Superficie;
-import Superficies.SuperficieConTerrenoLlano;
 
 
 public class Plano {
@@ -99,14 +96,12 @@ public class Plano {
 	}
 
 	private void construirHectareas(int dimensionN, int dimensionM) {
-		
-		Superficie unaSuperficieConTierra = new SuperficieConTerrenoLlano();
-		
+
 		for (int i = 1; i <= dimensionN; i++) {
 			for (int j = 1; j <= dimensionM; j++) {
 				
 				String posicionEnString = (new Posicion(i, j)).enString();
-				Hectarea hectarea = new Hectarea(unaSuperficieConTierra);
+				Hectarea hectarea = new Hectarea();
 				hectareas.put(posicionEnString, hectarea);	
 			}
 		}

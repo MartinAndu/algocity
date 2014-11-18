@@ -20,7 +20,7 @@ public abstract  class CentralElectrica extends Construccion implements Reconstr
 	
 	public void proveerElectricidadZona(Plano unPlano){
 		Recorrido zonaCircundante= unPlano.recorrerEntorno(unaPosicion, radioDeAbastecimientoEnHectareas);
-		int cantidadDeConsumoActual=0;
+		int cantidadDeConsumoActual = 0;
 		while (zonaCircundante.tieneSiguiente()){
 			Hectarea hectareaActual=zonaCircundante.siguiente();
 			hectareaActual.establecerCentral(this);
@@ -39,8 +39,6 @@ public abstract  class CentralElectrica extends Construccion implements Reconstr
 	public int obtenerCapacidadMaxDeAbastecimientoEnMW(){
 		return capacidadMaxDeAbastecimientoEnMW;
 	}
-	
-	
 	
 	public boolean esConstruibleSobreTierra(){
 		return true;
