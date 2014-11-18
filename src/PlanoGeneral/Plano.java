@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import Edificios.Construccion;
 import Edificios.Posicion;
 import PlanoDireccion.Direccion;
 import PlanoDireccion.Norte;
