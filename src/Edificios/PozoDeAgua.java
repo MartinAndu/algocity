@@ -1,5 +1,7 @@
 package Edificios;
 
+
+
 public class PozoDeAgua extends Construccion{
 
 	static int COSTO_CONSTRUCCION = 250;
