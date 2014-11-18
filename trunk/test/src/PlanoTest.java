@@ -120,6 +120,18 @@ public class PlanoTest {
 		assertEquals(12, i);
 	}
 	
+	@Test
+	public void testPlanoGenerarPosicionAleatoraDeberiaEstarEnCentro() {
+		
+		Plano plano = new Plano(8, 8);
+		Posicion posicion = plano.generarPosicionAleatoria();
+		int x = posicion.devolverCoordenadaX();
+		int y = posicion.devolverCoordenadaY();
+		
+		assertEquals(4, x);
+		assertEquals(4, y);
+	}
+	
 	
 	
 }
