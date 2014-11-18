@@ -105,6 +105,21 @@ public class PlanoTest {
 		assertEquals(6, i);
 	}
 	
+	@Test
+	public void testPlanoRecorrerAleatorioDebePasarPorDoceHectareas() {
+		
+		Plano plano = new Plano(7, 7);
+		Recorrido recorrido = plano.generarRecorridolAleatorio();
+		int i = 0;
+		
+		while (recorrido.tieneSiguiente()) {
+			recorrido.siguiente();
+			i++;
+		}
+		
+		assertEquals(12, i);
+	}
+	
 	
 	
 }

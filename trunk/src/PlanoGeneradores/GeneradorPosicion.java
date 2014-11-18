@@ -5,9 +5,6 @@ import PlanoGeneral.Plano;
 
 public abstract class GeneradorPosicion {
 
-	public Posicion generarPosicionEnBordePlano(Plano plano) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public abstract Posicion generarPosicionEnBordePlano(Plano plano);
 
 }
