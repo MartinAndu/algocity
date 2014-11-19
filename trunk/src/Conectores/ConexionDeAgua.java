@@ -1,7 +1,4 @@
 package Conectores;
-import org.junit.Assert.*;
-import org.junit.Test;
-
 import Edificios.Posicion;
 import PlanoGeneral.Hectarea;
 import PlanoGeneral.Recorrido;
