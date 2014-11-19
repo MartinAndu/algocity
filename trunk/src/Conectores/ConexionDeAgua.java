@@ -41,7 +41,7 @@ public class ConexionDeAgua extends Conexion {
 	}
 	
 	public void habilitarConAguaSiCorresponde(Plano unPlano, Posicion unaPosicion) {
-		Recorrido zonaCircundante= unPlano.recorrerEntorno(unaPosicion, 1);
+		Recorrido zonaCircundante= unPlano.recorrerZonaCircundante(unaPosicion, 1);
 		while (zonaCircundante.tieneSiguiente()){
 			Hectarea hectareaActual=zonaCircundante.siguiente();
 			if (hectareaActual.tieneCanio()){
