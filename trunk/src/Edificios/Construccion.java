@@ -27,6 +27,10 @@ public abstract class Construccion {
 	public void establecerPosicion(Posicion unaPosicion){
 		this.unaPosicion = unaPosicion;
 	}
+	
+	public Posicion obtenerPosicion(){
+		return unaPosicion;
+	}
 
 	public String devolverPosicionEnString() {
 		//Debe devolver la posicion de la construccion en formato string
