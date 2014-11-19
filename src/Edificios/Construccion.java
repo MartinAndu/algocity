@@ -10,6 +10,8 @@ public abstract class Construccion {
 	protected int estadoConstruccion;
 	protected int danio;
 	
+	public abstract int devolverConsumo();
+	
 	public int devolverCosto(){
 		return costoDeConstruccion;
 	}
