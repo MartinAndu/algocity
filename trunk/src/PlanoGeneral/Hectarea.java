@@ -117,13 +117,19 @@ public class Hectarea {
 	}
 	public void establecerConexionDeAgua(ConexionDeAgua unaConexion){
 		unaConexionDeAgua=unaConexion;
+		servicioAgua=unaConexionDeAgua.conectadoALaRed();
 	}
 	
 	
 	public ConexionDeAgua obtenerCanio() {
 		return unaConexionDeAgua;
 	}
-
+	
+	public boolean tieneAgua() {
+		servicioAgua=unaConexionDeAgua.conectadoALaRed();
+		return servicioAgua;
+	}
+	
 	public boolean tieneCanio() {
 		return (unaConexionDeAgua!= null);
 	}
