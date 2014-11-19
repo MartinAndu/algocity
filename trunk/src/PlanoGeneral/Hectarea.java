@@ -101,7 +101,7 @@ public class Hectarea {
 		}
 		else if(!(this.superficieHectarea).puedoConstruir(unaCentral)){
 			throw new ExcepcionNoSePuedeConstruirEnEsteTerreno();
-			else if (!this.poseeServicioDeAgua())
+		if (!this.poseeServicioDeAgua())
 				throw new ExcepcionCentralElectricaNoPoseeRedDeAgua();
 		}
 		this.construccionHectarea = unaCentral;
