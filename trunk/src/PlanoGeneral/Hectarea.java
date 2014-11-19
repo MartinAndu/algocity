@@ -2,6 +2,7 @@ package PlanoGeneral;
 
 import CentralesElectricas.CentralElectrica;
 import Conectores.Conexion;
+import Conectores.ConexionDeAgua;
 import Edificios.Construccion;
 import Edificios.Edificio;
 import Edificios.PozoDeAgua;
@@ -19,6 +20,7 @@ public class Hectarea {
 	protected boolean servicioElectrico;
 	protected boolean servicioAgua;
 	protected boolean accesoAlTransito;
+	protected ConexionDeAgua unaConexionDeAgua=null;
 	
 	public Hectarea(){
 		this.construccionHectarea = null;
@@ -104,5 +106,12 @@ public class Hectarea {
 		if(this.poseeConstruccion()){
 			throw new ExcepcionHectareaYaContieneUnaConstruccion();
 		}
+	}
+	public ConexionDeAgua obtenerCanio() {
+		return unaConexionDeAgua;
+	}
+
+	public boolean tieneCanio() {
+		return (unaConexionDeAgua!= null);
 	}
 }
