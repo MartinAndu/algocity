@@ -7,12 +7,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 
-
-
-
-
-
 import Conectores.ConexionDeAgua;
+import Edificios.Edificio;
 import Edificios.EdificioResidencial;
 import Edificios.Posicion;
 import PlanoGeneral.Hectarea;
@@ -23,7 +19,8 @@ import PlanoGeneral.Plano;
       
                 @Test
                         public void hayConexionDeAguaEnTuberia(){
-                                ConexionDeAgua unaConexionDeAgua = new ConexionDeAgua();
+                				Hectarea unaHectarea=new Hectarea();
+                                ConexionDeAgua unaConexionDeAgua = new ConexionDeAgua(unaHectarea);
                                 unaConexionDeAgua.habilitarAgua();
                                 
                         Assert.assertTrue(unaConexionDeAgua.conectadoALaRed());
@@ -46,10 +43,8 @@ import PlanoGeneral.Plano;
                 		Posicion otraPosicion = new Posicion(3,2);
                 		Hectarea unaHectarea = unPlano.devolverHectarea(unaPosicion);
                 		Hectarea otraHectarea= unPlano.devolverHectarea(otraPosicion);
-                		ConexionDeAgua unaConexion= new ConexionDeAgua();
-                		ConexionDeAgua otraConexion=new ConexionDeAgua();
-                		unaHectarea.establecerConexionDeAgua(unaConexion);
-                		otraHectarea.establecerConexionDeAgua(otraConexion);
+                		ConexionDeAgua unaConexion= new ConexionDeAgua(unaHectarea);
+                		ConexionDeAgua otraConexion=new ConexionDeAgua(otraHectarea);
                 		unaConexion.habilitarAgua();
                 
                 		otraConexion.habilitarConAguaSiCorresponde(unPlano, otraPosicion);
@@ -57,6 +52,27 @@ import PlanoGeneral.Plano;
                 		Assert.assertTrue(otraConexion.conectadoALaRed());
                 		
                }
-        
+                
+                @Test
+                public void accesoAAgua(){
+                	Plano unPlano = new Plano (8,8);
+                	Posicion unaPosicion=new Posicion(4,4);
+                	Hectarea unaHectarea = unPlano.devolverHectarea(unaPosicion);
+                	ConexionDeAgua unaConexion= new ConexionDeAgua(unaHectarea);
+                	unaConexion.habilitarAgua();
+ 
+
+                	Posicion otraPosicion=new Posicion(6,6);
+                	Hectarea otraHectarea = unPlano.devolverHectarea(otraPosicion);
+
+            		Edificio unoResidencial = new EdificioResidencial();
+            		otraHectarea.habilitarAccesoAlTransito();
+            		otraHectarea.habilitarElectricidad();
+            		unaConexion.habilitarConAguaSiCorresponde(unPlano, unaPosicion);
+            		otraHectarea.establecerEdificio(unoResidencial);
+            		Assert.assertTrue(unoResidencial.tieneAgua());
+            		
+                	
+                }
 
 }
