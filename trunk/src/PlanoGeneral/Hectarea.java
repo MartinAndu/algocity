@@ -107,6 +107,11 @@ public class Hectarea {
 			throw new ExcepcionHectareaYaContieneUnaConstruccion();
 		}
 	}
+	public void establecerConexionDeAgua(ConexionDeAgua unaConexion){
+		unaConexionDeAgua=unaConexion;
+	}
+	
+	
 	public ConexionDeAgua obtenerCanio() {
 		return unaConexionDeAgua;
 	}
