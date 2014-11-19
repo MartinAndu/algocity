@@ -3,6 +3,7 @@ package PlanoGeneral;
 import CentralesElectricas.CentralElectrica;
 import Conectores.Conexion;
 import Conectores.ConexionDeAgua;
+import Conectores.LineasDeTension;
 import Edificios.Construccion;
 import Edificios.Edificio;
 import Edificios.PozoDeAgua;
@@ -22,13 +23,16 @@ public class Hectarea {
 	protected boolean servicioElectrico;
 	protected boolean servicioAgua;
 	protected boolean accesoAlTransito;
-	protected ConexionDeAgua unaConexionDeAgua=null;
+	protected ConexionDeAgua unaConexionDeAgua;
+	protected LineasDeTension unaLineaDeTension;
 	
 	public Hectarea(){
 		this.construccionHectarea = null;
 		this.identi = java.util.UUID.randomUUID().toString(); 
 		this.generadorSuperficie = new GeneradorSuperficieDeterminista();
 		this.superficieHectarea = generadorSuperficie.generarSuperficie();
+		this.unaConexionDeAgua = null;
+		this.unaLineaDeTension = null;
 	}
 	
     @Override
@@ -53,6 +57,13 @@ public class Hectarea {
 	public boolean poseeServicioDeAgua(){
 		return this.servicioAgua;
 	}
+	
+
+	
+	public boolean poseeServicioElectrico(){
+		return this.servicioElectrico;
+	}
+	
 	public boolean poseeLos3Servicios(){
 		return (servicioAgua && servicioElectrico && accesoAlTransito);
 	}
@@ -67,6 +78,24 @@ public class Hectarea {
 	
 	public Superficie obtenerSuperficie(){
 		return superficieHectarea;
+	}
+	
+	
+	public ConexionDeAgua obtenerCanio() {
+		return unaConexionDeAgua;
+	}
+	
+	public LineasDeTension obtenerLineaDeTension(){
+		return unaLineaDeTension;
+	}
+	
+	public boolean tieneAgua() {
+		servicioAgua=unaConexionDeAgua.conectadoALaRed(this);
+		return servicioAgua;
+	}
+	
+	public boolean tieneCanio() {
+		return (unaConexionDeAgua!= null);
 	}
 	
 
@@ -97,17 +126,16 @@ public class Hectarea {
 	}
 	
 	public void establecerCentral(CentralElectrica unaCentral){
-		if(this.poseeConstruccion()){
+		if(this.poseeConstruccion())
 			throw new ExcepcionHectareaYaContieneUnaConstruccion();
-		}
-		else if(!(this.superficieHectarea).puedoConstruir(unaCentral)){
-			throw new ExcepcionNoSePuedeConstruirEnEsteTerreno();
-		}
+		else if(!(this.superficieHectarea).puedoConstruir(unaCentral))
+				throw new ExcepcionNoSePuedeConstruirEnEsteTerreno();
 		else if (!this.poseeServicioDeAgua()){
 			throw new ExcepcionCentralElectricaNoPoseeRedDeAgua();
 		}
 		this.construccionHectarea = unaCentral;
 		this.habilitarElectricidad();
+		
 	}
 	
 	public void establecerConexion(Conexion unaConexion){
@@ -117,22 +145,11 @@ public class Hectarea {
 		this.conexion = unaConexion;
 		this.habilitarElectricidad();
 	}
+	
 	public void establecerConexionDeAgua(ConexionDeAgua unaConexion){
 		unaConexionDeAgua=unaConexion;
-		servicioAgua=unaConexionDeAgua.conectadoALaRed();
+		servicioAgua=unaConexionDeAgua.conectadoALaRed(this);
 	}
 	
-	
-	public ConexionDeAgua obtenerCanio() {
-		return unaConexionDeAgua;
-	}
-	
-	public boolean tieneAgua() {
-		servicioAgua=unaConexionDeAgua.conectadoALaRed();
-		return servicioAgua;
-	}
-	
-	public boolean tieneCanio() {
-		return (unaConexionDeAgua!= null);
-	}
+
 }
