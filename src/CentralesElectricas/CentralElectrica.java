@@ -19,7 +19,7 @@ public abstract  class CentralElectrica extends Construccion implements Reconstr
 	ArrayList <Hectarea> hectareas;
 	
 	public void proveerElectricidadZona(Plano unPlano){
-		Recorrido zonaCircundante= unPlano.recorrerEntorno(unaPosicion, radioDeAbastecimientoEnHectareas);
+		Recorrido zonaCircundante= unPlano.recorrerZonaCircundante(unaPosicion, radioDeAbastecimientoEnHectareas);
 		int cantidadDeConsumoActual = 0;
 		while (zonaCircundante.tieneSiguiente()){
 			Hectarea hectareaActual=zonaCircundante.siguiente();
