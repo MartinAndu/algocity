@@ -14,9 +14,12 @@ public class ConexionDeAgua extends Conexion {
 
 	boolean conectadoALaRed=false;
 
-	public boolean conectadoALaRed() {
+	public boolean conectadoALaRed(Hectarea hectareaActual) {
+		//Esto puede devolver false considerand un caño de agua vacio sin agua
+		//Se deja por ahora que devuelva true indicando que siempre hay agua
 		return true;
-		//return conectadoALaRed;
+		
+		//Una posible solución es "return hectareaActual.poseeServicioDeAgua()"
 		
 	}
 	public boolean esConstruibleSobreAgua(){
@@ -50,7 +53,7 @@ public class ConexionDeAgua extends Conexion {
 			Hectarea hectareaActual=zonaCircundante.siguiente();
 			if (hectareaActual.tieneCanio()){
 				ConexionDeAgua unaConexion=hectareaActual.obtenerCanio();
-				if(unaConexion.conectadoALaRed()){
+				if(unaConexion.conectadoALaRed(hectareaActual)){
 					habilitarAgua();
 				}
 			}

@@ -23,7 +23,7 @@ import PlanoGeneral.Plano;
                                 ConexionDeAgua unaConexionDeAgua = new ConexionDeAgua(unaHectarea);
                                 unaConexionDeAgua.habilitarAgua();
                                 
-                        Assert.assertTrue(unaConexionDeAgua.conectadoALaRed());
+                        Assert.assertTrue(unaConexionDeAgua.conectadoALaRed(unaHectarea));
                 }
                 
                 
@@ -49,7 +49,7 @@ import PlanoGeneral.Plano;
                 
                 		otraConexion.habilitarConAguaSiCorresponde(unPlano, otraPosicion);
                 		
-                		Assert.assertTrue(otraConexion.conectadoALaRed());
+                		Assert.assertTrue(otraConexion.conectadoALaRed(unaHectarea));
                 		
                }
                 

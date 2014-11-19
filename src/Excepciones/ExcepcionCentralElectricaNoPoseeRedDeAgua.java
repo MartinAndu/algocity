@@ -1,5 +1,6 @@
 package Excepciones;
 
+
 public class ExcepcionCentralElectricaNoPoseeRedDeAgua extends RuntimeException {
 
 	/**

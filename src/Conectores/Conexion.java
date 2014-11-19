@@ -5,14 +5,16 @@ import Edificios.Reconstruible;
 import PlanoGeneral.Hectarea;
 import PlanoGeneral.Plano;
 
-public abstract   class Conexion extends Construccion implements Reconstruible{
+public abstract class Conexion extends Construccion implements Reconstruible{
 	
 	public abstract void proveerServicioZona(Plano unPlano);
+	public abstract boolean conectadoALaRed(Hectarea hectareaActual);
 	 
 	 Conexion(Hectarea unaHectarea){
 		 unaHectarea.establecerConexion(this);
 	 }
 
+	 
 	@Override
 	public void reconstruir() {
 		// TODO Auto-generated method stub
