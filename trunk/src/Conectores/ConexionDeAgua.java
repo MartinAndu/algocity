@@ -9,8 +9,9 @@ import PlanoGeneral.Plano;
 
 public class ConexionDeAgua extends Conexion {
 	
-	ConexionDeAgua(Hectarea unaHectarea) {
+	public ConexionDeAgua(Hectarea unaHectarea) {
 		super(unaHectarea);
+		unaHectarea.establecerConexionDeAgua(this);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -47,7 +48,7 @@ public class ConexionDeAgua extends Conexion {
 	}
 	
 	public void habilitarCanioConAguaSiCorresponde(Plano unPlano, Posicion unaPosicion) {
-		Recorrido zonaCircundante= unPlano.recorrerEntorno(unaPosicion, 1);
+		Recorrido zonaCircundante= unPlano.recorrerZonaCircundante(unaPosicion, 1);
 		while (zonaCircundante.tieneSiguiente()){
 			Hectarea hectareaActual=zonaCircundante.siguiente();
 			if (hectareaActual.tieneCanio()){
@@ -60,7 +61,7 @@ public class ConexionDeAgua extends Conexion {
 	}
 	
 	public void habilitarConAguaSiCorresponde(Plano unPlano, Posicion unaPosicion) {
-		Recorrido zonaCircundante= unPlano.recorrerEntorno(unaPosicion, 3);
+		Recorrido zonaCircundante= unPlano.recorrerZonaCircundante(unaPosicion, 3);
 		while (zonaCircundante.tieneSiguiente()){
 			Hectarea hectareaActual=zonaCircundante.siguiente();
 					hectareaActual.habilitarAgua();
