@@ -27,13 +27,14 @@ public class JugadorTest {
 		
 		Jugador jugador = new JugadorMedio();
 		
-		assertEquals(5000, jugador.obtenerPresupuesto);
+		assertEquals(5000, jugador.obtenerPresupuesto());
 		
 		Catastrofe catastrofe = new Godzilla();
 		jugador.huboUnaCatastrofe(catastrofe);
+		jugador.habilitarEstacionDeBomberos();
 		jugador.pasoUnTurno();
 		
-		assertEquals(4500, jugador.obtenerPresupuesto);
+		assertEquals(3500, jugador.obtenerPresupuesto());
 
 	}
 	
@@ -42,12 +43,12 @@ public class JugadorTest {
 		
 		Jugador jugador = new JugadorMedio();
 		
-		assertEquals(5000, jugador.obtenerPresupuesto);
+		assertEquals(5000, jugador.obtenerPresupuesto());
 		
 		jugador.seCobraUnaComisionPorHabitante(10);
 		jugador.pasoUnTurno();
 		
-		assertEquals(3000, jugador.obtenerPresupuesto);
+		assertEquals(3000, jugador.obtenerPresupuesto());
 
 	}
 	
@@ -56,24 +57,27 @@ public class JugadorTest {
 		
 		Jugador jugador = new JugadorMedio();
 		
-		assertEquals(5000, jugador.obtenerPresupuesto);
+		assertEquals(5000, jugador.obtenerPresupuesto());
 		
 		jugador.seAproboUnNuevoPresupuestoParaLaCiudad();
 		
-		assertEquals(7500, jugador.obtenerPresupuesto);
+		assertEquals(7500, jugador.obtenerPresupuesto());
 	}
-	
+	//Concidero un Plano que cuyas superficies alternan al modo de tablero
+	//entre superficies de agua y llanas.
+	//Tambien concidero que la posicion de pruebas poseen la superficie requerida a menos que 
+	//se especifique lo contrario.
+			
 	@Test
-	public void jugadorSeAproboUnNuevoPresupuestoParaLaCiudad() {
+	public void jugadorConstruyeUnPozoDeAguaSobreUnaSuperficieDeAgua() {
 		
 		Jugador jugador = new JugadorMedio();
 		
-		assertEquals(5000, jugador.obtenerPresupuesto);
+		assertEquals(5000, jugador.obtenerPresupuesto());
 		
-		Presupuesto presupuesto = new PresupuestoEnAumento();
+		Posicion posicion = new Posicion(1, 1);
+		jugador.construirPozoDeAgua(posicion);
 		
-		jugador.seAproboUnNuevoPresupuestoParaLaCiudad(presupuesto);
-		
-		assertEquals(7500, jugador.obtenerPresupuesto);
+		assertEquals(4750, jugador.obtenerPresupuesto());
 	}
 }
