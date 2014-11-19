@@ -5,6 +5,9 @@ import junit.framework.Assert;
 import org.junit.Test;
 
 import CentralesElectricas.*;
+import Excepciones.ExcepcionCentralElectricaNoPoseeRedDeAgua;
+import Excepciones.ExcepcionNoSePuedeConstruirEnEsteTerreno;
+import PlanoGeneral.Hectarea;
 
 public class CentralesElectricasTest {
 	
@@ -30,4 +33,29 @@ public class CentralesElectricasTest {
 		Assert.assertEquals(1000, capacidad);
 	}
 	
+	@Test
+	public void seEstableceCentralElectricaCorrectamenteSiHayRedDeAgua(){
+		Hectarea unaHectarea = new Hectarea();
+		CentralElectrica unaCentralElectrica = new CentralElectrica();
+		unaHectarea.habilitarAgua();
+		unaHectarea.establecerCentral(unaCentralElectrica);
+		Assert.assertEquals(true, unaHectarea.poseeServicioElectrico());
+	}
+	
+	@Test
+	public void seEstableceCentralElectricaSinRedDeAguaYLanzaExcepcion(){
+		Hectarea unaHectarea = new Hectarea();
+		CentralElectrica unaCentralElectrica = new CentralElectrica();
+		boolean excepcionAtrapada = false;
+		
+		try{
+			unaHectarea.establecerCentral(unaCentralElectrica);
+		}
+		catch (ExcepcionCentralElectricaNoPoseeRedDeAgua excepcion){
+			excepcionAtrapada = true;
+		}
+		
+		Assert.assertEquals(true, excepcionAtrapada);
+		Assert.assertEquals(false, unaHectarea.poseeServicioDeAgua());
+	}
 }

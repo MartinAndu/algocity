@@ -96,4 +96,5 @@ public class HectareasTest {
 		
 		Assert.assertTrue(excepcionAtrapada);
 	}
+	
 }
