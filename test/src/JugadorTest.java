@@ -63,7 +63,7 @@ public class JugadorTest {
 		
 		assertEquals(7500, jugador.obtenerPresupuesto());
 	}
-	//Concidero un Plano que cuyas superficies alternan al modo de tablero
+	//Concidero un Plano que cuyas superficies alternan al modo de tablero de ajedrez
 	//entre superficies de agua y llanas.
 	//Tambien concidero que la posicion de pruebas poseen la superficie requerida a menos que 
 	//se especifique lo contrario.
