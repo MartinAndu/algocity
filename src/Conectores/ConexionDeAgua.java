@@ -54,7 +54,7 @@ public class ConexionDeAgua extends Conexion {
 				ConexionDeAgua unaConexion=hectareaActual.obtenerCanio();
 				if(unaConexion.conectadoALaRed()){
 					habilitarAgua();
-				};
+				}
 			}
 		}
 	}
