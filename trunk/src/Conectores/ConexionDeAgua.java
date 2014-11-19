@@ -2,16 +2,17 @@ package Conectores;
 import org.junit.Assert.*;
 import org.junit.Test;
 
+import Edificios.Posicion;
 import PlanoGeneral.Hectarea;
 import PlanoGeneral.Recorrido;
-
 import PlanoGeneral.Plano;
 
 public class ConexionDeAgua extends Conexion {
 	boolean conectadoALaRed=false;
 
 	public boolean conectadoALaRed() {
-		return conectadoALaRed;
+		return true;
+		//return conectadoALaRed;
 		
 	}
 	public boolean esConstruibleSobreAgua(){
@@ -39,7 +40,7 @@ public class ConexionDeAgua extends Conexion {
 		conectadoALaRed=true;
 	}
 	
-	public void habilitadoConAgua(Plano unPlano) {
+	public void habilitarConAguaSiCorresponde(Plano unPlano, Posicion unaPosicion) {
 		Recorrido zonaCircundante= unPlano.recorrerEntorno(unaPosicion, 1);
 		while (zonaCircundante.tieneSiguiente()){
 			Hectarea hectareaActual=zonaCircundante.siguiente();
