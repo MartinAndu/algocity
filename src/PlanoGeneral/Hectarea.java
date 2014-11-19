@@ -6,6 +6,7 @@ import Conectores.ConexionDeAgua;
 import Edificios.Construccion;
 import Edificios.Edificio;
 import Edificios.PozoDeAgua;
+import Excepciones.ExcepcionCentralElectricaNoPoseeRedDeAgua;
 import Excepciones.ExcepcionHectareaYaContieneUnaConstruccion;
 import Excepciones.ExcepcionHectareaNoBrindaLosServiciosNecesarios;
 import Excepciones.ExcepcionNoSePuedeConstruirEnEsteTerreno;
@@ -101,8 +102,9 @@ public class Hectarea {
 		}
 		else if(!(this.superficieHectarea).puedoConstruir(unaCentral)){
 			throw new ExcepcionNoSePuedeConstruirEnEsteTerreno();
-		if (!this.poseeServicioDeAgua())
-				throw new ExcepcionCentralElectricaNoPoseeRedDeAgua();
+		}
+		else if (!this.poseeServicioDeAgua()){
+			throw new ExcepcionCentralElectricaNoPoseeRedDeAgua();
 		}
 		this.construccionHectarea = unaCentral;
 		this.habilitarElectricidad();
