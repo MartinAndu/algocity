@@ -5,6 +5,8 @@ import junit.framework.Assert;
 
 import org.junit.Test;
 
+import Edificios.Posicion;
+
 
 public class JugadorTest {
 

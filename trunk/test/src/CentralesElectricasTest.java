@@ -6,7 +6,6 @@ import org.junit.Test;
 
 import CentralesElectricas.*;
 import Excepciones.ExcepcionCentralElectricaNoPoseeRedDeAgua;
-import Excepciones.ExcepcionNoSePuedeConstruirEnEsteTerreno;
 import PlanoGeneral.Hectarea;
 
 public class CentralesElectricasTest {

@@ -23,6 +23,10 @@ public abstract class Construccion {
 	public int devolverDanioRecibido(){
 		return danio;
 	}
+	
+	public void establecerPosicion(Posicion unaPosicion){
+		this.unaPosicion = unaPosicion;
+	}
 
 	public String devolverPosicionEnString() {
 		//Debe devolver la posicion de la construccion en formato string
