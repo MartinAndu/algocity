@@ -10,7 +10,7 @@ public class Recorrido {
 	
 	public Recorrido(ArrayList<Hectarea> recorrido) {
 		
-		this.longDelRecorrido =recorrido.size();
+		this.longDelRecorrido = recorrido.size();
 		this.iterador = recorrido.iterator();
 	}
 	

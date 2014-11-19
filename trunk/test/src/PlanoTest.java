@@ -26,7 +26,7 @@ public class PlanoTest {
 		Plano plano = new Plano(7, 7);
 		Posicion posicion = new Posicion(4, 4);
 		
-		Recorrido recorrido = plano.recorrerEntorno(posicion, 1);
+		Recorrido recorrido = plano.recorrerZonaCircundante(posicion, 1);
 		int i = 0;
 		
 		while (recorrido.tieneSiguiente()) {
@@ -43,7 +43,7 @@ public class PlanoTest {
 		Plano plano = new Plano(7, 7);
 		Posicion posicion = new Posicion(4, 4);
 		
-		Recorrido recorrido = plano.recorrerEntorno(posicion, 2);
+		Recorrido recorrido = plano.recorrerZonaCircundante(posicion, 2);
 		int i = 0;
 		
 		while (recorrido.tieneSiguiente()) {
@@ -60,7 +60,7 @@ public class PlanoTest {
 		Plano plano = new Plano(7, 7);
 		Posicion posicion = new Posicion(4, 4);
 		
-		Recorrido recorrido = plano.recorrerEntorno(posicion, 3);
+		Recorrido recorrido = plano.recorrerZonaCircundante(posicion, 3);
 		int i = 0;
 		
 		while (recorrido.tieneSiguiente()) {
@@ -130,6 +130,16 @@ public class PlanoTest {
 		
 		assertEquals(4, x);
 		assertEquals(4, y);
+	}
+	
+	@Test 
+	public void testPlanoRecorrerTodoElPlanoDesdeUnaPosicionAleatoria() {
+
+		Plano plano = new Plano(5, 5);
+		Recorrido recorrido = plano.recorrerTodoDesdeUnaPosicionAleatoria();
+		
+		assertEquals(24, recorrido.longDelRecorridoEnHectareas());
+		
 	}
 	
 	

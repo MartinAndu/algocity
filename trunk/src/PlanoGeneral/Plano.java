@@ -21,8 +21,12 @@ public class Plano {
 	private GeneradorPosicion generadorPosicion;
 	private GeneradorDireccion generadorDireccion;
 	private GeneradorRecorrido generadorRecorrido;
+	private int ancho;
+	private int alto;
  
 	public Plano(int dimensionN, int dimensionM) {
+		alto = dimensionN;
+		ancho = dimensionM;
 		hectareas = new HashMap<String, Hectarea>();
 		caminos = new HashMap<Hectarea, ArrayList<Hectarea>>();
 		generadorPosicion = new GeneradorPosicionDeterminista(dimensionN, dimensionM);
@@ -107,23 +111,57 @@ public class Plano {
 		}
 	}
 
-	public Recorrido recorrerEntorno(Posicion posicion, int radioHectarea) {
+	public Recorrido recorrerZonaCircundante(Posicion posicion, int radioEnHectareas) {
 		
 		Hectarea hectarea = hectareas.get(posicion.enString());
-		ArrayList<Hectarea> entornoARecorrer = new ArrayList<Hectarea>();
-		ArrayList<Hectarea> entornoDelEntorno = new ArrayList<Hectarea>();
-		entornoDelEntorno.add(hectarea);
-		entornoARecorrer.add(hectarea);
+		ArrayList<Hectarea> zonaARecorrer = new ArrayList<Hectarea>();
+		ArrayList<Hectarea> contornoDeZona = new ArrayList<Hectarea>();
+		contornoDeZona.add(hectarea);
+		zonaARecorrer.add(hectarea);
 		
-		for (int i = 0; i < radioHectarea; i++) {
-			entornoDelEntorno = obtenerEntornoGeneral(entornoDelEntorno, entornoARecorrer);
-			entornoARecorrer.addAll(entornoDelEntorno);
+		for (int i = 0; i < radioEnHectareas; i++) {
+			contornoDeZona = obtenerEntornoGeneral(contornoDeZona, zonaARecorrer);
+			zonaARecorrer.addAll(contornoDeZona);
 		}
 		
-		entornoARecorrer.remove(hectarea);
-		Recorrido recorrido = new Recorrido(entornoARecorrer);
+		zonaARecorrer.remove(hectarea);
+		Recorrido recorrido = new Recorrido(zonaARecorrer);
  		
 		return recorrido;
+	}
+	
+	public Recorrido recorrerTodoDesdeUnaPosicionAleatoria() {
+		
+		Posicion posicion = this.generarPosicionAleatoria();
+		int radioDeCobertura = this.calcularMayorDistanciaALosLimites(posicion);
+		
+		return this.recorrerZonaCircundante(posicion, radioDeCobertura);
+	}
+
+	private int calcularMayorDistanciaALosLimites(Posicion posicion) {
+		
+		int diferenciaPosicionAncho = this.ancho - posicion.devolverCoordenadaX();
+		int diferenciaPosicionAlto = this.alto - posicion.devolverCoordenadaY();
+		int mayorDistanciaEnAncho = 0;
+		int mayorDistanciaEnAlto = 0;
+		
+		if (posicion.devolverCoordenadaX() < diferenciaPosicionAncho) {
+			mayorDistanciaEnAncho = diferenciaPosicionAncho;
+		} else {
+			mayorDistanciaEnAncho = posicion.devolverCoordenadaX();
+		}
+		
+		if (posicion.devolverCoordenadaY() < diferenciaPosicionAlto) {
+			mayorDistanciaEnAlto = diferenciaPosicionAlto;
+		} else {
+			mayorDistanciaEnAlto = posicion.devolverCoordenadaY();
+		}
+		
+		if (mayorDistanciaEnAlto < mayorDistanciaEnAncho) {
+			return mayorDistanciaEnAncho;
+		} else {
+			return mayorDistanciaEnAlto;
+		}
 	}
 
 	private ArrayList<Hectarea> obtenerEntornoGeneral(
@@ -223,5 +261,7 @@ public class Plano {
 		
 		return this.hectareas.get(posicion.enString());
 	}
+	
+	
 
 }
