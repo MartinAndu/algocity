@@ -8,6 +8,11 @@ import PlanoGeneral.Recorrido;
 import PlanoGeneral.Plano;
 
 public class ConexionDeAgua extends Conexion {
+	ConexionDeAgua(Hectarea unaHectarea) {
+		super(unaHectarea);
+		// TODO Auto-generated constructor stub
+	}
+
 	boolean conectadoALaRed=false;
 
 	public boolean conectadoALaRed() {
