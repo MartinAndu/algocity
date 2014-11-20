@@ -116,16 +116,15 @@ public class Plano {
 		Hectarea hectarea = hectareas.get(posicion.enString());
 		ArrayList<Hectarea> zonaARecorrer = new ArrayList<Hectarea>();
 		ArrayList<Hectarea> contornoDeZona = new ArrayList<Hectarea>();
+		Recorrido recorrido = new Recorrido();
 		contornoDeZona.add(hectarea);
 		zonaARecorrer.add(hectarea);
 		
 		for (int i = 0; i < radioEnHectareas; i++) {
 			contornoDeZona = obtenerEntornoGeneral(contornoDeZona, zonaARecorrer);
+			recorrido.agregar(contornoDeZona);
 			zonaARecorrer.addAll(contornoDeZona);
 		}
-		
-		zonaARecorrer.remove(hectarea);
-		Recorrido recorrido = new Recorrido(zonaARecorrer);
  		
 		return recorrido;
 	}
@@ -205,7 +204,7 @@ public class Plano {
 		
 		Posicion posicionBorde = new Posicion(0, 0);
 		Direccion direccion = new Norte();
-		Recorrido recorrido = new Recorrido(new ArrayList<Hectarea>());
+		Recorrido recorrido = new Recorrido();
 		boolean recorridoMuyCorto = false;
 		
 		do {
@@ -226,35 +225,35 @@ public class Plano {
 	public Recorrido recorrerLinealmente(Posicion posicion, Direccion direccion) {
 		
 		Hectarea hectarea = hectareas.get(posicion.enString());
-		ArrayList<Hectarea> recorrido = new ArrayList<Hectarea>();
+		Recorrido recorrido = new Recorrido();
 		ArrayList<Hectarea> entorno = this.caminos.get(hectarea);
 		int direccionEnInt = direccion.enInt();
 		
 		while ((entorno.get(direccionEnInt)) != null) {
 			hectarea = entorno.get(direccionEnInt);
-			recorrido.add(hectarea);
+			recorrido.agregar(hectarea);
 			entorno = this.caminos.get(hectarea);		
 		}
 		
-		return new Recorrido(recorrido);
+		return recorrido;
 	}
 	
 	public Recorrido recorrerEnZigZag(Posicion posicion, Direccion direccion) {
 		
 		Hectarea hectarea = hectareas.get(posicion.enString());
-		ArrayList<Hectarea> recorrido = new ArrayList<Hectarea>();
+		Recorrido recorrido = new Recorrido();
 		ArrayList<Hectarea> entorno = this.caminos.get(hectarea);
 		ZigZag zigZag = new ZigZag(direccion);
 		int direccionEnInt = zigZag.zigZagear();
 		
 		while ((entorno.get(direccionEnInt)) != null) {
 			hectarea = entorno.get(direccionEnInt);
-			recorrido.add(hectarea);
+			recorrido.agregar(hectarea);
 			entorno = this.caminos.get(hectarea);
 			direccionEnInt = zigZag.zigZagear();		
 		}
 		
-		return new Recorrido(recorrido);
+		return recorrido;
 	}
 
 	public Hectarea devolverHectarea(Posicion posicion) {
