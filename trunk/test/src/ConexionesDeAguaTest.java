@@ -47,9 +47,9 @@ import PlanoGeneral.Plano;
                 		ConexionDeAgua otraConexion=new ConexionDeAgua(otraHectarea);
                 		unaConexion.habilitarAgua();
                 
-                		otraConexion.habilitarConAguaSiCorresponde(unPlano, otraPosicion);
+                		unaConexion.habilitarCanioConAguaSiCorresponde(unPlano, unaPosicion);
                 		
-                		Assert.assertTrue(otraConexion.conectadoALaRed(unaHectarea));
+                		Assert.assertTrue(otraConexion.conectadoALaRed(otraHectarea));
                 		
                }
                 
