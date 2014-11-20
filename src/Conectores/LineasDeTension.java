@@ -60,15 +60,18 @@ public  class LineasDeTension extends Conexion{
 			Hectarea hectareaActual = zonaCircundante.siguiente();
 			LineasDeTension unaConexion = hectareaActual.obtenerLineaDeTension();
 			
+			//Verifica que al querer asignar una conexión en una hectárea, haya otras lineas de tensión alrededor
 			if (unaConexion == null)
 				throw new ExcepcionNoSePuedeConectarPorqueNoHayOtraLineaDeTensionAlrededor();
 		}
 		
 		int consumoElectrico=unPlano.devolverHectarea(unaPosicion).obtenerConstruccion().devolverConsumo();
 		
+		//Verifica que no se exceda al consumo permitido por la central eléctrica
 		if (excedeElConsumo(consumoElectrico))
 			throw new ExcepcionElConsumoElectricoDeLaHectareaExcedeALaCapacidadMaxima();
-	
+		
+		conectadoALaRed = true;
 	
 		
 	}

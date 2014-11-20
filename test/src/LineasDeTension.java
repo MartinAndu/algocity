@@ -1,10 +1,16 @@
 package src;
 
-import static org.junit.Assert.assertEquals;
-import junit.framework.Assert;
-
 import org.junit.Test;
 
 public class LineasDeTension {
-
+	
+	@Test
+	public void seCreanCorrectamenteLasLineasDeTension(){
+		//En construccion
+	}
+	
+	@Test
+	public void lasLineasDeTensionSoloSeConectanConUnaZonaSinoLanzaExcepcion(){
+		//En construccion
+	}
 }
