@@ -41,12 +41,7 @@ public class CentralElectrica extends Construccion implements Reconstruible,Dest
 			
 		}
 	}
-	
-	public void proveerElectricidadPorLineaDeTension(Conexion LineaDeTension){
-		
-		
-	}
-	
+
 	public int obtenerRadioDeAbastecimientoEnHectareas(){
 		return radioDeAbastecimientoEnHectareas;
 	}
@@ -57,6 +52,10 @@ public class CentralElectrica extends Construccion implements Reconstruible,Dest
 	
 	public int obtenerCapacidadMaxDeAbastecimientoEnMW(){
 		return capacidadMaxDeAbastecimientoEnMW;
+	}
+	
+	public void setearCapacidadDeAbastecimientoEnMW(int capacidadParaAsignar){
+		this.capacidadDeAbastecimientoEnMW = capacidadParaAsignar;
 	}
 	
 	public boolean esConstruibleSobreTierra(){
