@@ -5,20 +5,23 @@ import PlanoGeneral.Recorrido;
 import PlanoGeneral.Plano;
 
 public class ConexionDeAgua extends Conexion {
+	boolean conectadoALaRed;
+	Hectarea ubicacion=new Hectarea();
 	
 	public ConexionDeAgua(Hectarea unaHectarea) {
 		unaHectarea.establecerConexionDeAgua(this);
+		ubicacion=unaHectarea;
+		conectadoALaRed=false;
 		// TODO Auto-generated constructor stub
 	}
 
-	boolean conectadoALaRed=false;
+
 
 	public boolean conectadoALaRed(Hectarea hectareaActual) {
-		//Esto puede devolver false considerand un caño de agua vacio sin agua
-		//Se deja por ahora que devuelva true indicando que siempre hay agua
-		return true;
+
+		return conectadoALaRed;
 		
-		//Una posible solución es "return hectareaActual.poseeServicioDeAgua()"
+
 		
 	}
 	public boolean esConstruibleSobreAgua(){
@@ -44,16 +47,27 @@ public class ConexionDeAgua extends Conexion {
 
 	public void habilitarAgua(){
 		conectadoALaRed=true;
+		ubicacion.habilitarAgua();
+		
+		
+	}
+	
+	public void habilitarConexionARedAgua(){
+		conectadoALaRed=true;
+		
 	}
 	
 	public void habilitarCanioConAguaSiCorresponde(Plano unPlano, Posicion unaPosicion) {
 		Recorrido zonaCircundante= unPlano.recorrerZonaCircundante(unaPosicion, 1);
+		Hectarea unaHectarea=unPlano.devolverHectarea(unaPosicion);
+		Conexion unaConexion=unaHectarea.obtenerCanio();
 		while (zonaCircundante.tieneSiguiente()){
 			Hectarea hectareaActual=zonaCircundante.siguiente();
 			if (hectareaActual.tieneCanio()){
-				ConexionDeAgua unaConexion=hectareaActual.obtenerCanio();
+				ConexionDeAgua conexionActual=hectareaActual.obtenerCanio();
 				if(unaConexion.conectadoALaRed(hectareaActual)){
-					habilitarAgua();
+					conexionActual.habilitarAgua();
+					conexionActual.habilitarConexionARedAgua();
 				}
 			}
 		}
