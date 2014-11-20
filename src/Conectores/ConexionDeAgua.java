@@ -7,7 +7,6 @@ import PlanoGeneral.Plano;
 public class ConexionDeAgua extends Conexion {
 	
 	public ConexionDeAgua(Hectarea unaHectarea) {
-		super(unaHectarea);
 		unaHectarea.establecerConexionDeAgua(this);
 		// TODO Auto-generated constructor stub
 	}

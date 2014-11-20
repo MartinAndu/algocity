@@ -10,9 +10,7 @@ public abstract class Conexion extends Construccion implements Reconstruible{
 	public abstract void proveerServicioZona(Plano unPlano);
 	public abstract boolean conectadoALaRed(Hectarea hectareaActual);
 	 
-	 Conexion(Hectarea unaHectarea){
-		 unaHectarea.establecerConexion(this);
-	 }
+
 
 	 
 	@Override
