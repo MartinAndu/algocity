@@ -7,10 +7,14 @@ import org.junit.Assert;
 import org.junit.Test;
 
 
+
+
 import Conectores.ConexionDeAgua;
 import Edificios.Edificio;
 import Edificios.EdificioResidencial;
 import Edificios.Posicion;
+import Excepciones.ExcepcionCentralElectricaNoPoseeRedDeAgua;
+import Excepciones.ExcepcionHectareaNoBrindaLosServiciosNecesarios;
 import PlanoGeneral.Hectarea;
 import PlanoGeneral.Plano;
 
@@ -62,7 +66,7 @@ import PlanoGeneral.Plano;
                 	unaConexion.habilitarAgua();
  
 
-                	Posicion otraPosicion=new Posicion(6,6);
+                	Posicion otraPosicion=new Posicion(7,7);
                 	Hectarea otraHectarea = unPlano.devolverHectarea(otraPosicion);
 
             		Edificio unoResidencial = new EdificioResidencial();
@@ -71,6 +75,35 @@ import PlanoGeneral.Plano;
             		unaConexion.habilitarConAguaSiCorresponde(unPlano, unaPosicion);
             		otraHectarea.establecerEdificio(unoResidencial);
             		Assert.assertTrue(unoResidencial.tieneAgua());
+            		
+                	
+                }
+                
+                @Test
+                public void sinAccesoAAguaMuyLejos(){
+                	boolean noTieneServiciosSuficiente = false;
+                	Plano unPlano = new Plano (8,8);
+                	Posicion unaPosicion=new Posicion(2,2);
+                	Hectarea unaHectarea = unPlano.devolverHectarea(unaPosicion);
+                	ConexionDeAgua unaConexion= new ConexionDeAgua(unaHectarea);
+                	unaConexion.habilitarAgua();
+ 
+
+                	Posicion otraPosicion=new Posicion(7,7);
+                	Hectarea otraHectarea = unPlano.devolverHectarea(otraPosicion);
+
+            		Edificio unoResidencial = new EdificioResidencial();
+            		otraHectarea.habilitarAccesoAlTransito();
+            		otraHectarea.habilitarElectricidad();
+            		unaConexion.habilitarConAguaSiCorresponde(unPlano, unaPosicion);
+            		try{
+                		otraHectarea.establecerEdificio(unoResidencial);
+            		}
+            		catch (ExcepcionHectareaNoBrindaLosServiciosNecesarios excepcion){
+            			noTieneServiciosSuficiente = true;
+            		}
+            		
+            		Assert.assertTrue(noTieneServiciosSuficiente);//Suponiendo radioDeDistribucion=3 , si eso ca
             		
                 	
                 }
