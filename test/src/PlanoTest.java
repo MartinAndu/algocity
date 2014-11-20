@@ -37,6 +37,28 @@ public class PlanoTest {
 		assertEquals(8, i);
 	}
 	
+	@Test 
+	public void testPlanoRecorrerZonaCircundanteDebeDarDistanciasUnoYDosHectareas() {
+		
+		Plano plano = new Plano(7, 7);
+		Posicion posicion = new Posicion(4, 4);
+		
+		Recorrido recorrido = plano.recorrerZonaCircundante(posicion, 2);
+		recorrido.siguiente();
+		
+		assertEquals(1, recorrido.distanciaDesdeDondeParti());
+		
+		for (int j = 0; j < 7; j++) {
+			recorrido.siguiente();
+		}
+		
+		assertEquals(1, recorrido.distanciaDesdeDondeParti());
+		
+		recorrido.siguiente();
+		
+		assertEquals(2, recorrido.distanciaDesdeDondeParti());
+	}
+	
 	@Test
 	public void testPlanoRecorrerEntornoNoDebePoseerHectareasRepetidas() {
 		
