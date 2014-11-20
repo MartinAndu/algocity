@@ -142,6 +142,7 @@ public class Hectarea {
 		if(this.poseeConstruccion()){
 			throw new ExcepcionHectareaYaContieneUnaConstruccion();
 		}
+		
 		this.conexion = unaConexion;
 		this.habilitarElectricidad();
 	}

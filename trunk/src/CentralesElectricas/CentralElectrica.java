@@ -37,9 +37,14 @@ public class CentralElectrica extends Construccion implements Reconstruible,Dest
 			//Verifico el consumo del edificio si excede a la capacidad máxima
 			if (cantidadDeConsumoActual > capacidadMaxDeAbastecimientoEnMW)
 				throw new ExcepcionElConsumoElectricoDeLaHectareaExcedeALaCapacidadMaxima();
-			hectareaActual.establecerConexion((Conexion)new LineasDeTension(hectareaActual));
+			hectareaActual.establecerConexion((Conexion)new LineasDeTension(this));
 			
 		}
+	}
+	
+	public void proveerElectricidadPorLineaDeTension(Conexion LineaDeTension){
+		
+		
 	}
 	
 	public int obtenerRadioDeAbastecimientoEnHectareas(){

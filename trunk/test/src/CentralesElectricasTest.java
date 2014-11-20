@@ -57,4 +57,21 @@ public class CentralesElectricasTest {
 		Assert.assertEquals(true, excepcionAtrapada);
 		Assert.assertEquals(false, unaHectarea.poseeServicioDeAgua());
 	}
+	
+	@Test
+	public void seIntentaConsumirMasDeLaCapacidadDeLaCentralElectricayLanzaExcepcion(){
+		
+		//En Construccion!
+		
+		boolean excepcionAtrapada = false;
+		try{
+			//unaHectarea.establecerCentral(unaCentralElectrica);
+		}
+		catch (ExcepcionCentralElectricaNoPoseeRedDeAgua excepcion){
+			excepcionAtrapada = true;
+		}
+		
+		Assert.assertEquals(true, excepcionAtrapada);
+		
+	}
 }
