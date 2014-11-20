@@ -7,11 +7,13 @@ import PlanoGeneral.Plano;
 public class ConexionDeAgua extends Conexion {
 	boolean conectadoALaRed;
 	Hectarea ubicacion=new Hectarea();
+	int radioDeDistribucion;
 	
 	public ConexionDeAgua(Hectarea unaHectarea) {
 		unaHectarea.establecerConexionDeAgua(this);
 		ubicacion=unaHectarea;
 		conectadoALaRed=false;
+		radioDeDistribucion=3;
 		// TODO Auto-generated constructor stub
 	}
 
@@ -74,7 +76,7 @@ public class ConexionDeAgua extends Conexion {
 	}
 	
 	public void habilitarConAguaSiCorresponde(Plano unPlano, Posicion unaPosicion) {
-		Recorrido zonaCircundante= unPlano.recorrerZonaCircundante(unaPosicion, 3);
+		Recorrido zonaCircundante= unPlano.recorrerZonaCircundante(unaPosicion, radioDeDistribucion);
 		while (zonaCircundante.tieneSiguiente()){
 			Hectarea hectareaActual=zonaCircundante.siguiente();
 					hectareaActual.habilitarAgua();
