@@ -36,4 +36,9 @@ public abstract class Conexion extends Construccion implements Reconstruible{
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
+	public void construirSobrePlano(Plano unPlano){
+		Hectarea unaHectarea = unPlano.devolverHectarea(unaPosicion);
+		unaHectarea.establecerConexion(this);
+	}
 }

@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import Edificios.Construccion;
 import Edificios.Posicion;
 import PlanoDireccion.Direccion;
 import PlanoDireccion.Norte;
@@ -261,6 +262,8 @@ public class Plano {
 		return this.hectareas.get(posicion.enString());
 	}
 	
-	
+	public void agregarConstruccion(Construccion unaConstruccion){
+		unaConstruccion.construirSobrePlano(this);
+	}
 
 }

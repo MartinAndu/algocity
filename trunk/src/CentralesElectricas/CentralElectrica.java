@@ -77,4 +77,9 @@ public class CentralElectrica extends Construccion implements Reconstruible,Dest
 		return CONSUMO_ELECTRICO;
 	}
 	
+	public void construirSobrePlano(Plano unPlano){
+		Hectarea unaHectarea = unPlano.devolverHectarea(unaPosicion);
+		unaHectarea.establecerCentral(this);
+	}
+	
 }

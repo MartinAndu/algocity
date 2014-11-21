@@ -40,6 +40,8 @@ public abstract class Construccion {
 	public void realizarTareasSobrePlano(Plano plano) {
 		//la construccion debe saber que acciones posteriores a sus construccion realizar
 	}
+	
+	public abstract void construirSobrePlano(Plano unPlano);
 
 	public abstract boolean esConstruibleSobreAgua();
 

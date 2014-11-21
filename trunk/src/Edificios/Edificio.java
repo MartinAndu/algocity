@@ -1,6 +1,7 @@
 package Edificios;
 
 import PlanoGeneral.Hectarea;
+import PlanoGeneral.Plano;
 
 public class Edificio extends Construccion implements Reconstruible, Destruible {
 	
@@ -57,6 +58,11 @@ public class Edificio extends Construccion implements Reconstruible, Destruible 
 	public void reconstruir() {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public void construirSobrePlano(Plano unPlano){
+		Hectarea unaHectarea = unPlano.devolverHectarea(unaPosicion);
+		unaHectarea.establecerEdificio(this);
 	}
 
 }
