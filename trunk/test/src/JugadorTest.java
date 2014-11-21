@@ -69,4 +69,19 @@ public class JugadorTest {
 		
 		assertEquals(7500, jugador.obtenerPresupuesto());
 	}
+	
+	@Test
+	public void jugadorCrearUnPozoDeAgua() {
+		
+		Jugador jugador = new JugadorMedio();
+		
+		assertEquals(5000, jugador.obtenerPresupuesto());
+		
+		Posicion posicion = new Posicion(1, 1);
+		
+		jugador.crearPozoDeAgua(posicion);
+		
+		assertEquals(4750, jugador.obtenerPresupuesto());
+		
+	}
 }

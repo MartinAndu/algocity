@@ -14,93 +14,52 @@ import Edificios.Posicion;
 import Edificios.PozoDeAgua;
 import Excepciones.ExcepcionDineroInsuficiente;
 
-public class Constructor {
-	//Constructor deberia ser una clase abstracta. Se trata de un FACTORY!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+public abstract class Constructor {
+
+	protected Presupuesto presupuesto;
+
+	public Constructor (Presupuesto presupuesto) {
+		this.presupuesto = presupuesto;
+	}
 	
-	Presupuesto miPresupuesto = new PresupuestoAlto(); 	// lo recibe por parametro cuando se construye
-	private void construir(Construccion unaConstruccion, Posicion unaPosicion){
+	protected void construir(Construccion unaConstruccion){
 		
 		int costoDeConstruccion = unaConstruccion.devolverCosto();
 		
-		if (!miPresupuesto.alcanzaPara(costoDeConstruccion)){
+		if (!presupuesto.alcanzaPara(costoDeConstruccion)){
 			throw new ExcepcionDineroInsuficiente();
 		}
-		
-		unaConstruccion.establecerPosicion(unaPosicion);
-		
-		miPresupuesto.reducirPresupuesto(costoDeConstruccion);
+				
+		presupuesto.reducirPresupuesto(costoDeConstruccion);
 	}
 	
-	public EdificioResidencial construirZonaResidencial(Posicion unaPosicion){
-		EdificioResidencial unResidencial = new EdificioResidencial();
-		this.construir(unResidencial, unaPosicion);
-		
-		return unResidencial;
-	}
-	
-	public EdificioComercial construirZonaComercial(Posicion unaPosicion){
-		EdificioComercial unComercial = new EdificioComercial();
-		this.construir(unComercial, unaPosicion);
-		
-		return unComercial;
-	}
-	
-	public EdificioIndustrial construirZonaIndustrial(Posicion unaPosicion){
-		EdificioIndustrial unIndustrial = new EdificioIndustrial();
-		this.construir(unIndustrial, unaPosicion);
-		
-		return unIndustrial;
-	}
-	
-	public PozoDeAgua construirPozoDeAgua(Posicion unaPosicion){
-		PozoDeAgua unPozo = new PozoDeAgua();
-		this.construir(unPozo, unaPosicion);
-		
-		return unPozo;
-	}
-	
-	public CentralEolica construirCentralEolica(Posicion unaPosicion){
-		CentralEolica unaCentralEolica = new CentralEolica();
-		this.construir(unaCentralEolica, unaPosicion);
-		
-		return unaCentralEolica;
-	}
-	
-	public CentralMineral construirCentralMineral(Posicion unaPosicion){
-		CentralMineral unaCentralMineral = new CentralMineral();
-		this.construir(unaCentralMineral, unaPosicion);
-		
-		return unaCentralMineral;
-	}
-	
-	public CentralNuclear construirCentralNuclear(Posicion unaPosicion){
-		CentralNuclear unaCentralNuclear = new CentralNuclear();
-		this.construir(unaCentralNuclear, unaPosicion);
-		
-		return unaCentralNuclear;
-	}
-	
-	public RutaPavimentada construirRuta(Posicion unaPosicion){
-		RutaPavimentada unaRuta = new RutaPavimentada();
-		this.construir(unaRuta, unaPosicion);
-		
-		return unaRuta;
-	}
-	
-	public LineasDeTension construirLinea(Posicion unaPosicion){
-		
-		// para crear una nueva linea de tension tengo que mandarle la central, que onda!?
-		return null;
-	}
-	
-	public ConexionDeAgua construirTuberia(Posicion unaPosicion){
-		
-		// para crear una nueva tuberia de agua tengo que mandarle la hectarea, que onda!? x2
-		return null;
-	}
-	
-	public void habilitarEstacionDeBomberos(){
-		// implementar (...)
-	}
+	public abstract EdificioResidencial construirZonaResidencial(Posicion unaPosicion);
 
+	public abstract EdificioComercial construirZonaComercial(Posicion unaPosicion);
+	
+	public abstract EdificioIndustrial construirZonaIndustrial(Posicion unaPosicion);
+	
+	public abstract PozoDeAgua construirPozoDeAgua(Posicion unaPosicion);
+	
+	public abstract CentralEolica construirCentralEolica(Posicion unaPosicion);
+	
+	public abstract CentralMineral construirCentralMineral(Posicion unaPosicion);
+	
+	public abstract CentralNuclear construirCentralNuclear(Posicion unaPosicion);
+	
+	public abstract RutaPavimentada construirRuta(Posicion unaPosicion);
+	
+	public abstract LineasDeTension construirLinea(Posicion unaPosicion);
+	
+	public abstract ConexionDeAgua construirTuberia(Posicion unaPosicion);
+
+
+
+
+
+
+
+
+
+	
 }
