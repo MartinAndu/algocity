@@ -2,6 +2,7 @@ package Jugador;
 
 import Bomberos.EstacionDeBomberos;
 import Catastrofe.Catastrofe;
+import Conectores.LineasDeTension;
 import Edificios.Construccion;
 import Edificios.EdificioResidencial;
 import Edificios.Posicion;
@@ -65,8 +66,13 @@ public abstract class Jugador {
 	public void crearResidencia(Posicion posicion) {
 		EdificioResidencial residencia = this.constructor.construirZonaResidencial(posicion);
 		residencia.construirSobrePlano(plano);
-		this.asegurarSuReparacion(residencia);
-		
+		this.asegurarSuReparacion(residencia);	
+	}
+	
+	public void crearLineaDeTension(Posicion posicion) {
+		LineasDeTension linea = this.constructor.construirLineaDeTension(posicion);
+		linea.construirSobrePlano(plano);
+		this.asegurarSuReparacion(linea);	
 	}
 	
 	private void asegurarSuReparacion(Construccion construccion) {

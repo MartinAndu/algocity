@@ -76,7 +76,7 @@ public class ConstructorMedio extends Constructor{
 		return unaRuta;
 	}
 	
-	public LineasDeTension construirLinea(Posicion unaPosicion){
+	public LineasDeTension construirLineaDeTension(Posicion unaPosicion){
 		LineasDeTension unaLinea = new LineasDeTension(unaPosicion); //linea debe cambiar su constructor
 		this.construir(unaLinea);
 		
@@ -89,5 +89,4 @@ public class ConstructorMedio extends Constructor{
 		
 		return unaConexion;
 	}
-
 }

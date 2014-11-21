@@ -49,17 +49,9 @@ public abstract class Constructor {
 	
 	public abstract RutaPavimentada construirRuta(Posicion unaPosicion);
 	
-	public abstract LineasDeTension construirLinea(Posicion unaPosicion);
+	public abstract LineasDeTension construirLineaDeTension(Posicion unaPosicion);
 	
 	public abstract ConexionDeAgua construirTuberia(Posicion unaPosicion);
 
 
-
-
-
-
-
-
-
-	
 }
