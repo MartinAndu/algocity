@@ -10,6 +10,9 @@ public abstract class Construccion {
 	protected int estadoConstruccion;
 	protected int danio;
 	
+	public Construccion(Posicion posicion) {
+		this.unaPosicion = posicion;
+	}
 	public abstract int devolverConsumo();
 	
 	public int devolverCosto(){
@@ -41,7 +44,7 @@ public abstract class Construccion {
 		//la construccion debe saber que acciones posteriores a sus construccion realizar
 	}
 	
-	public abstract void construirSobrePlano(Plano unPlano);
+	public abstract void construirSobrePlano(Plano plano); // toda construccion sabe como construirse sobre un plano
 
 	public abstract boolean esConstruibleSobreAgua();
 

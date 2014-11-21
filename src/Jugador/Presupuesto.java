@@ -20,7 +20,7 @@ public abstract class Presupuesto {
 	}
 
 	public void incrementarEnPorcentaje(int porcentaje) {
-		// TODO Auto-generated method stub
+		//se incrementa el presupuesto en un determinado porcentaje
 		
 	}
 
