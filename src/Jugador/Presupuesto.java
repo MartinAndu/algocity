@@ -18,4 +18,10 @@ public abstract class Presupuesto {
 	public void aumentarPresupuesto(int unaSuma){
 		cantidadDeDinero += unaSuma;
 	}
+
+	public void incrementarEnPorcentaje(int porcentaje) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -24,4 +24,9 @@ public class EstacionDeBomberos {
 			edificioAReconstruir.reconstruir();
 		}
 	}
+
+	public void habilitar() {
+		//debe comunicarse con presupuesto para saber si es posible su habilitacion.
+		//comienza a reparar en el siguiente turno.
+	}
 }

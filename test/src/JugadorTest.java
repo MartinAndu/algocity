@@ -1,10 +1,12 @@
 package src;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 import junit.framework.Assert;
 
 import org.junit.Test;
 
+import Catastrofe.Catastrofe;
+import Catastrofe.Godzilla;
 import Edificios.Posicion;
 import Jugador.Jugador;
 import Jugador.JugadorMedio;
@@ -18,12 +20,11 @@ public class JugadorTest {
 		
 		Jugador jugador = new JugadorMedio();
 		
-		assertEquals(0, jugador.obtenerPoblacionSinHogar());
-		
-		Poblacion poblacion = new PoblacionInmigrante();
-		jugador.huboUnIncrementoEnLaPoblacion(poblacion);
-		
 		assertEquals(200, jugador.obtenerPoblacionSinHogar());
+		
+		jugador.poblacionSeIncrementoEnPorcetaje(50);
+		
+		assertEquals(400, jugador.obtenerPoblacionSinHogar());
 
 	}
 	
@@ -64,26 +65,8 @@ public class JugadorTest {
 		
 		assertEquals(5000, jugador.obtenerPresupuesto());
 		
-		jugador.seAproboUnNuevoPresupuestoParaLaCiudad();
+		jugador.presupuestoSeIncrementoEnPorcentaje(50);
 		
 		assertEquals(7500, jugador.obtenerPresupuesto());
-	}
-	
-	//Concidero un Plano que cuyas superficies alternan al modo de tablero de ajedrez
-	//entre superficies de agua y llanas.
-	//Tambien concidero que la posicion de pruebas poseen la superficie requerida a menos que 
-	//se especifique lo contrario.
-			
-	@Test
-	public void jugadorConstruyeUnPozoDeAguaSobreUnaSuperficieDeAgua() {
-		
-		Jugador jugador = new JugadorMedio();
-		
-		assertEquals(5000, jugador.obtenerPresupuesto());
-		
-		Posicion posicion = new Posicion(1, 1);
-		jugador.construirPozoDeAgua(posicion);
-		
-		assertEquals(4750, jugador.obtenerPresupuesto());
 	}
 }
