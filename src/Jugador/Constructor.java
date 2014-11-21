@@ -15,8 +15,9 @@ import Edificios.PozoDeAgua;
 import Excepciones.ExcepcionDineroInsuficiente;
 
 public class Constructor {
-	Presupuesto miPresupuesto = new PresupuestoAlto(); // esto se manejaria con un generador de presupuestos tambien ?
+	//Constructor deberia ser una clase abstracta. Se trata de un FACTORY!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	
+	Presupuesto miPresupuesto = new PresupuestoAlto(); 	// lo recibe por parametro cuando se construye
 	private void construir(Construccion unaConstruccion, Posicion unaPosicion){
 		
 		int costoDeConstruccion = unaConstruccion.devolverCosto();
