@@ -1,64 +1,105 @@
 package Jugador;
 
-import Edificios.Edificio;
+import CentralesElectricas.CentralEolica;
+import CentralesElectricas.CentralMineral;
+import CentralesElectricas.CentralNuclear;
+import Conectores.ConexionDeAgua;
+import Conectores.LineasDeTension;
+import Conectores.RutaPavimentada;
+import Edificios.Construccion;
 import Edificios.EdificioComercial;
 import Edificios.EdificioIndustrial;
 import Edificios.EdificioResidencial;
 import Edificios.Posicion;
 import Edificios.PozoDeAgua;
 import Excepciones.ExcepcionDineroInsuficiente;
-import PlanoGeneral.Hectarea;
-import PlanoGeneral.Plano;
 
 public class Constructor {
-	 // Estas instanciaciones estan mal, son cosas que se van a obtener 
-	// del Jugador que tiene el constructor, pero por ahora hago esto...
-	Plano miPlano = new Plano(10,10);
-	Presupuesto miPresupuesto = new PresupuestoAlto();
+	Presupuesto miPresupuesto = new PresupuestoAlto(); // esto se manejaria con un generador de presupuestos tambien ?
 	
-	private void construirEdificio(Edificio unEdificio){
+	private void construir(Construccion unaConstruccion, Posicion unaPosicion){
 		
-		int costoDeUnEdificio = unEdificio.devolverCosto();
+		int costoDeConstruccion = unaConstruccion.devolverCosto();
 		
-		if (!miPresupuesto.alcanzaPara(costoDeUnEdificio)){
+		if (!miPresupuesto.alcanzaPara(costoDeConstruccion)){
 			throw new ExcepcionDineroInsuficiente();
 		}
 		
-		Posicion unaPosicion = unEdificio.obtenerPosicion();
-		Hectarea hectareaDondeConstruir = miPlano.devolverHectarea(unaPosicion);
-		(hectareaDondeConstruir).establecerEdificio(unEdificio);
-		miPresupuesto.reducirPresupuesto(costoDeUnEdificio);
+		unaConstruccion.establecerPosicion(unaPosicion);
+		
+		miPresupuesto.reducirPresupuesto(costoDeConstruccion);
 	}
 	
 	public EdificioResidencial construirZonaResidencial(Posicion unaPosicion){
 		EdificioResidencial unResidencial = new EdificioResidencial();
-		unResidencial.establecerPosicion(unaPosicion);
-		
-		this.construirEdificio(unResidencial);
+		this.construir(unResidencial, unaPosicion);
 		
 		return unResidencial;
 	}
 	
 	public EdificioComercial construirZonaComercial(Posicion unaPosicion){
 		EdificioComercial unComercial = new EdificioComercial();
-		unComercial.establecerPosicion(unaPosicion);
-		
-		this.construirEdificio(unComercial);
+		this.construir(unComercial, unaPosicion);
 		
 		return unComercial;
 	}
 	
 	public EdificioIndustrial construirZonaIndustrial(Posicion unaPosicion){
 		EdificioIndustrial unIndustrial = new EdificioIndustrial();
-		unIndustrial.establecerPosicion(unaPosicion);
-		
-		this.construirEdificio(unIndustrial);
+		this.construir(unIndustrial, unaPosicion);
 		
 		return unIndustrial;
 	}
 	
 	public PozoDeAgua construirPozoDeAgua(Posicion unaPosicion){
+		PozoDeAgua unPozo = new PozoDeAgua();
+		this.construir(unPozo, unaPosicion);
+		
+		return unPozo;
+	}
+	
+	public CentralEolica construirCentralEolica(Posicion unaPosicion){
+		CentralEolica unaCentralEolica = new CentralEolica();
+		this.construir(unaCentralEolica, unaPosicion);
+		
+		return unaCentralEolica;
+	}
+	
+	public CentralMineral construirCentralMineral(Posicion unaPosicion){
+		CentralMineral unaCentralMineral = new CentralMineral();
+		this.construir(unaCentralMineral, unaPosicion);
+		
+		return unaCentralMineral;
+	}
+	
+	public CentralNuclear construirCentralNuclear(Posicion unaPosicion){
+		CentralNuclear unaCentralNuclear = new CentralNuclear();
+		this.construir(unaCentralNuclear, unaPosicion);
+		
+		return unaCentralNuclear;
+	}
+	
+	public RutaPavimentada construirRuta(Posicion unaPosicion){
+		RutaPavimentada unaRuta = new RutaPavimentada();
+		this.construir(unaRuta, unaPosicion);
+		
+		return unaRuta;
+	}
+	
+	public LineasDeTension construirLinea(Posicion unaPosicion){
+		
+		// para crear una nueva linea de tension tengo que mandarle la central, que onda!?
 		return null;
-	}	
+	}
+	
+	public ConexionDeAgua construirTuberia(Posicion unaPosicion){
+		
+		// para crear una nueva tuberia de agua tengo que mandarle la hectarea, que onda!? x2
+		return null;
+	}
+	
+	public void habilitarEstacionDeBomberos(){
+		// implementar (...)
+	}
 
 }

@@ -1,5 +1,8 @@
 package Edificios;
 
+import PlanoGeneral.Hectarea;
+import PlanoGeneral.Plano;
+
 public class PozoDeAgua extends Construccion{
 
 	static int COSTO_CONSTRUCCION = 250;
@@ -19,5 +22,10 @@ public class PozoDeAgua extends Construccion{
 	@Override
 	public int devolverConsumo() {
 		return CONSUMO_ELECTRICO;
+	}
+	
+	public void construirSobrePlano(Plano unPlano){
+		Hectarea unaHectarea = unPlano.devolverHectarea(unaPosicion);
+		unaHectarea.establecerPozoDeAgua(this);
 	}
 }

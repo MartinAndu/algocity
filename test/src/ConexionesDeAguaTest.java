@@ -13,7 +13,6 @@ import Conectores.ConexionDeAgua;
 import Edificios.Edificio;
 import Edificios.EdificioResidencial;
 import Edificios.Posicion;
-import Excepciones.ExcepcionCentralElectricaNoPoseeRedDeAgua;
 import Excepciones.ExcepcionHectareaNoBrindaLosServiciosNecesarios;
 import PlanoGeneral.Hectarea;
 import PlanoGeneral.Plano;
