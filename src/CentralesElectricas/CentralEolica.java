@@ -15,6 +15,10 @@ public class CentralEolica extends CentralElectrica {
 		costoDeConstruccion = COSTO_DE_CONSTRUCCION;
 		capacidadMaxDeAbastecimientoEnMW = CAPACIDAD_MAXIMA_DE_ABASTECIMIENTO;
 		this.posicionConstruccion = unaPosicion;
+		porcentajeDeConstruccion=100;
+		
+		puntosMaximosDeConstruccion=7000;
+		puntosDeConstruccion=puntosMaximosDeConstruccion;
 	}
 
 	public void proveerElectricidadZona(Plano unPlano){
