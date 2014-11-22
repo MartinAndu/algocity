@@ -16,6 +16,10 @@ public class CentralMineral extends CentralElectrica{
 		this.costoDeConstruccion = COSTO_DE_CONSTRUCCION;
 		this.capacidadMaxDeAbastecimientoEnMW = CAPACIDAD_MAXIMA_DE_ABASTECIMIENTO;
 		this.posicionConstruccion = unaPosicion;
+		porcentajeDeConstruccion=100;
+		
+		puntosMaximosDeConstruccion=10000;
+		puntosDeConstruccion=puntosMaximosDeConstruccion;
 	}
 
 	public void proveerElectricidadZona(Plano unPlano){
