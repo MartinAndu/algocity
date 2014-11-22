@@ -15,6 +15,10 @@ public class EdificioIndustrial extends Edificio {
 		costoDeConstruccion = COSTO_CONSTRUCCION;
 		cantidadEmpleados = 0;
 		posicionConstruccion = unaPosicion;
+		porcentajeDeConstruccion=100;
+		
+		puntosMaximosDeConstruccion=34000;
+		puntosDeConstruccion=puntosMaximosDeConstruccion;
 	}
 	
 	public int devolverCapacidadEmpleo(){

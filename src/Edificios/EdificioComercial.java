@@ -13,6 +13,10 @@ public class EdificioComercial extends Edificio {
 		tieneElectricidad = false;
 		tieneAccesoAlTransito = false;
 		posicionConstruccion = unaPosicion;
+		porcentajeDeConstruccion=100;
+		
+		puntosMaximosDeConstruccion=15000;
+		puntosDeConstruccion=puntosMaximosDeConstruccion;
 	}
 
 }

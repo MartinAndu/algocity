@@ -9,6 +9,9 @@ public class Edificio extends Construccion implements Reconstruible, Destruible 
 	protected boolean tieneAgua;
 	protected boolean tieneAccesoAlTransito;
 	protected int consumoElectrico;
+	protected int puntosMaximosDeConstruccion;
+	protected int puntosDeConstruccion;
+	protected int porcentajeDeConstruccion;
 
 	public int devolverConsumo(){
 		return consumoElectrico;
@@ -54,33 +57,30 @@ public class Edificio extends Construccion implements Reconstruible, Destruible 
 		return false;
 	}
 
-	@Override
-	public void reconstruir() {
-		// TODO Auto-generated method stub
-		
-	}
+
 	
 	public void construirSobrePlano(Plano unPlano){
 		Hectarea unaHectarea = unPlano.devolverHectarea(posicionConstruccion);
 		unaHectarea.establecerEdificio(this);
 	}
 
-	@Override
-	public void reconstruir(int puntosDeReconstruccion) {
-		// TODO Auto-generated method stub
+	public void reconstruir(int puntosDeReconstruccion){
+		this.actualizarPuntosDeConstruccion();
+		puntosDeConstruccion=Math.min(puntosDeConstruccion+puntosDeReconstruccion,puntosMaximosDeConstruccion);
+	}
+	
+	public void destruirUnPoco(){ //Este es un metodo temporal para probar las clases de bomberos y reconstruibles, luego sera borrada cuando se implemente Destruible
+		porcentajeDeConstruccion=81;
+		actualizarPuntosDeConstruccion();
+	}
+	
+	public int porcentajeDeConstruccion(){
+		porcentajeDeConstruccion=(puntosDeConstruccion*100)/puntosMaximosDeConstruccion;
 		
+		return porcentajeDeConstruccion;
 	}
-
-	@Override
-	public int porcentajeDeConstruccion() {
-		// TODO Auto-generated method stub
-		return 0;
+	
+	public void actualizarPuntosDeConstruccion(){
+		puntosDeConstruccion=(puntosMaximosDeConstruccion*porcentajeDeConstruccion)/100;
 	}
-
-	@Override
-	public void actualizarPuntosDeConstruccion() {
-		// TODO Auto-generated method stub
-		
-	}
-
 }
