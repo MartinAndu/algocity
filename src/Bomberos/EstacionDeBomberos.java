@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import Edificios.Reconstruible;
+import Jugador.Presupuesto;
 
 public class EstacionDeBomberos {
 	ArrayList<Reconstruible> edificiosAReconstruir;
 	int puntosDeReconstruccion=3;
+	private Presupuesto presupuesto;
 	
-	public EstacionDeBomberos(){
+	public EstacionDeBomberos(Presupuesto presupuesto){
+		this.presupuesto = presupuesto;
 		edificiosAReconstruir = new ArrayList<Reconstruible>();
 	}
 	
