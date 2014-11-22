@@ -6,10 +6,23 @@ import java.util.Iterator;
 import Edificios.Reconstruible;
 import Jugador.Presupuesto;
 
+
+/*
+ * Lista de puntosMaximosDeConstruccion segun el tipo de construccion:
+ * Edificios residenciales:10% - 10000 puntos
+ * Edificios comerciales:7% - 15000 puntos
+ * Edificios industriales:3% - 34000 puntos
+ * Centrales electricas eolicas:15% - 7000 puntos
+ * Centrales electricas minerales:10% - 10000 puntos
+ * Centrales electricas nucleares: 3% - 34000 puntos
+ * Otros: A elegir cualquiera (multiplos de 1000). 
+ * 
+ */
+
 public class EstacionDeBomberos {
 	ArrayList<Reconstruible> edificiosAReconstruir;
 	
-	int puntosDeReconstruccion=3;
+	int puntosDeReconstruccion=1000;
 	private Presupuesto presupuesto;
 	private int costoDeHabilitacion;
 	
