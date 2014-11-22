@@ -9,10 +9,10 @@ public class GeneradorSuperficieDeterminista extends GeneradorSuperficie {
 	public Superficie generarSuperficie() {
 		if (numeroAlternador == 0){
 			this.numeroAlternador += 1;
-			return new SuperficieConAgua();
+			return new SuperficieConTerrenoLlano();
 		}
 		this.numeroAlternador -= 1;
-		return new SuperficieConTerrenoLlano();
+		return new SuperficieConAgua();
 	}
 
 }

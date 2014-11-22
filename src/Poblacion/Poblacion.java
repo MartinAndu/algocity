@@ -17,7 +17,7 @@ public abstract class Poblacion {
 		double porcentajeDouble = porcentajeAIncrementar;
 		porcentajeDouble = (porcentajeAIncrementar / 100.0);
 		int cantHabitantesASumar = (int) (this.cantHabitantesCiudad * porcentajeDouble);
-		this.cantHabitantesCiudad = cantHabitantesASumar + this.cantHabitantesCiudad;
+		this.cantHabitantesCiudad += cantHabitantesASumar;
 	}
 
 	public int obtenerCantHabitantes() {
