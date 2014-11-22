@@ -72,7 +72,7 @@ public class JugadorTest {
 		
 		assertEquals(5000, jugador.obtenerPresupuesto());
 		
-		Posicion posicion = new Posicion(1, 1);
+		Posicion posicion = new Posicion(2, 2);
 		
 		jugador.crearPozoDeAgua(posicion);
 		
