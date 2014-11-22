@@ -15,7 +15,7 @@ public class EdificioComercial extends Edificio {
 		posicionConstruccion = unaPosicion;
 		porcentajeDeConstruccion=100;
 		
-		puntosMaximosDeConstruccion=15000;
+		puntosMaximosDeConstruccion=14285;
 		puntosDeConstruccion=puntosMaximosDeConstruccion;
 	}
 

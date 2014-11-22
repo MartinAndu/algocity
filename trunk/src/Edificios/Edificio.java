@@ -9,9 +9,9 @@ public class Edificio extends Construccion implements Reconstruible, Destruible 
 	protected boolean tieneAgua;
 	protected boolean tieneAccesoAlTransito;
 	protected int consumoElectrico;
-	protected int puntosMaximosDeConstruccion;
-	protected int puntosDeConstruccion;
-	protected int porcentajeDeConstruccion;
+	protected float puntosMaximosDeConstruccion;
+	protected float puntosDeConstruccion;
+	protected float porcentajeDeConstruccion;
 
 	public int devolverConsumo(){
 		return consumoElectrico;
@@ -74,10 +74,10 @@ public class Edificio extends Construccion implements Reconstruible, Destruible 
 		actualizarPuntosDeConstruccion();
 	}
 	
-	public int porcentajeDeConstruccion(){
+	public float porcentajeDeConstruccion(){
 		porcentajeDeConstruccion=(puntosDeConstruccion*100)/puntosMaximosDeConstruccion;
 		
-		return porcentajeDeConstruccion;
+		return Math.round(porcentajeDeConstruccion);
 	}
 	
 	public void actualizarPuntosDeConstruccion(){

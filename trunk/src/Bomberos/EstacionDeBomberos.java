@@ -10,11 +10,11 @@ import Jugador.Presupuesto;
 /*
  * Lista de puntosMaximosDeConstruccion segun el tipo de construccion:
  * Edificios residenciales:10% - 10000 puntos
- * Edificios comerciales:7% - 15000 puntos
- * Edificios industriales:3% - 34000 puntos
- * Centrales electricas eolicas:15% - 7000 puntos
+ * Edificios comerciales:7% - 14285 puntos
+ * Edificios industriales:3% - 33333 puntos
+ * Centrales electricas eolicas:15% - 6666 puntos
  * Centrales electricas minerales:10% - 10000 puntos
- * Centrales electricas nucleares: 3% - 34000 puntos
+ * Centrales electricas nucleares: 3% - 33333 puntos
  * Otros: A elegir cualquiera (multiplos de 1000). 
  * 
  */
@@ -40,7 +40,7 @@ public class EstacionDeBomberos {
 		Iterator<Reconstruible> it = edificiosAReconstruir.iterator();
 		
 		while (it.hasNext())
-			((Reconstruible) it).reconstruir(puntosDeReconstruccion);
+			((Reconstruible) it.next()).reconstruir(puntosDeReconstruccion);
 	}
 
 	public void habilitar() {

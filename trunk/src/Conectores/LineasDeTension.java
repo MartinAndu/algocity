@@ -89,7 +89,7 @@ public  class LineasDeTension extends Conexion{
 	}
 
 	@Override
-	public int porcentajeDeConstruccion() {
+	public float porcentajeDeConstruccion() {
 		// TODO Auto-generated method stub
 		return 0;
 	}

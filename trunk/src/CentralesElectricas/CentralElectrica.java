@@ -18,9 +18,9 @@ public class CentralElectrica extends Construccion implements Reconstruible,Dest
 	protected int capacidadDeAbastecimientoEnMW;
 	protected int capacidadMaxDeAbastecimientoEnMW;
 
-	protected int puntosMaximosDeConstruccion;
-	protected int puntosDeConstruccion;
-	protected int porcentajeDeConstruccion;
+	protected float puntosMaximosDeConstruccion;
+	protected float puntosDeConstruccion;
+	protected float porcentajeDeConstruccion;
 	
 	static int CONSUMO_ELECTRICO = 0;
 	
@@ -98,10 +98,10 @@ public class CentralElectrica extends Construccion implements Reconstruible,Dest
 		actualizarPuntosDeConstruccion();
 	}
 	
-	public int porcentajeDeConstruccion(){
+	public float porcentajeDeConstruccion(){
 		porcentajeDeConstruccion=(puntosDeConstruccion*100)/puntosMaximosDeConstruccion;
 		
-		return porcentajeDeConstruccion;
+		return Math.round(porcentajeDeConstruccion);
 	}
 	
 	public void actualizarPuntosDeConstruccion(){
