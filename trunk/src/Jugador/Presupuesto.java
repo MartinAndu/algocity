@@ -20,7 +20,10 @@ public abstract class Presupuesto {
 	}
 
 	public void incrementarEnPorcentaje(int porcentaje) {
-		//se incrementa el presupuesto en un determinado porcentaje
+		double porcentajeDouble = porcentaje;
+		porcentajeDouble = porcentajeDouble / 100.0;
+		int cantDinearoASumar = (int) (this.cantidadDeDinero * porcentajeDouble);
+		this.cantidadDeDinero += cantDinearoASumar;
 		
 	}
 
