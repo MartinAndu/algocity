@@ -69,8 +69,7 @@ import PlanoGeneral.Plano;
                 	Posicion otraPosicion=new Posicion(7,7);
                 	Hectarea otraHectarea = unPlano.devolverHectarea(otraPosicion);
                 	
-                	Posicion unaPosicion2 = new Posicion(5,5);
-            		Edificio unoResidencial = new EdificioResidencial(unaPosicion2);
+            		Edificio unoResidencial = new EdificioResidencial(otraPosicion);
             		otraHectarea.habilitarAccesoAlTransito();
             		otraHectarea.habilitarElectricidad();
             		unaConexion.habilitarConAguaSiCorresponde(unPlano, unaPosicion);
