@@ -1,7 +1,13 @@
 package Edificios;
 
-public interface Reconstruible {
+public class Reconstruible {
 
-	void reconstruir();
+		int puntosMaximosDeConstruccion;
+		int puntosDeConstruccion;
+		int porcentajeDeConstruccion;
 
+		public void reconstruir(int puntosDeReconstruccion);
+		public static int porcentajeDeConstruccion();
+		private void actualizarPuntosDeConstruccion();
+	
 }
