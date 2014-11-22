@@ -1,16 +1,12 @@
 package src;
 
 import static org.junit.Assert.*;
-import junit.framework.Assert;
-
 import org.junit.Test;
-
 import Catastrofe.Catastrofe;
 import Catastrofe.Godzilla;
 import Edificios.Posicion;
 import Jugador.Jugador;
 import Jugador.JugadorMedio;
-import Poblacion.Poblacion;
 
 
 public class JugadorTest {

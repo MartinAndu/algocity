@@ -61,7 +61,7 @@ public class Edificio extends Construccion implements Reconstruible, Destruible 
 	}
 	
 	public void construirSobrePlano(Plano unPlano){
-		Hectarea unaHectarea = unPlano.devolverHectarea(unaPosicion);
+		Hectarea unaHectarea = unPlano.devolverHectarea(posicionConstruccion);
 		unaHectarea.establecerEdificio(this);
 	}
 

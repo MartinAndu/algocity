@@ -6,12 +6,13 @@ public class EdificioComercial extends Edificio {
 	static int CONSUMO_ELECTRICO = 2;
 	static int PORCENTAJE_REPARACION_POR_BOMBEROS = 7;
 	
-	public EdificioComercial(){
+	public EdificioComercial(Posicion unaPosicion){
 		costoDeConstruccion = COSTO;
 		consumoElectrico = CONSUMO_ELECTRICO;
 		tieneAgua = false;
 		tieneElectricidad = false;
 		tieneAccesoAlTransito = false;
+		posicionConstruccion = unaPosicion;
 	}
 
 }

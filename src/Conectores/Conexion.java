@@ -1,7 +1,6 @@
 package Conectores;
 
 import Edificios.Construccion;
-import Edificios.Posicion;
 import Edificios.Reconstruible;
 import PlanoGeneral.Hectarea;
 import PlanoGeneral.Plano;
@@ -39,7 +38,7 @@ public abstract class Conexion extends Construccion implements Reconstruible{
 	}
 	
 	public void construirSobrePlano(Plano unPlano){
-		Hectarea unaHectarea = unPlano.devolverHectarea(unaPosicion);
+		Hectarea unaHectarea = unPlano.devolverHectarea(posicionConstruccion);
 		unaHectarea.establecerConexion(this);
 	}
 }

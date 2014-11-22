@@ -6,13 +6,11 @@ import CentralesElectricas.CentralNuclear;
 import Conectores.ConexionDeAgua;
 import Conectores.LineasDeTension;
 import Conectores.RutaPavimentada;
-import Edificios.Construccion;
 import Edificios.EdificioComercial;
 import Edificios.EdificioIndustrial;
 import Edificios.EdificioResidencial;
 import Edificios.Posicion;
 import Edificios.PozoDeAgua;
-import Excepciones.ExcepcionDineroInsuficiente;
 
 public class ConstructorMedio extends Constructor{
 	
@@ -75,9 +73,23 @@ public class ConstructorMedio extends Constructor{
 		
 		return unaRuta;
 	}
-	
+
+	@Override
+	public LineasDeTension construirLineaDeTension(Posicion unaPosicion) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ConexionDeAgua construirTuberia(Posicion unaPosicion) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	// Hay que cambiar los constructores de LineaDeTension y TuberiaDeAgua, solo deben recibir la posicion!! (mirar abajo)
+/**
 	public LineasDeTension construirLineaDeTension(Posicion unaPosicion){
-		LineasDeTension unaLinea = new LineasDeTension(unaPosicion); //linea debe cambiar su constructor
+		LineasDeTension unaLinea = new LineasDeTension(unaPosicion);
 		this.construir(unaLinea);
 		
 		return unaLinea;
@@ -89,4 +101,5 @@ public class ConstructorMedio extends Constructor{
 		
 		return unaConexion;
 	}
+**/
 }
