@@ -2,7 +2,10 @@ package Jugador;
 
 import Bomberos.EstacionDeBomberos;
 import Catastrofe.Catastrofe;
+import CentralesElectricas.CentralMineral;
+import Conectores.ConexionDeAgua;
 import Conectores.LineasDeTension;
+import Conectores.RutaPavimentada;
 import Edificios.Construccion;
 import Edificios.EdificioResidencial;
 import Edificios.Posicion;
@@ -66,12 +69,25 @@ public abstract class Jugador {
 		EdificioResidencial residencia = this.constructor.construirZonaResidencial(posicion);
 		this.agregarAlPlano(residencia);
 	}
-	
-	
 
 	public void crearLineaDeTension(Posicion posicion) {
 		LineasDeTension linea = this.constructor.construirLineaDeTension(posicion);
 		this.agregarAlPlano(linea);
+	}
+	
+	public void crearTuberiaDeAgua(Posicion posicion) {
+		ConexionDeAgua canio = this.constructor.construirTuberia(posicion);
+		this.agregarAlPlano(canio);
+	}
+	
+	public void crearCentralElectricaMineral(Posicion posicion) {
+		CentralMineral central = this.constructor.construirCentralMineral(posicion);
+		this.agregarAlPlano(central);
+	}
+	
+	public void crearRutaPavimentada(Posicion posicion) {
+		RutaPavimentada ruta = this.constructor.construirRuta(posicion);
+		this.agregarAlPlano(ruta);
 	}
 	
 	private void agregarAlPlano(Construccion construccion) {
@@ -82,6 +98,5 @@ public abstract class Jugador {
 	private void asegurarSuReparacion(Construccion construccion) {
 		this.estacionDeBomberos.agregarReconstruible((Reconstruible)construccion);
 	}
-
 
 }
