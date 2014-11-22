@@ -7,7 +7,7 @@ import Edificios.Reconstruible;
 
 public class EstacionDeBomberos {
 	ArrayList<Reconstruible> edificiosAReconstruir;
-	protected int costoDeConstruccion;
+	int puntosDeReconstruccion=3;
 	
 	public EstacionDeBomberos(){
 		edificiosAReconstruir = new ArrayList<Reconstruible>();
@@ -19,9 +19,8 @@ public class EstacionDeBomberos {
 
 	public void realizarReparaciones() {
 		Iterator<Reconstruible> it = edificiosAReconstruir.iterator();
-		while(it.hasNext()){
-			Reconstruible edificioAReconstruir = (Reconstruible)it.next();
-			edificioAReconstruir.reconstruir();
+		for(Reconstruible edificioAReconstruir:it){
+			edificioAReconstruir.reconstruir(puntosDeReconstruccion);
 		}
 	}
 
