@@ -21,7 +21,7 @@ public abstract class Jugador {
 	
 	public Jugador() {
 		this.plano = new Plano(640, 480);
-		this.estacionDeBomberos = new EstacionDeBomberos();
+		this.estacionDeBomberos = new EstacionDeBomberos(this.presupuesto);
 	}
 
 	public int obtenerPoblacionSinHogar() {
