@@ -68,12 +68,14 @@ public  class LineasDeTension extends Conexion{
 		if (!hayLineasDeTensionAlrededorDeLaHectarea)
 			throw new ExcepcionNoSePuedeConectarPorqueNoHayOtraLineaDeTensionAlrededor();
 		
-		
 		int consumoElectrico=unPlano.devolverHectarea(unaPosicion).obtenerConstruccion().devolverConsumo();
 		
 		//Verifica que no se exceda al consumo permitido por la central eléctrica
-		if (!excedeElConsumo(consumoElectrico))
+		if (!excedeElConsumo(consumoElectrico) 
+				&& !(unPlano.devolverHectarea(unaPosicion).obtenerConstruccion().esConstruibleSobreAgua())){
 			conectadoALaRed = true;
+			unPlano.devolverHectarea(unaPosicion).habilitarElectricidad();
+		}
 		
 		
 	
