@@ -79,4 +79,76 @@ public class JugadorTest {
 		assertEquals(4750, jugador.obtenerPresupuesto());
 		
 	}
+	
+	@Test
+	public void jugadorCrearDosTuberiasDeAgua() {
+		
+		Jugador jugador = new JugadorMedio();
+		Posicion posicion = new Posicion(1, 2);
+		jugador.crearPozoDeAgua(posicion);
+		Posicion otraPosicion = new Posicion(1, 3);
+		jugador.crearTuberiaDeAgua(otraPosicion);
+		
+		assertEquals(4745, jugador.obtenerPresupuesto());
+		
+		Posicion otraPosicionMas = new Posicion(1, 4);
+		jugador.crearTuberiaDeAgua(otraPosicionMas);
+		
+		assertEquals(4740, jugador.obtenerPresupuesto());
+	}
+	
+	@Test
+	public void jugadorCrearUnaCentralElectrica() {
+		
+		Jugador jugador = new JugadorMedio();
+		Posicion posicion = new Posicion(1, 2);
+		jugador.crearPozoDeAgua(posicion);
+		Posicion otraPosicion = new Posicion(1, 3);
+		jugador.crearTuberiaDeAgua(otraPosicion);		
+		Posicion otraPosicionMas = new Posicion(1, 4);
+		jugador.crearTuberiaDeAgua(otraPosicionMas);
+		Posicion unaPosicionMas = new Posicion(1, 5);
+		jugador.crearCentralElectricaMineral(unaPosicionMas);
+		
+		assertEquals(1740, jugador.obtenerPresupuesto());
+	}
+	
+	@Test
+	public void jugadorCrearDosRutasEncimaDeLasTuberias() {
+		
+		Jugador jugador = new JugadorMedio();
+		Posicion posicion = new Posicion(1, 2);
+		jugador.crearPozoDeAgua(posicion);
+		Posicion otraPosicion = new Posicion(1, 3);
+		jugador.crearTuberiaDeAgua(otraPosicion);		
+		Posicion otraPosicionMas = new Posicion(1, 4);
+		jugador.crearTuberiaDeAgua(otraPosicionMas);
+		Posicion unaPosicionMas = new Posicion(1, 5);
+		jugador.crearCentralElectricaMineral(unaPosicionMas);
+		jugador.crearRutaPavimentada(otraPosicion);
+		jugador.crearRutaPavimentada(otraPosicionMas);
+		
+		assertEquals(1720, jugador.obtenerPresupuesto());
+	}
+	
+	@Test
+	public void jugadorCrearResidencia() {
+		
+		Jugador jugador = new JugadorMedio();
+		Posicion posicion = new Posicion(1, 2);
+		jugador.crearPozoDeAgua(posicion);
+		Posicion otraPosicion = new Posicion(1, 3);
+		jugador.crearTuberiaDeAgua(otraPosicion);		
+		Posicion otraPosicionMas = new Posicion(1, 4);
+		jugador.crearTuberiaDeAgua(otraPosicionMas);
+		Posicion unaPosicionMas = new Posicion(1, 5);
+		jugador.crearCentralElectricaMineral(unaPosicionMas);
+		jugador.crearRutaPavimentada(otraPosicion);
+		jugador.crearRutaPavimentada(otraPosicionMas);
+		Posicion posicionDeLaCasa = new Posicion(2, 3);
+		jugador.crearResidencia(posicionDeLaCasa);
+		
+		assertEquals(1715, jugador.obtenerPresupuesto());
+	}
+	
 }
