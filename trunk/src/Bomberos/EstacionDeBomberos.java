@@ -10,7 +10,12 @@ public class EstacionDeBomberos {
 	ArrayList<Reconstruible> edificiosAReconstruir;
 	
 	int puntosDeReconstruccion=3;
+	private Presupuesto presupuesto;
+	private int costoDeHabilitacion;
+	
 	public EstacionDeBomberos(Presupuesto presupuesto){
+		this.presupuesto = presupuesto;
+		this.costoDeHabilitacion = 1500;
 		edificiosAReconstruir = new ArrayList<Reconstruible>();
 	}
 	
@@ -26,7 +31,8 @@ public class EstacionDeBomberos {
 	}
 
 	public void habilitar() {
-		//debe comunicarse con presupuesto para saber si es posible su habilitacion.
-		//comienza a reparar en el siguiente turno.
+		if (this.presupuesto.alcanzaPara(costoDeHabilitacion)) {
+			this.presupuesto.reducirPresupuesto(costoDeHabilitacion);
+		}
 	}
 }
