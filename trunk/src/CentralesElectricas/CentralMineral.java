@@ -10,12 +10,16 @@ public class CentralMineral extends CentralElectrica{
 	static int CAPACIDAD_MAXIMA_DE_ABASTECIMIENTO = 400;
 	static int PORCENTAJE_REPARACION_POR_BOMBEROS = 10;
 	
-	public CentralMineral(Posicion unaPosicion){
+	public CentralMineral(){
 		radioDeAbastecimientoEnHectareas = RADIO_DE_ABASTECIMIENTO_EN_HECTAREAS;
 		costoDeConstruccion = COSTO_DE_CONSTRUCCION;
 		capacidadMaxDeAbastecimientoEnMW = CAPACIDAD_MAXIMA_DE_ABASTECIMIENTO;
-		posicionConstruccion = unaPosicion;
 	}
+	
+	public CentralMineral(Posicion unaPosicion) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public void proveerElectricidadZona(Plano unPlano){
 		
 		

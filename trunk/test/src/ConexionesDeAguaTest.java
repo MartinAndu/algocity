@@ -58,6 +58,7 @@ import PlanoGeneral.Plano;
                 
                 @Test
                 public void accesoAAgua(){
+                	
                 	Plano unPlano = new Plano (8,8);
                 	Posicion unaPosicion=new Posicion(4,4);
                 	Hectarea unaHectarea = unPlano.devolverHectarea(unaPosicion);

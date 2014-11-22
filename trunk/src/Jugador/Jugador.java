@@ -81,8 +81,7 @@ public abstract class Jugador {
 	}
 	
 	private void asegurarSuReparacion(Construccion construccion) {
-		Reconstruible reconstruible = (Reconstruible) construccion;
-		this.estacionDeBomberos.agregarReconstruible(reconstruible);
+		this.estacionDeBomberos.agregarReconstruible((Reconstruible)construccion);
 	}
 
 

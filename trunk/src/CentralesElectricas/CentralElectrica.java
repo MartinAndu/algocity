@@ -10,7 +10,6 @@ import Edificios.Reconstruible;
 import PlanoGeneral.Hectarea;
 import PlanoGeneral.Plano;
 import PlanoGeneral.Recorrido;
-import Excepciones.ExcepcionElConsumoElectricoDeLaHectareaExcedeALaCapacidadMaxima;
 
 
 
@@ -23,21 +22,28 @@ public class CentralElectrica extends Construccion implements Reconstruible,Dest
 	
 	ArrayList <Hectarea> hectareas;
 	
+	
+	public void construirSobrePlano(Plano unPlano){
+		Hectarea unaHectarea = unPlano.devolverHectarea(posicionConstruccion);
+		unaHectarea.establecerCentral(this);
+	}
+	
 	public void proveerElectricidadZona(Plano unPlano){
 		//Obtengo lo que hay en las zonas circundante de radio X correspondiente a la central
 		
 		Recorrido zonaCircundante = unPlano.recorrerZonaCircundante(posicionConstruccion, radioDeAbastecimientoEnHectareas);
 
-		int cantidadDeConsumoActual = 0;
+		int cantidadDeConsumoActual = capacidadDeAbastecimientoEnMW;
+		
 		while (zonaCircundante.tieneSiguiente()){
 			
 			Hectarea hectareaActual = zonaCircundante.siguiente();
+			
 			cantidadDeConsumoActual += ( hectareaActual.obtenerConstruccion() ).devolverConsumo(); 
 			
 			//Verifico el consumo del edificio si excede a la capacidad máxima
-			if (cantidadDeConsumoActual > capacidadMaxDeAbastecimientoEnMW)
-				throw new ExcepcionElConsumoElectricoDeLaHectareaExcedeALaCapacidadMaxima();
-			hectareaActual.establecerConexion((Conexion)new LineasDeTension(this));
+			if (cantidadDeConsumoActual <= capacidadMaxDeAbastecimientoEnMW)
+				hectareaActual.establecerConexion((Conexion)new LineasDeTension(this));
 			
 		}
 	}
@@ -76,10 +82,24 @@ public class CentralElectrica extends Construccion implements Reconstruible,Dest
 	public int devolverConsumo() {
 		return CONSUMO_ELECTRICO;
 	}
-	
-	public void construirSobrePlano(Plano unPlano){
-		Hectarea unaHectarea = unPlano.devolverHectarea(posicionConstruccion);
-		unaHectarea.establecerCentral(this);
+
+	@Override
+	public void reconstruir(int puntosDeReconstruccion) {
+		// TODO Auto-generated method stub
+		
 	}
+
+	@Override
+	public int porcentajeDeConstruccion() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void actualizarPuntosDeConstruccion() {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	
 }

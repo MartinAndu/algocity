@@ -62,4 +62,5 @@ public class CentralesElectricasTest {
 		Assert.assertEquals(false, unaHectarea.poseeServicioDeAgua());
 	}
 	
+
 }
