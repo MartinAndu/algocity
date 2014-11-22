@@ -20,7 +20,7 @@ public abstract class Jugador {
 	protected Constructor constructor;
 	
 	public Jugador() {
-		this.plano = new Plano(640, 480);
+		this.plano = new Plano(320, 240);
 		this.estacionDeBomberos = new EstacionDeBomberos(this.presupuesto);
 	}
 

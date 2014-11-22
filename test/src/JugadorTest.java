@@ -16,11 +16,11 @@ public class JugadorTest {
 		
 		Jugador jugador = new JugadorMedio();
 		
-		assertEquals(200, jugador.obtenerPoblacionSinHogar());
+		assertEquals(500, jugador.obtenerPoblacionSinHogar());
 		
 		jugador.poblacionSeIncrementoEnPorcetaje(50);
 		
-		assertEquals(400, jugador.obtenerPoblacionSinHogar());
+		assertEquals(750, jugador.obtenerPoblacionSinHogar());
 
 	}
 	
@@ -37,7 +37,6 @@ public class JugadorTest {
 		jugador.pasoUnTurno();
 		
 		assertEquals(3500, jugador.obtenerPresupuesto());
-
 	}
 	
 	@Test
@@ -50,7 +49,7 @@ public class JugadorTest {
 		jugador.seCobraUnaComisionPorHabitante(10);
 		jugador.pasoUnTurno();
 		
-		assertEquals(3000, jugador.obtenerPresupuesto());
+		assertEquals(0, jugador.obtenerPresupuesto());
 
 	}
 	
