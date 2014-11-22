@@ -14,7 +14,7 @@ public  class LineasDeTension extends Conexion{
 	CentralElectrica centralElectricaALAQuePertenece;
 	
 	public void proveerServicioZona(Plano unPlano){
-		 unPlano.devolverHectarea(unaPosicion).habilitarElectricidad();
+		 unPlano.devolverHectarea(posicionConstruccion).habilitarElectricidad();
 	}
 	
 	public LineasDeTension(CentralElectrica unaCentralElectrica) {

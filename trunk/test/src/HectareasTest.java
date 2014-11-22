@@ -5,6 +5,7 @@ import org.junit.Test;
 import Edificios.Edificio;
 import Edificios.EdificioComercial;
 import Edificios.EdificioResidencial;
+import Edificios.Posicion;
 import Edificios.PozoDeAgua;
 import Excepciones.ExcepcionHectareaYaContieneUnaConstruccion;
 import Excepciones.ExcepcionHectareaNoBrindaLosServiciosNecesarios;
@@ -23,8 +24,9 @@ public class HectareasTest {
 	
 	@Test
 	public void hectareaNoAgregaEdificioSiNoEstanLosServiciosBasicosYLanzaExcepcion(){
+		Posicion unaPosicion = new Posicion(5,5);
 		Hectarea unaHectarea = new Hectarea();
-        Edificio unEdificioComercial = new EdificioComercial();
+        Edificio unEdificioComercial = new EdificioComercial(unaPosicion);
         
         boolean excepcionAtrapada = false;
         try {
@@ -36,10 +38,13 @@ public class HectareasTest {
         
         Assert.assertTrue(excepcionAtrapada);
         Assert.assertFalse(unaHectarea.poseeConstruccion());
+        Assert.assertEquals(unEdificioComercial.obtenerPosicion(), unaPosicion);
+        Assert.assertEquals(unaPosicion.devolverCoordenadaX(), 5);
 	}
 	
 	@Test
 	public void hectareaAgregaUnEdificioComercialAlTenerLos3ServiciosHabilitados(){
+		Posicion unaPosicion = new Posicion(5,5);
 		Hectarea unaHectarea = new Hectarea();
 		
 		unaHectarea.habilitarAccesoAlTransito();
@@ -48,7 +53,7 @@ public class HectareasTest {
 		
 		Assert.assertTrue(unaHectarea.poseeLos3Servicios());
 		
-        Edificio unEdificioComercial = new EdificioComercial();
+        Edificio unEdificioComercial = new EdificioComercial(unaPosicion);
         unaHectarea.establecerEdificio(unEdificioComercial);
         
         Assert.assertTrue(unaHectarea.poseeConstruccion());
@@ -56,9 +61,10 @@ public class HectareasTest {
 	
 	@Test
 	public void hectareaLanzaExcepcionAlEstablecerUnPozoDeAguaEnUnaSuperficieDeTierra(){
+		Posicion unaPosicion = new Posicion(5,5);
 		Hectarea unaHectarea = new Hectarea();
 		
-		PozoDeAgua unPozoDeAgua = new PozoDeAgua();
+		PozoDeAgua unPozoDeAgua = new PozoDeAgua(unaPosicion);
 		
 		boolean excepcionAtrapada = false;
 		
@@ -75,10 +81,12 @@ public class HectareasTest {
 	
 	@Test
 	public void hectareaLanzaExcepcionAlEstablecerUnEdificioConLaConstruccionOcupada(){
+		Posicion unaPosicion = new Posicion(5,5);
+		Posicion unaPosicion2 = new Posicion(52,54);
 		Hectarea unaHectarea = new Hectarea();
 		
-        Edificio unEdificioResidencial = new EdificioResidencial();
-        Edificio unEdificioComercial = new EdificioComercial();
+        Edificio unEdificioResidencial = new EdificioResidencial(unaPosicion);
+        Edificio unEdificioComercial = new EdificioComercial(unaPosicion2);
         
 		unaHectarea.habilitarAccesoAlTransito();
 		unaHectarea.habilitarAgua();

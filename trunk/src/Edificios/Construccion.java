@@ -5,14 +5,11 @@ import PlanoGeneral.Plano;
 
 public abstract class Construccion {
 
-	protected Posicion unaPosicion;
+	protected Posicion posicionConstruccion;
 	protected int costoDeConstruccion;
 	protected int estadoConstruccion;
 	protected int danio;
-	
-	public Construccion(Posicion posicion) {
-		this.unaPosicion = posicion;
-	}
+
 	public abstract int devolverConsumo();
 	
 	public int devolverCosto(){
@@ -27,12 +24,8 @@ public abstract class Construccion {
 		return danio;
 	}
 	
-	public void establecerPosicion(Posicion unaPosicion){
-		this.unaPosicion = unaPosicion;
-	}
-	
 	public Posicion obtenerPosicion(){
-		return unaPosicion;
+		return posicionConstruccion;
 	}
 
 	public String devolverPosicionEnString() {

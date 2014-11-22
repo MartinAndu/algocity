@@ -8,7 +8,8 @@ public class PozoDeAgua extends Construccion{
 	static int COSTO_CONSTRUCCION = 250;
 	static int CONSUMO_ELECTRICO = 0;
 	
-	public PozoDeAgua(){
+	public PozoDeAgua(Posicion unaPosicion){
+		posicionConstruccion = unaPosicion;
 	}
 	
 	public boolean esConstruibleSobreTierra(){
@@ -25,7 +26,7 @@ public class PozoDeAgua extends Construccion{
 	}
 	
 	public void construirSobrePlano(Plano unPlano){
-		Hectarea unaHectarea = unPlano.devolverHectarea(unaPosicion);
+		Hectarea unaHectarea = unPlano.devolverHectarea(posicionConstruccion);
 		unaHectarea.establecerPozoDeAgua(this);
 	}
 }

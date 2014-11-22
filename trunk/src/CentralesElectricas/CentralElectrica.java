@@ -26,7 +26,7 @@ public class CentralElectrica extends Construccion implements Reconstruible,Dest
 	public void proveerElectricidadZona(Plano unPlano){
 		//Obtengo lo que hay en las zonas circundante de radio X correspondiente a la central
 		
-		Recorrido zonaCircundante = unPlano.recorrerZonaCircundante(unaPosicion, radioDeAbastecimientoEnHectareas);
+		Recorrido zonaCircundante = unPlano.recorrerZonaCircundante(posicionConstruccion, radioDeAbastecimientoEnHectareas);
 
 		int cantidadDeConsumoActual = 0;
 		while (zonaCircundante.tieneSiguiente()){
@@ -78,7 +78,7 @@ public class CentralElectrica extends Construccion implements Reconstruible,Dest
 	}
 	
 	public void construirSobrePlano(Plano unPlano){
-		Hectarea unaHectarea = unPlano.devolverHectarea(unaPosicion);
+		Hectarea unaHectarea = unPlano.devolverHectarea(posicionConstruccion);
 		unaHectarea.establecerCentral(this);
 	}
 	

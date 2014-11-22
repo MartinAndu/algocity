@@ -8,13 +8,14 @@ public class EdificioResidencial extends Edificio {
 	static int PORCENTAJE_REPARACION_POR_BOMBEROS = 10;
 	protected int cantidadHabitantes;
 	
-	public EdificioResidencial(){
+	public EdificioResidencial(Posicion unaPosicion){
 		costoDeConstruccion = COSTO;
 		consumoElectrico = CONSUMO_ELECTRICO;
 		tieneAgua = false;
 		tieneElectricidad = false;
 		tieneAccesoAlTransito = false;
 		cantidadHabitantes = 0;
+		posicionConstruccion = unaPosicion;
 	}
 	
 	public int devolverCapacidadAlojamiento(){

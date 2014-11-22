@@ -33,8 +33,8 @@ import PlanoGeneral.Plano;
                 @Test
                 
                 public void hayConexionDeAgua(){
-                        
-                        EdificioResidencial unEdificioResidencial = new EdificioResidencial();
+                		Posicion unaPosicion = new Posicion(5,5);
+                        EdificioResidencial unEdificioResidencial = new EdificioResidencial(unaPosicion);
                         unEdificioResidencial.habilitarAgua();
                 Assert.assertTrue(unEdificioResidencial.tieneAgua());
         }
@@ -67,8 +67,9 @@ import PlanoGeneral.Plano;
 
                 	Posicion otraPosicion=new Posicion(7,7);
                 	Hectarea otraHectarea = unPlano.devolverHectarea(otraPosicion);
-
-            		Edificio unoResidencial = new EdificioResidencial();
+                	
+                	Posicion unaPosicion2 = new Posicion(5,5);
+            		Edificio unoResidencial = new EdificioResidencial(unaPosicion2);
             		otraHectarea.habilitarAccesoAlTransito();
             		otraHectarea.habilitarElectricidad();
             		unaConexion.habilitarConAguaSiCorresponde(unPlano, unaPosicion);
@@ -90,8 +91,9 @@ import PlanoGeneral.Plano;
 
                 	Posicion otraPosicion=new Posicion(7,7);
                 	Hectarea otraHectarea = unPlano.devolverHectarea(otraPosicion);
-
-            		Edificio unoResidencial = new EdificioResidencial();
+                	
+                	Posicion unaPosicion2 = new Posicion(5,5);
+            		Edificio unoResidencial = new EdificioResidencial(unaPosicion2);
             		otraHectarea.habilitarAccesoAlTransito();
             		otraHectarea.habilitarElectricidad();
             		unaConexion.habilitarConAguaSiCorresponde(unPlano, unaPosicion);

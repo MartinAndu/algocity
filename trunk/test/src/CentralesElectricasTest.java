@@ -5,6 +5,7 @@ import junit.framework.Assert;
 import org.junit.Test;
 
 import CentralesElectricas.*;
+import Edificios.Posicion;
 import Excepciones.ExcepcionCentralElectricaNoPoseeRedDeAgua;
 import PlanoGeneral.Hectarea;
 
@@ -12,14 +13,16 @@ public class CentralesElectricasTest {
 	
 	@Test
 	public void centralEolicaDevuelveCapacidadMaximaEnMWCorrecta(){
-		CentralElectrica unaCentralEolica = new CentralEolica();
+		Posicion unaPosicion = new Posicion(5,5);
+		CentralElectrica unaCentralEolica = new CentralEolica(unaPosicion);
 		int capacidad = unaCentralEolica.obtenerCapacidadMaxDeAbastecimientoEnMW();
 		Assert.assertEquals(100, capacidad);
 	}
 	
 	@Test
 	public void centralMineralDevuelveCapacidadMaximaEnMWCorrecta(){
-		CentralElectrica unaCentralMineral = new CentralMineral();
+		Posicion unaPosicion = new Posicion(5,5);
+		CentralElectrica unaCentralMineral = new CentralMineral(unaPosicion);
 		int capacidad = unaCentralMineral.obtenerCapacidadMaxDeAbastecimientoEnMW();
 		Assert.assertEquals(400, capacidad);
 		
@@ -27,7 +30,8 @@ public class CentralesElectricasTest {
 	
 	@Test
 	public void centralNuclearDevuelveCapacidadMaximaEnMWCorrecta(){
-		CentralElectrica unaCentralNuclear = new CentralNuclear();
+		Posicion unaPosicion = new Posicion(5,5);
+		CentralElectrica unaCentralNuclear = new CentralNuclear(unaPosicion);
 		int capacidad = unaCentralNuclear.obtenerCapacidadMaxDeAbastecimientoEnMW();
 		Assert.assertEquals(1000, capacidad);
 	}

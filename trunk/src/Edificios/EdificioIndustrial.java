@@ -8,12 +8,13 @@ public class EdificioIndustrial extends Edificio {
 	static int PORCENTAJE_REPARACION_POR_BOMBEROS = 3;
 	protected int cantidadEmpleados;
 	
-	public EdificioIndustrial(){
+	public EdificioIndustrial(Posicion unaPosicion){
 		tieneAgua = false;
 		tieneElectricidad = false;
 		tieneAccesoAlTransito = false;
 		costoDeConstruccion = COSTO_CONSTRUCCION;
 		cantidadEmpleados = 0;
+		posicionConstruccion = unaPosicion;
 	}
 	
 	public int devolverCapacidadEmpleo(){
