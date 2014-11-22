@@ -65,4 +65,22 @@ public class Edificio extends Construccion implements Reconstruible, Destruible 
 		unaHectarea.establecerEdificio(this);
 	}
 
+	@Override
+	public void reconstruir(int puntosDeReconstruccion) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int porcentajeDeConstruccion() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void actualizarPuntosDeConstruccion() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

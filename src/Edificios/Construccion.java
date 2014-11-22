@@ -43,4 +43,9 @@ public abstract class Construccion {
 
 	public abstract boolean esConstruibleSobreTierra();
 
+	public void reconstruir() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

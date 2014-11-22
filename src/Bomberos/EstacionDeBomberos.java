@@ -8,11 +8,9 @@ import Jugador.Presupuesto;
 
 public class EstacionDeBomberos {
 	ArrayList<Reconstruible> edificiosAReconstruir;
-	int puntosDeReconstruccion=3;
-	private Presupuesto presupuesto;
 	
+	int puntosDeReconstruccion=3;
 	public EstacionDeBomberos(Presupuesto presupuesto){
-		this.presupuesto = presupuesto;
 		edificiosAReconstruir = new ArrayList<Reconstruible>();
 	}
 	
@@ -22,9 +20,9 @@ public class EstacionDeBomberos {
 
 	public void realizarReparaciones() {
 		Iterator<Reconstruible> it = edificiosAReconstruir.iterator();
-		for(Reconstruible edificioAReconstruir:it){
-			edificioAReconstruir.reconstruir(puntosDeReconstruccion);
-		}
+		
+		while (it.hasNext())
+			((Reconstruible) it).reconstruir(puntosDeReconstruccion);
 	}
 
 	public void habilitar() {

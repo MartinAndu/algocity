@@ -22,12 +22,12 @@ public abstract class Reconstruibles implements Reconstruible {
 		puntosDeConstruccion=Math.min(puntosDeConstruccion+puntosDeReconstruccion,puntosMaximosDeConstruccion);
 	}
 	
-	public static int porcentajeDeConstruccion(){
+	public int porcentajeDeConstruccion(){
 		porcentajeDeConstruccion=(puntosDeConstruccion*100)/puntosMaximosDeConstruccion;
 		return porcentajeDeConstruccion;
 	}
 	
-	private void actualizarPuntosDeConstruccion(){
+	public void actualizarPuntosDeConstruccion(){
 		puntosDeConstruccion=(puntosMaximosDeConstruccion*porcentajeDeConstruccion)/100;
 	}
 }

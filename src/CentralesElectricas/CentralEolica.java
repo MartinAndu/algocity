@@ -11,12 +11,16 @@ public class CentralEolica extends CentralElectrica {
 	
 	
 	
-	public CentralEolica(Posicion unaPosicion){
+	public CentralEolica(){
 		radioDeAbastecimientoEnHectareas = RADIO_DE_ABASTECIMIENTO_EN_HECTAREAS;
 		costoDeConstruccion = COSTO_DE_CONSTRUCCION;
 		capacidadMaxDeAbastecimientoEnMW = CAPACIDAD_MAXIMA_DE_ABASTECIMIENTO;
-		posicionConstruccion = unaPosicion;
 	}
+
+	public CentralEolica(Posicion unaPosicion) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public void proveerElectricidadZona(Plano unPlano){
 	}
 	@Override

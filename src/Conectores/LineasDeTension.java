@@ -2,7 +2,6 @@ package Conectores;
 
 import CentralesElectricas.CentralElectrica;
 import Edificios.Posicion;
-import Excepciones.ExcepcionElConsumoElectricoDeLaHectareaExcedeALaCapacidadMaxima;
 import Excepciones.ExcepcionNoSePuedeConectarPorqueNoHayOtraLineaDeTensionAlrededor;
 import PlanoGeneral.Hectarea;
 import PlanoGeneral.Plano;
@@ -50,9 +49,9 @@ public  class LineasDeTension extends Conexion{
 		return true;
 	}
 	
-	public void habilitarElectricidadSiCorresponde(Plano unPlano, Posicion unaPosicion) {
+	public void proveerServicioZona(Plano unPlano, Posicion unaPosicion) {
 		
-		
+		boolean hayLineasDeTensionAlrededorDeLaHectarea = false;
 		Recorrido zonaCircundante= unPlano.recorrerZonaCircundante(unaPosicion, 1);
 		
 		while (zonaCircundante.tieneSiguiente()){
@@ -61,18 +60,41 @@ public  class LineasDeTension extends Conexion{
 			LineasDeTension unaConexion = hectareaActual.obtenerLineaDeTension();
 			
 			//Verifica que al querer asignar una conexión en una hectárea, haya otras lineas de tensión alrededor
-			if (unaConexion == null)
-				throw new ExcepcionNoSePuedeConectarPorqueNoHayOtraLineaDeTensionAlrededor();
+			if (unaConexion != null)
+				hayLineasDeTensionAlrededorDeLaHectarea = true;
 		}
+		
+		
+		if (!hayLineasDeTensionAlrededorDeLaHectarea)
+			throw new ExcepcionNoSePuedeConectarPorqueNoHayOtraLineaDeTensionAlrededor();
+		
 		
 		int consumoElectrico=unPlano.devolverHectarea(unaPosicion).obtenerConstruccion().devolverConsumo();
 		
 		//Verifica que no se exceda al consumo permitido por la central eléctrica
-		if (excedeElConsumo(consumoElectrico))
-			throw new ExcepcionElConsumoElectricoDeLaHectareaExcedeALaCapacidadMaxima();
+		if (!excedeElConsumo(consumoElectrico))
+			conectadoALaRed = true;
 		
-		conectadoALaRed = true;
+		
 	
+		
+	}
+
+	@Override
+	public void reconstruir(int puntosDeReconstruccion) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int porcentajeDeConstruccion() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void actualizarPuntosDeConstruccion() {
+		// TODO Auto-generated method stub
 		
 	}
 

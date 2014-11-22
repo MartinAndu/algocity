@@ -21,4 +21,22 @@ public class RutaPavimentada extends Conexion{
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	@Override
+	public void reconstruir(int puntosDeReconstruccion) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int porcentajeDeConstruccion() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void actualizarPuntosDeConstruccion() {
+		// TODO Auto-generated method stub
+		
+	}
 }
