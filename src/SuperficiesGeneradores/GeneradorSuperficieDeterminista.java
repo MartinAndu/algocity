@@ -1,14 +1,18 @@
 package SuperficiesGeneradores;
 
 import Superficies.Superficie;
+import Superficies.SuperficieConAgua;
 import Superficies.SuperficieConTerrenoLlano;
 
 public class GeneradorSuperficieDeterminista extends GeneradorSuperficie {
 
-	@Override
 	public Superficie generarSuperficie() {
-		
-		return new SuperficieConTerrenoLlano();
+		if (numeroAlternador == 0){
+			this.numeroAlternador += 1;
+			return new SuperficieConTerrenoLlano();
+		}
+		this.numeroAlternador -= 1;
+		return new SuperficieConAgua();
 	}
 
 }
