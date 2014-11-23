@@ -13,6 +13,13 @@ public class Edificio extends Construccion implements Reconstruible, Destruible 
 	protected float puntosDeConstruccion;
 	protected float porcentajeDeConstruccion;
 
+	
+	
+	
+	public Edificio(Posicion posicion) {
+		super(posicion);
+	}
+	
 	public int devolverConsumo(){
 		return consumoElectrico;
 	}

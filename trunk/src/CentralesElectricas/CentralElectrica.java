@@ -6,15 +6,13 @@ import java.util.ArrayList;
 import Conectores.LineasDeTension;
 import Edificios.Construccion;
 import Edificios.Destruible;
+import Edificios.Posicion;
 import Edificios.Reconstruible;
 import PlanoGeneral.Hectarea;
 import PlanoGeneral.Plano;
 import PlanoGeneral.Recorrido;
 
-
-
 public class CentralElectrica extends Construccion implements Reconstruible,Destruible {
-	
 	
 	protected int radioDeAbastecimientoEnHectareas;
 	protected int capacidadDeAbastecimientoEnMW;
@@ -28,6 +26,9 @@ public class CentralElectrica extends Construccion implements Reconstruible,Dest
 	
 	ArrayList <Hectarea> hectareas;
 	
+	public CentralElectrica(Posicion posicion) {
+		super(posicion);
+	}
 	
 	public void construirSobrePlano(Plano unPlano){
 		Hectarea unaHectarea = unPlano.devolverHectarea(posicionConstruccion);
