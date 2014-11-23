@@ -74,34 +74,17 @@ public class ConstructorMedio extends Constructor{
 		return unaRuta;
 	}
 
-	@Override
 	public LineasDeTension construirLineaDeTension(Posicion unaPosicion) {
 		LineasDeTension unaLineaDeTension = new LineasDeTension(unaPosicion);
 		this.construir(unaLineaDeTension);
-		// TODO Auto-generated method stub
+		
 		return unaLineaDeTension;
 	}
 
-	@Override
-	public ConexionDeAgua construirTuberia(Posicion unaPosicion) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	// Hay que cambiar los constructores de LineaDeTension y TuberiaDeAgua, solo deben recibir la posicion!! (mirar abajo)
-/**
-	public LineasDeTension construirLineaDeTension(Posicion unaPosicion){
-		LineasDeTension unaLinea = new LineasDeTension(unaPosicion);
-		this.construir(unaLinea);
-		
-		return unaLinea;
-	}
-	
 	public ConexionDeAgua construirTuberia(Posicion unaPosicion){
 		ConexionDeAgua unaConexion = new ConexionDeAgua(unaPosicion);
 		this.construir(unaConexion);
 		
 		return unaConexion;
 	}
-**/
 }

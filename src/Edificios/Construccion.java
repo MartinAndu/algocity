@@ -10,6 +10,9 @@ public abstract class Construccion {
 	protected int estadoConstruccion;
 	protected int danio;
 
+	public Construccion(Posicion posicion) {
+		this.posicionConstruccion = posicion;
+	}
 	public abstract int devolverConsumo();
 	
 	public int devolverCosto(){
