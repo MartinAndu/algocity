@@ -44,8 +44,6 @@ public class EstacionDeBomberos {
 	}
 
 	public void habilitar() {
-		if (this.presupuesto.alcanzaPara(costoDeHabilitacion)) {
-			this.presupuesto.reducirPresupuesto(costoDeHabilitacion);
-		}
+		this.presupuesto.reducirPresupuesto(costoDeHabilitacion);
 	}
 }

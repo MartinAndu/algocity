@@ -12,7 +12,7 @@ import Edificios.EdificioIndustrial;
 import Edificios.EdificioResidencial;
 import Edificios.Posicion;
 import Edificios.PozoDeAgua;
-import Excepciones.ExcepcionDineroInsuficiente;
+
 
 public abstract class Constructor {
 
@@ -24,12 +24,7 @@ public abstract class Constructor {
 	
 	protected void construir(Construccion unaConstruccion){
 		
-		int costoDeConstruccion = unaConstruccion.devolverCosto();
-		
-		if (!presupuesto.alcanzaPara(costoDeConstruccion)){
-			throw new ExcepcionDineroInsuficiente();
-		}
-				
+		int costoDeConstruccion = unaConstruccion.devolverCosto();	
 		presupuesto.reducirPresupuesto(costoDeConstruccion);
 	}
 	
