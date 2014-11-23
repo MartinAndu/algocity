@@ -9,11 +9,13 @@ import org.junit.Test;
 
 
 
+
 import Conectores.ConexionDeAgua;
 import Edificios.Edificio;
 import Edificios.EdificioResidencial;
 import Edificios.Posicion;
 import Excepciones.ExcepcionHectareaNoBrindaLosServiciosNecesarios;
+import Jugador.JugadorMedio;
 import PlanoGeneral.Hectarea;
 import PlanoGeneral.Plano;
 
@@ -22,11 +24,11 @@ import PlanoGeneral.Plano;
       
                 @Test
                         public void hayConexionDeAguaEnTuberia(){
-                				Hectarea unaHectarea=new Hectarea();
-                                ConexionDeAgua unaConexionDeAgua = new ConexionDeAgua(unaHectarea);
-                                unaConexionDeAgua.habilitarAgua();
+                				Posicion unaPosicion=new Posicion(2,3);
+                                ConexionDeAgua unaConexionDeAgua = new ConexionDeAgua(unaPosicion);
+                                unaConexionDeAgua.habilitarConexion();
                                 
-                        Assert.assertTrue(unaConexionDeAgua.conectadoALaRed(unaHectarea));
+                        Assert.assertTrue(unaConexionDeAgua.conectadoALaRed());
                 }
                 
                 
@@ -44,15 +46,16 @@ import PlanoGeneral.Plano;
                 		Plano unPlano = new Plano (4,7);
                 		Posicion unaPosicion = new Posicion(2, 2);
                 		Posicion otraPosicion = new Posicion(3,2);
-                		Hectarea unaHectarea = unPlano.devolverHectarea(unaPosicion);
-                		Hectarea otraHectarea= unPlano.devolverHectarea(otraPosicion);
-                		ConexionDeAgua unaConexion= new ConexionDeAgua(unaHectarea);
-                		ConexionDeAgua otraConexion=new ConexionDeAgua(otraHectarea);
-                		unaConexion.habilitarAgua();
-                
-                		unaConexion.habilitarCanioConAguaSiCorresponde(unPlano, unaPosicion);
+                		ConexionDeAgua unaConexion= new ConexionDeAgua(unaPosicion);
+                		ConexionDeAgua otraConexion=new ConexionDeAgua(otraPosicion);
+                		unPlano.devolverHectarea(unaPosicion).establecerConexionDeAgua(unaConexion);
+                		unPlano.devolverHectarea(otraPosicion).establecerConexionDeAgua(otraConexion);
                 		
-                		Assert.assertTrue(otraConexion.conectadoALaRed(otraHectarea));
+                		
+                		unaConexion.habilitarConexion();
+                		unaConexion.habilitarCanioConAguaSiCorresponde(unPlano);
+                		
+                		Assert.assertTrue(otraConexion.conectadoALaRed());
                 		
                }
                 
@@ -61,9 +64,8 @@ import PlanoGeneral.Plano;
                 	
                 	Plano unPlano = new Plano (8,8);
                 	Posicion unaPosicion=new Posicion(4,4);
-                	Hectarea unaHectarea = unPlano.devolverHectarea(unaPosicion);
-                	ConexionDeAgua unaConexion= new ConexionDeAgua(unaHectarea);
-                	unaConexion.habilitarAgua();
+                	ConexionDeAgua unaConexion= new ConexionDeAgua(unaPosicion);
+                	unaConexion.habilitarConexion();
  
 
                 	Posicion otraPosicion=new Posicion(7,7);
@@ -84,9 +86,8 @@ import PlanoGeneral.Plano;
                 	boolean noTieneServiciosSuficiente = false;
                 	Plano unPlano = new Plano (8,8);
                 	Posicion unaPosicion=new Posicion(2,2);
-                	Hectarea unaHectarea = unPlano.devolverHectarea(unaPosicion);
-                	ConexionDeAgua unaConexion= new ConexionDeAgua(unaHectarea);
-                	unaConexion.habilitarAgua();
+                	ConexionDeAgua unaConexion= new ConexionDeAgua(unaPosicion);
+                	unaConexion.habilitarConexion();
  
 
                 	Posicion otraPosicion=new Posicion(7,7);
