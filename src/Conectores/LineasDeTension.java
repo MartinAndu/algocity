@@ -2,7 +2,6 @@ package Conectores;
 
 import CentralesElectricas.CentralElectrica;
 import Edificios.Posicion;
-import Excepciones.ExcepcionNoSePuedeConectarPorqueNoHayOtraLineaDeTensionAlrededor;
 import PlanoGeneral.Hectarea;
 import PlanoGeneral.Plano;
 import PlanoGeneral.Recorrido;
@@ -16,15 +15,14 @@ public  class LineasDeTension extends Conexion{
 		 unPlano.devolverHectarea(posicionConstruccion).habilitarElectricidad();
 	}
 	
-	public LineasDeTension(CentralElectrica unaCentralElectrica) {
-		this.centralElectricaALAQuePertenece = unaCentralElectrica;
-		// TODO Auto-generated constructor stub
+	public LineasDeTension(Posicion unaPosicion) {
+		this.posicionConstruccion = unaPosicion;
 	}
 	
-	public boolean conectadoALaRed(Hectarea hectareaActual){
-		//Verifica si hay linea de tensión en esa posicion
-		return (hectareaActual.poseeServicioElectrico());
+	public void establecerCentralQueProveeEnergia(CentralElectrica unaCentralElectrica){
+		this.centralElectricaALAQuePertenece = unaCentralElectrica;
 	}
+	
 	
 	public boolean puedeProveerServicioZona(Plano unPlano){
 		
@@ -50,36 +48,29 @@ public  class LineasDeTension extends Conexion{
 	}
 	
 	public void proveerServicioZona(Plano unPlano, Posicion unaPosicion) {
-		
-		boolean hayLineasDeTensionAlrededorDeLaHectarea = false;
+		boolean hayLineasDeTensionAlrededor = false;
 		Recorrido zonaCircundante= unPlano.recorrerZonaCircundante(unaPosicion, 1);
 		
+		//Verifica si hay lineas de tension al rededor
 		while (zonaCircundante.tieneSiguiente()){
-			
 			Hectarea hectareaActual = zonaCircundante.siguiente();
-			LineasDeTension unaConexion = hectareaActual.obtenerLineaDeTension();
-			
-			//Verifica que al querer asignar una conexión en una hectárea, haya otras lineas de tensión alrededor
-			if (unaConexion != null)
-				hayLineasDeTensionAlrededorDeLaHectarea = true;
+			hayLineasDeTensionAlrededor =
+				hayLineasDeTensionAlrededor || hectareaActual.obtenerLineaDeTension().conectadoALaRed(hectareaActual);
 		}
 		
-		
-		if (!hayLineasDeTensionAlrededorDeLaHectarea)
-			throw new ExcepcionNoSePuedeConectarPorqueNoHayOtraLineaDeTensionAlrededor();
 		
 		int consumoElectrico=unPlano.devolverHectarea(unaPosicion).obtenerConstruccion().devolverConsumo();
+		boolean sePuedeConstruirSobreAgua = unPlano.devolverHectarea(unaPosicion).obtenerConstruccion().esConstruibleSobreAgua();
 		
 		//Verifica que no se exceda al consumo permitido por la central eléctrica
-		if (!excedeElConsumo(consumoElectrico) 
-				&& !(unPlano.devolverHectarea(unaPosicion).obtenerConstruccion().esConstruibleSobreAgua())){
-			conectadoALaRed = true;
-			unPlano.devolverHectarea(unaPosicion).habilitarElectricidad();
-		}
-		
-		
+		// y verifica tambien que no se esté construyendo sober una superficei de agua
+		conectadoALaRed = excedeElConsumo(consumoElectrico) 
+							&& !(sePuedeConstruirSobreAgua)
+								&& hayLineasDeTensionAlrededor;
+		if (conectadoALaRed)
+			unPlano.devolverHectarea(unaPosicion).establecerConexion(this);
+			
 	
-		
 	}
 
 	@Override
@@ -98,6 +89,16 @@ public  class LineasDeTension extends Conexion{
 	public void actualizarPuntosDeConstruccion() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public boolean conectadoALaRed(Hectarea hectareaActual) {
+		return (conectadoALaRed);
+	}
+
+	@Override
+	public void habilitarConexion() {
+		conectadoALaRed = true;
 	}
 
 	

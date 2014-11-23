@@ -39,4 +39,10 @@ public class RutaPavimentada extends Conexion{
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void habilitarConexion() {
+		// TODO Auto-generated method stub
+		
+	}
 }

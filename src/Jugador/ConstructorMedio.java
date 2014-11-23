@@ -76,8 +76,10 @@ public class ConstructorMedio extends Constructor{
 
 	@Override
 	public LineasDeTension construirLineaDeTension(Posicion unaPosicion) {
+		LineasDeTension unaLineaDeTension = new LineasDeTension(unaPosicion);
+		this.construir(unaLineaDeTension);
 		// TODO Auto-generated method stub
-		return null;
+		return unaLineaDeTension;
 	}
 
 	@Override

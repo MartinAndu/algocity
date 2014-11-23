@@ -4,6 +4,9 @@ import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 
+import CentralesElectricas.CentralElectrica;
+import PlanoGeneral.Plano;
+
 
 public class LineasDeTension {
 	
@@ -14,16 +17,13 @@ public class LineasDeTension {
 	}
 	
 	@Test
-	public void lasLineasDeTensionSoloSeConectanConUnaZonaSinoLanzaExcepcion(){
+	public void lasLineasDeTensionSeConectanCorrectamente(){
 		//En construccion
+		Plano unPlano = new Plano(5,5);
 		
-	}
-	
-
-	
-	@Test
-	public void seIntentaConectarUnaLineaDeTensionPeroSobrepasaLaCapacidadMaximaDeLaCentralElectrica(){
-
+		CentralElectrica unaCentralElectrica = new CentralElectrica();
+		unaCentralElectrica.construirSobrePlano(unPlano);
+		
 		
 	}
 	
