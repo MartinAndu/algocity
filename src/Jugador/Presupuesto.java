@@ -1,5 +1,7 @@
 package Jugador;
 
+import Excepciones.ExcepcionDineroInsuficiente;
+
 public abstract class Presupuesto {
 	protected int cantidadDeDinero;
 	
@@ -7,11 +9,10 @@ public abstract class Presupuesto {
 		return cantidadDeDinero;
 	}
 	
-	public boolean alcanzaPara(int unCostoDeConstruccion){
-		return (cantidadDeDinero >= unCostoDeConstruccion);
-	}
-
 	public void reducirPresupuesto(int unGasto){
+		if (unGasto > cantidadDeDinero) {
+			throw new ExcepcionDineroInsuficiente();
+		}
 		cantidadDeDinero -= unGasto;
 	}
 	
