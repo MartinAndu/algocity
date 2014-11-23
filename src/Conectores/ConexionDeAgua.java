@@ -32,7 +32,7 @@ public class ConexionDeAgua extends Conexion {
 
 
 
-	public boolean conectadoALaRed() {
+	public boolean conectadoALaRed(Hectarea unaHectarea) {
 //Chequear si esta conectado a la red
 		return conectadoALaRed;		
 	}
@@ -74,7 +74,7 @@ public class ConexionDeAgua extends Conexion {
 			hectareaActual=zonaCircundante.siguiente();
 			if (hectareaActual.tieneCanio()){
 				conexionActual=hectareaActual.obtenerCanio();
-				if(this.conectadoALaRed()){
+				if(this.conectadoALaRed(unPlano.devolverHectarea(ubicacionP))){
 					conexionActual.habilitarConexion();
 				}
 			}
