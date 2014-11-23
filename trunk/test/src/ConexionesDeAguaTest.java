@@ -24,11 +24,12 @@ import PlanoGeneral.Plano;
       
                 @Test
                         public void hayConexionDeAguaEnTuberia(){
+                				
                 				Posicion unaPosicion=new Posicion(2,3);
                                 ConexionDeAgua unaConexionDeAgua = new ConexionDeAgua(unaPosicion);
                                 unaConexionDeAgua.habilitarConexion();
                                 
-                        Assert.assertTrue(unaConexionDeAgua.conectadoALaRed());
+                        Assert.assertTrue(unaConexionDeAgua.conectadoALaRed(new Hectarea()));
                 }
                 
                 
@@ -55,7 +56,7 @@ import PlanoGeneral.Plano;
                 		unaConexion.habilitarConexion();
                 		unaConexion.habilitarCanioConAguaSiCorresponde(unPlano);
                 		
-                		Assert.assertTrue(otraConexion.conectadoALaRed());
+                		Assert.assertTrue(otraConexion.conectadoALaRed(unPlano.devolverHectarea(otraPosicion)));
                 		
                }
                 
