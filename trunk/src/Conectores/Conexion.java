@@ -7,9 +7,10 @@ import PlanoGeneral.Plano;
 
 public abstract class Conexion extends Construccion implements Reconstruible{
 	
+	
 	public abstract void proveerServicioZona(Plano unPlano);
 	public abstract boolean conectadoALaRed(Hectarea hectareaActual);
-	 
+	public abstract void habilitarConexion();
 
 
 	 

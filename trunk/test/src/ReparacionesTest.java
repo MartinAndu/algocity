@@ -1,8 +1,6 @@
 package src;
 
-import CentralesElectricas.CentralEolica;
 import CentralesElectricas.CentralNuclear;
-import Edificios.EdificioComercial;
 import Edificios.EdificioResidencial;
 import Edificios.Posicion;
 import junit.framework.Assert;

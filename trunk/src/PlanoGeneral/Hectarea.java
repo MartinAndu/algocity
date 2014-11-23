@@ -139,12 +139,14 @@ public class Hectarea {
 	}
 	
 	public void establecerConexion(Conexion unaConexion){
+		
 		if(this.poseeConstruccion()){
 			throw new ExcepcionHectareaYaContieneUnaConstruccion();
 		}
+		else{
+			this.conexion = unaConexion;
+		}
 		
-		this.conexion = unaConexion;
-		this.habilitarElectricidad();
 	}
 	
 	public void establecerConexionDeAgua(ConexionDeAgua unaConexion){

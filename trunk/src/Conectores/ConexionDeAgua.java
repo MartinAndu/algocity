@@ -21,11 +21,9 @@ public class ConexionDeAgua extends Conexion {
 
 	public boolean conectadoALaRed(Hectarea hectareaActual) {
 
-		return conectadoALaRed;
-		
-
-		
+		return conectadoALaRed;		
 	}
+	
 	public boolean esConstruibleSobreAgua(){
 		
 		return true;
@@ -54,7 +52,7 @@ public class ConexionDeAgua extends Conexion {
 		
 	}
 	
-	public void habilitarConexionARedAgua(){
+	public void habilitarConexion(){
 		conectadoALaRed=true;
 		
 	}
@@ -69,7 +67,7 @@ public class ConexionDeAgua extends Conexion {
 				ConexionDeAgua conexionActual=hectareaActual.obtenerCanio();
 				if(unaConexion.conectadoALaRed(hectareaActual)){
 					conexionActual.habilitarAgua();
-					conexionActual.habilitarConexionARedAgua();
+					conexionActual.habilitarConexion();
 				}
 			}
 		}

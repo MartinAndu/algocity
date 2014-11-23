@@ -2,7 +2,7 @@ package CentralesElectricas;
 
 import java.util.ArrayList;
 
-import Conectores.Conexion;
+
 import Conectores.LineasDeTension;
 import Edificios.Construccion;
 import Edificios.Destruible;
@@ -14,6 +14,8 @@ import PlanoGeneral.Recorrido;
 
 
 public class CentralElectrica extends Construccion implements Reconstruible,Destruible {
+	
+	
 	protected int radioDeAbastecimientoEnHectareas;
 	protected int capacidadDeAbastecimientoEnMW;
 	protected int capacidadMaxDeAbastecimientoEnMW;
@@ -37,20 +39,22 @@ public class CentralElectrica extends Construccion implements Reconstruible,Dest
 		
 		Recorrido zonaCircundante = unPlano.recorrerZonaCircundante(posicionConstruccion, radioDeAbastecimientoEnHectareas);
 
-		int cantidadDeConsumoActual = capacidadDeAbastecimientoEnMW;
 		
 		while (zonaCircundante.tieneSiguiente()){
 			
 			Hectarea hectareaActual = zonaCircundante.siguiente();
-			
-			cantidadDeConsumoActual += ( hectareaActual.obtenerConstruccion() ).devolverConsumo(); 
-			
-			//Verifico el consumo del edificio si excede a la capacidad máxima
-			if (cantidadDeConsumoActual <= capacidadMaxDeAbastecimientoEnMW)
-				hectareaActual.establecerConexion((Conexion)new LineasDeTension(this));
-			
+			hectareaActual.habilitarElectricidad();
+	
 		}
+		
+		Hectarea hectareaActual = unPlano.devolverHectarea(posicionConstruccion);
+		LineasDeTension unaLineaDeTension = new LineasDeTension(posicionConstruccion);
+		hectareaActual.establecerConexion(unaLineaDeTension);
+		unaLineaDeTension.establecerCentralQueProveeEnergia(this);
+		unaLineaDeTension.habilitarConexion();
+		
 	}
+	
 
 	public int obtenerRadioDeAbastecimientoEnHectareas(){
 		return radioDeAbastecimientoEnHectareas;
