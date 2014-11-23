@@ -8,6 +8,7 @@ public class ConexionDeAgua extends Conexion {
 	boolean conectadoALaRed;
 	Hectarea ubicacion=new Hectarea();
 	int radioDeDistribucion;
+	Posicion ubicacionP;
 	
 	public ConexionDeAgua(Hectarea unaHectarea) {
 		unaHectarea.establecerConexionDeAgua(this);
@@ -16,11 +17,23 @@ public class ConexionDeAgua extends Conexion {
 		radioDeDistribucion=3;
 		// TODO Auto-generated constructor stub
 	}
+	public ConexionDeAgua(Posicion unaPosicion){
+
+		ubicacionP=unaPosicion;
+		conectadoALaRed=false;
+		radioDeDistribucion=3;
+	}
+	
+	public void construirSobrePlano(Plano plano){
+
+		Hectarea unaHectarea = plano.devolverHectarea(ubicacionP);
+		unaHectarea.establecerConexionDeAgua(this);
+	}
 
 
 
-	public boolean conectadoALaRed(Hectarea hectareaActual) {
-
+	public boolean conectadoALaRed() {
+//Chequear si esta conectado a la red
 		return conectadoALaRed;		
 	}
 	
@@ -45,33 +58,29 @@ public class ConexionDeAgua extends Conexion {
 		
 	}
 
-	public void habilitarAgua(){
-		conectadoALaRed=true;
-		ubicacion.habilitarAgua();
-		
-		
-	}
+
 	
 	public void habilitarConexion(){
 		conectadoALaRed=true;
 		
 	}
 	
-	public void habilitarCanioConAguaSiCorresponde(Plano unPlano, Posicion unaPosicion) {
-		Recorrido zonaCircundante= unPlano.recorrerZonaCircundante(unaPosicion, 1);
-		Hectarea unaHectarea=unPlano.devolverHectarea(unaPosicion);
-		Conexion unaConexion=unaHectarea.obtenerCanio();
+	
+	public void habilitarCanioConAguaSiCorresponde(Plano unPlano) {
+		Recorrido zonaCircundante= unPlano.recorrerZonaCircundante(ubicacionP, 1);
+		Hectarea hectareaActual;
+		ConexionDeAgua conexionActual;
 		while (zonaCircundante.tieneSiguiente()){
-			Hectarea hectareaActual=zonaCircundante.siguiente();
+			hectareaActual=zonaCircundante.siguiente();
 			if (hectareaActual.tieneCanio()){
-				ConexionDeAgua conexionActual=hectareaActual.obtenerCanio();
-				if(unaConexion.conectadoALaRed(hectareaActual)){
-					conexionActual.habilitarAgua();
+				conexionActual=hectareaActual.obtenerCanio();
+				if(this.conectadoALaRed()){
 					conexionActual.habilitarConexion();
 				}
 			}
 		}
 	}
+	
 	
 	public void habilitarConAguaSiCorresponde(Plano unPlano, Posicion unaPosicion) {
 		Recorrido zonaCircundante= unPlano.recorrerZonaCircundante(unaPosicion, radioDeDistribucion);
