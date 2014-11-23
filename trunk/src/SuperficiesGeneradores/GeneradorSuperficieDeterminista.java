@@ -7,7 +7,7 @@ import Superficies.SuperficieConTerrenoLlano;
 public class GeneradorSuperficieDeterminista extends GeneradorSuperficie {
 
 	public Superficie generarSuperficie() {
-		numeroAlternador=0;
+		
 		if (numeroAlternador == 0){
 			GeneradorSuperficieDeterminista.numeroAlternador += 1;
 			return new SuperficieConTerrenoLlano();
