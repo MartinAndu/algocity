@@ -9,16 +9,13 @@ public class ConexionDeAgua extends Conexion {
 	Hectarea ubicacion=new Hectarea();
 	int radioDeDistribucion;
 	Posicion ubicacionP;
+	static int COSTO_CONSTRUCCION = 5;
 	
-	public ConexionDeAgua(Hectarea unaHectarea) {
-		unaHectarea.establecerConexionDeAgua(this);
-		ubicacion=unaHectarea;
-		conectadoALaRed=false;
-		radioDeDistribucion=3;
-		// TODO Auto-generated constructor stub
-	}
+
 	public ConexionDeAgua(Posicion unaPosicion){
 
+		super(unaPosicion);
+		this.costoDeConstruccion = COSTO_CONSTRUCCION;
 		ubicacionP=unaPosicion;
 		conectadoALaRed=false;
 		radioDeDistribucion=3;
