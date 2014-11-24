@@ -28,7 +28,9 @@ public class ConexionDeAgua extends Conexion {
 		unaHectarea.establecerConexionDeAgua(this);
 	}
 
-
+	public boolean conectadoALaRed(){
+		return conectadoALaRed;
+	}
 
 	public boolean conectadoALaRed(Hectarea unaHectarea) {
 		Recorrido zonaCircundante= miPlano.recorrerZonaCircundante(ubicacionP, 1);
@@ -77,7 +79,8 @@ public class ConexionDeAgua extends Conexion {
 	public void habilitarConAguaSiCorresponde(Plano unPlano, Posicion unaPosicion) {
 		miPlano=unPlano;
 		Recorrido zonaCircundante= unPlano.recorrerZonaCircundante(unaPosicion, radioDeDistribucion);
-		while (zonaCircundante.tieneSiguiente()&&this.conectadoALaRed(unPlano.devolverHectarea(unaPosicion))){
+		conectadoALaRed=this.conectadoALaRed(unPlano.devolverHectarea(unaPosicion));
+		while (zonaCircundante.tieneSiguiente()&&conectadoALaRed){
 			Hectarea hectareaActual=zonaCircundante.siguiente();
 					hectareaActual.habilitarAgua();
 		}

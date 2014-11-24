@@ -3,17 +3,29 @@ package Conectores;
 import Edificios.Posicion;
 import PlanoGeneral.Hectarea;
 import PlanoGeneral.Plano;
+import PlanoGeneral.Recorrido;
 
 public class RutaPavimentada extends Conexion{
 
 	static int COSTO_CONSTRUCCION = 10;
+	boolean conectadoALaRed;
+	Plano miPlano;
+	int radioDeDistribucion;
 
 	public RutaPavimentada(Posicion unaPosicion) {
 		super(unaPosicion);
-		posicionConstruccion = unaPosicion;
+		conectadoALaRed=true;
+		radioDeDistribucion=3;
 		this.costoDeConstruccion = COSTO_CONSTRUCCION;
 	}
 
+	public void construirSobrePlano(Plano plano){
+		miPlano=plano;
+		Hectarea unaHectarea = plano.devolverHectarea(posicionConstruccion);
+		unaHectarea.establecerCalle(this);
+		this.habilitarConexion();
+	}
+	
 	@Override
 	public void proveerServicioZona(Plano unPlano) {
 		// TODO Auto-generated method stub
@@ -23,7 +35,8 @@ public class RutaPavimentada extends Conexion{
 	@Override
 	public boolean conectadoALaRed(Hectarea hectareaActual) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
+		//return conectadoALaRed;
 	}
 
 	@Override
@@ -46,7 +59,17 @@ public class RutaPavimentada extends Conexion{
 
 	@Override
 	public void habilitarConexion() {
-		// TODO Auto-generated method stub
+
+		conectadoALaRed=true;
+		this.habilitarAccesoEnAlrededores(miPlano, posicionConstruccion);
 		
+	}
+	public void habilitarAccesoEnAlrededores(Plano unPlano, Posicion ubicacionP){
+		miPlano=unPlano;
+		Recorrido zonaCircundante= miPlano.recorrerZonaCircundante(ubicacionP, radioDeDistribucion);
+		while (zonaCircundante.tieneSiguiente()&&this.conectadoALaRed(miPlano.devolverHectarea(ubicacionP))){
+			Hectarea hectareaActual=zonaCircundante.siguiente();
+					hectareaActual.habilitarAccesoAlTransito();
+		}
 	}
 }
