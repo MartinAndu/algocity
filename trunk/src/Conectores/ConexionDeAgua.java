@@ -26,6 +26,12 @@ public class ConexionDeAgua extends Conexion {
 		miPlano=plano;
 		Hectarea unaHectarea = plano.devolverHectarea(ubicacionP);
 		unaHectarea.establecerConexionDeAgua(this);
+		Recorrido zonaCircundante= plano.recorrerZonaCircundante(posicionConstruccion, radioDeDistribucion);
+		conectadoALaRed=conectadoALaRed(unaHectarea);
+		while (zonaCircundante.tieneSiguiente()&&conectadoALaRed){
+			Hectarea hectareaActual=zonaCircundante.siguiente();
+					hectareaActual.habilitarAgua();
+		}
 	}
 
 	public boolean conectadoALaRed(){
