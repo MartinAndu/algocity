@@ -10,6 +10,7 @@ public class ConexionDeAgua extends Conexion {
 	int radioDeDistribucion;
 	Posicion ubicacionP;
 	static int COSTO_CONSTRUCCION = 5;
+	Plano miPlano;
 	
 
 	public ConexionDeAgua(Posicion unaPosicion){
@@ -22,7 +23,7 @@ public class ConexionDeAgua extends Conexion {
 	}
 	
 	public void construirSobrePlano(Plano plano){
-
+		miPlano=plano;
 		Hectarea unaHectarea = plano.devolverHectarea(ubicacionP);
 		unaHectarea.establecerConexionDeAgua(this);
 	}
@@ -30,7 +31,18 @@ public class ConexionDeAgua extends Conexion {
 
 
 	public boolean conectadoALaRed(Hectarea unaHectarea) {
-//Chequear si esta conectado a la red
+		Recorrido zonaCircundante= miPlano.recorrerZonaCircundante(ubicacionP, 1);
+		Hectarea hectareaActual;
+		while (zonaCircundante.tieneSiguiente()&&!conectadoALaRed){
+			hectareaActual=zonaCircundante.siguiente();
+			if (hectareaActual.tieneCanio()&&
+				hectareaActual.obtenerCanio().conectadoALaRed(miPlano.devolverHectarea(ubicacionP))){
+				this.habilitarConexion();
+			}
+			if (hectareaActual.poseePozoDeAgua()){
+				this.habilitarConexion();
+			}
+		}
 		return conectadoALaRed;		
 	}
 	
@@ -46,46 +58,28 @@ public class ConexionDeAgua extends Conexion {
 	public void proveerServicioZona(Plano unPlano){
 		
 	}
+	
 	public boolean puedeProveerServicioZona(Plano unPlano){
 		return true;
 	}
+	
 	@Override
 	public void reconstruir() {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
 	}
-
-
 	
 	public void habilitarConexion(){
 		conectadoALaRed=true;
-		
-	}
-	
-	
-	public void habilitarCanioConAguaSiCorresponde(Plano unPlano) {
-		Recorrido zonaCircundante= unPlano.recorrerZonaCircundante(ubicacionP, 1);
-		Hectarea hectareaActual;
-		ConexionDeAgua conexionActual;
-		while (zonaCircundante.tieneSiguiente()){
-			hectareaActual=zonaCircundante.siguiente();
-			if (hectareaActual.tieneCanio()){
-				conexionActual=hectareaActual.obtenerCanio();
-				if(this.conectadoALaRed(unPlano.devolverHectarea(ubicacionP))){
-					conexionActual.habilitarConexion();
-				}
-			}
-		}
+		this.habilitarConAguaSiCorresponde(miPlano, ubicacionP);
 	}
 	
 	
 	public void habilitarConAguaSiCorresponde(Plano unPlano, Posicion unaPosicion) {
+		miPlano=unPlano;
 		Recorrido zonaCircundante= unPlano.recorrerZonaCircundante(unaPosicion, radioDeDistribucion);
-		while (zonaCircundante.tieneSiguiente()){
+		while (zonaCircundante.tieneSiguiente()&&this.conectadoALaRed(unPlano.devolverHectarea(unaPosicion))){
 			Hectarea hectareaActual=zonaCircundante.siguiente();
 					hectareaActual.habilitarAgua();
-				
-			
 		}
 	}
 
@@ -94,7 +88,6 @@ public class ConexionDeAgua extends Conexion {
 	@Override
 	public void reconstruir(int puntosDeReconstruccion) {
 		// TODO Auto-generated method stub
-		
 	}
 
 
