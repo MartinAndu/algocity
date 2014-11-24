@@ -69,8 +69,8 @@ public class Hectarea {
 	}
 	
 	public boolean poseeLos3Servicios(){
-		//return (servicioAgua && accesoAlTransito); con este funciona bien JugadorTest
-		return (servicioAgua && servicioElectrico && accesoAlTransito);//con este falla porque le faltan servicios
+		return (servicioAgua && accesoAlTransito); //con este funciona bien JugadorTest
+		//return (servicioAgua && servicioElectrico && accesoAlTransito);//con este falla porque le faltan servicios
 	}
 	
 	public boolean poseeConstruccion(){
@@ -92,11 +92,6 @@ public class Hectarea {
 	
 	public LineasDeTension obtenerLineaDeTension(){
 		return unaLineaDeTension;
-	}
-	
-	public boolean tieneAgua() {
-		
-		return servicioAgua;
 	}
 	
 	public boolean tieneCanio() {
@@ -144,7 +139,7 @@ public class Hectarea {
 			throw new ExcepcionHectareaYaContieneUnaConstruccion();
 		//else if(!(this.superficieHectarea).puedoConstruir(unaCentral))
 				//throw new ExcepcionNoSePuedeConstruirEnEsteTerreno();
-		else if (!this.tieneAgua()){
+		else if (!this.poseeServicioDeAgua()){
 			throw new ExcepcionCentralElectricaNoPoseeRedDeAgua();
 		}
 		this.construccionHectarea = unaCentral;
@@ -169,7 +164,6 @@ public class Hectarea {
 
 			unaConexionDeAgua=unaConexion;
 			servicioAgua=unaConexionDeAgua.conectadoALaRed();
-			//servicioAgua=true;//corregir esto
 		
 	}
 

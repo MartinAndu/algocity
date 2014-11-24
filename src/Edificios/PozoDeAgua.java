@@ -31,7 +31,7 @@ public class PozoDeAgua extends Construccion{
 	public void construirSobrePlano(Plano unPlano){
 		Hectarea unaHectarea = unPlano.devolverHectarea(posicionConstruccion);
 		unaHectarea.establecerPozoDeAgua(this);
-		int radioDeDistribucion=3;
+		int radioDeDistribucion=1;
 		
 		Recorrido zonaCircundante= unPlano.recorrerZonaCircundante(posicionConstruccion, radioDeDistribucion);
 		while (zonaCircundante.tieneSiguiente()){
