@@ -108,9 +108,10 @@ public class JugadorTest {
 		Posicion otraPosicionMas = new Posicion(1, 4);
 		jugador.crearTuberiaDeAgua(otraPosicionMas);
 		Posicion unaPosicionMas = new Posicion(1, 5);
+		jugador.crearTuberiaDeAgua(unaPosicionMas);
 		jugador.crearCentralElectricaMineral(unaPosicionMas);
 		
-		assertEquals(1740, jugador.obtenerPresupuesto());
+		assertEquals(1735, jugador.obtenerPresupuesto());
 	}
 	
 	@Test

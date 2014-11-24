@@ -11,7 +11,6 @@ import Edificios.PozoDeAgua;
 import Excepciones.ExcepcionCentralElectricaNoPoseeRedDeAgua;
 import Excepciones.ExcepcionHectareaYaContieneUnaConstruccion;
 import Excepciones.ExcepcionHectareaNoBrindaLosServiciosNecesarios;
-import Excepciones.ExcepcionNoSePuedeConstruirEnEsteTerreno;
 import Superficies.Superficie;
 import SuperficiesGeneradores.GeneradorSuperficieDeterminista;
 
