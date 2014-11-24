@@ -49,12 +49,13 @@ public class CentralesElectricasTest {
 	@Test
 	public void seEstableceCentralElectricaSinRedDeAguaYLanzaExcepcion(){
 		Hectarea unaHectarea = new Hectarea();
+		Hectarea estaHectareaEsLlana = new Hectarea();
 		Posicion unaPosicion=new Posicion(2,2);
 		CentralElectrica unaCentralElectrica = new CentralElectrica(unaPosicion);
 		boolean excepcionAtrapada = false;
 		
 		try{
-			unaHectarea.establecerCentral(unaCentralElectrica);
+			estaHectareaEsLlana.establecerCentral(unaCentralElectrica);
 		}
 		catch (ExcepcionCentralElectricaNoPoseeRedDeAgua excepcion){
 			excepcionAtrapada = true;
