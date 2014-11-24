@@ -1,6 +1,7 @@
 package Jugador;
 
 import Bomberos.EstacionDeBomberos;
+
 import Catastrofe.Catastrofe;
 import CentralesElectricas.CentralMineral;
 import Conectores.ConexionDeAgua;
@@ -11,7 +12,6 @@ import Edificios.EdificioResidencial;
 import Edificios.Posicion;
 import Edificios.PozoDeAgua;
 import Edificios.Reconstruible;
-import Excepciones.ExceptionEstacionDeBomberosNoEstaHabilitada;
 import PlanoGeneral.Plano;
 import Poblacion.Poblacion;
 
