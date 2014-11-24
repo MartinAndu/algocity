@@ -6,9 +6,12 @@ import PlanoGeneral.Plano;
 
 public class RutaPavimentada extends Conexion{
 
+	static int COSTO_CONSTRUCCION = 10;
+
 	public RutaPavimentada(Posicion unaPosicion) {
 		super(unaPosicion);
 		posicionConstruccion = unaPosicion;
+		this.costoDeConstruccion = COSTO_CONSTRUCCION;
 	}
 
 	@Override
