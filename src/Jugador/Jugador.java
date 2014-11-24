@@ -11,6 +11,7 @@ import Edificios.EdificioResidencial;
 import Edificios.Posicion;
 import Edificios.PozoDeAgua;
 import Edificios.Reconstruible;
+import Excepciones.ExceptionEstacionDeBomberosNoEstaHabilitada;
 import PlanoGeneral.Plano;
 import Poblacion.Poblacion;
 
@@ -44,11 +45,11 @@ public abstract class Jugador {
 	}
 
 	public void habilitarEstacionDeBomberos() {
-		this.estacionDeBomberos.habilitar();		
+		this.estacionDeBomberos.habilitar(presupuesto);		
 	}
 
 	public void pasoUnTurno() {
-		this.estacionDeBomberos.realizarReparaciones();	
+		this.estacionDeBomberos.realizarReparaciones();
 	}
 
 	public void seCobraUnaComisionPorHabitante(int comisionPorHabitante) {
@@ -63,6 +64,7 @@ public abstract class Jugador {
 	public void crearPozoDeAgua(Posicion posicion) {
 		PozoDeAgua pozo = this.constructor.construirPozoDeAgua(posicion);
 		pozo.construirSobrePlano(plano);	
+		this.presupuesto.reducirPresupuesto(pozo.devolverCosto());
 	}
 	
 	public void crearResidencia(Posicion posicion) {
@@ -92,10 +94,7 @@ public abstract class Jugador {
 	
 	private void agregarAlPlano(Construccion construccion) {
 		construccion.construirSobrePlano(this.plano);
-		this.asegurarSuReparacion(construccion);
-	}
-	
-	private void asegurarSuReparacion(Construccion construccion) {
+		this.presupuesto.reducirPresupuesto(construccion.devolverCosto());
 		this.estacionDeBomberos.agregarReconstruible((Reconstruible)construccion);
 	}
 

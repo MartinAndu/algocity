@@ -47,7 +47,7 @@ public class CentralElectrica extends Construccion implements Reconstruible,Dest
 			hectareaActual.habilitarElectricidad();
 	
 		}
-		
+	
 		Hectarea hectareaActual = unPlano.devolverHectarea(posicionConstruccion);
 		LineasDeTension unaLineaDeTension = new LineasDeTension(posicionConstruccion);
 		hectareaActual.establecerConexion(unaLineaDeTension);
@@ -56,7 +56,6 @@ public class CentralElectrica extends Construccion implements Reconstruible,Dest
 		
 	}
 	
-
 	public int obtenerRadioDeAbastecimientoEnHectareas(){
 		return radioDeAbastecimientoEnHectareas;
 	}

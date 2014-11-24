@@ -48,6 +48,7 @@ public class JugadorTest {
 		
 		jugador.seCobraUnaComisionPorHabitante(10);
 		jugador.pasoUnTurno();
+
 		
 		assertEquals(0, jugador.obtenerPresupuesto());
 

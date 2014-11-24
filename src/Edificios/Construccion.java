@@ -35,12 +35,8 @@ public abstract class Construccion {
 		//Debe devolver la posicion de la construccion en formato string
 		return null;
 	}
-
-	public void realizarTareasSobrePlano(Plano plano) {
-		//la construccion debe saber que acciones posteriores a sus construccion realizar
-	}
 	
-	public abstract void construirSobrePlano(Plano plano); // toda construccion sabe como construirse sobre un plano
+	public abstract void construirSobrePlano(Plano plano);
 
 	public abstract boolean esConstruibleSobreAgua();
 

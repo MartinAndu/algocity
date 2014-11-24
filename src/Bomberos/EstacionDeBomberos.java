@@ -1,6 +1,7 @@
 package Bomberos;
 
 import java.util.ArrayList;
+
 import java.util.Iterator;
 
 import Edificios.Reconstruible;
@@ -23,13 +24,13 @@ public class EstacionDeBomberos {
 	ArrayList<Reconstruible> edificiosAReconstruir;
 	
 	int puntosDeReconstruccion=1000;
-	private Presupuesto presupuesto;
 	private int costoDeHabilitacion;
+	private boolean estacionHabilitada;
 	
-	public EstacionDeBomberos(Presupuesto presupuesto){
-		this.presupuesto = presupuesto;
+	public EstacionDeBomberos(){
 		this.costoDeHabilitacion = 1500;
 		edificiosAReconstruir = new ArrayList<Reconstruible>();
+		estacionHabilitada = false;
 	}
 	
 	public void agregarReconstruible(Reconstruible unReconstruible) {
@@ -37,13 +38,18 @@ public class EstacionDeBomberos {
 	}
 
 	public void realizarReparaciones() {
+		if (!estacionHabilitada) {
+			return;
+		}
+		
 		Iterator<Reconstruible> it = edificiosAReconstruir.iterator();
 		
 		while (it.hasNext())
 			((Reconstruible) it.next()).reconstruir(puntosDeReconstruccion);
 	}
 
-	public void habilitar() {
-		this.presupuesto.reducirPresupuesto(costoDeHabilitacion);
+	public void habilitar(Presupuesto presupuesto) {
+		presupuesto.reducirPresupuesto(this.costoDeHabilitacion);
+		this.estacionHabilitada = true;
 	}
 }
