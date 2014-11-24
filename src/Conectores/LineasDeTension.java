@@ -16,6 +16,7 @@ public  class LineasDeTension extends Conexion{
 	}
 	
 	public LineasDeTension(Posicion unaPosicion) {
+		super(unaPosicion);
 		this.posicionConstruccion = unaPosicion;
 	}
 	

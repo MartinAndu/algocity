@@ -15,7 +15,6 @@ import Edificios.Edificio;
 import Edificios.EdificioResidencial;
 import Edificios.Posicion;
 import Excepciones.ExcepcionHectareaNoBrindaLosServiciosNecesarios;
-import Jugador.JugadorMedio;
 import PlanoGeneral.Hectarea;
 import PlanoGeneral.Plano;
 

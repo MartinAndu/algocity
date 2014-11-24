@@ -9,6 +9,7 @@ public class PozoDeAgua extends Construccion{
 	static int CONSUMO_ELECTRICO = 0;
 	
 	public PozoDeAgua(Posicion unaPosicion){
+		super(unaPosicion);
 		posicionConstruccion = unaPosicion;
 		this.costoDeConstruccion = COSTO_CONSTRUCCION;
 	}

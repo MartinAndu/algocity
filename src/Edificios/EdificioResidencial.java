@@ -10,6 +10,7 @@ public class EdificioResidencial extends Edificio {
 
 	
 	public EdificioResidencial(Posicion unaPosicion){
+		super(unaPosicion);
 		costoDeConstruccion = COSTO;
 		consumoElectrico = CONSUMO_ELECTRICO;
 		tieneAgua = false;

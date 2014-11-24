@@ -11,6 +11,7 @@ public class CentralEolica extends CentralElectrica {
 	
 
 	public CentralEolica(Posicion unaPosicion) {
+		super(unaPosicion);
 		radioDeAbastecimientoEnHectareas = RADIO_DE_ABASTECIMIENTO_EN_HECTAREAS;
 		costoDeConstruccion = COSTO_DE_CONSTRUCCION;
 		capacidadMaxDeAbastecimientoEnMW = CAPACIDAD_MAXIMA_DE_ABASTECIMIENTO;

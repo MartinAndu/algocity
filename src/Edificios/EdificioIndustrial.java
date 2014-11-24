@@ -9,6 +9,7 @@ public class EdificioIndustrial extends Edificio {
 	protected int cantidadEmpleados;
 	
 	public EdificioIndustrial(Posicion unaPosicion){
+		super(unaPosicion);
 		tieneAgua = false;
 		tieneElectricidad = false;
 		tieneAccesoAlTransito = false;
