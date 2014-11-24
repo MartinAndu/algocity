@@ -1,6 +1,5 @@
 package Edificios;
 
-import Conectores.ConexionDeAgua;
 import PlanoGeneral.Hectarea;
 import PlanoGeneral.Plano;
 import PlanoGeneral.Recorrido;
