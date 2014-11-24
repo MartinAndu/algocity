@@ -10,8 +10,8 @@ public class JugadorMedio extends Jugador {
 		super();
 		this.poblacion = new PoblacionMedia();
 		this.presupuesto = new PresupuestoMedio();
-		this.constructor = new ConstructorMedio(this.presupuesto);
-		this.estacionDeBomberos = new EstacionDeBomberos(this.presupuesto);
+		this.constructor = new ConstructorMedio();
+		this.estacionDeBomberos = new EstacionDeBomberos();
 	}
 
 }

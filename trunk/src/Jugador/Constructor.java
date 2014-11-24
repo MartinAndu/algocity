@@ -1,12 +1,12 @@
 package Jugador;
 
 import CentralesElectricas.CentralEolica;
+
 import CentralesElectricas.CentralMineral;
 import CentralesElectricas.CentralNuclear;
 import Conectores.ConexionDeAgua;
 import Conectores.LineasDeTension;
 import Conectores.RutaPavimentada;
-import Edificios.Construccion;
 import Edificios.EdificioComercial;
 import Edificios.EdificioIndustrial;
 import Edificios.EdificioResidencial;
@@ -15,18 +15,6 @@ import Edificios.PozoDeAgua;
 
 
 public abstract class Constructor {
-
-	protected Presupuesto presupuesto;
-
-	public Constructor (Presupuesto presupuesto) {
-		this.presupuesto = presupuesto;
-	}
-	
-	protected void construir(Construccion unaConstruccion){
-		
-		int costoDeConstruccion = unaConstruccion.devolverCosto();	
-		presupuesto.reducirPresupuesto(costoDeConstruccion);
-	}
 	
 	public abstract EdificioResidencial construirZonaResidencial(Posicion unaPosicion);
 
