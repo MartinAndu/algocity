@@ -39,7 +39,8 @@ public class CentralesElectricasTest {
 	@Test
 	public void seEstableceCentralElectricaCorrectamenteSiHayRedDeAgua(){
 		Hectarea unaHectarea = new Hectarea();
-		CentralElectrica unaCentralElectrica = new CentralElectrica();
+		Posicion unaPosicion=new Posicion(2,2);
+		CentralElectrica unaCentralElectrica = new CentralElectrica(unaPosicion);
 		unaHectarea.habilitarAgua();
 		unaHectarea.establecerCentral(unaCentralElectrica);
 		Assert.assertEquals(true, unaHectarea.poseeServicioElectrico());
@@ -48,7 +49,8 @@ public class CentralesElectricasTest {
 	@Test
 	public void seEstableceCentralElectricaSinRedDeAguaYLanzaExcepcion(){
 		Hectarea unaHectarea = new Hectarea();
-		CentralElectrica unaCentralElectrica = new CentralElectrica();
+		Posicion unaPosicion=new Posicion(2,2);
+		CentralElectrica unaCentralElectrica = new CentralElectrica(unaPosicion);
 		boolean excepcionAtrapada = false;
 		
 		try{

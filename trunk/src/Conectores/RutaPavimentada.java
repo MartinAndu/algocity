@@ -7,6 +7,7 @@ import PlanoGeneral.Plano;
 public class RutaPavimentada extends Conexion{
 
 	public RutaPavimentada(Posicion unaPosicion) {
+		super(unaPosicion);
 		posicionConstruccion = unaPosicion;
 	}
 

@@ -11,6 +11,7 @@ public class CentralNuclear extends CentralElectrica{
 	static int PORCENTAJE_REPARACION_POR_BOMBEROS = 3;
 	
 	public CentralNuclear(Posicion unaPosicion){
+		super(unaPosicion);
 		radioDeAbastecimientoEnHectareas = RADIO_DE_ABASTECIMIENTO_EN_HECTAREAS;
 		costoDeConstruccion = COSTO_DE_CONSTRUCCION;
 		capacidadMaxDeAbastecimientoEnMW = CAPACIDAD_MAXIMA_DE_ABASTECIMIENTO;
