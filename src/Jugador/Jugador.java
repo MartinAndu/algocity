@@ -2,6 +2,7 @@ package Jugador;
 
 import Bomberos.EstacionDeBomberos;
 
+
 import Catastrofe.Catastrofe;
 import CentralesElectricas.CentralMineral;
 import Conectores.ConexionDeAgua;
@@ -11,7 +12,6 @@ import Edificios.Construccion;
 import Edificios.EdificioResidencial;
 import Edificios.Posicion;
 import Edificios.PozoDeAgua;
-import Edificios.Reconstruible;
 import PlanoGeneral.Plano;
 import Poblacion.Poblacion;
 
@@ -95,7 +95,6 @@ public abstract class Jugador {
 	private void agregarAlPlano(Construccion construccion) {
 		construccion.construirSobrePlano(this.plano);
 		this.presupuesto.reducirPresupuesto(construccion.devolverCosto());
-		this.estacionDeBomberos.agregarReconstruible((Reconstruible)construccion);
 	}
 
 }

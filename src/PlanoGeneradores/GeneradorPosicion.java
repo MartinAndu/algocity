@@ -1,7 +1,6 @@
 package PlanoGeneradores;
 
 import Edificios.Posicion;
-import PlanoGeneral.Plano;
 
 public abstract class GeneradorPosicion {
 
@@ -14,7 +13,7 @@ public abstract class GeneradorPosicion {
 		this.ancho = dimensionM;
 	}
 	
-	public abstract Posicion generarPosicionEnBordePlano(Plano plano);
+	public abstract Posicion generarPosicionEnBordePlano();
 
 	public abstract Posicion generarPosicion();
 

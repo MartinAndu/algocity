@@ -3,7 +3,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import Edificios.Construccion;
 import Edificios.Posicion;
 import PlanoDireccion.Direccion;
 import PlanoDireccion.Norte;
@@ -209,7 +208,7 @@ public class Plano {
 		boolean recorridoMuyCorto = false;
 		
 		do {
-			posicionBorde = this.generadorPosicion.generarPosicionEnBordePlano(this);
+			posicionBorde = this.generadorPosicion.generarPosicionEnBordePlano();
 			direccion = this.generadorDireccion.generarDireccion();
 			recorrido = this.generadorRecorrido.gerenerarRecorrido(this, posicionBorde, direccion);
 			recorridoMuyCorto = (recorrido.longDelRecorridoEnHectareas() < 2);
@@ -260,10 +259,6 @@ public class Plano {
 	public Hectarea devolverHectarea(Posicion posicion) {
 		
 		return this.hectareas.get(posicion.enString());
-	}
-	
-	public void agregarConstruccion(Construccion unaConstruccion){
-		unaConstruccion.construirSobrePlano(this);
 	}
 
 }

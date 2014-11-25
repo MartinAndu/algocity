@@ -1,7 +1,6 @@
 package PlanoGeneradores;
 
 import Edificios.Posicion;
-import PlanoGeneral.Plano;
 
 public class GeneradorPosicionDeterminista extends GeneradorPosicion {
 
@@ -11,7 +10,7 @@ public class GeneradorPosicionDeterminista extends GeneradorPosicion {
 	}
 
 	@Override
-	public Posicion generarPosicionEnBordePlano(Plano plano) {
+	public Posicion generarPosicionEnBordePlano() {
 		
 		return new Posicion(1, 1);
 	}
