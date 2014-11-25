@@ -1,10 +1,10 @@
 package src;
 
 import Bomberos.EstacionDeBomberos;
+
 import CentralesElectricas.CentralEolica;
 import Edificios.EdificioResidencial;
 import Edificios.Posicion;
-import Excepciones.ExceptionEstacionDeBomberosNoEstaHabilitada;
 import junit.framework.Assert;
 
 import org.junit.Test;
