@@ -25,10 +25,10 @@ public class Terremoto extends Catastrofe{
 		int danioAInflingir=3; 
 		
 			Recorrido zonaCircundante= plano.recorrerZonaCircundante(posicionAleatoria, distanciaDeImpacto);//
-
+			Hectarea hectareaActual;
 			edificiosRotos.clear();//borra los edificios rotos de antes pues pueden haber sido reparados ya.
 			while (zonaCircundante.tieneSiguiente()){
-				Hectarea hectareaActual=zonaCircundante.siguiente();
+				hectareaActual=zonaCircundante.siguiente();
 					if(hectareaActual.poseeConstruccion()){
 
 						hectareaActual.obtenerConstruccion().recibirDanio(200-danioAInflingir*zonaCircundante.distanciaDesdeDondeParti());
