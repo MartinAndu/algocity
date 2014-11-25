@@ -8,15 +8,16 @@ import PlanoGeneral.Recorrido;
 public class RutaPavimentada extends Conexion{
 
 	static int COSTO_CONSTRUCCION = 10;
-	boolean conectadoALaRed;
+	static int RADIO_DE_DISTRIBUCION = 3;
 	Plano miPlano;
-	int radioDeDistribucion;
 
 	public RutaPavimentada(Posicion unaPosicion) {
 		super(unaPosicion);
-		conectadoALaRed=true;
-		radioDeDistribucion=3;
-		this.costoDeConstruccion = COSTO_CONSTRUCCION;
+		
+		conectadoALaRed = true;
+		
+		radioDeDistribucion = RADIO_DE_DISTRIBUCION;
+		costoDeConstruccion = COSTO_CONSTRUCCION;
 	}
 
 	public void construirSobrePlano(Plano plano){

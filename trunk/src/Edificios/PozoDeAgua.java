@@ -11,8 +11,8 @@ public class PozoDeAgua extends Construccion{
 	
 	public PozoDeAgua(Posicion unaPosicion){
 		super(unaPosicion);
-		posicionConstruccion = unaPosicion;
-		this.costoDeConstruccion = COSTO_CONSTRUCCION;
+		
+		costoDeConstruccion = COSTO_CONSTRUCCION;
 	}
 	
 	public boolean esConstruibleSobreTierra(){

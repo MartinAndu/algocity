@@ -15,6 +15,8 @@ public abstract class Construccion implements Reconstruible {
 
 	public Construccion(Posicion posicion) {
 		this.posicionConstruccion = posicion;
+		
+		porcentajeDeConstruccion = 100;
 	}
 	public abstract int devolverConsumo();
 	
@@ -58,8 +60,7 @@ public abstract class Construccion implements Reconstruible {
 	}
 
 	public String devolverPosicionEnString() {
-		//Debe devolver la posicion de la construccion en formato string
-		return null;
+		return (posicionConstruccion.enString());
 	}
 	
 	public abstract void construirSobrePlano(Plano plano);

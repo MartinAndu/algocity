@@ -7,17 +7,20 @@ import PlanoGeneral.Plano;
 import PlanoGeneral.Recorrido;
 
 public  class LineasDeTension extends Conexion{
-	
-	boolean conectadoALaRed;
+
 	CentralElectrica centralElectricaALAQuePertenece;
-	
-	public void proveerServicioZona(Plano unPlano){
-		 unPlano.devolverHectarea(posicionConstruccion).habilitarElectricidad();
-	}
+	static int COSTO_CONSTRUCCION = 5;
+	static int RADIO_DE_DISTRIBUCION = 1;
 	
 	public LineasDeTension(Posicion unaPosicion) {
 		super(unaPosicion);
-		this.posicionConstruccion = unaPosicion;
+		
+		radioDeDistribucion = RADIO_DE_DISTRIBUCION;
+		costoDeConstruccion = COSTO_CONSTRUCCION;
+	}
+	
+	public void proveerServicioZona(Plano unPlano){
+		 unPlano.devolverHectarea(posicionConstruccion).habilitarElectricidad();
 	}
 	
 	public void establecerCentralQueProveeEnergia(CentralElectrica unaCentralElectrica){

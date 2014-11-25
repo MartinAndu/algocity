@@ -19,9 +19,7 @@ public class Edificio extends Construccion implements Reconstruible, Destruible 
 	
 	public Edificio(Posicion posicion) {
 		super(posicion);
-		
-		porcentajeDeConstruccion = 100;
-		
+
 		tieneAgua = false;
 		tieneElectricidad = false;
 		tieneAccesoAlTransito = false;
