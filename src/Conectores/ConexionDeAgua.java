@@ -1,25 +1,24 @@
 package Conectores;
+
 import Edificios.Posicion;
 import PlanoGeneral.Hectarea;
 import PlanoGeneral.Recorrido;
 import PlanoGeneral.Plano;
 
 public class ConexionDeAgua extends Conexion {
-	boolean conectadoALaRed;
-	Hectarea ubicacion=new Hectarea();
-	int radioDeDistribucion;
+	Hectarea ubicacion = new Hectarea();
 	Posicion ubicacionP;
 	static int COSTO_CONSTRUCCION = 5;
+	static int RADIO_DE_DISTRIBUCION = 3;
 	Plano miPlano;
 	
-
 	public ConexionDeAgua(Posicion unaPosicion){
-
 		super(unaPosicion);
-		this.costoDeConstruccion = COSTO_CONSTRUCCION;
-		ubicacionP=unaPosicion;
-		conectadoALaRed=false;
-		radioDeDistribucion=3;
+		
+		ubicacionP = unaPosicion;
+		conectadoALaRed = false;
+		costoDeConstruccion = COSTO_CONSTRUCCION;
+		radioDeDistribucion = RADIO_DE_DISTRIBUCION;
 	}
 	
 	public void construirSobrePlano(Plano plano){
