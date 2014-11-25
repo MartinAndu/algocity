@@ -25,7 +25,7 @@ public class Terremoto extends Catastrofe{
 		Posicion posicionAleatoria=(new GeneradorPosicionDeterminista(alto,ancho)).generarPosicion();
 		int distanciaDeImpacto=67;
 		int danioAInflingir=3; 
-		EstacionDeBomberos unaEstacionDeBomberos=new EstacionDeBomberos(null);//Esto se saca, hay que pasarle por referencia en algun lugar quien es la estacion de bomberos.
+		EstacionDeBomberos unaEstacionDeBomberos=new EstacionDeBomberos();//Esto se saca, hay que pasarle por referencia en algun lugar quien es la estacion de bomberos.
 			Recorrido zonaCircundante= plano.recorrerZonaCircundante(posicionAleatoria, distanciaDeImpacto);//
 
 

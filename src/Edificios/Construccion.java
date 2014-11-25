@@ -3,12 +3,15 @@ package Edificios;
 import PlanoGeneral.Plano;
 
 
-public abstract class Construccion {
+public abstract class Construccion implements Reconstruible {
 
 	protected Posicion posicionConstruccion;
 	protected int costoDeConstruccion;
 	protected int estadoConstruccion;
 	protected int danio;
+	int porcentajeDeConstruccion;
+	int puntosDeConstruccion;
+	int puntosMaximosDeConstruccion;
 
 	public Construccion(Posicion posicion) {
 		this.posicionConstruccion = posicion;
