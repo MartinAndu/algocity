@@ -46,9 +46,9 @@ public  class LineasDeTension extends Conexion{
 		consumoActual += consumoDeLaNuevaConexion;
 		
 		if (consumoActual > consumoMaximo)
-			return false;
+			return true;
 		
-		return true;
+		return false;
 	}
 	
 	public void proveerServicioZona(Plano unPlano, Posicion unaPosicion) {
@@ -56,10 +56,9 @@ public  class LineasDeTension extends Conexion{
 		Recorrido zonaCircundante= unPlano.recorrerZonaCircundante(unaPosicion, 1);
 		
 		//Verifica si hay lineas de tension al rededor
-		while (zonaCircundante.tieneSiguiente()){
+		while (zonaCircundante.tieneSiguiente() && !hayLineasDeTensionAlrededor){
 			Hectarea hectareaActual = zonaCircundante.siguiente();
-			hayLineasDeTensionAlrededor =
-				hayLineasDeTensionAlrededor || hectareaActual.obtenerLineaDeTension().conectadoALaRed(hectareaActual);
+			hayLineasDeTensionAlrededor = hectareaActual.obtenerLineaDeTension().conectadoALaRed(hectareaActual);
 		}
 		
 		
@@ -68,7 +67,7 @@ public  class LineasDeTension extends Conexion{
 		
 		//Verifica que no se exceda al consumo permitido por la central eléctrica
 		// y verifica tambien que no se esté construyendo sober una superficei de agua
-		conectadoALaRed = excedeElConsumo(consumoElectrico) 
+		conectadoALaRed = !(excedeElConsumo(consumoElectrico)) 
 							&& !(sePuedeConstruirSobreAgua)
 								&& hayLineasDeTensionAlrededor;
 		if (conectadoALaRed)
