@@ -9,6 +9,7 @@ public class CentralEolica extends CentralElectrica {
 	static int CAPACIDAD_MAXIMA_DE_ABASTECIMIENTO = 100;
 	static int PORCENTAJE_REPARACION_POR_BOMBEROS = 15;
 	
+	
 
 	public CentralEolica(Posicion unaPosicion) {
 		super(unaPosicion);
