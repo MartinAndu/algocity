@@ -9,9 +9,9 @@ public abstract class Construccion implements Reconstruible {
 	protected int costoDeConstruccion;
 	protected int estadoConstruccion;
 	protected int danio;
-	int porcentajeDeConstruccion;
-	int puntosDeConstruccion;
-	int puntosMaximosDeConstruccion;
+	protected float puntosMaximosDeConstruccion;
+	protected float puntosDeConstruccion;
+	protected float porcentajeDeConstruccion;
 
 	public Construccion(Posicion posicion) {
 		this.posicionConstruccion = posicion;
@@ -27,10 +27,6 @@ public abstract class Construccion implements Reconstruible {
 		puntosDeConstruccion=Math.min(puntosDeConstruccion+puntosDeReconstruccion,puntosMaximosDeConstruccion);
 	}
 	
-	public void destruirUnPoco(){ //Este es un metodo temporal para probar las clases de bomberos y reconstruibles, luego sera borrada cuando se implemente Destruible
-		porcentajeDeConstruccion=81;
-		actualizarPuntosDeConstruccion();
-	}
 	
 	public float porcentajeDeConstruccion(){
 		porcentajeDeConstruccion=(puntosDeConstruccion*100)/puntosMaximosDeConstruccion;
@@ -46,6 +42,8 @@ public abstract class Construccion implements Reconstruible {
 	
 	public void recibirDanio(int danioAInflingir){
 		this.danio = Math.min(danio+danioAInflingir, 200);
+		porcentajeDeConstruccion=(porcentajeDeConstruccion-danio/2);
+		actualizarPuntosDeConstruccion();
 		
 		
 	}

@@ -18,9 +18,6 @@ public class CentralElectrica extends Construccion implements Reconstruible,Dest
 	protected int capacidadDeAbastecimientoEnMW;
 	protected int capacidadMaxDeAbastecimientoEnMW;
 
-	protected float puntosMaximosDeConstruccion;
-	protected float puntosDeConstruccion;
-	protected float porcentajeDeConstruccion;
 	
 	static int CONSUMO_ELECTRICO = 0;
 	
@@ -92,24 +89,5 @@ public class CentralElectrica extends Construccion implements Reconstruible,Dest
 	}
 		
 	
-	public void reconstruir(int puntosDeReconstruccion){
-		this.actualizarPuntosDeConstruccion();
-		puntosDeConstruccion=Math.min(puntosDeConstruccion+puntosDeReconstruccion,puntosMaximosDeConstruccion);
-	}
-	
-	public void destruirUnPoco(){ //Este es un metodo temporal para probar las clases de bomberos y reconstruibles, luego sera borrada cuando se implemente Destruible
-		porcentajeDeConstruccion=81;
-		actualizarPuntosDeConstruccion();
-	}
-	
-	public float porcentajeDeConstruccion(){
-		porcentajeDeConstruccion=(puntosDeConstruccion*100)/puntosMaximosDeConstruccion;
-		
-		return Math.round(porcentajeDeConstruccion);
-	}
-	
-	public void actualizarPuntosDeConstruccion(){
-		puntosDeConstruccion=(puntosMaximosDeConstruccion*porcentajeDeConstruccion)/100;
-	}
-	
+
 }

@@ -50,7 +50,7 @@ public class ReparacionesTest {
 		
 		
 		CentralNuclear unaCentral=new CentralNuclear(unaPosicion);
-		unaCentral.destruirUnPoco();
+		unaCentral.recibirDanio(38);
 		float porcentajeEsperado=81;
 		Assert.assertEquals(unaCentral.porcentajeDeConstruccion(),porcentajeEsperado);
 		int capacidadDeReconstruccionEnUnTurno=1000;

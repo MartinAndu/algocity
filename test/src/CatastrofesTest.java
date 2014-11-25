@@ -13,38 +13,38 @@ public class CatastrofesTest {
 	
     @Test
     
-    public void terremotoDañaEdificiosMuyCerca(){
+    public void terremotoDaniaEdificiosMuyCerca(){
 	
 	Plano unPlano=new Plano(20,20);
-	Posicion posicionPozo = new Posicion(4, 4);
+	Posicion posicionPozo = new Posicion(3, 3);
 	PozoDeAgua unPozo=new PozoDeAgua(posicionPozo);
 	unPlano.devolverHectarea(posicionPozo).establecerPozoDeAgua(unPozo);
 	Terremoto unTerremoto=new Terremoto();
 	unTerremoto.destruirCiudad(unPlano);
-	assertEquals(unPozo.devolverDanioRecibido(), 198);
+	assertEquals(unPozo.devolverDanioRecibido(), 197);
     
     }
     
     @Test
     
-    public void terremotoDañaEdificiosEnBorde(){
+    public void terremotoDaniaEdificiosEnBorde(){
 	
 	Plano unPlano=new Plano(80,80);
-	Posicion posicionPozo = new Posicion(69,69);
+	Posicion posicionPozo = new Posicion(74,74);
 	PozoDeAgua unPozo=new PozoDeAgua(posicionPozo);
 	unPlano.devolverHectarea(posicionPozo).establecerPozoDeAgua(unPozo);
 	Terremoto unTerremoto=new Terremoto();
 	unTerremoto.destruirCiudad(unPlano);
-	assertEquals(unPozo.devolverDanioRecibido(), 3);
+	assertEquals(unPozo.devolverDanioRecibido(), 2);//el danio estimado se calcula como el doble del porcentaje, esto lo hice para no usar numeros con coma.
     
     }
     
     @Test
     
-    public void terremotoNoDañaEdificiosLejanos(){
+    public void terremotoNoDaniaEdificiosLejanos(){
 	
 	Plano unPlano=new Plano(80,80);
-	Posicion posicionPozo = new Posicion(75,75);
+	Posicion posicionPozo = new Posicion(79,79);
 	PozoDeAgua unPozo=new PozoDeAgua(posicionPozo);
 	unPlano.devolverHectarea(posicionPozo).establecerPozoDeAgua(unPozo);
 	Terremoto unTerremoto=new Terremoto();
