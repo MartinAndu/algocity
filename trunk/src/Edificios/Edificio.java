@@ -1,5 +1,6 @@
 package Edificios;
 
+import Excepciones.ExcepcionHectareaNoHabilitadaParaConstruirEdificio;
 import PlanoGeneral.Hectarea;
 import PlanoGeneral.Plano;
 
@@ -18,6 +19,12 @@ public class Edificio extends Construccion implements Reconstruible, Destruible 
 	
 	public Edificio(Posicion posicion) {
 		super(posicion);
+		
+		porcentajeDeConstruccion = 100;
+		
+		tieneAgua = false;
+		tieneElectricidad = false;
+		tieneAccesoAlTransito = false;
 	}
 	
 	public int devolverConsumo(){
@@ -48,12 +55,10 @@ public class Edificio extends Construccion implements Reconstruible, Destruible 
 		return tieneAccesoAlTransito;
 	}
 	
-    public void inspeccionarHectarea(Hectarea unaHectarea) {
-        //corrobora que la hectarea contenga todos los servicios necesarios para su construccion
-        //o alguna otra caracteristica que inhabilite para construir.
-        //si no se puede construir se espera la siguiente excepcion
-        //ExceptionHectareaNoHabilitadaParaConstruirEdificio
-       
+    public void inspeccionarHectarea(Hectarea unaHectarea){
+    	if ((!unaHectarea.poseeLos3Servicios()) || (unaHectarea.poseeConstruccion())){
+    		throw new ExcepcionHectareaNoHabilitadaParaConstruirEdificio();
+    	}
     }
 
 	public boolean esConstruibleSobreTierra(){
