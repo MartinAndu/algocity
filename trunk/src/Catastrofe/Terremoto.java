@@ -19,6 +19,7 @@ public class Terremoto extends Catastrofe{
 	public Terremoto(){
 		edificiosRotos = new ArrayList<Reconstruible>();
 	}
+	
 	public void destruirCiudad(Plano plano) {
 		Posicion posicionAleatoria=plano.generarPosicionAleatoria();
 		int distanciaDeImpacto=67;
