@@ -19,13 +19,38 @@ public abstract class Construccion {
 		return costoDeConstruccion;
 	}
 	
-	public void recibirDanio(int unDanio){
-		this.danio += unDanio;
+	public void reconstruir(int puntosDeReconstruccion){
+		this.actualizarPuntosDeConstruccion();
+		puntosDeConstruccion=Math.min(puntosDeConstruccion+puntosDeReconstruccion,puntosMaximosDeConstruccion);
+	}
+	
+	public void destruirUnPoco(){ //Este es un metodo temporal para probar las clases de bomberos y reconstruibles, luego sera borrada cuando se implemente Destruible
+		porcentajeDeConstruccion=81;
+		actualizarPuntosDeConstruccion();
+	}
+	
+	public float porcentajeDeConstruccion(){
+		porcentajeDeConstruccion=(puntosDeConstruccion*100)/puntosMaximosDeConstruccion;
+		
+		return Math.round(porcentajeDeConstruccion);
+	}
+	
+	public void actualizarPuntosDeConstruccion(){
+		puntosDeConstruccion=(puntosMaximosDeConstruccion*porcentajeDeConstruccion)/100;
+	}
+	
+	
+	
+	public void recibirDanio(int danioAInflingir){
+		this.danio = Math.min(danio+danioAInflingir, 200);
+		
+		
 	}
 	
 	public int devolverDanioRecibido(){
 		return danio;
 	}
+	
 	
 	public Posicion obtenerPosicion(){
 		return posicionConstruccion;
