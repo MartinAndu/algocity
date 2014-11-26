@@ -46,9 +46,9 @@ public abstract class Construccion implements Reconstruible {
 		this.danio = Math.min(danio+danioAInflingir, 200);
 		porcentajeDeConstruccion=(porcentajeDeConstruccion-danio/2);
 		actualizarPuntosDeConstruccion();
-		
-		
 	}
+	
+	
 	
 	public int devolverDanioRecibido(){
 		return danio;
@@ -73,5 +73,7 @@ public abstract class Construccion implements Reconstruible {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public abstract void destruir();
 
 }

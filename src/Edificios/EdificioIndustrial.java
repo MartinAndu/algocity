@@ -28,4 +28,7 @@ public class EdificioIndustrial extends Edificio {
 		return cantidadEmpleados;
 	}
 	
+	public void destruir() {
+		danio = this.estadoConstruccion * 40 / 100;
+	}
 }

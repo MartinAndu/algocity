@@ -16,8 +16,11 @@ public class CentralEolica extends CentralElectrica {
 		capacidadMaxDeAbastecimientoEnMW = CAPACIDAD_MAXIMA_DE_ABASTECIMIENTO;
 		puntosMaximosDeConstruccion = PUNTOS_MAXIMOS_DE_CONSTRUCCION;
 		puntosDeConstruccion = PUNTOS_MAXIMOS_DE_CONSTRUCCION;
+		
 	}
 
+	
+	
 	@Override
 	public void reconstruir() {
 		// TODO Auto-generated method stub

@@ -35,6 +35,13 @@ public class Plano {
 		construirPlano(dimensionN, dimensionM);
 	}
 
+	public int obtenerAncho(){
+		return ancho;
+	}
+	
+	public int obtenerAlto(){
+		return alto;
+	}
 	private void construirPlano(int dimensionN, int dimensionM) {
 		construirHectareas(dimensionN, dimensionM);
 		construirCaminos(dimensionN, dimensionM);	

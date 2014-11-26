@@ -113,4 +113,8 @@ public class ConexionDeAgua extends Conexion {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public void destruir(){
+		//Godzilla no destruye la conexion de agua
+	}
 }
