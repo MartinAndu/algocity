@@ -30,11 +30,11 @@ public class Terremoto extends Catastrofe{
 			edificiosRotos.clear();//borra los edificios rotos de antes pues pueden haber sido reparados ya.
 			while (zonaCircundante.tieneSiguiente()){
 				hectareaActual=zonaCircundante.siguiente();
-					if(hectareaActual.poseeConstruccion()){
+				if(hectareaActual.poseeConstruccion()){
 
-						hectareaActual.obtenerConstruccion().recibirDanio(200-danioAInflingir*zonaCircundante.distanciaDesdeDondeParti());
-						edificiosRotos.add((Reconstruible)hectareaActual.obtenerConstruccion());
-					}
+					hectareaActual.obtenerConstruccion().recibirDanio(200-danioAInflingir*zonaCircundante.distanciaDesdeDondeParti());
+					edificiosRotos.add((Reconstruible)hectareaActual.obtenerConstruccion());
+				}
 			}
 	}
 	

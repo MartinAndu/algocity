@@ -28,4 +28,8 @@ public class EdificioResidencial extends Edificio {
 		return cantidadHabitantes;
 	}
 	
+	public void destruir() {
+		danio = this.estadoConstruccion * 100 / 100;
+	}
+	
 }

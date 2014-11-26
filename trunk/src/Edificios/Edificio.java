@@ -13,7 +13,7 @@ public class Edificio extends Construccion implements Reconstruible, Destruible 
 	protected float puntosMaximosDeConstruccion;
 	protected float puntosDeConstruccion;
 	protected float porcentajeDeConstruccion;
-
+	public int porcentajeDanioGodzilla;
 	
 	
 	
@@ -92,5 +92,15 @@ public class Edificio extends Construccion implements Reconstruible, Destruible 
 	
 	public void actualizarPuntosDeConstruccion(){
 		puntosDeConstruccion=(puntosMaximosDeConstruccion*porcentajeDeConstruccion)/100;
+	}
+
+	@Override
+	public void destruir() {
+		
+	}
+
+	@Override
+	public void destruirEnPorcentaje(int porcentaje) {
+		
 	}
 }

@@ -103,6 +103,10 @@ public  class LineasDeTension extends Conexion{
 	public void habilitarConexion() {
 		conectadoALaRed = true;
 	}
+	
+	public void destruir(){
+		danio = this.estadoConstruccion * 100 / 100;
+	}
 
 	
 }

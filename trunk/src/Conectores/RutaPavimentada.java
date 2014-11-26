@@ -73,4 +73,8 @@ public class RutaPavimentada extends Conexion{
 					hectareaActual.habilitarAccesoAlTransito();
 		}
 	}
+	
+	public void destruir(){
+		danio = this.estadoConstruccion * 80 / 100;
+	}
 }

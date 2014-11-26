@@ -39,4 +39,8 @@ public class PozoDeAgua extends Construccion{
 					hectareaActual.habilitarAgua();
 		}
 	}
+	
+	public void destruir(){
+		//Godzilla no destruye el pozo de agua
+	}
 }

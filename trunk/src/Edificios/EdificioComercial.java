@@ -15,4 +15,9 @@ public class EdificioComercial extends Edificio {
 		puntosMaximosDeConstruccion = PUNTOS_MAXIMOS_DE_CONSTRUCCION;
 		puntosDeConstruccion = PUNTOS_MAXIMOS_DE_CONSTRUCCION;
 	}
+	
+	public void destruir() {
+		danio = this.estadoConstruccion * 75 / 100;
+	}
+	
 }
