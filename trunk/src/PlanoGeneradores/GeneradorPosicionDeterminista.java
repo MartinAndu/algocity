@@ -18,8 +18,8 @@ public class GeneradorPosicionDeterminista extends GeneradorPosicion {
 	@Override
 	public Posicion generarPosicion() {
 		
-		int centroAncho = (this.ancho / 10);
-		int centroAlto = (this.alto / 10);
+		int centroAncho = (this.ancho / 8);
+		int centroAlto = (this.alto / 8);
 		return new Posicion(centroAlto, centroAncho);
 	}
 

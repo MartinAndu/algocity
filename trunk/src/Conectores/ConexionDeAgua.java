@@ -75,10 +75,7 @@ public class ConexionDeAgua extends Conexion {
 		return true;
 	}
 	
-	@Override
-	public void reconstruir() {
-		// TODO Auto-generated method stub	
-	}
+
 	
 	public void habilitarConexion(){
 		conectadoALaRed=true;

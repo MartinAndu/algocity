@@ -21,9 +21,5 @@ public class CentralEolica extends CentralElectrica {
 
 	
 	
-	@Override
-	public void reconstruir() {
-		// TODO Auto-generated method stub
-		
-	}
+
 }

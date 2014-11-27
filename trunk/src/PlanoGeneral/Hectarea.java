@@ -69,8 +69,8 @@ public class Hectarea {
 	}
 	
 	public boolean poseeLos3Servicios(){
-		return (servicioAgua && accesoAlTransito); //con este funciona bien JugadorTest
-		//return (servicioAgua && servicioElectrico && accesoAlTransito);//con este falla porque le faltan servicios
+		//return (servicioAgua && accesoAlTransito); //con este funciona bien JugadorTest
+		return (servicioAgua && servicioElectrico && accesoAlTransito);//con este falla porque le faltan servicios
 	}
 	
 	public boolean poseeConstruccion(){
