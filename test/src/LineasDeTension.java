@@ -28,8 +28,9 @@ public class LineasDeTension {
 		Plano unPlano = new Plano(5,5);
 		Posicion unaPosicion=new Posicion(2,2);
 		CentralElectrica unaCentralElectrica = new CentralElectrica(unaPosicion);
-		unaCentralElectrica.construirSobrePlano(unPlano);
+		//unaCentralElectrica.construirSobrePlano(unPlano);
 		Hectarea unaHectarea = new Hectarea();
+		unaHectarea.habilitarAgua();
 		unaHectarea.establecerCentral(unaCentralElectrica);
 		
 		

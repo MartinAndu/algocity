@@ -143,24 +143,28 @@ public class PlanoTest {
 	}
 	
 	@Test
-	public void testPlanoGenerarPosicionAleatoraDeberiaEstarEnCentro() {
+	public void testPlanoGenerarPosicionAleatoriaDeberiaEstarEnPosicionCorrecta(){
+	//public void testPlanoGenerarPosicionAleatoraDeberiaEstarEnCentro() { //Lo cambio porque modifique el punto para que sea mas rapida la prueba del terremoto.
 		
 		Plano plano = new Plano(8, 8);
 		Posicion posicion = plano.generarPosicionAleatoria();
 		int x = posicion.devolverCoordenadaX();
 		int y = posicion.devolverCoordenadaY();
 		
-		assertEquals(4, x);
-		assertEquals(4, y);
+
+		//assertEquals(4, x);
+		//assertEquals(4, y);
+		assertEquals(1, x);
+		assertEquals(1, y);
 	}
 	
 	@Test 
 	public void testPlanoRecorrerTodoElPlanoDesdeUnaPosicionAleatoria() {
 
-		Plano plano = new Plano(5, 5);
+		Plano plano = new Plano(16, 16);
 		Recorrido recorrido = plano.recorrerTodoDesdeUnaPosicionAleatoria();
 		
-		assertEquals(24, recorrido.longDelRecorridoEnHectareas());
+		assertEquals(255, recorrido.longDelRecorridoEnHectareas());
 		
 	}
 	

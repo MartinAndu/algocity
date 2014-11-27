@@ -30,7 +30,7 @@ public class CatastrofesTest {
     public void terremotoDaniaEdificiosEnBorde(){
 	
 	Plano unPlano=new Plano(80,80);
-	Posicion posicionPozo = new Posicion(74,74);
+	Posicion posicionPozo = new Posicion(76,76);
 	PozoDeAgua unPozo=new PozoDeAgua(posicionPozo);
 	unPlano.devolverHectarea(posicionPozo).establecerPozoDeAgua(unPozo);
 	Terremoto unTerremoto=new Terremoto();
