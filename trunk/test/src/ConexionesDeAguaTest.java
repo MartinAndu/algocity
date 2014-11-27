@@ -52,17 +52,21 @@ import PlanoGeneral.Plano;
                 		Plano unPlano = new Plano (4,7);
                 		Posicion unaPosicion = new Posicion(2, 2);
                 		Posicion otraPosicion = new Posicion(3,2);
+                		Posicion tercerPosicion = new Posicion(4,2);
                 		ConexionDeAgua unaConexion= new ConexionDeAgua(unaPosicion);
                 		ConexionDeAgua otraConexion=new ConexionDeAgua(otraPosicion);
+                		ConexionDeAgua tercerConexion=new ConexionDeAgua(tercerPosicion);
+                		
                 		unaConexion.construirSobrePlano(unPlano);
                 		otraConexion.construirSobrePlano(unPlano);
+                		tercerConexion.construirSobrePlano(unPlano);
                 		unaConexion.habilitarConexion();
-                		otraConexion.habilitarConexion();
+                		//otraConexion.habilitarConexion();
                 		
                 		
                 		
                 		
-                		Assert.assertTrue(otraConexion.conectadoALaRed(unPlano.devolverHectarea(otraPosicion)));
+                		Assert.assertTrue(tercerConexion.conectadoALaRed(unPlano.devolverHectarea(tercerPosicion)));
                 		
                }
                 

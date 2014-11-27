@@ -95,7 +95,7 @@ public class Hectarea {
 	}
 	
 	public boolean tieneCanio() {
-		return (unaConexionDeAgua!= null);
+		return (!(unaConexionDeAgua== null));
 	}
 	
 
@@ -163,7 +163,7 @@ public class Hectarea {
 		
 
 			unaConexionDeAgua=unaConexion;
-			servicioAgua=unaConexionDeAgua.conectadoALaRed();
+			servicioAgua=unaConexionDeAgua.conectadoALaRed(this);
 		
 	}
 
