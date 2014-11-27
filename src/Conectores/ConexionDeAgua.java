@@ -11,6 +11,7 @@ public class ConexionDeAgua extends Conexion {
 	static int COSTO_CONSTRUCCION = 5;
 	static int RADIO_DE_DISTRIBUCION = 3;
 	Plano miPlano;
+	boolean marca;
 	
 	public ConexionDeAgua(Posicion unaPosicion){
 		super(unaPosicion);
@@ -34,23 +35,31 @@ public class ConexionDeAgua extends Conexion {
 	}
 
 	public boolean conectadoALaRed(){
-		return conectadoALaRed;
-	}
-
-	public boolean conectadoALaRed(Hectarea unaHectarea) {
 		Recorrido zonaCircundante= miPlano.recorrerZonaCircundante(ubicacionP, 1);
 		Hectarea hectareaActual;
+		marca=true;
 		while (zonaCircundante.tieneSiguiente()&&!conectadoALaRed){
 			hectareaActual=zonaCircundante.siguiente();
-			if (hectareaActual.tieneCanio()&&
-				hectareaActual.obtenerCanio().conectadoALaRed(miPlano.devolverHectarea(ubicacionP))){
+			if (hectareaActual.tieneCanio()&&(!hectareaActual.obtenerCanio().marcado())&&
+				hectareaActual.obtenerCanio().conectadoALaRed()){
 				this.habilitarConexion();
 			}
 			if (hectareaActual.poseePozoDeAgua()){
 				this.habilitarConexion();
 			}
 		}
-		return conectadoALaRed;		
+		marca=false;
+		return conectadoALaRed;
+	}
+
+	private boolean marcado() {//Este metodo indica si la conexion ya fue marcada para no volver a chequearla y evitar bucles infinitos. 
+		
+		return marca;
+	}
+
+	public boolean conectadoALaRed(Hectarea unaHectarea) {
+		
+		return conectadoALaRed();		
 	}
 	
 	public boolean esConstruibleSobreAgua(){
@@ -78,13 +87,14 @@ public class ConexionDeAgua extends Conexion {
 	public void habilitarConexion(){
 		conectadoALaRed=true;
 		this.habilitarConAguaSiCorresponde(miPlano, ubicacionP);
+		miPlano.devolverHectarea(ubicacionP).habilitarAgua();
 	}
 	
 	
 	public void habilitarConAguaSiCorresponde(Plano unPlano, Posicion unaPosicion) {
 		miPlano=unPlano;
 		Recorrido zonaCircundante= unPlano.recorrerZonaCircundante(unaPosicion, radioDeDistribucion);
-		conectadoALaRed=this.conectadoALaRed(unPlano.devolverHectarea(unaPosicion));
+		conectadoALaRed=this.conectadoALaRed();
 		while (zonaCircundante.tieneSiguiente()&&conectadoALaRed){
 			Hectarea hectareaActual=zonaCircundante.siguiente();
 					hectareaActual.habilitarAgua();
