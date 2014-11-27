@@ -18,9 +18,5 @@ public class CentralNuclear extends CentralElectrica{
 		puntosDeConstruccion = PUNTOS_MAXIMOS_DE_CONSTRUCCION;
 	}
 
-	@Override
-	public void reconstruir() {
-		// TODO Auto-generated method stub
-		
-	}
+
 }

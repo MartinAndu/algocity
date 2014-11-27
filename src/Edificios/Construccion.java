@@ -69,10 +69,6 @@ public abstract class Construccion implements Reconstruible {
 
 	public abstract boolean esConstruibleSobreTierra();
 
-	public void reconstruir() {
-		// TODO Auto-generated method stub
-		
-	}
 	
 	public abstract void destruir();
 

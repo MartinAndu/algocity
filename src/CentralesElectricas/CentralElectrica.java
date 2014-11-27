@@ -77,37 +77,14 @@ public class CentralElectrica extends Construccion implements Reconstruible,Dest
 		return false;
 	}
 
-	@Override
-	public void reconstruir() {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 	@Override
 	public int devolverConsumo() {
 		return CONSUMO_ELECTRICO;
 	}
 		
-	
-	public void reconstruir(int puntosDeReconstruccion){
-		this.actualizarPuntosDeConstruccion();
-		puntosDeConstruccion=Math.min(puntosDeConstruccion+puntosDeReconstruccion,puntosMaximosDeConstruccion);
-	}
-	
-	public void destruirUnPoco(){ //Este es un metodo temporal para probar las clases de bomberos y reconstruibles, luego sera borrada cuando se implemente Destruible
-		porcentajeDeConstruccion=81;
-		actualizarPuntosDeConstruccion();
-	}
-	
-	public float porcentajeDeConstruccion(){
-		porcentajeDeConstruccion=(puntosDeConstruccion*100)/puntosMaximosDeConstruccion;
-		
-		return Math.round(porcentajeDeConstruccion);
-	}
-	
-	public void actualizarPuntosDeConstruccion(){
-		puntosDeConstruccion=(puntosMaximosDeConstruccion*porcentajeDeConstruccion)/100;
-	}
+
 
 	@Override
 	public void destruir() {

@@ -19,11 +19,7 @@ public abstract class Conexion extends Construccion implements Reconstruible{
 		super(posicion);
 	}
 	 
-	@Override
-	public void reconstruir() {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 	@Override
 	public int devolverConsumo() {

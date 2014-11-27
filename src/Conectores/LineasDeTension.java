@@ -32,11 +32,7 @@ public  class LineasDeTension extends Conexion{
 		
 		return true;
 	}
-	@Override
-	public void reconstruir() {
-		// TODO Auto-generated method stub
-		
-	}
+
 	
 	private boolean excedeElConsumo(int consumoDeLaNuevaConexion){
 		

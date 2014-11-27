@@ -29,7 +29,7 @@ public class LineasDeTension {
 		Posicion unaPosicion=new Posicion(2,2);
 		CentralElectrica unaCentralElectrica = new CentralElectrica(unaPosicion);
 		//unaCentralElectrica.construirSobrePlano(unPlano);
-		Hectarea unaHectarea = new Hectarea();
+		Hectarea unaHectarea = unPlano.devolverHectarea(unaPosicion);
 		unaHectarea.habilitarAgua();
 		unaHectarea.establecerCentral(unaCentralElectrica);
 		
