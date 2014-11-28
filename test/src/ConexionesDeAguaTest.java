@@ -86,7 +86,7 @@ import PlanoGeneral.Plano;
             		Edificio unoResidencial = new EdificioResidencial(otraPosicion);
             		otraHectarea.habilitarAccesoAlTransito();
             		otraHectarea.habilitarElectricidad();
-            		unaConexion.habilitarConAguaSiCorresponde(unPlano, unaPosicion);
+            		unaConexion.proveerServicioZona(unPlano);
             		otraHectarea.establecerEdificio(unoResidencial);
             		Assert.assertTrue(unoResidencial.tieneAgua());
             		
@@ -114,7 +114,7 @@ import PlanoGeneral.Plano;
             		Edificio unoResidencial = new EdificioResidencial(otraPosicion);
             		otraHectarea.habilitarAccesoAlTransito();
             		otraHectarea.habilitarElectricidad();
-            		unaConexion.habilitarConAguaSiCorresponde(unPlano, unaPosicion);
+            		unaConexion.proveerServicioZona(unPlano);
             		otraHectarea.establecerEdificio(unoResidencial);
             		Assert.assertTrue(unoResidencial.tieneAgua());
             		
@@ -138,7 +138,7 @@ import PlanoGeneral.Plano;
             		Edificio unoResidencial = new EdificioResidencial(unaPosicion2);
             		otraHectarea.habilitarAccesoAlTransito();
             		otraHectarea.habilitarElectricidad();
-            		unaConexion.habilitarConAguaSiCorresponde(unPlano, unaPosicion);
+            		unaConexion.proveerServicioZona(unPlano);
             		try{
                 		otraHectarea.establecerEdificio(unoResidencial);
             		}

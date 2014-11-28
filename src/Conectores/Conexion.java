@@ -13,7 +13,7 @@ public abstract class Conexion extends Construccion implements Reconstruible{
 	public abstract void habilitarConexion();
 	
 	int radioDeDistribucion;
-	boolean conectadoALaRed;
+	boolean conectadoALaRed=false;;
 
 	public Conexion(Posicion posicion) {
 		super(posicion);
@@ -39,8 +39,5 @@ public abstract class Conexion extends Construccion implements Reconstruible{
 		return false;
 	}
 	
-	public void construirSobrePlano(Plano unPlano){
-		Hectarea unaHectarea = unPlano.devolverHectarea(posicionConstruccion);
-		unaHectarea.establecerConexion(this);
-	}
+
 }

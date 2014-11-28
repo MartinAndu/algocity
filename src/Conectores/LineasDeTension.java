@@ -9,32 +9,44 @@ import PlanoGeneral.Recorrido;
 public  class LineasDeTension extends Conexion{
 
 	CentralElectrica centralElectricaALAQuePertenece;
+	boolean marca=false;
+	private Plano miPlano;
 	static int COSTO_CONSTRUCCION = 5;
-	static int RADIO_DE_DISTRIBUCION = 1;
+	static int RADIO_DE_DISTRIBUCION = 3;
 	
 	public LineasDeTension(Posicion unaPosicion) {
 		super(unaPosicion);
-		
 		radioDeDistribucion = RADIO_DE_DISTRIBUCION;
 		costoDeConstruccion = COSTO_CONSTRUCCION;
 	}
 	
-	public void proveerServicioZona(Plano unPlano){
-		 unPlano.devolverHectarea(posicionConstruccion).habilitarElectricidad();
+	public void construirSobrePlano(Plano plano){
+		
+		miPlano=plano;
+		Hectarea unaHectarea = plano.devolverHectarea(posicionConstruccion);
+		unaHectarea.establecerConexionElectrica(this);
+		Recorrido zonaCircundante= plano.recorrerZonaCircundante(posicionConstruccion, radioDeDistribucion);
+		conectadoALaRed=conectadoALaRed(unaHectarea);
+		while (zonaCircundante.tieneSiguiente()&&conectadoALaRed){
+			Hectarea hectareaActual=zonaCircundante.siguiente();
+					hectareaActual.habilitarElectricidad();
+					
+		}
 	}
+	
 	
 	public void establecerCentralQueProveeEnergia(CentralElectrica unaCentralElectrica){
 		this.centralElectricaALAQuePertenece = unaCentralElectrica;
 	}
 	
 	
-	public boolean puedeProveerServicioZona(Plano unPlano){
+	public boolean puedeProveerServicio(){
 		
 		return true;
 	}
 
 	
-	private boolean excedeElConsumo(int consumoDeLaNuevaConexion){
+/*	private boolean excedeElConsumo(int consumoDeLaNuevaConexion){
 		
 		int consumoActual = this.centralElectricaALAQuePertenece.obtenerCapacidadDeAbastecimientoEnMW();
 		int consumoMaximo = this.centralElectricaALAQuePertenece.obtenerCapacidadMaxDeAbastecimientoEnMW();
@@ -45,31 +57,17 @@ public  class LineasDeTension extends Conexion{
 			return true;
 		
 		return false;
-	}
+	}*/
 	
-	public void proveerServicioZona(Plano unPlano, Posicion unaPosicion) {
-		boolean hayLineasDeTensionAlrededor = false;
-		Recorrido zonaCircundante= unPlano.recorrerZonaCircundante(unaPosicion, 1);
-		
-		//Verifica si hay lineas de tension al rededor
-		while (zonaCircundante.tieneSiguiente() && !hayLineasDeTensionAlrededor){
-			Hectarea hectareaActual = zonaCircundante.siguiente();
-			hayLineasDeTensionAlrededor = hectareaActual.obtenerLineaDeTension().conectadoALaRed(hectareaActual);
+	public void proveerServicioZona(Plano unPlano){
+		miPlano=unPlano;
+		Recorrido zonaCircundante= unPlano.recorrerZonaCircundante(posicionConstruccion, radioDeDistribucion);
+		conectadoALaRed=this.conectadoALaRed(miPlano.devolverHectarea(posicionConstruccion));
+		while (zonaCircundante.tieneSiguiente()&&conectadoALaRed){
+			Hectarea hectareaActual=zonaCircundante.siguiente();
+					hectareaActual.habilitarElectricidad();
 		}
 		
-		
-		int consumoElectrico=unPlano.devolverHectarea(unaPosicion).obtenerConstruccion().devolverConsumo();
-		boolean sePuedeConstruirSobreAgua = unPlano.devolverHectarea(unaPosicion).obtenerConstruccion().esConstruibleSobreAgua();
-		
-		//Verifica que no se exceda al consumo permitido por la central eléctrica
-		// y verifica tambien que no se esté construyendo sober una superficei de agua
-		conectadoALaRed = !(excedeElConsumo(consumoElectrico)) 
-							&& !(sePuedeConstruirSobreAgua)
-								&& hayLineasDeTensionAlrededor;
-		if (conectadoALaRed)
-			unPlano.devolverHectarea(unaPosicion).establecerConexion(this);
-			
-	
 	}
 
 	@Override
@@ -90,14 +88,33 @@ public  class LineasDeTension extends Conexion{
 		
 	}
 
-	@Override
-	public boolean conectadoALaRed(Hectarea hectareaActual) {
-		return (conectadoALaRed);
+	public boolean conectadoALaRed(Hectarea unaHectarea){
+		Recorrido zonaCircundante= miPlano.recorrerZonaCircundante(posicionConstruccion, 1);
+		Hectarea hectareaActual;
+		marca=true;
+		while (zonaCircundante.tieneSiguiente()&&!conectadoALaRed){
+			hectareaActual=zonaCircundante.siguiente();
+			if (hectareaActual.tieneConexionElectrica()&&(hectareaActual.obtenerLineaDeTension().marcado())&&
+				hectareaActual.obtenerLineaDeTension().conectadoALaRed(hectareaActual)){
+				this.habilitarConexion();
+			}
+			if (hectareaActual.poseeCentralElectrica()){
+				this.habilitarConexion();
+			}
+		}
+		marca=false;
+		return conectadoALaRed;
+	}
+	
+	private boolean marcado() {//Este metodo indica si la conexion ya fue marcada para no volver a chequearla y evitar bucles infinitos. 
+		
+		return marca;
 	}
 
-	@Override
-	public void habilitarConexion() {
-		conectadoALaRed = true;
+	public void habilitarConexion(){
+		conectadoALaRed=true;
+		this.proveerServicioZona(miPlano);
+		miPlano.devolverHectarea(posicionConstruccion).habilitarElectricidad();
 	}
 	
 	public void destruir(){

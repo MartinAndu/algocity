@@ -27,6 +27,7 @@ public class Hectarea {
 	protected RutaPavimentada unaCalle;
 	protected LineasDeTension unaLineaDeTension;
 	protected boolean poseePozoDeAgua;
+	protected boolean poseeCentralElectrica;
 	
 	public Hectarea(){
 		this.construccionHectarea = null;
@@ -37,6 +38,7 @@ public class Hectarea {
 		this.unaLineaDeTension = null;
 
 		poseePozoDeAgua=false;
+		poseeCentralElectrica=false;
 	}
 	
     @Override
@@ -48,6 +50,10 @@ public class Hectarea {
 	
 	public void habilitarElectricidad(){
 		this.servicioElectrico = true;
+	}
+	
+	public boolean poseeCentralElectrica(){
+		return poseeCentralElectrica;
 	}
 	
 	public void habilitarAgua(){
@@ -90,11 +96,15 @@ public class Hectarea {
 		return unaConexionDeAgua;
 	}
 	
+	public boolean tieneConexionElectrica() {
+		return (!(unaLineaDeTension== null));
+	}
+	
 	public LineasDeTension obtenerLineaDeTension(){
 		return unaLineaDeTension;
 	}
 	
-	public boolean tieneCanio() {
+	public boolean tieneConexionDeAgua() {
 		return (!(unaConexionDeAgua== null));
 	}
 	
@@ -143,11 +153,12 @@ public class Hectarea {
 			throw new ExcepcionCentralElectricaNoPoseeRedDeAgua();
 		}
 		this.construccionHectarea = unaCentral;
-		this.habilitarElectricidad();
+		poseeCentralElectrica=true;
+		servicioElectrico=true;
 		
 	}
 	
-	public void establecerConexion(Conexion unaConexion){
+	public void establecerConexionElectrica(Conexion unaConexion){
 		
 		if(this.poseeConstruccion()){
 			throw new ExcepcionHectareaYaContieneUnaConstruccion();
