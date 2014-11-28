@@ -20,6 +20,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
+import Edificios.Construccion;
 import Edificios.EdificioResidencial;
 import Edificios.Posicion;
 
@@ -75,7 +76,7 @@ public class PersistenciaConstruccionesTest {
 		doc = dBuilder.parse(archivo);
 		doc.getDocumentElement().normalize();
 		
-		EdificioResidencial construccionCargada = EdificioResidencial.hidratar(doc);
+		Construccion construccionCargada = Construccion.hidratar(doc);
 		Assert.assertNotNull(construccionCargada);
 		Assert.assertEquals(construccion1ConPosicion1.devolverPosicionEnString(), construccionCargada.devolverPosicionEnString());
 		Assert.assertEquals(construccion1ConPosicion1.devolverPorcentajeDeConstruccion(), construccionCargada.devolverPorcentajeDeConstruccion());
