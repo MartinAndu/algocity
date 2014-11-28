@@ -8,12 +8,14 @@ import CentralesElectricas.CentralMineral;
 import Conectores.ConexionDeAgua;
 import Conectores.LineasDeTension;
 import Conectores.RutaPavimentada;
+import Constructor.Constructor;
 import Edificios.Construccion;
 import Edificios.EdificioResidencial;
 import Edificios.Posicion;
 import Edificios.PozoDeAgua;
 import PlanoGeneral.Plano;
 import Poblacion.Poblacion;
+import Presupuesto.Presupuesto;
 
 public abstract class Jugador {
 
@@ -24,7 +26,7 @@ public abstract class Jugador {
 	protected Constructor constructor;
 	
 	public Jugador() {
-		this.plano = new Plano(320, 240);
+		this.plano = new Plano(64, 32);
 	}
 
 	public int obtenerPoblacionSinHogar() {

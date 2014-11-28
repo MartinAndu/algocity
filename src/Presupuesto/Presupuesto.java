@@ -1,4 +1,4 @@
-package Jugador;
+package Presupuesto;
 
 import Excepciones.ExcepcionDineroInsuficiente;
 
