@@ -47,7 +47,7 @@ public class CentralElectrica extends Construccion implements Reconstruible,Dest
 	
 		Hectarea hectareaActual = unPlano.devolverHectarea(posicionConstruccion);
 		LineasDeTension unaLineaDeTension = new LineasDeTension(posicionConstruccion);
-		hectareaActual.establecerConexion(unaLineaDeTension);
+		hectareaActual.establecerConexionElectrica(unaLineaDeTension);
 		unaLineaDeTension.establecerCentralQueProveeEnergia(this);
 		unaLineaDeTension.habilitarConexion();
 		

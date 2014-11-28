@@ -78,7 +78,7 @@ import PlanoGeneral.Plano;
         		Edificio unoResidencial = new EdificioResidencial(unaPosicion2);
         		otraHectarea.habilitarAccesoAlTransito();
         		otraHectarea.habilitarElectricidad();
-        		unaConexion.habilitarConAguaSiCorresponde(unPlano, unaPosicion);
+        		unaConexion.proveerServicioZona(unPlano);
         		try{
             		otraHectarea.establecerEdificio(unoResidencial);
         		}
