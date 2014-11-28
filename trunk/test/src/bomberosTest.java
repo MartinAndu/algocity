@@ -9,8 +9,8 @@ import junit.framework.Assert;
 
 import org.junit.Test;
 
-import Jugador.Presupuesto;
-import Jugador.PresupuestoBajo;
+import Presupuesto.Presupuesto;
+import Presupuesto.PresupuestoBajo;
 
 
 public class bomberosTest {

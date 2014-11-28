@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Edificios.Reconstruible;
-import Jugador.Presupuesto;
+import Presupuesto.Presupuesto;
 
 
 /*

@@ -1,4 +1,4 @@
-package Jugador;
+package Constructor;
 
 import CentralesElectricas.CentralEolica;
 import CentralesElectricas.CentralMineral;
