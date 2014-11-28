@@ -1,8 +1,5 @@
 package Edificios;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-
 public class EdificioResidencial extends Edificio {
 
 	static int COSTO_CONSTRUCCION = 5;
@@ -34,19 +31,4 @@ public class EdificioResidencial extends Edificio {
 	public void destruir() {
 		danio = this.estadoConstruccion * 100 / 100;
 	}
-	
-    public static EdificioResidencial hidratar(Document doc) {
-    	Element elementoConstruccion = (Element)doc.getElementsByTagName("Construccion").item(0);
-
-    	int coordenadaX = Integer.parseInt((elementoConstruccion).getAttribute("coordenadaX"));
-    	int coordenadaY = Integer.parseInt((elementoConstruccion).getAttribute("coordenadaY"));
-    	float nuevoPorcentajeDeConstruccion = Float.parseFloat((elementoConstruccion).getAttribute("porcentajeDeConstruccion"));
-    	
-    	Posicion nuevaPosicion = new Posicion(coordenadaX, coordenadaY);
-    	
-    	EdificioResidencial nuevaConstruccion = new EdificioResidencial(nuevaPosicion);
-    	nuevaConstruccion.porcentajeDeConstruccion = nuevoPorcentajeDeConstruccion;
-    	
-    	return nuevaConstruccion;
-    }
 }
