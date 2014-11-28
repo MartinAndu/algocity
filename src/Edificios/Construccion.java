@@ -1,5 +1,8 @@
 package Edificios;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
 import PlanoGeneral.Plano;
 
 
@@ -18,10 +21,25 @@ public abstract class Construccion implements Reconstruible {
 		
 		porcentajeDeConstruccion = 100;
 	}
+
+    public Element serializar(Document doc) {
+        Element elementoConstruccion = doc.createElement("Construccion");
+        
+        elementoConstruccion.setAttribute("coordenadaX", Integer.toString((this.posicionConstruccion).devolverCoordenadaX()));
+        elementoConstruccion.setAttribute("coordenadaY", Integer.toString((this.posicionConstruccion).devolverCoordenadaY()));
+        elementoConstruccion.setAttribute("porcentajeDeConstruccion", Float.toString(this.porcentajeDeConstruccion()));
+       
+        return elementoConstruccion;
+    }
+	
 	public abstract int devolverConsumo();
 	
 	public int devolverCosto(){
 		return costoDeConstruccion;
+	}
+	
+	public int devolverPorcentajeDeConstruccion(){
+		return (int) (porcentajeDeConstruccion);
 	}
 	
 	public void reconstruir(int puntosDeReconstruccion){
