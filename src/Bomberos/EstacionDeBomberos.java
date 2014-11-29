@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Edificios.Reconstruible;
+import Excepciones.ExceptionConstruccionComplemtamenteReparada;
 import Presupuesto.Presupuesto;
 
 
@@ -42,7 +43,11 @@ public class EstacionDeBomberos {
 		}
 		
 		for(Reconstruible edificioAReconstruir: edificiosAReconstruir){
-			edificioAReconstruir.reconstruir(puntosDeReconstruccion);
+			try {
+				edificioAReconstruir.reconstruir(puntosDeReconstruccion);
+			} catch (ExceptionConstruccionComplemtamenteReparada e) {
+				edificiosAReconstruir.remove(edificioAReconstruir);
+			}
 		}
 	}
 
