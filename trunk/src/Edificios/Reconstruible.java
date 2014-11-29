@@ -1,10 +1,9 @@
 package Edificios;
 
+import Excepciones.ExceptionConstruccionComplemtamenteReparada;
+
 public interface Reconstruible {		
 
-		
-		public abstract void reconstruir(int puntosDeReconstruccion);
-		public abstract float porcentajeDeConstruccion();
-		public abstract void actualizarPuntosDeConstruccion();
+		public abstract void reconstruir(int puntosDeReconstruccion) throws ExceptionConstruccionComplemtamenteReparada;
 	
 }

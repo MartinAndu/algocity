@@ -24,9 +24,9 @@ public class Hectarea implements Destruible {
 	protected boolean servicioElectrico;
 	protected boolean servicioAgua;
 	protected boolean accesoAlTransito;
-	protected ConexionDeAgua unaConexionDeAgua;
-	protected RutaPavimentada unaCalle;
-	protected LineasDeTension unaLineaDeTension;
+	protected ConexionDeAgua canio;
+	protected RutaPavimentada ruta;
+	protected LineasDeTension linea;
 	protected boolean poseePozoDeAgua;
 	protected boolean poseeCentralElectrica;
 	
@@ -34,8 +34,8 @@ public class Hectarea implements Destruible {
 		this.construccion = null;
 		this.identi = java.util.UUID.randomUUID().toString(); 
 		this.superficie = superficie;
-		this.unaConexionDeAgua = null;
-		this.unaLineaDeTension = null;
+		this.canio = null;
+		this.linea = null;
 
 		poseePozoDeAgua=false;
 		poseeCentralElectrica=false;
@@ -80,19 +80,19 @@ public class Hectarea implements Destruible {
 	}
 	
 	public ConexionDeAgua obtenerCanio() {
-		return unaConexionDeAgua;
+		return canio;
 	}
 	
 	public boolean tieneConexionElectrica() {
-		return (!(unaLineaDeTension== null));
+		return (!(linea== null));
 	}
 	
 	public LineasDeTension obtenerLineaDeTension(){
-		return unaLineaDeTension;
+		return linea;
 	}
 	
 	public boolean tieneConexionDeAgua() {
-		return (!(unaConexionDeAgua== null));
+		return (!(canio== null));
 	}
 	
 
@@ -145,14 +145,14 @@ public class Hectarea implements Destruible {
 			throw new ExcepcionHectareaYaContieneUnaConstruccion();
 		}
 		
-		this.unaLineaDeTension = unaConexion;	
+		this.linea = unaConexion;	
 	}
 	
 	public void establecerConexionDeAgua(ConexionDeAgua unaConexion){
 		
 
-			unaConexionDeAgua=unaConexion;
-			servicioAgua=unaConexionDeAgua.conectadoALaRed(this);
+			canio=unaConexion;
+			servicioAgua=canio.conectadoALaRed(this);
 		
 	}
 
@@ -161,7 +161,7 @@ public class Hectarea implements Destruible {
 		if(this.poseeConstruccion()){
 			throw new ExcepcionHectareaYaContieneUnaConstruccion();
 		}
-		unaCalle=rutaPavimentada;
+		ruta=rutaPavimentada;
 	}
 
 	@Override
@@ -171,15 +171,15 @@ public class Hectarea implements Destruible {
 		} catch (Exception e) {}
 		
 		try {
-			unaConexionDeAgua.destruir();
+			canio.destruir();
 		} catch (Exception e) {}
 		
 		try {
-			unaLineaDeTension.destruir();
+			linea.destruir();
 		} catch (Exception e) {}
 		
 		try {
-			unaCalle.destruir();
+			ruta.destruir();
 		} catch (Exception e) {}
 	}
 
@@ -187,37 +187,37 @@ public class Hectarea implements Destruible {
 	public void destruirEnPorcentaje(int porcentaje) {
 		try {
 			this.construccion.destruirEnPorcentaje(porcentaje);
-		} catch (Exception e) {}
+		} catch (NullPointerException e) {}
 		
 		try {
-			unaConexionDeAgua.destruirEnPorcentaje(porcentaje);
-		} catch (Exception e) {}
+			canio.destruirEnPorcentaje(porcentaje);
+		} catch (NullPointerException e) {}
 		
 		try {
-			unaLineaDeTension.destruirEnPorcentaje(porcentaje);
-		} catch (Exception e) {}
+			linea.destruirEnPorcentaje(porcentaje);
+		} catch (NullPointerException e) {}
 		
 		try {
-			unaCalle.destruirEnPorcentaje(porcentaje);
-		} catch (Exception e) {}		
+			ruta.destruirEnPorcentaje(porcentaje);
+		} catch (NullPointerException e) {}		
 	}
 	
 	public ArrayList<Reconstruible> devolverListaDeReconstruibles() {
 		ArrayList<Reconstruible> reconstruilbles = new ArrayList<Reconstruible>();
 		
-		if (unaConexionDeAgua != null) {
-			reconstruilbles.add(unaConexionDeAgua);
+		if (canio != null) {
+			reconstruilbles.add(canio);
 		}
 		
-		if (unaLineaDeTension != null) {
-			reconstruilbles.add(unaLineaDeTension);
+		if (linea != null) {
+			reconstruilbles.add(linea);
 		}
 		
-		if (unaCalle != null) {
-			reconstruilbles.add(unaCalle);
+		if (ruta != null) {
+			reconstruilbles.add(ruta);
 		}
 		
-		if (unaConexionDeAgua != null) {
+		if (construccion != null) {
 			reconstruilbles.add(construccion);
 		}
 		return reconstruilbles;

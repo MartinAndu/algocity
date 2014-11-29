@@ -1,18 +1,14 @@
 package CentralesElectricas;
 
 import java.util.ArrayList;
-
-
 import Conectores.LineasDeTension;
 import Edificios.Construccion;
-import Edificios.Destruible;
 import Edificios.Posicion;
-import Edificios.Reconstruible;
 import PlanoGeneral.Hectarea;
 import PlanoGeneral.Plano;
 import PlanoGeneral.Recorrido;
 
-public class CentralElectrica extends Construccion implements Reconstruible,Destruible {
+public class CentralElectrica extends Construccion {
 	
 	protected int radioDeAbastecimientoEnHectareas;
 	protected int capacidadDeAbastecimientoEnMW;
@@ -68,34 +64,10 @@ public class CentralElectrica extends Construccion implements Reconstruible,Dest
 	public void setearCapacidadDeAbastecimientoEnMW(int capacidadParaAsignar){
 		this.capacidadDeAbastecimientoEnMW = capacidadParaAsignar;
 	}
-	
-	public boolean esConstruibleSobreTierra(){
-		return true;
-	}
-	
-	public boolean esConstruibleSobreAgua(){
-		return false;
-	}
-
-
 
 	@Override
 	public int devolverConsumo() {
 		return CONSUMO_ELECTRICO;
-	}
-		
-
-
-	@Override
-	public void destruir() {
-		danio = this.estadoConstruccion * 35 / 100;
-		
-	}
-
-	@Override
-	public void destruirEnPorcentaje(int porcentaje) {
-		// TODO Auto-generated method stub
-		
 	}
 	
 }

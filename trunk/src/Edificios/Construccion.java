@@ -9,23 +9,19 @@ import CentralesElectricas.CentralNuclear;
 import Conectores.ConexionDeAgua;
 import Conectores.LineasDeTension;
 import Conectores.RutaPavimentada;
+import Excepciones.ExceptionConstruccionComplemtamenteReparada;
 import PlanoGeneral.Plano;
+import PuntosConstruccion.PuntosDeConstruccion;
 
 
 public abstract class Construccion implements Reconstruible, Destruible {
 
 	protected Posicion posicionConstruccion;
 	protected int costoDeConstruccion;
-	protected int estadoConstruccion;
-	protected int danio;
-	protected float puntosMaximosDeConstruccion;
-	protected float puntosDeConstruccion;
-	protected float porcentajeDeConstruccion;
-
+	protected PuntosDeConstruccion puntosDeConstruccion;
+	
 	public Construccion(Posicion posicion) {
 		this.posicionConstruccion = posicion;
-		
-		porcentajeDeConstruccion = 100;
 	}
 
     public Element serializar(Document doc) {
@@ -35,7 +31,6 @@ public abstract class Construccion implements Reconstruible, Destruible {
         elementoConstruccion.setAttribute("nombre", nombreConstruccion);        
         elementoConstruccion.setAttribute("coordenadaX", Integer.toString((this.posicionConstruccion).devolverCoordenadaX()));
         elementoConstruccion.setAttribute("coordenadaY", Integer.toString((this.posicionConstruccion).devolverCoordenadaY()));
-        elementoConstruccion.setAttribute("porcentajeDeConstruccion", Float.toString(this.porcentajeDeConstruccion()));
        
         return elementoConstruccion;
     }
@@ -48,7 +43,6 @@ public abstract class Construccion implements Reconstruible, Destruible {
     	int coordenadaY = Integer.parseInt((elementoConstruccion).getAttribute("coordenadaY"));
     	
     	Posicion nuevaPosicion = new Posicion(coordenadaX, coordenadaY);
-    	Float nuevoPorcentajeDeConstruccion = Float.parseFloat((elementoConstruccion).getAttribute("porcentajeDeConstruccion"));
    
     	Construccion nuevaConstruccion = null;
     	
@@ -82,7 +76,6 @@ public abstract class Construccion implements Reconstruible, Destruible {
     	else if (nombreConstruccion.equals("PozoDeAgua")){
     		nuevaConstruccion = new PozoDeAgua(nuevaPosicion);
     	}
-    	nuevaConstruccion.porcentajeDeConstruccion = nuevoPorcentajeDeConstruccion;
     	return nuevaConstruccion;
     }
     
@@ -91,42 +84,7 @@ public abstract class Construccion implements Reconstruible, Destruible {
 	public int devolverCosto(){
 		return costoDeConstruccion;
 	}
-	
-	public int devolverPorcentajeDeConstruccion(){
-		return (int) (porcentajeDeConstruccion);
-	}
-	
-	public void reconstruir(int puntosDeReconstruccion){
-		this.actualizarPuntosDeConstruccion();
-		puntosDeConstruccion=Math.min(puntosDeConstruccion+puntosDeReconstruccion,puntosMaximosDeConstruccion);
-	}
-	
-	
-	public float porcentajeDeConstruccion(){
-		porcentajeDeConstruccion=(puntosDeConstruccion*100)/puntosMaximosDeConstruccion;
-		
-		return Math.round(porcentajeDeConstruccion);
-	}
-	
-	public void actualizarPuntosDeConstruccion(){
-		puntosDeConstruccion=(puntosMaximosDeConstruccion*porcentajeDeConstruccion)/100;
-	}
-	
-	
-	
-	public void recibirDanio(int danioAInflingir){
-		this.danio = Math.min(danio+danioAInflingir, 200);
-		porcentajeDeConstruccion=(porcentajeDeConstruccion-danio/2);
-		actualizarPuntosDeConstruccion();
-	}
-	
-	
-	
-	public int devolverDanioRecibido(){
-		return danio;
-	}
-	
-	
+
 	public Posicion obtenerPosicion(){
 		return posicionConstruccion;
 	}
@@ -136,7 +94,17 @@ public abstract class Construccion implements Reconstruible, Destruible {
 	}
 	
 	public abstract void construirSobrePlano(Plano plano);
-
-	public abstract void destruir();
+	
+	public void destruir() {
+		this.puntosDeConstruccion.decrementar();
+	}
+	
+	public void destruirEnPorcentaje(int porcentaje){
+		this.puntosDeConstruccion.decrementarEnPorcentaje(porcentaje);
+	}
+	
+	public void reconstruir(int puntosDeReconstruccion) throws ExceptionConstruccionComplemtamenteReparada {
+		this.puntosDeConstruccion.incrementar(puntosDeReconstruccion);
+	}
 
 }

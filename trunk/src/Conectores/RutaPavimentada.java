@@ -4,6 +4,7 @@ import Edificios.Posicion;
 import PlanoGeneral.Hectarea;
 import PlanoGeneral.Plano;
 import PlanoGeneral.Recorrido;
+import PuntosConstruccion.PuntosDeRuta;
 
 public class RutaPavimentada extends Conexion{
 
@@ -13,11 +14,10 @@ public class RutaPavimentada extends Conexion{
 
 	public RutaPavimentada(Posicion unaPosicion) {
 		super(unaPosicion);
-		
-		conectadoALaRed = true;
-		
-		radioDeDistribucion = RADIO_DE_DISTRIBUCION;
-		costoDeConstruccion = COSTO_CONSTRUCCION;
+		this.conectadoALaRed = true;
+		this.radioDeDistribucion = RADIO_DE_DISTRIBUCION;
+		this.costoDeConstruccion = COSTO_CONSTRUCCION;
+		this.puntosDeConstruccion = new PuntosDeRuta();
 	}
 
 	public void construirSobrePlano(Plano plano){
@@ -41,24 +41,6 @@ public class RutaPavimentada extends Conexion{
 	}
 
 	@Override
-	public void reconstruir(int puntosDeReconstruccion) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public float porcentajeDeConstruccion() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void actualizarPuntosDeConstruccion() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void habilitarConexion() {
 
 		conectadoALaRed=true;
@@ -74,13 +56,4 @@ public class RutaPavimentada extends Conexion{
 		}
 	}
 	
-	public void destruir(){
-		danio = this.estadoConstruccion * 80 / 100;
-	}
-
-	@Override
-	public void destruirEnPorcentaje(int porcentaje) {
-		// TODO Auto-generated method stub
-		
-	}
 }

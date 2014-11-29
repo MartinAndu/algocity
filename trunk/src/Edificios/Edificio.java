@@ -4,18 +4,12 @@ import Excepciones.ExcepcionHectareaNoHabilitadaParaConstruirEdificio;
 import PlanoGeneral.Hectarea;
 import PlanoGeneral.Plano;
 
-public class Edificio extends Construccion implements Reconstruible, Destruible {
+public class Edificio extends Construccion {
 	
 	protected boolean tieneElectricidad;
 	protected boolean tieneAgua;
 	protected boolean tieneAccesoAlTransito;
 	protected int consumoElectrico;
-	protected float puntosMaximosDeConstruccion;
-	protected float puntosDeConstruccion;
-	protected float porcentajeDeConstruccion;
-	public int porcentajeDanioGodzilla;
-	
-	
 	
 	public Edificio(Posicion posicion) {
 		super(posicion);
@@ -65,33 +59,4 @@ public class Edificio extends Construccion implements Reconstruible, Destruible 
 		unaHectarea.establecerEdificio(this);
 	}
 
-	public void reconstruir(int puntosDeReconstruccion){
-		this.actualizarPuntosDeConstruccion();
-		puntosDeConstruccion=Math.min(puntosDeConstruccion+puntosDeReconstruccion,puntosMaximosDeConstruccion);
-	}
-	
-	public void destruirUnPoco(){ //Este es un metodo temporal para probar las clases de bomberos y reconstruibles, luego sera borrada cuando se implemente Destruible
-		porcentajeDeConstruccion=81;
-		actualizarPuntosDeConstruccion();
-	}
-	
-	public float porcentajeDeConstruccion(){
-		porcentajeDeConstruccion=(puntosDeConstruccion*100)/puntosMaximosDeConstruccion;
-		
-		return Math.round(porcentajeDeConstruccion);
-	}
-	
-	public void actualizarPuntosDeConstruccion(){
-		puntosDeConstruccion=(puntosMaximosDeConstruccion*porcentajeDeConstruccion)/100;
-	}
-
-	@Override
-	public void destruir() {
-		
-	}
-
-	@Override
-	public void destruirEnPorcentaje(int porcentaje) {
-		
-	}
 }

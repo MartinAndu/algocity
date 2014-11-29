@@ -5,6 +5,7 @@ import Edificios.Posicion;
 import PlanoGeneral.Hectarea;
 import PlanoGeneral.Plano;
 import PlanoGeneral.Recorrido;
+import PuntosConstruccion.PuntosDeLineaTension;
 
 public  class LineasDeTension extends Conexion{
 
@@ -18,6 +19,7 @@ public  class LineasDeTension extends Conexion{
 		super(unaPosicion);
 		radioDeDistribucion = RADIO_DE_DISTRIBUCION;
 		costoDeConstruccion = COSTO_CONSTRUCCION;
+		this.puntosDeConstruccion = new PuntosDeLineaTension();
 	}
 	
 	public void construirSobrePlano(Plano plano){
@@ -70,24 +72,6 @@ public  class LineasDeTension extends Conexion{
 		
 	}
 
-	@Override
-	public void reconstruir(int puntosDeReconstruccion) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public float porcentajeDeConstruccion() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void actualizarPuntosDeConstruccion() {
-		// TODO Auto-generated method stub
-		
-	}
-
 	public boolean conectadoALaRed(Hectarea unaHectarea){
 		Recorrido zonaCircundante= miPlano.recorrerZonaCircundante(posicionConstruccion, 1);
 		Hectarea hectareaActual;
@@ -117,15 +101,6 @@ public  class LineasDeTension extends Conexion{
 		miPlano.devolverHectarea(posicionConstruccion).habilitarElectricidad();
 	}
 	
-	public void destruir(){
-		danio = this.estadoConstruccion * 100 / 100;
-	}
-
-	@Override
-	public void destruirEnPorcentaje(int porcentaje) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	
 }

@@ -3,16 +3,17 @@ package Edificios;
 import PlanoGeneral.Hectarea;
 import PlanoGeneral.Plano;
 import PlanoGeneral.Recorrido;
+import PuntosConstruccion.PuntosDePozo;
 
-public class PozoDeAgua extends Construccion{
+public class PozoDeAgua extends Construccion {
 
 	static int COSTO_CONSTRUCCION = 250;
 	static int CONSUMO_ELECTRICO = 0;
 	
 	public PozoDeAgua(Posicion unaPosicion){
 		super(unaPosicion);
-		
-		costoDeConstruccion = COSTO_CONSTRUCCION;
+		this.costoDeConstruccion = COSTO_CONSTRUCCION;
+		this.puntosDeConstruccion = new PuntosDePozo();
 	}
 	
 	@Override
