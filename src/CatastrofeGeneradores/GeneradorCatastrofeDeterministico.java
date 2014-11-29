@@ -7,12 +7,14 @@ import Catastrofe.Terremoto;
 
 public class GeneradorCatastrofeDeterministico extends GeneradorCatastrofe{
 
+	private int alternador;
+
 	public Catastrofe generarCatastrofe() {
-		if (numeroAlternador == 0){
-			GeneradorCatastrofeDeterministico.numeroAlternador += 1;
+		this.alternador++;
+		
+		if ((this.alternador % 2) == 0) {
 			return new Godzilla();
 		}
-		GeneradorCatastrofeDeterministico.numeroAlternador -= 1;
 		return new Terremoto();
 	}
 }

@@ -1,10 +1,13 @@
 package src;
 
+import java.util.ArrayList;
+
 import Bomberos.EstacionDeBomberos;
 
 import CentralesElectricas.CentralEolica;
 import Edificios.EdificioResidencial;
 import Edificios.Posicion;
+import Edificios.Reconstruible;
 import junit.framework.Assert;
 
 import org.junit.Test;
@@ -33,8 +36,8 @@ public class bomberosTest {
 		Assert.assertEquals(unEdificioResidencial.porcentajeDeConstruccion(),(porcentajeEsperado));//81=sin reparar, 91=reparado
 		Assert.assertEquals(unaCentral.porcentajeDeConstruccion(),porcentajeEsperado);
 		
-		unaEstacionDeBomberos.agregarReconstruibles(null);
-		unaEstacionDeBomberos.agregarReconstruibles(null);
+		unaEstacionDeBomberos.agregarReconstruibles(new ArrayList<Reconstruible>());
+		unaEstacionDeBomberos.agregarReconstruibles(new ArrayList<Reconstruible>());
 		unaEstacionDeBomberos.realizarReparaciones();
 		porcentajeEsperado=91;
 		//Assert.assertEquals(Math.round(unEdificioResidencial.porcentajeDeConstruccion()),Math.round(porcentajeEsperado));
