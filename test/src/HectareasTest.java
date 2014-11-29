@@ -1,7 +1,10 @@
 package src;
 
-import org.junit.Test;
+import static org.junit.Assert.fail;
 
+
+
+import org.junit.Test;
 import Edificios.Edificio;
 import Edificios.EdificioComercial;
 import Edificios.EdificioResidencial;
@@ -11,21 +14,21 @@ import Excepciones.ExcepcionHectareaYaContieneUnaConstruccion;
 import Excepciones.ExcepcionHectareaNoBrindaLosServiciosNecesarios;
 import Excepciones.ExcepcionNoSePuedeConstruirEnEsteTerreno;
 import PlanoGeneral.Hectarea;
+import Superficies.SuperficieConTerrenoLlano;
 import junit.framework.Assert;
 
 public class HectareasTest {
-	
 	@Test
 	public void hectareaSeCreaCorrectamente(){
-		Hectarea unaHectarea = new Hectarea();
+		Hectarea unaHectarea = new Hectarea(new SuperficieConTerrenoLlano());
 		Assert.assertFalse(unaHectarea.poseeConstruccion());
-		Assert.assertFalse(unaHectarea.poseeLos3Servicios());
+		Assert.assertFalse(unaHectarea.poseeLosTresServicios());
 	}
 	
 	@Test
 	public void hectareaNoAgregaEdificioSiNoEstanLosServiciosBasicosYLanzaExcepcion(){
 		Posicion unaPosicion = new Posicion(5,5);
-		Hectarea unaHectarea = new Hectarea();
+		Hectarea unaHectarea = new Hectarea(new SuperficieConTerrenoLlano());
         Edificio unEdificioComercial = new EdificioComercial(unaPosicion);
         
         boolean excepcionAtrapada = false;
@@ -45,13 +48,13 @@ public class HectareasTest {
 	@Test
 	public void hectareaAgregaUnEdificioComercialAlTenerLos3ServiciosHabilitados(){
 		Posicion unaPosicion = new Posicion(5,5);
-		Hectarea unaHectarea = new Hectarea();
+		Hectarea unaHectarea = new Hectarea(new SuperficieConTerrenoLlano());
 		
 		unaHectarea.habilitarAccesoAlTransito();
 		unaHectarea.habilitarAgua();
 		unaHectarea.habilitarElectricidad();
 		
-		Assert.assertTrue(unaHectarea.poseeLos3Servicios());
+		Assert.assertTrue(unaHectarea.poseeLosTresServicios());
 		
         Edificio unEdificioComercial = new EdificioComercial(unaPosicion);
         unaHectarea.establecerEdificio(unEdificioComercial);
@@ -62,28 +65,23 @@ public class HectareasTest {
 	@Test
 	public void hectareaLanzaExcepcionAlEstablecerUnPozoDeAguaEnUnaSuperficieDeTierra(){
 		Posicion unaPosicion = new Posicion(5,5);
-		Hectarea unaHectarea = new Hectarea();
+		Hectarea unaHectarea = new Hectarea(new SuperficieConTerrenoLlano());
 		
 		PozoDeAgua unPozoDeAgua = new PozoDeAgua(unaPosicion);
 		
-		boolean excepcionAtrapada = false;
-		
 		try{
 			unaHectarea.establecerPozoDeAgua(unPozoDeAgua);
+			fail("se deberia lanzar una excepcion");
 		}
 		catch (ExcepcionNoSePuedeConstruirEnEsteTerreno excepcion){
-			excepcionAtrapada = true;
 		}
-		
-		Assert.assertTrue(excepcionAtrapada);
-		Assert.assertFalse(unaHectarea.poseeConstruccion());
 	}
 	
 	@Test
 	public void hectareaLanzaExcepcionAlEstablecerUnEdificioConLaConstruccionOcupada(){
 		Posicion unaPosicion = new Posicion(5,5);
 		Posicion unaPosicion2 = new Posicion(52,54);
-		Hectarea unaHectarea = new Hectarea();
+		Hectarea unaHectarea = new Hectarea(new SuperficieConTerrenoLlano());
 		
         Edificio unEdificioResidencial = new EdificioResidencial(unaPosicion);
         Edificio unEdificioComercial = new EdificioComercial(unaPosicion2);
@@ -91,18 +89,14 @@ public class HectareasTest {
 		unaHectarea.habilitarAccesoAlTransito();
 		unaHectarea.habilitarAgua();
 		unaHectarea.habilitarElectricidad();
-        
-		boolean excepcionAtrapada = false;
 		
 		try{
 			unaHectarea.establecerEdificio(unEdificioResidencial);
 			unaHectarea.establecerEdificio(unEdificioComercial);
+			fail("se deberia lanzar una excepcion");
 		}
 		catch (ExcepcionHectareaYaContieneUnaConstruccion excepcion){
-			excepcionAtrapada = true;
 		}
-		
-		Assert.assertTrue(excepcionAtrapada);
 	}
 	
 }

@@ -131,7 +131,7 @@ public class PlanoTest {
 	public void testPlanoRecorrerAleatorioDebePasarPorDoceHectareas() {
 		
 		Plano plano = new Plano(7, 7);
-		Recorrido recorrido = plano.generarRecorridolAleatorio();
+		Recorrido recorrido = plano.generarRecorridolAleatorioDesdeUnaPosicionBorde();
 		int i = 0;
 		
 		while (recorrido.tieneSiguiente()) {

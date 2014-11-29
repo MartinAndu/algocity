@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 import org.junit.Assert;
 import org.junit.Test;
 
-import CentralesElectricas.CentralElectrica;
 import CentralesElectricas.CentralEolica;
 import Conectores.LineasDeTension;
 import Edificios.Edificio;
@@ -14,13 +13,9 @@ import Edificios.Posicion;
 import Excepciones.ExcepcionHectareaNoBrindaLosServiciosNecesarios;
 import PlanoGeneral.Hectarea;
 import PlanoGeneral.Plano;
-
-
-
+import Superficies.SuperficieConTerrenoLlano;
 
 public class LineasDeTensionTest {
-
-
 	
 	@Test
 	public void seCreanCorrectamenteLasLineasDeTension(){
@@ -28,37 +23,21 @@ public class LineasDeTensionTest {
 		assertNotNull(unaLineaDeTension);
 	}
 	
-	@Test
-	public void lasLineasDeTensionSeConectanCorrectamente(){
-		//En construccion,seguir probando esto
-		Plano unPlano = new Plano(5,5);
-		Posicion unaPosicion=new Posicion(2,2);
-		CentralElectrica unaCentralElectrica = new CentralElectrica(unaPosicion);
-		//unaCentralElectrica.construirSobrePlano(unPlano);
-		Hectarea unaHectarea = unPlano.devolverHectarea(unaPosicion);
-		unaHectarea.habilitarAgua();
-		unaHectarea.establecerCentral(unaCentralElectrica);
-		
-		
-		assertEquals(true,unaHectarea.poseeServicioElectrico());
-	}
-	
-    
     @Test
-            public void hayConexionElectricaEnLinea(){
-    				
-    				Plano unPlano=new Plano(8,8);
-    				Posicion unaPosicion=new Posicion(2,3);
-                    LineasDeTension unaLineaDeTension = new LineasDeTension(unaPosicion);
-            
-                    unaLineaDeTension.construirSobrePlano(unPlano);
-
-                    unaLineaDeTension.habilitarConexion();
-                    
-            Assert.assertTrue(unaLineaDeTension.conectadoALaRed(new Hectarea()));
-    }
-    
-    
+    public void hayConexionElectricaEnLinea(){
+    	
+    	Plano unPlano=new Plano(8,8);
+    	Posicion unaPosicion=new Posicion(2,3);
+    	LineasDeTension unaLineaDeTension = new LineasDeTension(unaPosicion);
+    	
+    	unaLineaDeTension.construirSobrePlano(unPlano);
+    	
+    	unaLineaDeTension.habilitarConexion();
+    	
+    	Assert.assertTrue(unaLineaDeTension.conectadoALaRed(new Hectarea(new SuperficieConTerrenoLlano())));
+    }	
+    	
+    	
     @Test
     
     public void hayConexionElectrica(){
@@ -82,9 +61,6 @@ public class LineasDeTensionTest {
     		otraConexion.construirSobrePlano(unPlano);
     		tercerConexion.construirSobrePlano(unPlano);
     		otraConexion.habilitarConexion();
-    		
-    		
-    		
     		
     		Assert.assertTrue(tercerConexion.conectadoALaRed(unPlano.devolverHectarea(tercerPosicion)));
     		

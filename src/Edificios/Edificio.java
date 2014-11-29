@@ -54,7 +54,7 @@ public class Edificio extends Construccion implements Reconstruible, Destruible 
 	}
 	
     public void inspeccionarHectarea(Hectarea unaHectarea){
-    	if ((!unaHectarea.poseeLos3Servicios()) || (unaHectarea.poseeConstruccion())){
+    	if ((!unaHectarea.poseeLosTresServicios()) || (unaHectarea.poseeConstruccion())){
     		throw new ExcepcionHectareaNoHabilitadaParaConstruirEdificio();
     	}
     }
@@ -67,10 +67,9 @@ public class Edificio extends Construccion implements Reconstruible, Destruible 
 		return false;
 	}
 
-
-	
 	public void construirSobrePlano(Plano unPlano){
 		Hectarea unaHectarea = unPlano.devolverHectarea(posicionConstruccion);
+		this.inspeccionarHectarea(unaHectarea);
 		unaHectarea.establecerEdificio(this);
 	}
 

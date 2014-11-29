@@ -2,6 +2,7 @@ package src;
 
 import junit.framework.Assert;
 
+
 import org.junit.Test;
 
 import Edificios.Edificio;
@@ -9,9 +10,6 @@ import Edificios.EdificioComercial;
 import Edificios.EdificioIndustrial;
 import Edificios.EdificioResidencial;
 import Edificios.Posicion;
-import Superficies.Superficie;
-import Superficies.SuperficieConAgua;
-import Superficies.SuperficieConTerrenoLlano;
 
 public class EdificiosTest {
 	
@@ -79,16 +77,5 @@ public class EdificiosTest {
 		Assert.assertTrue(unoResidencial.tieneElectricidad());
 		Assert.assertTrue(unoResidencial.tieneAgua());
 		Assert.assertTrue(unoResidencial.tieneAccesoAlTransito());
-	}
-	
-	@Test
-	public void edificioPuedeConstruirseEnSuperficieLlanaPeroNoEnUnaConAgua(){
-		Posicion unaPosicion = new Posicion(6,6);
-		Superficie unaSuperficieLlana = new SuperficieConTerrenoLlano();
-		Superficie unaSuperficieConAgua = new SuperficieConAgua();
-		
-		Edificio unoResidencial = new EdificioResidencial(unaPosicion);
-		Assert.assertTrue(unaSuperficieLlana.puedoConstruir(unoResidencial));
-		Assert.assertFalse(unaSuperficieConAgua.puedoConstruir(unoResidencial));
 	}
 }

@@ -6,14 +6,17 @@ import Superficies.SuperficieConTerrenoLlano;
 
 public class GeneradorSuperficieDeterminista extends GeneradorSuperficie {
 	
+	private int alternador;
+
+	public GeneradorSuperficieDeterminista() {
+		this.alternador = 0;
+	}
 	public Superficie generarSuperficie() {
-		
-		if (numeroAlternador == 0){
-			numeroAlternador += 1;
-			return new SuperficieConTerrenoLlano();
+		this.alternador++;
+		if ((alternador % 2) == 0) {
+			return new SuperficieConAgua();
 		}
-		numeroAlternador -= 1;
-		return new SuperficieConAgua();
+		return new SuperficieConTerrenoLlano();
 	}
 
 }

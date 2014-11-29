@@ -12,7 +12,7 @@ import Conectores.RutaPavimentada;
 import PlanoGeneral.Plano;
 
 
-public abstract class Construccion implements Reconstruible {
+public abstract class Construccion implements Reconstruible, Destruible {
 
 	protected Posicion posicionConstruccion;
 	protected int costoDeConstruccion;

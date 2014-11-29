@@ -43,4 +43,10 @@ public class PozoDeAgua extends Construccion{
 	public void destruir(){
 		//Godzilla no destruye el pozo de agua
 	}
+
+	@Override
+	public void destruirEnPorcentaje(int porcentaje) {
+		// TODO Auto-generated method stub
+		
+	}
 }

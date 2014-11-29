@@ -121,5 +121,11 @@ public  class LineasDeTension extends Conexion{
 		danio = this.estadoConstruccion * 100 / 100;
 	}
 
+	@Override
+	public void destruirEnPorcentaje(int porcentaje) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 }
