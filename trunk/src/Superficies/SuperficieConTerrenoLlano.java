@@ -1,13 +1,13 @@
 package Superficies;
 
-import Edificios.Construccion;
 
 public class SuperficieConTerrenoLlano extends Superficie{
 
-	public SuperficieConTerrenoLlano(){
-		
+	public boolean sePuedeConstruirUnPozoDeAgua(){
+		return false;
 	}
-	public boolean puedoConstruir(Construccion unaConstruccion){
-		return unaConstruccion.esConstruibleSobreTierra();
+
+	public boolean sePuedeConstruirUnEdificioOCentral() {
+		return true;
 	}
 }

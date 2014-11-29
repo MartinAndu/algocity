@@ -1,5 +1,7 @@
 package Jugador;
 
+import java.util.ArrayList;
+
 import Bomberos.EstacionDeBomberos;
 
 
@@ -13,6 +15,7 @@ import Edificios.Construccion;
 import Edificios.EdificioResidencial;
 import Edificios.Posicion;
 import Edificios.PozoDeAgua;
+import Edificios.Reconstruible;
 import PlanoGeneral.Plano;
 import Poblacion.Poblacion;
 import Presupuesto.Presupuesto;
@@ -44,6 +47,8 @@ public abstract class Jugador {
 
 	public void huboUnaCatastrofe(Catastrofe catastrofe) {
 		catastrofe.destruirCiudad(this.plano);
+		ArrayList<Reconstruible> reconstruibles = catastrofe.obtenerListaDeEstructurasDestruidas();
+		estacionDeBomberos.agregarReconstruibles(reconstruibles);
 	}
 
 	public void habilitarEstacionDeBomberos() {

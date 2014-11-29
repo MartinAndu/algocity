@@ -1,5 +1,6 @@
 package PlanoGeneral;
 import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -12,6 +13,7 @@ import PlanoGeneradores.GeneradorPosicion;
 import PlanoGeneradores.GeneradorPosicionDeterminista;
 import PlanoGeneradores.GeneradorRecorrido;
 import PlanoGeneradores.GeneradorRecorridoDeterminista;
+import SuperficiesGeneradores.GeneradorSuperficieDeterminista;
 
 
 public class Plano {
@@ -21,9 +23,10 @@ public class Plano {
 	private GeneradorPosicion generadorPosicion;
 	private GeneradorDireccion generadorDireccion;
 	private GeneradorRecorrido generadorRecorrido;
+	private GeneradorSuperficieDeterminista generadorSuperficies;
 	private int ancho;
 	private int alto;
- 
+	
 	public Plano(int dimensionN, int dimensionM) {
 		alto = dimensionN;
 		ancho = dimensionM;
@@ -32,6 +35,7 @@ public class Plano {
 		generadorPosicion = new GeneradorPosicionDeterminista(dimensionN, dimensionM);
 		generadorDireccion = new GeneradorDireccionDeterminista();
 		generadorRecorrido = new GeneradorRecorridoDeterminista();
+		generadorSuperficies = new GeneradorSuperficieDeterminista();
 		construirPlano(dimensionN, dimensionM);
 	}
 
@@ -112,7 +116,7 @@ public class Plano {
 			for (int j = 1; j <= dimensionM; j++) {
 				
 				String posicionEnString = (new Posicion(i, j)).enString();
-				Hectarea hectarea = new Hectarea();
+				Hectarea hectarea = new Hectarea(generadorSuperficies.generarSuperficie());
 				hectareas.put(posicionEnString, hectarea);	
 			}
 		}
@@ -207,7 +211,7 @@ public class Plano {
 		return entornoParcial;
 	}
 	
-	public Recorrido generarRecorridolAleatorio() {
+	public Recorrido generarRecorridolAleatorioDesdeUnaPosicionBorde() {
 		
 		Posicion posicionBorde = new Posicion(0, 0);
 		Direccion direccion = new Norte();

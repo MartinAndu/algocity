@@ -1,25 +1,26 @@
 package PlanoGeneral;
 
+import java.util.ArrayList;
+
+
 import CentralesElectricas.CentralElectrica;
-import Conectores.Conexion;
 import Conectores.ConexionDeAgua;
 import Conectores.LineasDeTension;
 import Conectores.RutaPavimentada;
 import Edificios.Construccion;
+import Edificios.Destruible;
 import Edificios.Edificio;
 import Edificios.PozoDeAgua;
-import Excepciones.ExcepcionCentralElectricaNoPoseeRedDeAgua;
+import Edificios.Reconstruible;
 import Excepciones.ExcepcionHectareaYaContieneUnaConstruccion;
 import Excepciones.ExcepcionHectareaNoBrindaLosServiciosNecesarios;
+import Excepciones.ExcepcionNoSePuedeConstruirEnEsteTerreno;
 import Superficies.Superficie;
-import SuperficiesGeneradores.GeneradorSuperficieDeterminista;
 
-public class Hectarea {
+public class Hectarea implements Destruible {
 	public String identi;
-	protected GeneradorSuperficieDeterminista generadorSuperficie;
-	protected Superficie superficieHectarea;
-	protected Construccion construccionHectarea;
-	protected Conexion conexion;
+	protected Superficie superficie;
+	protected Construccion construccion;
 	protected boolean servicioElectrico;
 	protected boolean servicioAgua;
 	protected boolean accesoAlTransito;
@@ -29,11 +30,10 @@ public class Hectarea {
 	protected boolean poseePozoDeAgua;
 	protected boolean poseeCentralElectrica;
 	
-	public Hectarea(){
-		this.construccionHectarea = null;
+	public Hectarea(Superficie superficie){
+		this.construccion = null;
 		this.identi = java.util.UUID.randomUUID().toString(); 
-		this.generadorSuperficie = new GeneradorSuperficieDeterminista();
-		this.superficieHectarea = generadorSuperficie.generarSuperficie();
+		this.superficie = superficie;
 		this.unaConexionDeAgua = null;
 		this.unaLineaDeTension = null;
 
@@ -44,18 +44,13 @@ public class Hectarea {
     @Override
     public boolean equals (Object o) {
         Hectarea x = (Hectarea) o;
-            if (x.identi == identi) return true;
-            return false;
+        return (x.identi == identi);
     }
 	
 	public void habilitarElectricidad(){
 		this.servicioElectrico = true;
 	}
-	
-	public boolean poseeCentralElectrica(){
-		return poseeCentralElectrica;
-	}
-	
+		
 	public void habilitarAgua(){
 		this.servicioAgua = true;
 	}
@@ -63,34 +58,26 @@ public class Hectarea {
 	public void habilitarAccesoAlTransito(){
 		this.accesoAlTransito = true;
 	}
-
+	
+	public boolean poseeCentralElectrica(){
+		return poseeCentralElectrica;
+	}
+	
 	public boolean poseeServicioDeAgua(){
 		return this.servicioAgua;
 	}
-	
-
 	
 	public boolean poseeServicioElectrico(){
 		return this.servicioElectrico;
 	}
 	
-	public boolean poseeLos3Servicios(){
-		//return (servicioAgua && accesoAlTransito); //con este funciona bien JugadorTest
-		return (servicioAgua && servicioElectrico && accesoAlTransito);//con este falla porque le faltan servicios
+	public boolean poseeLosTresServicios(){
+		return ((servicioAgua && servicioElectrico) && accesoAlTransito);
 	}
 	
 	public boolean poseeConstruccion(){
-		return (construccionHectarea != null);
+		return (construccion != null);
 	}
-	
-	public Construccion obtenerConstruccion(){
-		return construccionHectarea;
-	}
-	
-	public Superficie obtenerSuperficie(){
-		return superficieHectarea;
-	}
-	
 	
 	public ConexionDeAgua obtenerCanio() {
 		return unaConexionDeAgua;
@@ -113,14 +100,14 @@ public class Hectarea {
 		if(this.poseeConstruccion()){
 			throw new ExcepcionHectareaYaContieneUnaConstruccion();
 		}
-		else if(!this.poseeLos3Servicios()){
+		else if(!this.poseeLosTresServicios()){
 			throw new ExcepcionHectareaNoBrindaLosServiciosNecesarios();
 		}
-		else if(!(this.superficieHectarea).puedoConstruir(unEdificio)){
+		else if(!(this.superficie).sePuedeConstruirUnPozoDeAgua()){
 			//throw new ExcepcionNoSePuedeConstruirEnEsteTerreno();//lo deshabilito para probar sin tener en cuenta los terrenos
 			;
 		}
-		this.construccionHectarea = unEdificio;
+		this.construccion = unEdificio;
 		unEdificio.habilitarAccesoAlTransito();
 		unEdificio.habilitarAgua();
 		unEdificio.habilitarElectricidad();
@@ -134,40 +121,31 @@ public class Hectarea {
 		if(this.poseeConstruccion()){
 			throw new ExcepcionHectareaYaContieneUnaConstruccion();
 		}
-		else if(!(this.superficieHectarea).puedoConstruir(unPozoDeAgua)){
-			//throw new ExcepcionNoSePuedeConstruirEnEsteTerreno();
+		if(!(this.superficie).sePuedeConstruirUnPozoDeAgua()){
+			throw new ExcepcionNoSePuedeConstruirEnEsteTerreno();
 		}
-		this.construccionHectarea = unPozoDeAgua;
+		
+		this.construccion = unPozoDeAgua;
 		poseePozoDeAgua=true;
-		servicioAgua=true;
-
 		
 	}
 	
 	public void establecerCentral(CentralElectrica unaCentral){
 		if(this.poseeConstruccion())
 			throw new ExcepcionHectareaYaContieneUnaConstruccion();
-		//else if(!(this.superficieHectarea).puedoConstruir(unaCentral))
-				//throw new ExcepcionNoSePuedeConstruirEnEsteTerreno();
-		else if (!this.poseeServicioDeAgua()){
-			throw new ExcepcionCentralElectricaNoPoseeRedDeAgua();
-		}
-		this.construccionHectarea = unaCentral;
-		poseeCentralElectrica=true;
-		servicioElectrico=true;
+		
+		this.construccion = unaCentral;
+		poseeCentralElectrica = true;
 		
 	}
 	
-	public void establecerConexionElectrica(Conexion unaConexion){
+	public void establecerConexionElectrica(LineasDeTension unaConexion){
 		
 		if(this.poseeConstruccion()){
 			throw new ExcepcionHectareaYaContieneUnaConstruccion();
 		}
-		else{
-			this.conexion = unaConexion;
-			servicioElectrico=true; 
-		}
 		
+		this.unaLineaDeTension = unaConexion;	
 	}
 	
 	public void establecerConexionDeAgua(ConexionDeAgua unaConexion){
@@ -183,10 +161,66 @@ public class Hectarea {
 		if(this.poseeConstruccion()){
 			throw new ExcepcionHectareaYaContieneUnaConstruccion();
 		}
-		else{
-			unaCalle=rutaPavimentada;
-			accesoAlTransito=true;	
+		unaCalle=rutaPavimentada;
+	}
+
+	@Override
+	public void destruir() {		
+		try {
+			this.construccion.destruir();
+		} catch (Exception e) {}
+		
+		try {
+			unaConexionDeAgua.destruir();
+		} catch (Exception e) {}
+		
+		try {
+			unaLineaDeTension.destruir();
+		} catch (Exception e) {}
+		
+		try {
+			unaCalle.destruir();
+		} catch (Exception e) {}
+	}
+
+	@Override
+	public void destruirEnPorcentaje(int porcentaje) {
+		try {
+			this.construccion.destruirEnPorcentaje(porcentaje);
+		} catch (Exception e) {}
+		
+		try {
+			unaConexionDeAgua.destruirEnPorcentaje(porcentaje);
+		} catch (Exception e) {}
+		
+		try {
+			unaLineaDeTension.destruirEnPorcentaje(porcentaje);
+		} catch (Exception e) {}
+		
+		try {
+			unaCalle.destruirEnPorcentaje(porcentaje);
+		} catch (Exception e) {}		
+	}
+	
+	public ArrayList<Reconstruible> devolverListaDeReconstruibles() {
+		ArrayList<Reconstruible> reconstruilbles = new ArrayList<Reconstruible>();
+		
+		if (unaConexionDeAgua != null) {
+			reconstruilbles.add(unaConexionDeAgua);
 		}
+		
+		if (unaLineaDeTension != null) {
+			reconstruilbles.add(unaLineaDeTension);
+		}
+		
+		if (unaCalle != null) {
+			reconstruilbles.add(unaCalle);
+		}
+		
+		if (unaConexionDeAgua != null) {
+			reconstruilbles.add(construccion);
+		}
+		return reconstruilbles;
 	}
 	
 

@@ -32,8 +32,8 @@ public class EstacionDeBomberos {
 		estacionHabilitada = false;
 	}
 	
-	public void agregarReconstruible(Reconstruible unReconstruible) {
-		edificiosAReconstruir.add(unReconstruible);
+	public void agregarReconstruibles(ArrayList<Reconstruible> reconstruibles) {
+		edificiosAReconstruir.addAll(reconstruibles);
 	}
 
 	public void realizarReparaciones() {

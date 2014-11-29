@@ -77,4 +77,10 @@ public class RutaPavimentada extends Conexion{
 	public void destruir(){
 		danio = this.estadoConstruccion * 80 / 100;
 	}
+
+	@Override
+	public void destruirEnPorcentaje(int porcentaje) {
+		// TODO Auto-generated method stub
+		
+	}
 }

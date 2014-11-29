@@ -14,6 +14,7 @@ import Presupuesto.PresupuestoBajo;
 
 
 public class bomberosTest {
+
 	@Test
 	public void reconstruccionDeResidencialyEolica(){
 		
@@ -32,8 +33,8 @@ public class bomberosTest {
 		Assert.assertEquals(unEdificioResidencial.porcentajeDeConstruccion(),(porcentajeEsperado));//81=sin reparar, 91=reparado
 		Assert.assertEquals(unaCentral.porcentajeDeConstruccion(),porcentajeEsperado);
 		
-		unaEstacionDeBomberos.agregarReconstruible(unEdificioResidencial);
-		unaEstacionDeBomberos.agregarReconstruible(unaCentral);
+		unaEstacionDeBomberos.agregarReconstruibles(null);
+		unaEstacionDeBomberos.agregarReconstruibles(null);
 		unaEstacionDeBomberos.realizarReparaciones();
 		porcentajeEsperado=91;
 		//Assert.assertEquals(Math.round(unEdificioResidencial.porcentajeDeConstruccion()),Math.round(porcentajeEsperado));

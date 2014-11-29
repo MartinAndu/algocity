@@ -113,4 +113,10 @@ public class ConexionDeAgua extends Conexion {
 	public void destruir(){
 		//Godzilla no destruye la conexion de agua
 	}
+
+	@Override
+	public void destruirEnPorcentaje(int porcentaje) {
+		// TODO Auto-generated method stub
+		
+	}
 }

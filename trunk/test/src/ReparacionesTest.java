@@ -9,6 +9,7 @@ import org.junit.Test;
 
 
 public class ReparacionesTest {
+
 	@Test
 	public void porcentajeDeConstruccionInicialDeEdificio(){
 	Posicion unaPosicion=new Posicion(2,1);
