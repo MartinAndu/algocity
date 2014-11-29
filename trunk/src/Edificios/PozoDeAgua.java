@@ -15,14 +15,6 @@ public class PozoDeAgua extends Construccion{
 		costoDeConstruccion = COSTO_CONSTRUCCION;
 	}
 	
-	public boolean esConstruibleSobreTierra(){
-		return false;
-	}
-	
-	public boolean esConstruibleSobreAgua(){
-		return true;
-	}
-
 	@Override
 	public int devolverConsumo() {
 		return CONSUMO_ELECTRICO;

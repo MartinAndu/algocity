@@ -59,14 +59,6 @@ public class Edificio extends Construccion implements Reconstruible, Destruible 
     	}
     }
 
-	public boolean esConstruibleSobreTierra(){
-		return true;
-	}
-	
-	public boolean esConstruibleSobreAgua(){
-		return false;
-	}
-
 	public void construirSobrePlano(Plano unPlano){
 		Hectarea unaHectarea = unPlano.devolverHectarea(posicionConstruccion);
 		this.inspeccionarHectarea(unaHectarea);

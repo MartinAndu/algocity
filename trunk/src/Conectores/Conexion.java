@@ -26,18 +26,6 @@ public abstract class Conexion extends Construccion implements Reconstruible{
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
-	@Override
-	public boolean esConstruibleSobreAgua() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean esConstruibleSobreTierra() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 	
 
 }
