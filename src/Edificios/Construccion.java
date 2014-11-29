@@ -137,11 +137,6 @@ public abstract class Construccion implements Reconstruible, Destruible {
 	
 	public abstract void construirSobrePlano(Plano plano);
 
-	public abstract boolean esConstruibleSobreAgua();
-
-	public abstract boolean esConstruibleSobreTierra();
-
-	
 	public abstract void destruir();
 
 }

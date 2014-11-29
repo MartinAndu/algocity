@@ -54,15 +54,6 @@ public class ConexionDeAgua extends Conexion {
 	}
 
 	
-	public boolean esConstruibleSobreAgua(){
-		
-		return true;
-	}
-	public boolean esConstruibleSobreTierra(){
-		
-		return true;
-	}
-	
 	public void proveerServicioZona(Plano unPlano){
 		miPlano=unPlano;
 		Recorrido zonaCircundante= unPlano.recorrerZonaCircundante(posicionConstruccion, radioDeDistribucion);
