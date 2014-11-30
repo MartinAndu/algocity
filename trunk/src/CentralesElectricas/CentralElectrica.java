@@ -46,6 +46,7 @@ public class CentralElectrica extends Construccion {
 			
 			Hectarea hectareaActual = zonaCircundante.siguiente();
 			hectareaActual.habilitarServicio(servicioQueProvee);
+			hectareaActual.establecerCentralALaQuePertenece(this);
 			
 	
 		}
