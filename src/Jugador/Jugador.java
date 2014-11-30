@@ -37,10 +37,6 @@ public abstract class Jugador {
 	protected EstacionDeBomberos estacionDeBomberos;
 	protected Constructor constructor;
 	protected String nombreJugador;
-	
-	public Jugador() {
-		this.plano = new Plano(64, 32);
-	}
 
 	public void establecerNombreJugador(String unNombre){
 		this.nombreJugador = unNombre;
@@ -78,7 +74,7 @@ public abstract class Jugador {
 	}
 	
 	public static Jugador hidratar(Document doc) {
-		Jugador nuevoJugador = new JugadorMedio();
+		Jugador nuevoJugador = new JugadorParaTest();
 		Element elementoJugador = (Element)doc.getElementsByTagName("Jugador").item(0);
 		
 		nuevoJugador.nombreJugador = (elementoJugador).getAttribute("nombre");

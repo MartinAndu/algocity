@@ -1,5 +1,6 @@
 package src;
 import org.junit.Assert;
+
 import org.junit.Test;
 import Conectores.ConexionDeAgua;
 import Conectores.RutaPavimentada;
@@ -9,6 +10,7 @@ import Edificios.EdificioResidencial;
 import Excepciones.ExcepcionHectareaNoBrindaLosServiciosNecesarios;
 import PlanoGeneral.Hectarea;
 import PlanoGeneral.Plano;
+import PlanoGeneral.PlanoDeterminista;
 
 public class callesTest {
 
@@ -23,7 +25,7 @@ public class callesTest {
 	@Test
 	public void accesoARutaPavimentada(){
 		
-		Plano unPlano = new Plano (8,8);
+		Plano unPlano = new PlanoDeterminista(8,8);
 		Posicion unaPosicion=new Posicion(4,4);
 		RutaPavimentada unaConexion= new RutaPavimentada(unaPosicion);
 		unaConexion.construirSobrePlano(unPlano);
@@ -45,7 +47,7 @@ public class callesTest {
 	@Test
 	public void sinAccesoAAguaMuyLejos(){
 		boolean noTieneServiciosSuficiente = false;
-		Plano unPlano = new Plano (8,8);
+		Plano unPlano = new PlanoDeterminista(8,8);
 		Posicion unaPosicion=new Posicion(2,2);
 		ConexionDeAgua unaConexion= new ConexionDeAgua(unaPosicion);
 		unaConexion.construirSobrePlano(unPlano);
