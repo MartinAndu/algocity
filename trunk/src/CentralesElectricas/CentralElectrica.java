@@ -48,10 +48,8 @@ public class CentralElectrica extends Construccion {
 			
 	
 		}
-		//porque una central central establece una linea en el lugar donde se encuantra?.. cambiar
-		Hectarea hectareaActual = unPlano.devolverHectarea(posicionConstruccion);
+		
 		LineasDeTension unaLineaDeTension = new LineasDeTension(posicionConstruccion);
-		hectareaActual.establecerConexionElectrica(unaLineaDeTension);
 		unaLineaDeTension.establecerCentralQueProveeEnergia(this);
 		unaLineaDeTension.habilitarConexion();
 		
