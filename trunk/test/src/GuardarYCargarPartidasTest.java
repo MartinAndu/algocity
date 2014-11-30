@@ -17,18 +17,27 @@ public class GuardarYCargarPartidasTest {
 		
 		Assert.assertTrue(unJuego.hayJugadores());
 		
-		unJugador.guardarPartida(); // ojo que esto genera un .xml cada vez que se corre el test !!
+		unJugador.guardarPartida(); // Esto genera el XML con los datos del jugador Jorge.
 	}
 	
 	@Test
 	public void elJuegoPuedeCargarUnJugadorAPartirDeSuPartidaGuardadaEnElXML() throws Exception{
-		// Este test depende de que el anterior cree el archivo de la partida de "Jorge", pero los test deben ser independientes entre si!
 		AlgoCity unJuego = new AlgoCity();
 		
-		Assert.assertTrue(!unJuego.hayJugadores());
-		
-		unJuego.cargarPartidaJugador("Jorge.xml");
+		Jugador unJugador = unJuego.crearJugador("Jorge");
 		
 		Assert.assertTrue(unJuego.hayJugadores());
+		
+		unJugador.guardarPartida(); // Esto genera el XML con los datos del jugador Jorge.
+		
+		
+		
+		AlgoCity otroAlgoCity = new AlgoCity();
+		
+		Assert.assertTrue(!otroAlgoCity.hayJugadores());
+		
+		otroAlgoCity.cargarPartidaJugador("Jorge.xml"); // Cargo el XML con los datos de Jorge en otra instancia de AlgoCity...
+		
+		Assert.assertTrue(otroAlgoCity.hayJugadores());
 	}
 }
