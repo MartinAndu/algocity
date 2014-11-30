@@ -40,18 +40,18 @@ public class AlgoCity {
 	}
 
 	public void cargarPartidaJugador(String nombreArchivo) throws Exception { // (Dado el archivo de la partida de un jugador, lo manda a hidratar y lo agrega).
-        File archivo = new File(nombreArchivo);
-       
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        DocumentBuilder db = dbf.newDocumentBuilder();
-        Document doc = db.newDocument();
-       
-        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-        doc = dBuilder.parse(archivo);
-        doc.getDocumentElement().normalize();
-
-        Jugador unJugadorCargado = Jugador.hidratar(doc); // Me devuelve una instancia del jugador hidratado.
-        this.agregarJugador(unJugadorCargado);
+		File archivo = new File(nombreArchivo);
+		
+		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+		DocumentBuilder db = dbf.newDocumentBuilder();
+		Document doc = db.newDocument();
+		
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		doc = dBuilder.parse(archivo);
+		doc.getDocumentElement().normalize();
+		
+		Jugador unJugadorCargado = Jugador.hidratar(doc); // Me devuelve una instancia del jugador hidratado.
+		this.agregarJugador(unJugadorCargado);
 	}
 }

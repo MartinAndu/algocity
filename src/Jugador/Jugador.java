@@ -70,8 +70,8 @@ public abstract class Jugador {
 
 		elementoJugador.setAttribute("nombre", this.nombreJugador);
 		elementoJugador.appendChild(this.presupuesto.serializar(doc));
-/**
 		elementoJugador.appendChild(this.poblacion.serializar(doc));
+/**
 		elementoJugador.appendChild(this.plano.serializar(doc));	
 **/
 		return elementoJugador;
@@ -85,10 +85,10 @@ public abstract class Jugador {
 		
 		Presupuesto nuevoPresupuesto = Presupuesto.hidratar( elementoJugador.getElementsByTagName("Presupuesto").item(0) );
 		nuevoJugador.presupuesto = nuevoPresupuesto;
-/**
+
 		Poblacion nuevaPoblacion = Poblacion.hidratar( elementoJugador.getElementsByTagName("Poblacion").item(0) );
 		nuevoJugador.poblacion = nuevaPoblacion;
-		
+/**
 		Plano nuevoPlano = Plano.hidratar( elementoJugador.getElementsByTagName("Plano").item(0) );
 		nuevoJugador.plano = nuevoPlano;
 **/

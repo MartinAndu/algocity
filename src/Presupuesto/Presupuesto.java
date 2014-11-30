@@ -4,9 +4,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.Element;
 
-
-
-
 import Excepciones.ExcepcionDineroInsuficiente;
 
 public abstract class Presupuesto {
@@ -38,17 +35,31 @@ public abstract class Presupuesto {
 	public Node serializar(Document doc) {
 		Element elementoPresupuesto = doc.createElement("Presupuesto");
 		
+		String tipoPresupuesto = (this.getClass()).getSimpleName();
+		
 		elementoPresupuesto.setAttribute("dinero", Integer.toString(this.cantidadDeDinero));
+		elementoPresupuesto.setAttribute("tipoPresupuesto", tipoPresupuesto);
 		
 		return elementoPresupuesto;
 	}
 
 	public static Presupuesto hidratar(Node elementoPresupuesto) {
-		Presupuesto nuevoPresupuesto = new PresupuestoAlto(); // No importa cual se instancie, porque el dinero se establece ahora...
+		String tipoPresupuesto = ((Element)elementoPresupuesto).getAttribute("tipoPresupuesto");
+		
+		Presupuesto nuevoPresupuesto = null;
+		
+		if(tipoPresupuesto.equals("PresupuestoAlto")){
+			nuevoPresupuesto = new PresupuestoAlto();
+		}
+		else if(tipoPresupuesto.equals("PresupuestoMedio")){
+			nuevoPresupuesto = new PresupuestoMedio();
+		}
+		else if(tipoPresupuesto.equals("PresupuestoBajo")){
+			nuevoPresupuesto = new PresupuestoBajo();
+		}
 		
 		nuevoPresupuesto.cantidadDeDinero = Integer.parseInt( ((Element)elementoPresupuesto).getAttribute("dinero") );
 		
 		return nuevoPresupuesto;
 	}
-
 }
