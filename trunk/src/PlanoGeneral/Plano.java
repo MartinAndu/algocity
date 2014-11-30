@@ -1,8 +1,10 @@
 package PlanoGeneral;
 import java.util.ArrayList;
-
 import java.util.HashMap;
 import java.util.Iterator;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
 
 import Edificios.Posicion;
 import PlanoDireccion.Direccion;
@@ -270,6 +272,16 @@ public class Plano {
 	public Hectarea devolverHectarea(Posicion posicion) {
 		
 		return this.hectareas.get(posicion.enString());
+	}
+
+	public Node serializar(Document doc) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public static Plano hidratar(Node item) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
