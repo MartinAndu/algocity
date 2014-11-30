@@ -26,6 +26,11 @@ public class CentralElectrica extends Construccion {
 	public void construirSobrePlano(Plano unPlano){
 		Hectarea unaHectarea = unPlano.devolverHectarea(posicionConstruccion);
 		unaHectarea.establecerCentral(this);
+		Recorrido zonaCircundante= unPlano.recorrerZonaCircundante(posicionConstruccion, radioDeAbastecimientoEnHectareas);
+		while (zonaCircundante.tieneSiguiente()){
+			Hectarea hectareaActual=zonaCircundante.siguiente();
+					hectareaActual.habilitarElectricidad();
+		}
 	}
 	
 	public void proveerElectricidadZona(Plano unPlano){
@@ -38,6 +43,7 @@ public class CentralElectrica extends Construccion {
 			
 			Hectarea hectareaActual = zonaCircundante.siguiente();
 			hectareaActual.habilitarElectricidad();
+			
 	
 		}
 	
