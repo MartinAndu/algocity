@@ -9,7 +9,7 @@ import PuntosConstruccion.PuntosDeLineaTension;
 
 public  class LineasDeTension extends Conexion{
 
-	CentralElectrica centralElectricaALAQuePertenece;
+
 	static int COSTO_CONSTRUCCION = 5;
 	static int RADIO_DE_DISTRIBUCION = 3;
 	
@@ -55,13 +55,20 @@ public  class LineasDeTension extends Conexion{
 			if (hectareaActual.tieneConexionElectrica()&&(!hectareaActual.obtenerLineaDeTension().marcado())&&
 				hectareaActual.obtenerLineaDeTension().conectadoALaRed(hectareaActual)){
 				this.habilitarConexion();
+				establecerCentralQueProveeEnergia(hectareaActual.obtenerLineaDeTension().centralElectricaALAQuePertenece());
 			}
 			if (hectareaActual.poseeCentralElectrica()){
 				this.habilitarConexion();
+				establecerCentralQueProveeEnergia(hectareaActual.obtenerCentral());
 			}
 		}
 		marca=false;
 		return conectadoALaRed;
+	}
+
+	public CentralElectrica centralElectricaALAQuePertenece() {
+	
+		return centralElectricaALAQuePertenece;
 	}
 	
 }

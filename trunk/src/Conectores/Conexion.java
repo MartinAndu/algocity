@@ -1,5 +1,6 @@
 package Conectores;
 
+import CentralesElectricas.CentralElectrica;
 import ConstruccionGeneral.Construccion;
 import ConstruccionGeneral.Posicion;
 import PlanoGeneral.Hectarea;
@@ -17,6 +18,7 @@ public abstract class Conexion extends Construccion {
 	protected int radioDeDistribucion;
 	protected boolean conectadoALaRed;
 	protected Plano miPlano;
+	protected CentralElectrica centralElectricaALAQuePertenece;
 
 	public Conexion(Posicion posicion) {
 		super(posicion);
@@ -49,6 +51,9 @@ public abstract class Conexion extends Construccion {
 			Hectarea hectareaActual=zonaCircundante.siguiente();
 
 			hectareaActual.habilitarServicio(servicioQueTransmite);
+			if(servicioQueTransmite=="electricidad"){
+				hectareaActual.establecerCentralALaQuePertenece(centralElectricaALAQuePertenece);
+			}
 		}
 		
 	}
