@@ -116,8 +116,7 @@ public class Hectarea implements Destruible {
 		}
 		else if(!this.poseeLosTresServicios()){
 			throw new ExcepcionHectareaNoBrindaLosServiciosNecesarios();
-		//}else if(!this.centralTieneEnergiaSobrante()){
-			//throw new ExcepcionCentralNoPuedeProveerMasElectricidad();
+	
 		}
 		else if(!(this.superficie).sePuedeConstruirUnPozoDeAgua()){
 			//throw new ExcepcionNoSePuedeConstruirEnEsteTerreno();//lo deshabilito para probar sin tener en cuenta los terrenos
@@ -129,11 +128,6 @@ public class Hectarea implements Destruible {
 		unEdificio.habilitarElectricidad();
 	}
 	
-	private boolean centralTieneEnergiaSobrante() {
-		
-			return centralALaQuePertenece.obtenerCapacidadDeAbastecimientoEnMW()>centralALaQuePertenece.obtenerCapacidadMaxDeAbastecimientoEnMW();
-		
-	}
 
 	public boolean poseePozoDeAgua(){
 		return poseePozoDeAgua;
