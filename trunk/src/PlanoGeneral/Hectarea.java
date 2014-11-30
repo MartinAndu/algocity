@@ -11,7 +11,6 @@ import ConstruccionGeneral.Destruible;
 import ConstruccionGeneral.Reconstruible;
 import Edificios.Edificio;
 import Edificios.PozoDeAgua;
-import Excepciones.ExcepcionCentralNoPuedeProveerMasElectricidad;
 import Excepciones.ExcepcionHectareaYaContieneUnaConstruccion;
 import Excepciones.ExcepcionHectareaNoBrindaLosServiciosNecesarios;
 import Excepciones.ExcepcionNoSePuedeConstruirEnEsteTerreno;
@@ -29,7 +28,6 @@ public class Hectarea implements Destruible {
 	protected LineasDeTension linea;
 	protected boolean poseePozoDeAgua;
 	protected boolean poseeCentralElectrica;
-	private CentralElectrica centralALaQuePertenece;
 	
 	public Hectarea(Superficie superficie){
 		this.construccion = null;
@@ -158,9 +156,7 @@ public class Hectarea implements Destruible {
 		poseeCentralElectrica = true;
 		
 	}
-	public void establecerCentralALaQuePertenece(CentralElectrica centralElectricaProveedora){
-		centralALaQuePertenece=centralElectricaProveedora;
-	}
+
 	
 	public void establecerConexionElectrica(LineasDeTension unaConexion){
 		

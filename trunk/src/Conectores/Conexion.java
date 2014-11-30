@@ -51,9 +51,7 @@ public abstract class Conexion extends Construccion {
 			Hectarea hectareaActual=zonaCircundante.siguiente();
 
 			hectareaActual.habilitarServicio(servicioQueTransmite);
-			if(servicioQueTransmite=="electricidad"){
-				hectareaActual.establecerCentralALaQuePertenece(centralElectricaALAQuePertenece);
-			}
+
 		}
 		
 	}
