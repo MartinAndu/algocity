@@ -11,7 +11,7 @@ import org.w3c.dom.Document;
 
 import Excepciones.ExcepcionJugadorYaExistente;
 import Jugador.Jugador;
-import Jugador.JugadorMedio;
+import Jugador.JugadorParaTest;
 
 public class AlgoCity {
 	List<Jugador> jugadores;
@@ -21,7 +21,7 @@ public class AlgoCity {
 	}
 	
 	public Jugador crearJugador(String unNombre){
-		Jugador nuevoJugador = new JugadorMedio();
+		Jugador nuevoJugador = new JugadorParaTest();
 		nuevoJugador.establecerNombreJugador(unNombre);
 		
 		if(jugadores.contains(nuevoJugador)){

@@ -6,7 +6,7 @@ import Catastrofe.Catastrofe;
 import Catastrofe.Godzilla;
 import ConstruccionGeneral.Posicion;
 import Jugador.Jugador;
-import Jugador.JugadorMedio;
+import Jugador.JugadorParaTest;
 
 
 public class JugadorTest {
@@ -14,7 +14,7 @@ public class JugadorTest {
 	@Test
 	public void jugadorIncrementoSuPoblacionSeVerificaSiHayGenteSinHogar() {
 		
-		Jugador jugador = new JugadorMedio();
+		Jugador jugador = new JugadorParaTest();
 		
 		assertEquals(500, jugador.obtenerPoblacionSinHogar());
 		
@@ -27,7 +27,7 @@ public class JugadorTest {
 	@Test
 	public void jugadorHuboUnaCatastrofeGodzillaSeReduceElPresupuestoPorRecuperarLaCiudad() {
 		
-		Jugador jugador = new JugadorMedio();
+		Jugador jugador = new JugadorParaTest();
 		
 		assertEquals(5000, jugador.obtenerPresupuesto());
 		
@@ -42,7 +42,7 @@ public class JugadorTest {
 	@Test
 	public void jugadorSeCobraUnaComisionPorHabitante() {
 		
-		Jugador jugador = new JugadorMedio();
+		Jugador jugador = new JugadorParaTest();
 		
 		assertEquals(5000, jugador.obtenerPresupuesto());
 		
@@ -57,7 +57,7 @@ public class JugadorTest {
 	@Test
 	public void jugadorSeAproboUnNuevoPresupuestoParaLaCiudad() {
 		
-		Jugador jugador = new JugadorMedio();
+		Jugador jugador = new JugadorParaTest();
 		
 		assertEquals(5000, jugador.obtenerPresupuesto());
 		
@@ -69,7 +69,7 @@ public class JugadorTest {
 	@Test
 	public void jugadorCrearUnPozoDeAgua() {
 		
-		Jugador jugador = new JugadorMedio();
+		Jugador jugador = new JugadorParaTest();
 		
 		assertEquals(5000, jugador.obtenerPresupuesto());
 		
@@ -84,7 +84,7 @@ public class JugadorTest {
 	@Test
 	public void jugadorCrearDosTuberiasDeAgua() {
 		
-		Jugador jugador = new JugadorMedio();
+		Jugador jugador = new JugadorParaTest();
 		Posicion posicion = new Posicion(1, 2);
 		jugador.crearPozoDeAgua(posicion);
 		Posicion otraPosicion = new Posicion(1, 3);
@@ -101,7 +101,7 @@ public class JugadorTest {
 	@Test
 	public void jugadorCrearUnaCentralElectrica() {
 		
-		Jugador jugador = new JugadorMedio();
+		Jugador jugador = new JugadorParaTest();
 		Posicion posicion = new Posicion(1, 2);
 		jugador.crearPozoDeAgua(posicion);
 		Posicion otraPosicion = new Posicion(1, 3);
@@ -117,7 +117,7 @@ public class JugadorTest {
 	@Test
 	public void jugadorCrearDosRutasEncimaDeLasTuberias() {
 		
-		Jugador jugador = new JugadorMedio();
+		Jugador jugador = new JugadorParaTest();
 		Posicion posicion = new Posicion(1, 2);
 		jugador.crearPozoDeAgua(posicion);
 		Posicion otraPosicion = new Posicion(1, 3);
@@ -135,7 +135,7 @@ public class JugadorTest {
 	@Test
 	public void jugadorCrearResidencia() {
 		
-		Jugador jugador = new JugadorMedio();
+		Jugador jugador = new JugadorParaTest();
 		Posicion posicion = new Posicion(1, 2);
 		jugador.crearPozoDeAgua(posicion);
 		Posicion otraPosicion = new Posicion(1, 3);

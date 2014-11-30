@@ -17,6 +17,7 @@ import Edificios.PozoDeAgua;
 import Excepciones.ExcepcionHectareaNoBrindaLosServiciosNecesarios;
 import PlanoGeneral.Hectarea;
 import PlanoGeneral.Plano;
+import PlanoGeneral.PlanoDeterminista;
 import Superficies.Superficie;
 import Superficies.SuperficieConTerrenoLlano;
 
@@ -26,7 +27,7 @@ public class ConexionesDeAguaTest {
 	@Test
 	public void hayConexionDeAguaEnTuberia(){
 		
-		Plano unPlano=new Plano(8,8);
+		Plano unPlano=new PlanoDeterminista(8,8);
 		Posicion unaPosicion=new Posicion(2,3);
 		ConexionDeAgua unaConexionDeAgua = new ConexionDeAgua(unaPosicion);
 		
@@ -49,7 +50,7 @@ public class ConexionesDeAguaTest {
 	@Test
 	
 	public void pasaElAgua(){
-		Plano unPlano = new Plano (4,7);
+		Plano unPlano = new PlanoDeterminista(4,7);
 		Posicion unaPosicion = new Posicion(2, 2);
 		Posicion otraPosicion = new Posicion(3,2);
 		Posicion tercerPosicion = new Posicion(4,2);
@@ -73,7 +74,7 @@ public class ConexionesDeAguaTest {
 	@Test
 	public void accesoAAgua(){
                 	
-		Plano unPlano = new Plano (8,8);
+		Plano unPlano = new PlanoDeterminista(8,8);
 		Posicion unaPosicion=new Posicion(4,4);
 		ConexionDeAgua unaConexion= new ConexionDeAgua(unaPosicion);
 		unaConexion.construirSobrePlano(unPlano);
@@ -100,7 +101,7 @@ public class ConexionesDeAguaTest {
 		//agua a su entorno.
 		Posicion unaPosicion=new Posicion(2,2);
 		ConexionDeAgua unaConexion= new ConexionDeAgua(unaPosicion);
-		Plano unPlano = new Plano (8,8);
+		Plano unPlano = new PlanoDeterminista(8,8);
 		unaConexion.construirSobrePlano(unPlano);
 		
 		Posicion posicionPozo=new Posicion(1,2);
@@ -123,7 +124,7 @@ public class ConexionesDeAguaTest {
                 
 	@Test
 	public void sinAccesoAAguaMuyLejos(){
-		Plano unPlano = new Plano (8,8);
+		Plano unPlano = new PlanoDeterminista(8,8);
 		Posicion unaPosicion=new Posicion(2,2);
 		ConexionDeAgua unaConexion= new ConexionDeAgua(unaPosicion);
 		unaConexion.construirSobrePlano(unPlano);

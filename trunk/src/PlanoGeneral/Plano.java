@@ -1,5 +1,6 @@
 package PlanoGeneral;
 import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -10,50 +11,35 @@ import ConstruccionGeneral.Posicion;
 import PlanoDireccion.Direccion;
 import PlanoDireccion.Norte;
 import PlanoGeneradores.GeneradorDireccion;
-import PlanoGeneradores.GeneradorDireccionDeterminista;
 import PlanoGeneradores.GeneradorPosicion;
-import PlanoGeneradores.GeneradorPosicionDeterminista;
 import PlanoGeneradores.GeneradorRecorrido;
-import PlanoGeneradores.GeneradorRecorridoDeterminista;
-import SuperficiesGeneradores.GeneradorSuperficieDeterminista;
+import SuperficiesGeneradores.GeneradorSuperficie;
 
 
 public class Plano {
 
-	private HashMap<String, Hectarea> hectareas;
-	private HashMap<Hectarea, ArrayList<Hectarea>> caminos;
-	private GeneradorPosicion generadorPosicion;
-	private GeneradorDireccion generadorDireccion;
-	private GeneradorRecorrido generadorRecorrido;
-	private GeneradorSuperficieDeterminista generadorSuperficies;
-	private int ancho;
-	private int alto;
+	protected HashMap<String, Hectarea> hectareas;
+	protected HashMap<Hectarea, ArrayList<Hectarea>> caminos;
+	protected GeneradorPosicion generadorPosicion;
+	protected GeneradorDireccion generadorDireccion;
+	protected GeneradorRecorrido generadorRecorrido;
+	protected GeneradorSuperficie generadorSuperficies;
+	protected int dimensionM;
+	protected int dimensionN;
 	
-	public Plano(int dimensionN, int dimensionM) {
-		alto = dimensionN;
-		ancho = dimensionM;
+	public Plano() {
+		dimensionN = 80;
+		dimensionM = 80;
 		hectareas = new HashMap<String, Hectarea>();
 		caminos = new HashMap<Hectarea, ArrayList<Hectarea>>();
-		generadorPosicion = new GeneradorPosicionDeterminista(dimensionN, dimensionM);
-		generadorDireccion = new GeneradorDireccionDeterminista();
-		generadorRecorrido = new GeneradorRecorridoDeterminista();
-		generadorSuperficies = new GeneradorSuperficieDeterminista();
-		construirPlano(dimensionN, dimensionM);
 	}
 
-	public int obtenerAncho(){
-		return ancho;
-	}
-	
-	public int obtenerAlto(){
-		return alto;
-	}
-	private void construirPlano(int dimensionN, int dimensionM) {
+	protected void construirPlano(int dimensionN, int dimensionM) {
 		construirHectareas(dimensionN, dimensionM);
 		construirCaminos(dimensionN, dimensionM);	
 	}
 
-	private void construirCaminos(int dimensionN, int dimensionM) {
+	protected void construirCaminos(int dimensionN, int dimensionM) {
 		
 		for (int i = 1; i <= dimensionN; i++) {
 			
@@ -67,7 +53,7 @@ public class Plano {
 		
 	}
 
-	private ArrayList<Hectarea> obtenerHectareasDelEntorno(Posicion posicion) {
+	protected ArrayList<Hectarea> obtenerHectareasDelEntorno(Posicion posicion) {
 		
 		int x = posicion.devolverCoordenadaX();
 		int y = posicion.devolverCoordenadaY();
@@ -100,7 +86,7 @@ public class Plano {
 		return hectareasDelEntorno;
 	}
 
-	private void agregarHectareaAlEntorno(
+	protected void agregarHectareaAlEntorno(
 			ArrayList<Hectarea> hectareasDelEntorno, String posicion) {
 		
 		if (hectareas.containsKey(posicion)) {	
@@ -112,7 +98,7 @@ public class Plano {
 		}
 	}
 
-	private void construirHectareas(int dimensionN, int dimensionM) {
+	protected void construirHectareas(int dimensionN, int dimensionM) {
 
 		for (int i = 1; i <= dimensionN; i++) {
 			for (int j = 1; j <= dimensionM; j++) {
@@ -150,10 +136,10 @@ public class Plano {
 		return this.recorrerZonaCircundante(posicion, radioDeCobertura);
 	}
 
-	private int calcularMayorDistanciaALosLimites(Posicion posicion) {
+	protected int calcularMayorDistanciaALosLimites(Posicion posicion) {
 		
-		int diferenciaPosicionAncho = this.ancho - posicion.devolverCoordenadaX();
-		int diferenciaPosicionAlto = this.alto - posicion.devolverCoordenadaY();
+		int diferenciaPosicionAncho = this.dimensionM - posicion.devolverCoordenadaX();
+		int diferenciaPosicionAlto = this.dimensionN - posicion.devolverCoordenadaY();
 		int mayorDistanciaEnAncho = 0;
 		int mayorDistanciaEnAlto = 0;
 		
@@ -176,7 +162,7 @@ public class Plano {
 		}
 	}
 
-	private ArrayList<Hectarea> obtenerEntornoGeneral(
+	protected ArrayList<Hectarea> obtenerEntornoGeneral(
 			ArrayList<Hectarea> entornoDelEntorno,
 			ArrayList<Hectarea> entornoARecorrer) {
 		
@@ -195,7 +181,7 @@ public class Plano {
 		return entornoBuscado;
 	}
 
-	private ArrayList<Hectarea> obtenerEntornoParcial(Hectarea hectarea,
+	protected ArrayList<Hectarea> obtenerEntornoParcial(Hectarea hectarea,
 			ArrayList<Hectarea> entornoARecorrer, ArrayList<Hectarea> entornoBuscado) {
 		
 		ArrayList<Hectarea> entorno = caminos.get(hectarea);

@@ -8,6 +8,7 @@ import PlanoDireccion.Direccion;
 import PlanoDireccion.NorEste;
 import PlanoDireccion.Norte;
 import PlanoGeneral.Plano;
+import PlanoGeneral.PlanoDeterminista;
 import PlanoGeneral.Recorrido;
 
 
@@ -16,14 +17,14 @@ public class PlanoTest {
 	@Test
 	public void testPlanoCrear() {
 		
-		Plano plano = new Plano(100,100);
+		Plano plano = new PlanoDeterminista(100,100);
 		assertNotNull(plano);
 	}
 	
 	@Test 
 	public void testPlanoRecorrerEntornoTenemosQueRecorrerOchoHectareas() {
 		
-		Plano plano = new Plano(7, 7);
+		Plano plano = new PlanoDeterminista(7, 7);
 		Posicion posicion = new Posicion(4, 4);
 		
 		Recorrido recorrido = plano.recorrerZonaCircundante(posicion, 1);
@@ -40,7 +41,7 @@ public class PlanoTest {
 	@Test 
 	public void testPlanoRecorrerZonaCircundanteDebeDarDistanciasUnoYDosHectareas() {
 		
-		Plano plano = new Plano(7, 7);
+		Plano plano = new PlanoDeterminista(7, 7);
 		Posicion posicion = new Posicion(4, 4);
 		
 		Recorrido recorrido = plano.recorrerZonaCircundante(posicion, 2);
@@ -62,7 +63,7 @@ public class PlanoTest {
 	@Test
 	public void testPlanoRecorrerEntornoNoDebePoseerHectareasRepetidas() {
 		
-		Plano plano = new Plano(7, 7);
+		Plano plano = new PlanoDeterminista(7, 7);
 		Posicion posicion = new Posicion(4, 4);
 		
 		Recorrido recorrido = plano.recorrerZonaCircundante(posicion, 2);
@@ -79,7 +80,7 @@ public class PlanoTest {
 	@Test
 	public void testPlanoRecorrerEntornoDeTodoElPlano() {
 		
-		Plano plano = new Plano(7, 7);
+		Plano plano = new PlanoDeterminista(7, 7);
 		Posicion posicion = new Posicion(4, 4);
 		
 		Recorrido recorrido = plano.recorrerZonaCircundante(posicion, 3);
@@ -96,7 +97,7 @@ public class PlanoTest {
 	@Test
 	public void testPlanoRecorrerLinealmenteDebePasarPorSeisHectareas() {
 		
-		Plano plano = new Plano(7, 7);
+		Plano plano = new PlanoDeterminista(7, 7);
 		Posicion posicion = new Posicion(1, 1);
 		Direccion noreste = new NorEste();
 		Recorrido recorrido = plano.recorrerLinealmente(posicion, noreste);
@@ -113,7 +114,7 @@ public class PlanoTest {
 	@Test
 	public void testPlanoRecorrerZigZagDebePasarPorSeisHectareas() {
 		
-		Plano plano = new Plano(7, 7);
+		Plano plano = new PlanoDeterminista(7, 7);
 		Posicion posicion = new Posicion(1, 2);
 		Direccion norte = new Norte();
 		Recorrido recorrido = plano.recorrerEnZigZag(posicion, norte);
@@ -130,7 +131,7 @@ public class PlanoTest {
 	@Test
 	public void testPlanoRecorrerAleatorioDebePasarPorDoceHectareas() {
 		
-		Plano plano = new Plano(7, 7);
+		Plano plano = new PlanoDeterminista(7, 7);
 		Recorrido recorrido = plano.generarRecorridolAleatorioDesdeUnaPosicionBorde();
 		int i = 0;
 		
@@ -143,17 +144,12 @@ public class PlanoTest {
 	}
 	
 	@Test
-	public void testPlanoGenerarPosicionAleatoriaDeberiaEstarEnPosicionCorrecta(){
-	//public void testPlanoGenerarPosicionAleatoraDeberiaEstarEnCentro() { //Lo cambio porque modifique el punto para que sea mas rapida la prueba del terremoto.
-		
-		Plano plano = new Plano(8, 8);
+	public void testPlanoGenerarPosicionAleatoriaDeberiaEstarEnPosicionCorrecta(){		
+		Plano plano = new PlanoDeterminista(8, 8);
 		Posicion posicion = plano.generarPosicionAleatoria();
 		int x = posicion.devolverCoordenadaX();
 		int y = posicion.devolverCoordenadaY();
 		
-
-		//assertEquals(4, x);
-		//assertEquals(4, y);
 		assertEquals(1, x);
 		assertEquals(1, y);
 	}
@@ -161,7 +157,7 @@ public class PlanoTest {
 	@Test 
 	public void testPlanoRecorrerTodoElPlanoDesdeUnaPosicionAleatoria() {
 
-		Plano plano = new Plano(16, 16);
+		Plano plano = new PlanoDeterminista(16, 16);
 		Recorrido recorrido = plano.recorrerTodoDesdeUnaPosicionAleatoria();
 		
 		assertEquals(255, recorrido.longDelRecorridoEnHectareas());
