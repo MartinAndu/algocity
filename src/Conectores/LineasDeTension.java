@@ -78,7 +78,7 @@ public  class LineasDeTension extends Conexion{
 		marca=true;
 		while (zonaCircundante.tieneSiguiente()&&!conectadoALaRed){
 			hectareaActual=zonaCircundante.siguiente();
-			if (hectareaActual.tieneConexionElectrica()&&(hectareaActual.obtenerLineaDeTension().marcado())&&
+			if (hectareaActual.tieneConexionElectrica()&&(!hectareaActual.obtenerLineaDeTension().marcado())&&
 				hectareaActual.obtenerLineaDeTension().conectadoALaRed(hectareaActual)){
 				this.habilitarConexion();
 			}
