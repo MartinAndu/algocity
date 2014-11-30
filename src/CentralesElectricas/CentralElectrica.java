@@ -1,7 +1,6 @@
 package CentralesElectricas;
 
 import java.util.ArrayList;
-import Conectores.LineasDeTension;
 import ConstruccionGeneral.Construccion;
 import ConstruccionGeneral.Posicion;
 import PlanoGeneral.Hectarea;
@@ -48,10 +47,7 @@ public class CentralElectrica extends Construccion {
 			
 	
 		}
-		
-		LineasDeTension unaLineaDeTension = new LineasDeTension(posicionConstruccion);
-		unaLineaDeTension.establecerCentralQueProveeEnergia(this);
-		unaLineaDeTension.habilitarConexion();
+;
 		
 	}
 	
