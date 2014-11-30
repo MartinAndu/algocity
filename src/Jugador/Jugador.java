@@ -45,24 +45,24 @@ public abstract class Jugador {
 	public void establecerNombreJugador(String unNombre){
 		this.nombreJugador = unNombre;
 	}
-	
-	public void guardarPartida() throws Exception {
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        DocumentBuilder db = dbf.newDocumentBuilder();
-        Document doc = db.newDocument();
-       
-        Element jugadorSerializado = this.serializar(doc);
-       
-        doc.appendChild(jugadorSerializado);
-        TransformerFactory transformerFactory = TransformerFactory.newInstance();
-        Transformer transformer = transformerFactory.newTransformer();
-        DOMSource source = new DOMSource(doc);
-        
-        String nombreArchivo = this.obtenerNombre() + ".xml";
-       
-        File archivoDestino = new File(nombreArchivo);
-        StreamResult result = new StreamResult(archivoDestino);
-        transformer.transform(source, result);
+
+	public void guardarPartida() throws Exception{
+		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+		DocumentBuilder db = dbf.newDocumentBuilder();
+		Document doc = db.newDocument();
+		
+		Element jugadorSerializado = this.serializar(doc);
+		
+		doc.appendChild(jugadorSerializado);
+		TransformerFactory transformerFactory = TransformerFactory.newInstance();
+		Transformer transformer = transformerFactory.newTransformer();
+		DOMSource source = new DOMSource(doc);
+		
+		String nombreArchivo = this.obtenerNombre() + ".xml";
+		
+		File archivoDestino = new File(nombreArchivo);
+		StreamResult result = new StreamResult(archivoDestino);
+		transformer.transform(source,result);
 	}
 	
 	public Element serializar(Document doc) {

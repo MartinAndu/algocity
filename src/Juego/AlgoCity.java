@@ -39,13 +39,6 @@ public class AlgoCity {
 		return (!jugadores.isEmpty());
 	}
 
-    public boolean existePartidaJugador(String nombreDeUnJugador) {
-        File archivo = new File(nombreDeUnJugador + ".xml");
-        if ( archivo.exists() )
-                return true;
-        return false;
-    }
-
 	public void cargarPartidaJugador(String nombreArchivo) throws Exception { // (Dado el archivo de la partida de un jugador, lo manda a hidratar y lo agrega).
         File archivo = new File(nombreArchivo);
        
@@ -61,5 +54,4 @@ public class AlgoCity {
         Jugador unJugadorCargado = Jugador.hidratar(doc); // Me devuelve una instancia del jugador hidratado.
         this.agregarJugador(unJugadorCargado);
 	}
-
 }
