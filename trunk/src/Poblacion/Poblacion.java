@@ -1,6 +1,7 @@
 package Poblacion;
 
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
 public abstract class Poblacion {
@@ -28,13 +29,29 @@ public abstract class Poblacion {
 	}
 
 	public Node serializar(Document doc) {
-		// TODO Auto-generated method stub
-		return null;
+		Element elementoPoblacion = doc.createElement("Poblacion");
+		String tipoPoblacion = (this.getClass()).getSimpleName();
+		
+		elementoPoblacion.setAttribute("tipoPoblacion", tipoPoblacion);
+		elementoPoblacion.setAttribute("cantidadHabiantes", Integer.toString(cantHabitantesCiudad));
+		
+		return elementoPoblacion;
 	}
 
-	public static Poblacion hidratar(Node item) {
-		// TODO Auto-generated method stub
-		return null;
+	public static Poblacion hidratar(Node elementoPoblacion) {
+		String tipoPoblacion = ((Element) elementoPoblacion).getAttribute("tipoPoblacion");
+		
+		int cantidadDeHabitantes = Integer.parseInt( ((Element)elementoPoblacion).getAttribute("cantidadHabiantes") );
+		
+		Poblacion nuevaPoblacion = null;
+		
+		if(tipoPoblacion.equals("PoblacionMedia")){
+			nuevaPoblacion = new PoblacionMedia();
+		}
+		
+		nuevaPoblacion.cantHabitantesCiudad = cantidadDeHabitantes;
+		
+		return nuevaPoblacion;
 	}
 
 }
