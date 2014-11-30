@@ -2,7 +2,6 @@ package PlanoGeneral;
 
 import java.util.ArrayList;
 
-
 import CentralesElectricas.CentralElectrica;
 import Conectores.ConexionDeAgua;
 import Conectores.LineasDeTension;
@@ -12,6 +11,7 @@ import ConstruccionGeneral.Destruible;
 import ConstruccionGeneral.Reconstruible;
 import Edificios.Edificio;
 import Edificios.PozoDeAgua;
+import Excepciones.ExcepcionCentralNoPuedeProveerMasElectricidad;
 import Excepciones.ExcepcionHectareaYaContieneUnaConstruccion;
 import Excepciones.ExcepcionHectareaNoBrindaLosServiciosNecesarios;
 import Excepciones.ExcepcionNoSePuedeConstruirEnEsteTerreno;
@@ -29,6 +29,7 @@ public class Hectarea implements Destruible {
 	protected LineasDeTension linea;
 	protected boolean poseePozoDeAgua;
 	protected boolean poseeCentralElectrica;
+	private CentralElectrica centralALaQuePertenece;
 	
 	public Hectarea(Superficie superficie){
 		this.construccion = null;
@@ -115,6 +116,8 @@ public class Hectarea implements Destruible {
 		}
 		else if(!this.poseeLosTresServicios()){
 			throw new ExcepcionHectareaNoBrindaLosServiciosNecesarios();
+		//}else if(!this.centralTieneEnergiaSobrante()){
+			//throw new ExcepcionCentralNoPuedeProveerMasElectricidad();
 		}
 		else if(!(this.superficie).sePuedeConstruirUnPozoDeAgua()){
 			//throw new ExcepcionNoSePuedeConstruirEnEsteTerreno();//lo deshabilito para probar sin tener en cuenta los terrenos
@@ -126,8 +129,18 @@ public class Hectarea implements Destruible {
 		unEdificio.habilitarElectricidad();
 	}
 	
+	private boolean centralTieneEnergiaSobrante() {
+		
+			return centralALaQuePertenece.obtenerCapacidadDeAbastecimientoEnMW()>centralALaQuePertenece.obtenerCapacidadMaxDeAbastecimientoEnMW();
+		
+	}
+
 	public boolean poseePozoDeAgua(){
 		return poseePozoDeAgua;
+	}
+	
+	public CentralElectrica obtenerCentral(){
+		return (CentralElectrica) construccion;
 	}
 	
 	public void establecerPozoDeAgua(PozoDeAgua unPozoDeAgua){
@@ -150,6 +163,9 @@ public class Hectarea implements Destruible {
 		this.construccion = unaCentral;
 		poseeCentralElectrica = true;
 		
+	}
+	public void establecerCentralALaQuePertenece(CentralElectrica centralElectricaProveedora){
+		centralALaQuePertenece=centralElectricaProveedora;
 	}
 	
 	public void establecerConexionElectrica(LineasDeTension unaConexion){

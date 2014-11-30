@@ -13,6 +13,7 @@ public class CentralElectrica extends Construccion {
 	protected int capacidadDeAbastecimientoEnMW;
 	protected int capacidadMaxDeAbastecimientoEnMW;
 	static String servicioQueProvee;
+	private ArrayList<Construccion> construcciones;
 
 	
 	static int CONSUMO_ELECTRICO = 0;
@@ -25,6 +26,7 @@ public class CentralElectrica extends Construccion {
 	}
 	
 	public void construirSobrePlano(Plano unPlano){
+		construcciones=new ArrayList<Construccion>();
 		Hectarea unaHectarea = unPlano.devolverHectarea(posicionConstruccion);
 		unaHectarea.establecerCentral(this);
 		Recorrido zonaCircundante= unPlano.recorrerZonaCircundante(posicionConstruccion, radioDeAbastecimientoEnHectareas);
@@ -49,6 +51,10 @@ public class CentralElectrica extends Construccion {
 		}
 ;
 		
+	}
+	
+	public void agregarConstruccionQueConsumeElectricidad(Construccion unaConstruccion){
+		construcciones.add(unaConstruccion);
 	}
 	
 	public int obtenerRadioDeAbastecimientoEnHectareas(){
