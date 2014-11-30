@@ -2,8 +2,8 @@ package CentralesElectricas;
 
 import java.util.ArrayList;
 import Conectores.LineasDeTension;
-import Edificios.Construccion;
-import Edificios.Posicion;
+import ConstruccionGeneral.Construccion;
+import ConstruccionGeneral.Posicion;
 import PlanoGeneral.Hectarea;
 import PlanoGeneral.Plano;
 import PlanoGeneral.Recorrido;
@@ -48,7 +48,7 @@ public class CentralElectrica extends Construccion {
 			
 	
 		}
-	
+		//porque una central central establece una linea en el lugar donde se encuantra?.. cambiar
 		Hectarea hectareaActual = unPlano.devolverHectarea(posicionConstruccion);
 		LineasDeTension unaLineaDeTension = new LineasDeTension(posicionConstruccion);
 		hectareaActual.establecerConexionElectrica(unaLineaDeTension);

@@ -4,9 +4,9 @@ import static org.junit.Assert.fail;
 import org.junit.Test;
 
 import Conectores.LineasDeTension;
-import Edificios.Destruible;
-import Edificios.Posicion;
-import Edificios.Reconstruible;
+import ConstruccionGeneral.Destruible;
+import ConstruccionGeneral.Posicion;
+import ConstruccionGeneral.Reconstruible;
 import Excepciones.ExceptionConstruccionComplemtamenteReparada;
 
 public class ReconstruibleTest {

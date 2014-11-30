@@ -5,11 +5,11 @@ import junit.framework.Assert;
 
 import org.junit.Test;
 
+import ConstruccionGeneral.Posicion;
 import Edificios.Edificio;
 import Edificios.EdificioComercial;
 import Edificios.EdificioIndustrial;
 import Edificios.EdificioResidencial;
-import Edificios.Posicion;
 
 public class EdificiosTest {
 	

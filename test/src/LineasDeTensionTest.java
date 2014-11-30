@@ -7,9 +7,9 @@ import org.junit.Test;
 
 import CentralesElectricas.CentralEolica;
 import Conectores.LineasDeTension;
+import ConstruccionGeneral.Posicion;
 import Edificios.Edificio;
 import Edificios.EdificioResidencial;
-import Edificios.Posicion;
 import Excepciones.ExcepcionHectareaNoBrindaLosServiciosNecesarios;
 import PlanoGeneral.Hectarea;
 import PlanoGeneral.Plano;

@@ -1,6 +1,6 @@
 package PlanoGeneradores;
 
-import Edificios.Posicion;
+import ConstruccionGeneral.Posicion;
 import PlanoDireccion.Direccion;
 import PlanoGeneral.Plano;
 import PlanoGeneral.Recorrido;

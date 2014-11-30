@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import Catastrofe.Catastrofe;
 import Catastrofe.Godzilla;
-import Edificios.Posicion;
+import ConstruccionGeneral.Posicion;
 import Jugador.Jugador;
 import Jugador.JugadorMedio;
 

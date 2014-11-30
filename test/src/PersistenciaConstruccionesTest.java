@@ -20,9 +20,9 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
-import Edificios.Construccion;
+import ConstruccionGeneral.Construccion;
+import ConstruccionGeneral.Posicion;
 import Edificios.EdificioResidencial;
-import Edificios.Posicion;
 
 public class PersistenciaConstruccionesTest {
 

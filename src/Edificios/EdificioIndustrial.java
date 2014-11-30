@@ -1,5 +1,6 @@
 package Edificios;
 
+import ConstruccionGeneral.Posicion;
 import PuntosConstruccion.PuntosDeIndustria;
 
 public class EdificioIndustrial extends Edificio {

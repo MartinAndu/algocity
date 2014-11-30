@@ -6,7 +6,7 @@ import java.util.Iterator;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
-import Edificios.Posicion;
+import ConstruccionGeneral.Posicion;
 import PlanoDireccion.Direccion;
 import PlanoDireccion.Norte;
 import PlanoGeneradores.GeneradorDireccion;
