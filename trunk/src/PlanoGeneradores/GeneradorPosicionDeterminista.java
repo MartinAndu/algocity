@@ -1,6 +1,6 @@
 package PlanoGeneradores;
 
-import Edificios.Posicion;
+import ConstruccionGeneral.Posicion;
 
 public class GeneradorPosicionDeterminista extends GeneradorPosicion {
 

@@ -5,10 +5,11 @@ import static org.junit.Assert.fail;
 
 
 import org.junit.Test;
+
+import ConstruccionGeneral.Posicion;
 import Edificios.Edificio;
 import Edificios.EdificioComercial;
 import Edificios.EdificioResidencial;
-import Edificios.Posicion;
 import Edificios.PozoDeAgua;
 import Excepciones.ExcepcionHectareaYaContieneUnaConstruccion;
 import Excepciones.ExcepcionHectareaNoBrindaLosServiciosNecesarios;

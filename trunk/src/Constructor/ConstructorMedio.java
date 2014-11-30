@@ -6,10 +6,10 @@ import CentralesElectricas.CentralNuclear;
 import Conectores.ConexionDeAgua;
 import Conectores.LineasDeTension;
 import Conectores.RutaPavimentada;
+import ConstruccionGeneral.Posicion;
 import Edificios.EdificioComercial;
 import Edificios.EdificioIndustrial;
 import Edificios.EdificioResidencial;
-import Edificios.Posicion;
 import Edificios.PozoDeAgua;
 
 public class ConstructorMedio extends Constructor{

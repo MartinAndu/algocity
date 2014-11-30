@@ -1,4 +1,4 @@
-package Edificios;
+package ConstruccionGeneral;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -9,6 +9,10 @@ import CentralesElectricas.CentralNuclear;
 import Conectores.ConexionDeAgua;
 import Conectores.LineasDeTension;
 import Conectores.RutaPavimentada;
+import Edificios.EdificioComercial;
+import Edificios.EdificioIndustrial;
+import Edificios.EdificioResidencial;
+import Edificios.PozoDeAgua;
 import Excepciones.ExceptionConstruccionComplemtamenteReparada;
 import PlanoGeneral.Plano;
 import PuntosConstruccion.PuntosDeConstruccion;

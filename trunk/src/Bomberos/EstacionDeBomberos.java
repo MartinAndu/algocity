@@ -3,7 +3,7 @@ package Bomberos;
 import java.util.ArrayList;
 import java.util.List;
 
-import Edificios.Reconstruible;
+import ConstruccionGeneral.Reconstruible;
 import Excepciones.ExceptionConstruccionComplemtamenteReparada;
 import Presupuesto.Presupuesto;
 

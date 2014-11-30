@@ -1,4 +1,4 @@
-package Edificios;
+package ConstruccionGeneral;
 
 public interface Destruible {
 	

@@ -10,9 +10,9 @@ import org.junit.Test;
 
 
 import Conectores.ConexionDeAgua;
+import ConstruccionGeneral.Posicion;
 import Edificios.Edificio;
 import Edificios.EdificioResidencial;
-import Edificios.Posicion;
 import Edificios.PozoDeAgua;
 import Excepciones.ExcepcionHectareaNoBrindaLosServiciosNecesarios;
 import PlanoGeneral.Hectarea;

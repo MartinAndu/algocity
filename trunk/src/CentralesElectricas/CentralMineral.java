@@ -1,6 +1,6 @@
 package CentralesElectricas;
 
-import Edificios.Posicion;
+import ConstruccionGeneral.Posicion;
 import PuntosConstruccion.PuntosDeCentralMineral;
 
 public class CentralMineral extends CentralElectrica{

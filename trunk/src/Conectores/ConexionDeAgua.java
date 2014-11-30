@@ -1,6 +1,6 @@
 package Conectores;
 
-import Edificios.Posicion;
+import ConstruccionGeneral.Posicion;
 import PlanoGeneral.Hectarea;
 import PlanoGeneral.Recorrido;
 import PlanoGeneral.Plano;

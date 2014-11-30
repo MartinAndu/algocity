@@ -1,5 +1,7 @@
 package Edificios;
 
+import ConstruccionGeneral.Construccion;
+import ConstruccionGeneral.Posicion;
 import Excepciones.ExcepcionHectareaNoHabilitadaParaConstruirEdificio;
 import PlanoGeneral.Hectarea;
 import PlanoGeneral.Plano;

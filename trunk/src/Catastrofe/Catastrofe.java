@@ -3,7 +3,7 @@ package Catastrofe;
 
 import java.util.ArrayList;
 
-import Edificios.Reconstruible;
+import ConstruccionGeneral.Reconstruible;
 import PlanoGeneral.Plano;
 
 public abstract class Catastrofe {

@@ -3,7 +3,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import Edificios.Posicion;
+import ConstruccionGeneral.Posicion;
 import PlanoDireccion.Direccion;
 import PlanoDireccion.NorEste;
 import PlanoDireccion.Norte;
