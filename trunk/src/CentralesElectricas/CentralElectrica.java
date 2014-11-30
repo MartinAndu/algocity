@@ -13,6 +13,7 @@ public class CentralElectrica extends Construccion {
 	protected int radioDeAbastecimientoEnHectareas;
 	protected int capacidadDeAbastecimientoEnMW;
 	protected int capacidadMaxDeAbastecimientoEnMW;
+	static String servicioQueProvee;
 
 	
 	static int CONSUMO_ELECTRICO = 0;
@@ -21,6 +22,7 @@ public class CentralElectrica extends Construccion {
 	
 	public CentralElectrica(Posicion posicion) {
 		super(posicion);
+		servicioQueProvee="electricidad";
 	}
 	
 	public void construirSobrePlano(Plano unPlano){
@@ -29,7 +31,7 @@ public class CentralElectrica extends Construccion {
 		Recorrido zonaCircundante= unPlano.recorrerZonaCircundante(posicionConstruccion, radioDeAbastecimientoEnHectareas);
 		while (zonaCircundante.tieneSiguiente()){
 			Hectarea hectareaActual=zonaCircundante.siguiente();
-					hectareaActual.habilitarElectricidad();
+					hectareaActual.habilitarServicio(servicioQueProvee);
 		}
 	}
 	
@@ -42,7 +44,7 @@ public class CentralElectrica extends Construccion {
 		while (zonaCircundante.tieneSiguiente()){
 			
 			Hectarea hectareaActual = zonaCircundante.siguiente();
-			hectareaActual.habilitarElectricidad();
+			hectareaActual.habilitarServicio(servicioQueProvee);
 			
 	
 		}

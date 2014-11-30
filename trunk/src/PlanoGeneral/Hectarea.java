@@ -47,7 +47,20 @@ public class Hectarea implements Destruible {
         return (x.identi == identi);
     }
 	
-	public void habilitarElectricidad(){
+    public void habilitarServicio(String servicio){
+    	if (servicio=="agua"){
+    		this.servicioAgua=true;
+    	}
+    	if (servicio=="electricidad"){
+    		this.servicioElectrico=true;
+    	}
+    	if (servicio=="transito"){
+    		this.accesoAlTransito=true;
+    	}
+    
+    }
+    
+	/*public void habilitarElectricidad(){
 		this.servicioElectrico = true;
 	}
 		
@@ -57,7 +70,7 @@ public class Hectarea implements Destruible {
 	
 	public void habilitarAccesoAlTransito(){
 		this.accesoAlTransito = true;
-	}
+	}*/
 	
 	public boolean poseeCentralElectrica(){
 		return poseeCentralElectrica;

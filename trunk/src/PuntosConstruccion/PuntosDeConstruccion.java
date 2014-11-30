@@ -14,14 +14,8 @@ public class PuntosDeConstruccion {
 	
 	public void decrementarEnPorcentaje(int porcentaje){
 		
-		float porcentajeFloat = (float) (porcentaje / 100.0);
-		
-		if ((porcentajeFloat * this.puntos) > this.puntos) {
-			this.puntos = 0;
-		}
-		else {
-			this.puntos -= (int) (porcentajeFloat * this.puntos);
-		}
+		float porcentajeFloat = (float) (porcentaje / 100.0);	
+		this.puntos=Math.max(puntos - (int) (porcentajeFloat * this.puntos), 0);
 	}
 	
 	public void incrementar(int puntos) throws ExceptionConstruccionComplemtamenteReparada {

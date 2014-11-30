@@ -84,8 +84,8 @@ public class ConexionesDeAguaTest {
 		Hectarea otraHectarea = unPlano.devolverHectarea(otraPosicion);
 		
 		Edificio unoResidencial = new EdificioResidencial(otraPosicion);
-		otraHectarea.habilitarAccesoAlTransito();
-		otraHectarea.habilitarElectricidad();
+		otraHectarea.habilitarServicio("transito");
+		otraHectarea.habilitarServicio("electricidad");
 		unaConexion.proveerServicioZona(unPlano);
 		otraHectarea.establecerEdificio(unoResidencial);
 		Assert.assertTrue(unoResidencial.tieneAgua());
@@ -112,8 +112,8 @@ public class ConexionesDeAguaTest {
 		Hectarea otraHectarea = unPlano.devolverHectarea(otraPosicion);
 		
 		Edificio unoResidencial = new EdificioResidencial(otraPosicion);
-		otraHectarea.habilitarAccesoAlTransito();
-		otraHectarea.habilitarElectricidad();
+		otraHectarea.habilitarServicio("transito");
+		otraHectarea.habilitarServicio("electricidad");
 		unaConexion.proveerServicioZona(unPlano);
 		otraHectarea.establecerEdificio(unoResidencial);
 		Assert.assertTrue(unoResidencial.tieneAgua());
@@ -135,8 +135,8 @@ public class ConexionesDeAguaTest {
 		
 		Posicion unaPosicion2 = new Posicion(5,5);
 		Edificio unoResidencial = new EdificioResidencial(unaPosicion2);
-		otraHectarea.habilitarAccesoAlTransito();
-		otraHectarea.habilitarElectricidad();
+		otraHectarea.habilitarServicio("transito");
+		otraHectarea.habilitarServicio("electricidad");
 		unaConexion.proveerServicioZona(unPlano);
 		try{
 			otraHectarea.establecerEdificio(unoResidencial);

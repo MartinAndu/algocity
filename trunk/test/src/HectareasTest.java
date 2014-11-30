@@ -50,9 +50,9 @@ public class HectareasTest {
 		Posicion unaPosicion = new Posicion(5,5);
 		Hectarea unaHectarea = new Hectarea(new SuperficieConTerrenoLlano());
 		
-		unaHectarea.habilitarAccesoAlTransito();
-		unaHectarea.habilitarAgua();
-		unaHectarea.habilitarElectricidad();
+		unaHectarea.habilitarServicio("transito");
+		unaHectarea.habilitarServicio("agua");
+		unaHectarea.habilitarServicio("electricidad");
 		
 		Assert.assertTrue(unaHectarea.poseeLosTresServicios());
 		
@@ -86,9 +86,9 @@ public class HectareasTest {
         Edificio unEdificioResidencial = new EdificioResidencial(unaPosicion);
         Edificio unEdificioComercial = new EdificioComercial(unaPosicion2);
         
-		unaHectarea.habilitarAccesoAlTransito();
-		unaHectarea.habilitarAgua();
-		unaHectarea.habilitarElectricidad();
+		unaHectarea.habilitarServicio("transito");
+		unaHectarea.habilitarServicio("agua");
+		unaHectarea.habilitarServicio("electricidad");
 		
 		try{
 			unaHectarea.establecerEdificio(unEdificioResidencial);

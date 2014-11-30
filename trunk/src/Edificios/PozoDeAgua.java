@@ -29,7 +29,7 @@ public class PozoDeAgua extends Construccion {
 		Recorrido zonaCircundante= unPlano.recorrerZonaCircundante(posicionConstruccion, radioDeDistribucion);
 		while (zonaCircundante.tieneSiguiente()){
 			Hectarea hectareaActual=zonaCircundante.siguiente();
-					hectareaActual.habilitarAgua();
+					hectareaActual.habilitarServicio("agua");
 		}
 	}
 	

@@ -33,8 +33,8 @@ public class callesTest {
 		Hectarea otraHectarea = unPlano.devolverHectarea(otraPosicion);
             	
 		Edificio unoResidencial = new EdificioResidencial(otraPosicion);
-		otraHectarea.habilitarAgua();
-		otraHectarea.habilitarElectricidad();
+		otraHectarea.habilitarServicio("agua");
+		otraHectarea.habilitarServicio("electricidad");
 		otraHectarea.establecerEdificio(unoResidencial);
 		Assert.assertTrue(unoResidencial.tieneAgua());
 		
@@ -57,8 +57,8 @@ public class callesTest {
 		
 		Posicion unaPosicion2 = new Posicion(5,5);
 		Edificio unoResidencial = new EdificioResidencial(unaPosicion2);
-		otraHectarea.habilitarAccesoAlTransito();
-		otraHectarea.habilitarElectricidad();
+		otraHectarea.habilitarServicio("transito");
+		otraHectarea.habilitarServicio("electricidad");
 		unaConexion.proveerServicioZona(unPlano);
 		try{
 			otraHectarea.establecerEdificio(unoResidencial);
