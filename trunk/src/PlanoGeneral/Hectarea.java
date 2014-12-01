@@ -19,6 +19,8 @@ import Excepciones.ExcepcionHectareaYaContieneUnaConstruccion;
 import Excepciones.ExcepcionHectareaNoBrindaLosServiciosNecesarios;
 import Excepciones.ExcepcionNoSePuedeConstruirEnEsteTerreno;
 import Superficies.Superficie;
+import Superficies.SuperficieConAgua;
+import Superficies.SuperficieConTerrenoLlano;
 
 public class Hectarea implements Destruible {
 	public String identi;
@@ -256,7 +258,13 @@ public class Hectarea implements Destruible {
 		elementoHectarea.setAttribute("tieneServicioAgua", Boolean.toString(this.servicioAgua));
 		elementoHectarea.setAttribute("tieneAccesoTransito", Boolean.toString(this.accesoAlTransito));
 		
-		elementoHectarea.appendChild(this.superficie.serializar(doc));
+		String tipoSuperficie = "tierra";
+		if(this.superficie.sePuedeConstruirUnPozoDeAgua()){
+			tipoSuperficie = "agua";
+;		}
+		
+		elementoHectarea.setAttribute("tipoSuperficie", tipoSuperficie);
+		
 		
 		if (ruta != null){
 			elementoHectarea.appendChild(this.ruta.serializar(doc));
@@ -273,6 +281,35 @@ public class Hectarea implements Destruible {
 		}
 
 		return elementoHectarea;
+	}
+
+	public static Hectarea hidratar(Element elementoHectarea) {
+		String tipoSuperficie = elementoHectarea.getAttribute("tipoSuperficie");
+		
+		Superficie superficieNueva = null;
+		if(tipoSuperficie.equals("tierra")){
+			superficieNueva = new SuperficieConTerrenoLlano();
+		}
+		else{
+			superficieNueva = new SuperficieConAgua();
+		}
+		
+		Hectarea hectareaNueva = new Hectarea(superficieNueva);
+		
+		hectareaNueva.poseePozoDeAgua = Boolean.parseBoolean(elementoHectarea.getAttribute("tienePozo"));
+		hectareaNueva.poseeCentralElectrica = Boolean.parseBoolean(elementoHectarea.getAttribute("tieneCentralElectrica"));
+		hectareaNueva.servicioAgua = Boolean.parseBoolean(elementoHectarea.getAttribute("tieneServicioAgua"));
+		hectareaNueva.accesoAlTransito = Boolean.parseBoolean(elementoHectarea.getAttribute("tieneAccesoTransito"));
+		hectareaNueva.servicioElectrico = Boolean.parseBoolean(elementoHectarea.getAttribute("tieneServicioElectrico"));
+		
+		try{
+			hectareaNueva.construccion = Construccion.hidratar((Document) elementoHectarea.getAttributeNode("Construccion"));
+		}
+		catch (NullPointerException e){
+			hectareaNueva.construccion = null;
+		}
+		
+		return hectareaNueva;
 	}
 	
 

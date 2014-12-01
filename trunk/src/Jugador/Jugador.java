@@ -87,10 +87,10 @@ public abstract class Jugador {
 
 		Poblacion nuevaPoblacion = Poblacion.hidratar( elementoJugador.getElementsByTagName("Poblacion").item(0) );
 		nuevoJugador.poblacion = nuevaPoblacion;
-/**
+
 		Plano nuevoPlano = Plano.hidratar( elementoJugador.getElementsByTagName("Plano").item(0) );
 		nuevoJugador.plano = nuevoPlano;
-**/
+
 		return nuevoJugador;
 	}
 	

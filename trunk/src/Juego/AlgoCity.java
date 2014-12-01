@@ -54,4 +54,8 @@ public class AlgoCity {
 		Jugador unJugadorCargado = Jugador.hidratar(doc); // Me devuelve una instancia del jugador hidratado.
 		this.agregarJugador(unJugadorCargado);
 	}
+	
+	public Jugador obtenerPrimerJugadorRegistrado(){
+		return jugadores.get(0);
+	}
 }
