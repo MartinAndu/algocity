@@ -15,7 +15,9 @@ import org.w3c.dom.Element;
 
 import Bomberos.EstacionDeBomberos;
 import Catastrofe.Catastrofe;
+import CentralesElectricas.CentralEolica;
 import CentralesElectricas.CentralMineral;
+import CentralesElectricas.CentralNuclear;
 import Conectores.ConexionDeAgua;
 import Conectores.LineasDeTension;
 import Conectores.RutaPavimentada;
@@ -23,6 +25,8 @@ import ConstruccionGeneral.Construccion;
 import ConstruccionGeneral.Posicion;
 import ConstruccionGeneral.Reconstruible;
 import Constructor.Constructor;
+import Edificios.EdificioComercial;
+import Edificios.EdificioIndustrial;
 import Edificios.EdificioResidencial;
 import Edificios.PozoDeAgua;
 import PlanoGeneral.Plano;
@@ -133,13 +137,22 @@ public abstract class Jugador {
 
 	public void crearPozoDeAgua(Posicion posicion) {
 		PozoDeAgua pozo = this.constructor.construirPozoDeAgua(posicion);
-		pozo.construirSobrePlano(plano);	
-		this.presupuesto.reducirPresupuesto(pozo.devolverCosto());
+		this.agregarAlPlano(pozo);
 	}
 	
 	public void crearResidencia(Posicion posicion) {
-		EdificioResidencial residencia = this.constructor.construirZonaResidencial(posicion);
+		EdificioResidencial residencia = this.constructor.construirResidencia(posicion);
 		this.agregarAlPlano(residencia);
+	}
+	
+	public void crearIndustria(Posicion posicion) {
+		EdificioIndustrial industria = this.constructor.construirIndustria(posicion);
+		this.agregarAlPlano(industria);
+	}
+	
+	public void crearComercio(Posicion posicion) {
+		EdificioComercial comercio = this.constructor.construirComercio(posicion);
+		this.agregarAlPlano(comercio);
 	}
 
 	public void crearLineaDeTension(Posicion posicion) {
@@ -152,14 +165,24 @@ public abstract class Jugador {
 		this.agregarAlPlano(canio);
 	}
 	
-	public void crearCentralElectricaMineral(Posicion posicion) {
+	public void crearRutaPavimentada(Posicion posicion) {
+		RutaPavimentada ruta = this.constructor.construirRuta(posicion);
+		this.agregarAlPlano(ruta);
+	}
+	
+	public void crearCentralMineral(Posicion posicion) {
 		CentralMineral central = this.constructor.construirCentralMineral(posicion);
 		this.agregarAlPlano(central);
 	}
 	
-	public void crearRutaPavimentada(Posicion posicion) {
-		RutaPavimentada ruta = this.constructor.construirRuta(posicion);
-		this.agregarAlPlano(ruta);
+	public void crearCentralNuclear(Posicion posicion) {
+		CentralNuclear central = this.constructor.construirCentralNuclear(posicion);
+		this.agregarAlPlano(central);
+	}
+	
+	public void crearCentralEolica(Posicion posicion) {
+		CentralEolica central = this.constructor.construirCentralEolica(posicion);
+		this.agregarAlPlano(central);
 	}
 	
 	private void agregarAlPlano(Construccion construccion) {

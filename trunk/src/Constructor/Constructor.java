@@ -16,11 +16,11 @@ import Edificios.PozoDeAgua;
 
 public abstract class Constructor {
 	
-	public abstract EdificioResidencial construirZonaResidencial(Posicion unaPosicion);
+	public abstract EdificioResidencial construirResidencia(Posicion unaPosicion);
 
-	public abstract EdificioComercial construirZonaComercial(Posicion unaPosicion);
+	public abstract EdificioComercial construirComercio(Posicion unaPosicion);
 	
-	public abstract EdificioIndustrial construirZonaIndustrial(Posicion unaPosicion);
+	public abstract EdificioIndustrial construirIndustria(Posicion unaPosicion);
 	
 	public abstract PozoDeAgua construirPozoDeAgua(Posicion unaPosicion);
 	
