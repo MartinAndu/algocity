@@ -71,9 +71,8 @@ public abstract class Jugador {
 		elementoJugador.setAttribute("nombre", this.nombreJugador);
 		elementoJugador.appendChild(this.presupuesto.serializar(doc));
 		elementoJugador.appendChild(this.poblacion.serializar(doc));
-/**
-		elementoJugador.appendChild(this.plano.serializar(doc));	
-**/
+		elementoJugador.appendChild(this.plano.serializar(doc));
+		
 		return elementoJugador;
 	}
 	

@@ -14,6 +14,7 @@ import PlanoGeneradores.GeneradorDireccion;
 import PlanoGeneradores.GeneradorPosicion;
 import PlanoGeneradores.GeneradorRecorrido;
 import SuperficiesGeneradores.GeneradorSuperficie;
+import org.w3c.dom.Element;
 
 
 public class Plano {
@@ -261,8 +262,22 @@ public class Plano {
 	}
 
 	public Node serializar(Document doc) {
-		// TODO Auto-generated method stub
-		return null;
+		Element elementoPlano = doc.createElement("Plano");
+		elementoPlano.setAttribute("dimensionM", Integer.toString(this.dimensionM));
+		elementoPlano.setAttribute("dimensionN", Integer.toString(this.dimensionN));
+		
+		for (int i = 1; i <= dimensionN; i++) {
+			for (int j = 1; j <= dimensionM; j++) {
+				Posicion posicionParcial = new Posicion(i,j);
+				String posicionEnString = posicionParcial.enString();
+				Hectarea hectarea = hectareas.get(posicionEnString);
+				if (hectarea != null){
+					elementoPlano.appendChild(hectarea.serializar(doc,posicionEnString));
+				}
+			}
+		}
+		
+		return elementoPlano;
 	}
 
 	public static Plano hidratar(Node item) {

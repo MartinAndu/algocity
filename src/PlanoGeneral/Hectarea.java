@@ -2,6 +2,10 @@ package PlanoGeneral;
 
 import java.util.ArrayList;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+
 import CentralesElectricas.CentralElectrica;
 import Conectores.ConexionDeAgua;
 import Conectores.LineasDeTension;
@@ -240,6 +244,35 @@ public class Hectarea implements Destruible {
 			reconstruilbles.add(construccion);
 		}
 		return reconstruilbles;
+	}
+
+	public Node serializar(Document doc, String posicionEnString) {
+		Element elementoHectarea = doc.createElement("Hectarea");
+		
+		elementoHectarea.setAttribute("posicion", posicionEnString);
+		elementoHectarea.setAttribute("tienePozo", Boolean.toString(this.poseePozoDeAgua));
+		elementoHectarea.setAttribute("tieneCentralElectrica", Boolean.toString(this.poseeCentralElectrica));
+		elementoHectarea.setAttribute("tieneServicioElectrico", Boolean.toString(this.servicioElectrico));
+		elementoHectarea.setAttribute("tieneServicioAgua", Boolean.toString(this.servicioAgua));
+		elementoHectarea.setAttribute("tieneAccesoTransito", Boolean.toString(this.accesoAlTransito));
+		
+		elementoHectarea.appendChild(this.superficie.serializar(doc));
+		
+		if (ruta != null){
+			elementoHectarea.appendChild(this.ruta.serializar(doc));
+		}
+		
+		if (construccion != null){
+			elementoHectarea.appendChild(this.construccion.serializar(doc));
+		}
+		if (canio != null){
+			elementoHectarea.appendChild(this.canio.serializar(doc));
+		}
+		if (linea != null){
+			elementoHectarea.appendChild(this.linea.serializar(doc));
+		}
+
+		return elementoHectarea;
 	}
 	
 
