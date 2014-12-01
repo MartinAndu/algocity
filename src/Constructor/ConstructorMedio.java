@@ -14,19 +14,19 @@ import Edificios.PozoDeAgua;
 
 public class ConstructorMedio extends Constructor{
 	
-	public EdificioResidencial construirZonaResidencial(Posicion unaPosicion){
+	public EdificioResidencial construirResidencia(Posicion unaPosicion){
 		EdificioResidencial unResidencial = new EdificioResidencial(unaPosicion);	
 		
 		return unResidencial;
 	}
 	
-	public EdificioComercial construirZonaComercial(Posicion unaPosicion){
+	public EdificioComercial construirComercio(Posicion unaPosicion){
 		EdificioComercial unComercial = new EdificioComercial(unaPosicion);
 		
 		return unComercial;
 	}
 	
-	public EdificioIndustrial construirZonaIndustrial(Posicion unaPosicion){
+	public EdificioIndustrial construirIndustria(Posicion unaPosicion){
 		EdificioIndustrial unIndustrial = new EdificioIndustrial(unaPosicion);
 		
 		return unIndustrial;

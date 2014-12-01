@@ -109,7 +109,7 @@ public class JugadorTest {
 		Posicion otraPosicionMas = new Posicion(1, 4);
 		jugador.crearTuberiaDeAgua(otraPosicionMas);
 		Posicion unaPosicionMas = new Posicion(1, 5);
-		jugador.crearCentralElectricaMineral(unaPosicionMas);
+		jugador.crearCentralMineral(unaPosicionMas);
 		
 		assertEquals(1740, jugador.obtenerPresupuesto());
 	}
@@ -125,7 +125,7 @@ public class JugadorTest {
 		Posicion otraPosicionMas = new Posicion(1, 4);
 		jugador.crearTuberiaDeAgua(otraPosicionMas);
 		Posicion unaPosicionMas = new Posicion(1, 5);
-		jugador.crearCentralElectricaMineral(unaPosicionMas);
+		jugador.crearCentralMineral(unaPosicionMas);
 		jugador.crearRutaPavimentada(otraPosicion);
 		jugador.crearRutaPavimentada(otraPosicionMas);
 		
@@ -143,7 +143,7 @@ public class JugadorTest {
 		Posicion otraPosicionMas = new Posicion(1, 4);
 		jugador.crearTuberiaDeAgua(otraPosicionMas);
 		Posicion unaPosicionMas = new Posicion(1, 5);
-		jugador.crearCentralElectricaMineral(unaPosicionMas);
+		jugador.crearCentralMineral(unaPosicionMas);
 		jugador.crearRutaPavimentada(otraPosicion);
 		jugador.crearRutaPavimentada(otraPosicionMas);
 		Posicion posicionDeLaCasa = new Posicion(2, 3);
