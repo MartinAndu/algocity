@@ -4,11 +4,6 @@ import static org.junit.Assert.fail;
 import org.junit.Assert;
 import org.junit.Test;
 
-
-
-
-
-
 import Conectores.ConexionDeAgua;
 import ConstruccionGeneral.Posicion;
 import Edificios.Edificio;
@@ -30,9 +25,7 @@ public class ConexionesDeAguaTest {
 		Plano unPlano=new PlanoDeterminista(8,8);
 		Posicion unaPosicion=new Posicion(2,3);
 		ConexionDeAgua unaConexionDeAgua = new ConexionDeAgua(unaPosicion);
-		
 		unaConexionDeAgua.construirSobrePlano(unPlano);
-		
 		unaConexionDeAgua.habilitarConexion();
 		Superficie superficie = new SuperficieConTerrenoLlano();
 		Assert.assertTrue(unaConexionDeAgua.conectadoALaRed(new Hectarea(superficie)));
@@ -62,11 +55,7 @@ public class ConexionesDeAguaTest {
 		otraConexion.construirSobrePlano(unPlano);
 		tercerConexion.construirSobrePlano(unPlano);
 		unaConexion.habilitarConexion();
-		//otraConexion.habilitarConexion();
-		
-		
-		
-		
+
 		Assert.assertTrue(tercerConexion.conectadoALaRed(unPlano.devolverHectarea(tercerPosicion)));
                 		
 	}
@@ -87,7 +76,7 @@ public class ConexionesDeAguaTest {
 		Edificio unoResidencial = new EdificioResidencial(otraPosicion);
 		otraHectarea.habilitarServicio("transito");
 		otraHectarea.habilitarServicio("electricidad");
-		unaConexion.proveerServicioZona(unPlano);
+		//unaConexion.proveerServicioZona(unPlano);
 		otraHectarea.establecerEdificio(unoResidencial);
 		Assert.assertTrue(unoResidencial.tieneAgua());
             			
@@ -97,29 +86,18 @@ public class ConexionesDeAguaTest {
 	@Test
 	public void accesoAAguaDesdePozo(){
            
-		//no se deberia poder construir una conexion de agua sin un pozo de agua que ya provea
-		//agua a su entorno.
-		Posicion unaPosicion=new Posicion(2,2);
-		ConexionDeAgua unaConexion= new ConexionDeAgua(unaPosicion);
-		Plano unPlano = new PlanoDeterminista(8,8);
-		unaConexion.construirSobrePlano(unPlano);
-		
-		Posicion posicionPozo=new Posicion(1,2);
-		PozoDeAgua unPozo=new PozoDeAgua(posicionPozo);
-		Hectarea unaHectarea=unPlano.devolverHectarea(posicionPozo);
-		unaHectarea.establecerPozoDeAgua(unPozo);
-		Posicion otraPosicion=new Posicion(3,2);
-                	
-		Hectarea otraHectarea = unPlano.devolverHectarea(otraPosicion);
-		
+
+    	Plano unPlano = new PlanoDeterminista(8,8);
+    	Posicion posicionPozo=new Posicion(2,2);
+    	PozoDeAgua unPozo=new PozoDeAgua(posicionPozo);
+    	unPozo.construirSobrePlano(unPlano);//
+    	Posicion otraPosicion=new Posicion(3,2);
+    	Hectarea otraHectarea = unPlano.devolverHectarea(otraPosicion);
 		Edificio unoResidencial = new EdificioResidencial(otraPosicion);
 		otraHectarea.habilitarServicio("transito");
 		otraHectarea.habilitarServicio("electricidad");
-		unaConexion.proveerServicioZona(unPlano);
-		otraHectarea.establecerEdificio(unoResidencial);
+		unoResidencial.construirSobrePlano(unPlano);
 		Assert.assertTrue(unoResidencial.tieneAgua());
-            			
-                	
 	}
                 
 	@Test
@@ -129,16 +107,12 @@ public class ConexionesDeAguaTest {
 		ConexionDeAgua unaConexion= new ConexionDeAgua(unaPosicion);
 		unaConexion.construirSobrePlano(unPlano);
 		unaConexion.habilitarConexion();
- 
-                		
 		Posicion otraPosicion=new Posicion(7,7);
 		Hectarea otraHectarea = unPlano.devolverHectarea(otraPosicion);
-		
 		Posicion unaPosicion2 = new Posicion(5,5);
 		Edificio unoResidencial = new EdificioResidencial(unaPosicion2);
 		otraHectarea.habilitarServicio("transito");
 		otraHectarea.habilitarServicio("electricidad");
-		unaConexion.proveerServicioZona(unPlano);
 		try{
 			otraHectarea.establecerEdificio(unoResidencial);
 			fail();

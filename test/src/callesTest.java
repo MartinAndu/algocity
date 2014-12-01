@@ -61,7 +61,7 @@ public class callesTest {
 		Edificio unoResidencial = new EdificioResidencial(unaPosicion2);
 		otraHectarea.habilitarServicio("transito");
 		otraHectarea.habilitarServicio("electricidad");
-		unaConexion.proveerServicioZona(unPlano);
+		//unaConexion.proveerServicioZona(unPlano);
 		try{
 			otraHectarea.establecerEdificio(unoResidencial);
 		}

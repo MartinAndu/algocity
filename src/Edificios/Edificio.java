@@ -58,14 +58,7 @@ public class Edificio extends Construccion {
 	public void construirSobrePlano(Plano unPlano){
 		Hectarea unaHectarea = unPlano.devolverHectarea(posicionConstruccion);
 		this.inspeccionarHectarea(unaHectarea);
-		
 		unaHectarea.establecerEdificio(this);
-		if(unaHectarea.poseeCentralElectrica()){
-			unaHectarea.obtenerCentral().agregarConstruccionQueConsumeElectricidad(this);
-		}
-		if(unaHectarea.tieneConexionElectrica()){
-		unaHectarea.obtenerLineaDeTension().centralElectricaALAQuePertenece().agregarConstruccionQueConsumeElectricidad(this);
-		}
 	}
 
 }

@@ -25,6 +25,7 @@ public class RutaPavimentada extends Conexion{
 		unaHectarea.establecerCalle(this);
 		this.habilitarConexion();
 	}
+	
 	public boolean conectadoALaRed(Hectarea unaHectarea){
 		return conectadoALaRed;
 	}

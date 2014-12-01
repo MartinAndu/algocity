@@ -33,7 +33,6 @@ public abstract class Conexion extends Construccion {
 	}
 	
 	protected boolean marcado() {//Este metodo indica si la conexion ya fue marcada para no volver a chequearla y evitar bucles infinitos. 
-		
 		return marca;
 	}
 	
@@ -43,15 +42,13 @@ public abstract class Conexion extends Construccion {
 		miPlano.devolverHectarea(posicionConstruccion).habilitarServicio(servicioQueTransmite);
 	}
 	
-	public void proveerServicioZona(Plano unPlano){
+	protected void proveerServicioZona(Plano unPlano){
 		miPlano=unPlano;
 		Recorrido zonaCircundante= unPlano.recorrerZonaCircundante(posicionConstruccion, radioDeDistribucion);
 		conectadoALaRed=this.conectadoALaRed(miPlano.devolverHectarea(posicionConstruccion));
 		while (zonaCircundante.tieneSiguiente()&&conectadoALaRed){
 			Hectarea hectareaActual=zonaCircundante.siguiente();
-
 			hectareaActual.habilitarServicio(servicioQueTransmite);
-
 		}
 		
 	}

@@ -83,7 +83,7 @@ public class LineasDeTensionTest {
 		Edificio unoResidencial = new EdificioResidencial(otraPosicion);
 		otraHectarea.habilitarServicio("transito");
 		otraHectarea.habilitarServicio("agua");
-		unaConexion.proveerServicioZona(unPlano);
+		//unaConexion.proveerServicioZona(unPlano);
 		otraHectarea.establecerEdificio(unoResidencial);
 		Assert.assertTrue(unoResidencial.tieneElectricidad());
 		
@@ -99,20 +99,16 @@ public class LineasDeTensionTest {
     	LineasDeTension unaConexion= new LineasDeTension(unaPosicion);
     	Plano unPlano = new PlanoDeterminista(8,8);
     	unaConexion.construirSobrePlano(unPlano);
-
     	Posicion posicionCentralElectrica=new Posicion(2,1);
     	CentralEolica unaCentralElectrica=new CentralEolica(posicionCentralElectrica);
     	Hectarea unaHectarea=unPlano.devolverHectarea(posicionCentralElectrica);
     	unaHectarea.habilitarServicio("agua");
-    	unaHectarea.establecerCentral(unaCentralElectrica);
+    	unaCentralElectrica.construirSobrePlano(unPlano);//
     	Posicion otraPosicion=new Posicion(3,2);
-    	
     	Hectarea otraHectarea = unPlano.devolverHectarea(otraPosicion);
-    	
 		Edificio unoResidencial = new EdificioResidencial(otraPosicion);
 		otraHectarea.habilitarServicio("transito");
 		otraHectarea.habilitarServicio("agua");
-		unaConexion.proveerServicioZona(unPlano);
 		otraHectarea.establecerEdificio(unoResidencial);
 		Assert.assertTrue(unoResidencial.tieneElectricidad());
 		
@@ -136,7 +132,7 @@ public class LineasDeTensionTest {
 		Edificio unoResidencial = new EdificioResidencial(unaPosicion2);
 		otraHectarea.habilitarServicio("transito");
 		otraHectarea.habilitarServicio("agua");
-		unaConexion.proveerServicioZona(unPlano);
+		//unaConexion.proveerServicioZona(unPlano);
 		try{
     		otraHectarea.establecerEdificio(unoResidencial);
 		}
