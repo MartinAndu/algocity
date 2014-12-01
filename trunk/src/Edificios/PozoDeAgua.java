@@ -11,11 +11,16 @@ public class PozoDeAgua extends Construccion {
 
 	static int COSTO_CONSTRUCCION = 250;
 	static int CONSUMO_ELECTRICO = 0;
+	static String servicioQueTransmite="agua";
+	int radioDeDistribucion=1;
+	boolean conectadoALaRed=true;
 	
 	public PozoDeAgua(Posicion unaPosicion){
 		super(unaPosicion);
 		this.costoDeConstruccion = COSTO_CONSTRUCCION;
 		this.puntosDeConstruccion = new PuntosDePozo();
+		
+		
 	}
 	
 	@Override
@@ -26,12 +31,15 @@ public class PozoDeAgua extends Construccion {
 	public void construirSobrePlano(Plano unPlano){
 		Hectarea unaHectarea = unPlano.devolverHectarea(posicionConstruccion);
 		unaHectarea.establecerPozoDeAgua(this);
-		int radioDeDistribucion=1;
-		
+		proveerServicioZona(unPlano);
+	}
+	
+	
+	public void proveerServicioZona(Plano unPlano){
 		Recorrido zonaCircundante= unPlano.recorrerZonaCircundante(posicionConstruccion, radioDeDistribucion);
-		while (zonaCircundante.tieneSiguiente()){
+		while (zonaCircundante.tieneSiguiente()&&conectadoALaRed){
 			Hectarea hectareaActual=zonaCircundante.siguiente();
-					hectareaActual.habilitarServicio("agua");
+			hectareaActual.habilitarServicio(servicioQueTransmite);
 		}
 	}
 	
@@ -41,7 +49,7 @@ public class PozoDeAgua extends Construccion {
 
 	@Override
 	public void destruirEnPorcentaje(int porcentaje) {
-		// TODO Auto-generated method stub
+		// Terremoto no destruye el pozo de agua
 		
 	}
 }
