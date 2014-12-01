@@ -280,9 +280,34 @@ public class Plano {
 		return elementoPlano;
 	}
 
-	public static Plano hidratar(Node item) {
-		// TODO Auto-generated method stub
-		return null;
+	public static Plano hidratar(Node elementoPlano) {
+		Plano nuevoPlano = new Plano();
+		
+		nuevoPlano.dimensionM = Integer.parseInt(((Element) elementoPlano).getAttribute("dimensionM"));
+		nuevoPlano.dimensionN = Integer.parseInt(((Element) elementoPlano).getAttribute("dimensionN"));
+		
+		HashMap<String, Hectarea> hectareasNuevas = new HashMap<String, Hectarea>();
+
+		boolean corte = true;
+		int i = 0;
+		
+		while(corte){
+			try {
+				Element elementoHectarea = (Element) elementoPlano.getChildNodes().item(i);
+
+				Hectarea hectareaNueva = Hectarea.hidratar(elementoHectarea);
+				
+				hectareasNuevas.put(elementoHectarea.getAttribute("posicion"), hectareaNueva);
+				
+				i += 1;
+			}
+			catch (NullPointerException e){
+				corte = false;
+			}
+		}
+		
+		nuevoPlano.hectareas = hectareasNuevas;
+		return nuevoPlano;
 	}
 
 }

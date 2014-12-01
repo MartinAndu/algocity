@@ -29,12 +29,14 @@ public class GuardarYCargarPartidasTest {
 		
 		unJugador.crearPozoDeAgua(new Posicion(4,4));
 		
+		Assert.assertTrue(unJugador.obtenerPresupuesto() == 4750);
+		
 		Assert.assertTrue(unJuego.hayJugadores());
 		
 		unJugador.guardarPartida(); // Esto genera el XML con los datos del jugador Jorge.
 		
 		
-		/**
+
 		AlgoCity otroAlgoCity = new AlgoCity();
 		
 		Assert.assertTrue(!otroAlgoCity.hayJugadores());
@@ -42,6 +44,10 @@ public class GuardarYCargarPartidasTest {
 		otroAlgoCity.cargarPartidaJugador("Jorge.xml"); // Cargo el XML con los datos de Jorge en otra instancia de AlgoCity...
 		
 		Assert.assertTrue(otroAlgoCity.hayJugadores());
-		**/
+
+		Jugador jorgeResucitado = otroAlgoCity.obtenerPrimerJugadorRegistrado();
+		Assert.assertNotNull(jorgeResucitado);
+		
+		Assert.assertTrue(jorgeResucitado.obtenerPresupuesto() == 4750);
 	}
 }
