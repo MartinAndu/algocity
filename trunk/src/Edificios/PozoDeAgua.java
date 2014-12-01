@@ -42,14 +42,4 @@ public class PozoDeAgua extends Construccion {
 			hectareaActual.habilitarServicio(servicioQueTransmite);
 		}
 	}
-	
-	public void destruir(){
-		//Godzilla no destruye el pozo de agua
-	}
-
-	@Override
-	public void destruirEnPorcentaje(int porcentaje) {
-		// Terremoto no destruye el pozo de agua
-		
-	}
 }
