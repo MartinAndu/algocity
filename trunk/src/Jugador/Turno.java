@@ -2,19 +2,26 @@ package Jugador;
 
 import Ambientes.Ambiente;
 
-public class Turno {
+public class Turno implements Runnable{
 
 	private Jugador jugador;
 	private Ambiente ambiente;
+	private Thread hilo;
+	private boolean juegoContinua;
 
-	public void establecerJugador(Jugador jugador) {
+	public Turno(Jugador jugador, Ambiente ambiente) {
 		this.jugador = jugador;
-		
-	}
-
-	public void establecerAmbiente(Ambiente ambiente) {
 		this.ambiente = ambiente;
+		this.hilo = new Thread(this);
+		this.juegoContinua = true;
+	}
 		
+		
+	@Override
+	public void run() {
+		while (this.juegoContinua) {
+			
+		}
 	}
 
 }
