@@ -85,7 +85,6 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 	}
 	
 
-
 	public void mostrarVentana(){
 		this.setVisible(true);
     	this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -94,8 +93,10 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if (e.getSource() == inicioPartida)
-			System.out.print("InicioPartida");
+		if (e.getSource() == inicioPartida){
+			this.setVisible(false);
+			new FrameMapa().mostrarVentana();
+		}
 		if (e.getSource() == salir)
 			System.exit(0);
 		
