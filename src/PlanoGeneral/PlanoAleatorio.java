@@ -7,15 +7,14 @@ import SuperficiesGeneradores.GeneradorSuperficieAleatoria;
 
 
 public class PlanoAleatorio extends Plano {
-
-	public PlanoAleatorio(int dimensionN, int dimensionM) {
+	
+	public PlanoAleatorio() {
 		super();
 		this.generadorDireccion = new GeneradorDireccionAleatorio();
 		this.generadorPosicion = new GeneradorPosicionAleatorio(dimensionN, dimensionM);
 		this.generadorRecorrido = new GeneradorRecorridoAleatorio();
 		this.generadorSuperficies = new GeneradorSuperficieAleatoria();
 		this.construirPlano(dimensionN, dimensionM);
-
 	}
-
+	
 }

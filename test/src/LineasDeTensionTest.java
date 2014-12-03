@@ -27,7 +27,7 @@ public class LineasDeTensionTest {
     @Test
     public void hayConexionElectricaEnLinea(){
     	
-    	Plano unPlano=new PlanoDeterminista(8,8);
+    	Plano unPlano=new PlanoDeterminista();
     	Posicion unaPosicion=new Posicion(2,3);
     	LineasDeTension unaLineaDeTension = new LineasDeTension(unaPosicion);
     	
@@ -50,7 +50,7 @@ public class LineasDeTensionTest {
     @Test
     
     public void pasaLaElectricidad(){
-    		Plano unPlano = new PlanoDeterminista(4,7);
+    		Plano unPlano = new PlanoDeterminista();
     		Posicion unaPosicion = new Posicion(2, 2);
     		Posicion otraPosicion = new Posicion(3,2);
     		Posicion tercerPosicion = new Posicion(4,2);
@@ -70,7 +70,7 @@ public class LineasDeTensionTest {
     @Test
     public void accesoAElectricidad(){
     	
-    	Plano unPlano = new PlanoDeterminista(8,8);
+    	Plano unPlano = new PlanoDeterminista();
     	Posicion unaPosicion=new Posicion(4,4);
     	LineasDeTension unaConexion= new LineasDeTension(unaPosicion);
     	unaConexion.construirSobrePlano(unPlano);
@@ -97,7 +97,7 @@ public class LineasDeTensionTest {
 
     	Posicion unaPosicion=new Posicion(2,2);
     	LineasDeTension unaConexion= new LineasDeTension(unaPosicion);
-    	Plano unPlano = new PlanoDeterminista(8,8);
+    	Plano unPlano = new PlanoDeterminista();
     	unaConexion.construirSobrePlano(unPlano);
     	Posicion posicionCentralElectrica=new Posicion(2,1);
     	CentralEolica unaCentralElectrica=new CentralEolica(posicionCentralElectrica);
@@ -118,7 +118,7 @@ public class LineasDeTensionTest {
     @Test
     public void sinAccesoAElectricidadMuyLejos(){
     	boolean noTieneServiciosSuficiente = false;
-    	Plano unPlano = new PlanoDeterminista(8,8);
+    	Plano unPlano = new PlanoDeterminista();
     	Posicion unaPosicion=new Posicion(2,2);
     	LineasDeTension unaConexion= new LineasDeTension(unaPosicion);
     	unaConexion.construirSobrePlano(unPlano);

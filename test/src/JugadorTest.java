@@ -10,19 +10,6 @@ import Jugador.JugadorParaTest;
 
 
 public class JugadorTest {
-
-	@Test
-	public void jugadorIncrementoSuPoblacionSeVerificaSiHayGenteSinHogar() {
-		
-		Jugador jugador = new JugadorParaTest();
-		
-		assertEquals(500, jugador.obtenerPoblacionSinHogar());
-		
-		jugador.poblacionSeIncrementoEnPorcetaje(50);
-		
-		assertEquals(750, jugador.obtenerPoblacionSinHogar());
-
-	}
 	
 	@Test
 	public void jugadorHuboUnaCatastrofeGodzillaSeReduceElPresupuestoPorRecuperarLaCiudad() {

@@ -22,7 +22,7 @@ public class ConexionesDeAguaTest {
 	@Test
 	public void hayConexionDeAguaEnTuberia(){
 		
-		Plano unPlano=new PlanoDeterminista(8,8);
+		Plano unPlano=new PlanoDeterminista();
 		Posicion unaPosicion=new Posicion(2,3);
 		ConexionDeAgua unaConexionDeAgua = new ConexionDeAgua(unaPosicion);
 		unaConexionDeAgua.construirSobrePlano(unPlano);
@@ -43,7 +43,7 @@ public class ConexionesDeAguaTest {
 	@Test
 	
 	public void pasaElAgua(){
-		Plano unPlano = new PlanoDeterminista(4,7);
+		Plano unPlano = new PlanoDeterminista();
 		Posicion unaPosicion = new Posicion(2, 2);
 		Posicion otraPosicion = new Posicion(3,2);
 		Posicion tercerPosicion = new Posicion(4,2);
@@ -63,7 +63,7 @@ public class ConexionesDeAguaTest {
 	@Test
 	public void accesoAAgua(){
                 	
-		Plano unPlano = new PlanoDeterminista(8,8);
+		Plano unPlano = new PlanoDeterminista();
 		Posicion unaPosicion=new Posicion(4,4);
 		ConexionDeAgua unaConexion= new ConexionDeAgua(unaPosicion);
 		unaConexion.construirSobrePlano(unPlano);
@@ -87,7 +87,7 @@ public class ConexionesDeAguaTest {
 	public void accesoAAguaDesdePozo(){
            
 
-    	Plano unPlano = new PlanoDeterminista(8,8);
+    	Plano unPlano = new PlanoDeterminista();
     	Posicion posicionPozo=new Posicion(2,2);
     	PozoDeAgua unPozo=new PozoDeAgua(posicionPozo);
     	unPozo.construirSobrePlano(unPlano);//
@@ -102,7 +102,7 @@ public class ConexionesDeAguaTest {
                 
 	@Test
 	public void sinAccesoAAguaMuyLejos(){
-		Plano unPlano = new PlanoDeterminista(8,8);
+		Plano unPlano = new PlanoDeterminista();
 		Posicion unaPosicion=new Posicion(2,2);
 		ConexionDeAgua unaConexion= new ConexionDeAgua(unaPosicion);
 		unaConexion.construirSobrePlano(unPlano);

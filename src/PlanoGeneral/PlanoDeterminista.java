@@ -7,7 +7,7 @@ import SuperficiesGeneradores.GeneradorSuperficieDeterminista;
 
 public class PlanoDeterminista extends Plano{
 
-	public PlanoDeterminista(int dimensionN, int dimensionM) {
+	public PlanoDeterminista() {
 		super();
 		this.generadorDireccion = new GeneradorDireccionDeterminista();
 		this.generadorPosicion = new GeneradorPosicionDeterminista(dimensionN, dimensionM);
