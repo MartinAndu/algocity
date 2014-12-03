@@ -25,7 +25,7 @@ public class callesTest {
 	@Test
 	public void accesoARutaPavimentada(){
 		
-		Plano unPlano = new PlanoDeterminista(8,8);
+		Plano unPlano = new PlanoDeterminista();
 		Posicion unaPosicion=new Posicion(4,4);
 		RutaPavimentada unaConexion= new RutaPavimentada(unaPosicion);
 		unaConexion.construirSobrePlano(unPlano);
@@ -47,7 +47,7 @@ public class callesTest {
 	@Test
 	public void sinAccesoAAguaMuyLejos(){
 		boolean noTieneServiciosSuficiente = false;
-		Plano unPlano = new PlanoDeterminista(8,8);
+		Plano unPlano = new PlanoDeterminista();
 		Posicion unaPosicion=new Posicion(2,2);
 		ConexionDeAgua unaConexion= new ConexionDeAgua(unaPosicion);
 		unaConexion.construirSobrePlano(unPlano);

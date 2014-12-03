@@ -1,4 +1,4 @@
-package CatastrofeGeneradores;
+package CatastrofeGenerador;
 
 import Catastrofe.Catastrofe;
 import Catastrofe.Godzilla;

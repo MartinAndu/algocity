@@ -3,10 +3,12 @@ package Catastrofe;
 
 import java.util.ArrayList;
 
+import Administradores.Evento;
 import ConstruccionGeneral.Reconstruible;
+import Jugador.Jugador;
 import PlanoGeneral.Plano;
 
-public abstract class Catastrofe {
+public abstract class Catastrofe implements Evento {
 	
 	protected ArrayList<Reconstruible> estructurasDestruidas;
 
@@ -18,6 +20,10 @@ public abstract class Catastrofe {
 
 	public ArrayList<Reconstruible> obtenerListaDeEstructurasDestruidas() {
 		return estructurasDestruidas;
+	}
+	
+	public void ocurrir(Jugador jugador) {
+		jugador.huboUnaCatastrofe(this);
 	}
 
 }

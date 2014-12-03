@@ -62,4 +62,11 @@ public abstract class Presupuesto {
 		
 		return nuevoPresupuesto;
 	}
+
+	public void reducirEnPorcentaje(int porcentajeDeReduccion) {
+		double porcentajeDouble = porcentajeDeReduccion;
+		porcentajeDouble = porcentajeDouble / 100.0;
+		int cantDinearoARestar = (int) (this.cantidadDeDinero * porcentajeDouble);
+		this.cantidadDeDinero += cantDinearoARestar;		
+	}
 }

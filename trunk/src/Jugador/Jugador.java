@@ -13,6 +13,7 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import Ambientes.Ambiente;
 import Bomberos.EstacionDeBomberos;
 import Catastrofe.Catastrofe;
 import CentralesElectricas.CentralEolica;
@@ -45,6 +46,8 @@ public abstract class Jugador {
 	public void establecerNombreJugador(String unNombre){
 		this.nombreJugador = unNombre;
 	}
+	
+	public abstract Ambiente generarAmbiente();
 
 	public void guardarPartida() throws Exception{
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -96,10 +99,6 @@ public abstract class Jugador {
 	
 	private String obtenerNombre() {
 		return nombreJugador;
-	}
-
-	public int obtenerPoblacionSinHogar() {
-		return poblacion.cantHabitantesSinHogar();
 	}
 
 	public void poblacionSeIncrementoEnPorcetaje(int porcentajeDeIncrementoPoblacional) {
@@ -187,6 +186,10 @@ public abstract class Jugador {
 	private void agregarAlPlano(Construccion construccion) {
 		construccion.construirSobrePlano(this.plano);
 		this.presupuesto.reducirPresupuesto(construccion.devolverCosto());
+	}
+
+	public void presupuestoSeRedujoEnPorcentaje(int porcentajeDeReduccion) {
+		this.presupuesto.reducirEnPorcentaje(porcentajeDeReduccion);
 	}
 
 }

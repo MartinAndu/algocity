@@ -1,26 +1,25 @@
 package Jugador;
 
 import Ambientes.Ambiente;
-import Ambientes.AmbienteEstable;
+import Ambientes.AmbienteFavorable;
 import Bomberos.EstacionDeBomberos;
 import Constructor.ConstructorMedio;
 import PlanoGeneral.PlanoAleatorio;
-import Poblacion.PoblacionMedia;
-import Presupuesto.PresupuestoMedio;
+import Poblacion.PoblacionBaja;
+import Presupuesto.PresupuestoAlto;
 
-public class JugadorMedio extends Jugador {
+public class JugadorFacil extends Jugador {
 
-	public JugadorMedio() {
+	public JugadorFacil() {
 		this.plano = new PlanoAleatorio();
-		this.poblacion = new PoblacionMedia();
-		this.presupuesto = new PresupuestoMedio();
+		this.poblacion = new PoblacionBaja();
+		this.presupuesto = new PresupuestoAlto();
 		this.constructor = new ConstructorMedio();
 		this.estacionDeBomberos = new EstacionDeBomberos();
 	}
-
 	@Override
 	public Ambiente generarAmbiente() {
-		return new AmbienteEstable(this);
+		return new AmbienteFavorable(this);
 	}
 
 }

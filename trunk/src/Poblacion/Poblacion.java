@@ -6,16 +6,7 @@ import org.w3c.dom.Node;
 
 public abstract class Poblacion {
 
-	protected int capacidadHabitacionalCiudad;
 	protected int cantHabitantesCiudad;
-
-	public int cantHabitantesSinHogar() {
-		if (this.capacidadHabitacionalCiudad >= this.cantHabitantesCiudad) {
-			return 0;
-		}else {
-			return this.cantHabitantesCiudad - this.capacidadHabitacionalCiudad;
-		}
-	}
 
 	public void incrementar(int porcentajeAIncrementar) {
 		double porcentajeDouble = porcentajeAIncrementar;
