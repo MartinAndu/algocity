@@ -1,9 +1,10 @@
 package Administradores;
 
-public abstract class AdministradorTurnos {
+public class AdministradorTurnos {
 
 	private int turnosQuePasaron;
 	private int turnoParaActuar;
+	protected int turnoMax;
 
 	public boolean esHoraDeUnEvento() {
 		if (this.turnosQuePasaron == this.turnoParaActuar) {
@@ -15,7 +16,9 @@ public abstract class AdministradorTurnos {
 		return false;
 	}
 
-	protected abstract int generarUnTurno();
+	protected int generarUnTurno(){
+		return (int)(Math.random() * this.turnoMax + 1); 
+	}
 
 	public void pasoUnTurno() {
 		(this.turnosQuePasaron)++;

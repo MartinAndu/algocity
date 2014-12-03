@@ -3,10 +3,10 @@ package Administradores;
 
 public class AdministradorTurnosEstable extends AdministradorTurnos {
 
-	@Override
-	protected int generarUnTurno() {
-		return (int)(Math.random() * 6 + 1); 
-
+	static final int TURNO_MAX = 6;
+	
+	public AdministradorTurnosEstable() {
+		this.turnoMax = TURNO_MAX; 
 	}
 
 }
