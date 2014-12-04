@@ -3,7 +3,7 @@ package controlador;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import vistas.VistaModeloDato;
+import vista.VistaModeloDato;
 import modelo.ModeloObservable;
 
 
