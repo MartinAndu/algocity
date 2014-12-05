@@ -16,7 +16,6 @@ import ConstruccionGeneral.Reconstruible;
 import Edificios.Edificio;
 import Edificios.PozoDeAgua;
 import Excepciones.ExcepcionHectareaYaContieneUnaConstruccion;
-import Excepciones.ExcepcionHectareaNoBrindaLosServiciosNecesarios;
 import Excepciones.ExcepcionNoSePuedeConstruirEnEsteTerreno;
 import Superficies.Superficie;
 import Superficies.SuperficieConAgua;
@@ -117,10 +116,6 @@ public class Hectarea implements Destruible {
 	public void establecerEdificio(Edificio unEdificio){
 		if(this.poseeConstruccion()){
 			throw new ExcepcionHectareaYaContieneUnaConstruccion();
-		}
-		else if(!this.poseeLosTresServicios()){
-			throw new ExcepcionHectareaNoBrindaLosServiciosNecesarios();
-	
 		}
 		else if(!(this.superficie).sePuedeConstruirUnPozoDeAgua()){
 			//throw new ExcepcionNoSePuedeConstruirEnEsteTerreno();//lo deshabilito para probar sin tener en cuenta los terrenos
@@ -303,7 +298,7 @@ public class Hectarea implements Destruible {
 		hectareaNueva.servicioElectrico = Boolean.parseBoolean(elementoHectarea.getAttribute("tieneServicioElectrico"));
 		
 		try{
-			hectareaNueva.construccion = Construccion.hidratar((Document) elementoHectarea.getAttributeNode("Construccion"));
+			hectareaNueva.construccion = Construccion.hidratar((Document) elementoHectarea.getChildNodes().item(0));
 		}
 		catch (NullPointerException e){
 			hectareaNueva.construccion = null;
