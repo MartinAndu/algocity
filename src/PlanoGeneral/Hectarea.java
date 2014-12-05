@@ -298,7 +298,7 @@ public class Hectarea implements Destruible {
 		hectareaNueva.servicioElectrico = Boolean.parseBoolean(elementoHectarea.getAttribute("tieneServicioElectrico"));
 		
 		try{
-			hectareaNueva.construccion = Construccion.hidratar((Document) elementoHectarea.getChildNodes().item(0));
+			hectareaNueva.construccion = Construccion.hidratar(elementoHectarea.getChildNodes().item(0));
 		}
 		catch (NullPointerException e){
 			hectareaNueva.construccion = null;

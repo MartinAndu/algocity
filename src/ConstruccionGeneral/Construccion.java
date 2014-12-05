@@ -2,6 +2,7 @@ package ConstruccionGeneral;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 
 import CentralesElectricas.CentralEolica;
 import CentralesElectricas.CentralMineral;
@@ -39,12 +40,11 @@ public abstract class Construccion implements Reconstruible, Destruible {
         return elementoConstruccion;
     }
  
-    public static Construccion hidratar(Document doc) {
-    	Element elementoConstruccion = (Element)doc.getElementsByTagName("Construccion").item(0);
+    public static Construccion hidratar(Node elementoConstruccion) {
     	
-    	String nombreConstruccion = (elementoConstruccion).getAttribute("nombre");
-    	int coordenadaX = Integer.parseInt((elementoConstruccion).getAttribute("coordenadaX"));
-    	int coordenadaY = Integer.parseInt((elementoConstruccion).getAttribute("coordenadaY"));
+    	String nombreConstruccion = ((Element) elementoConstruccion).getAttribute("nombre");
+    	int coordenadaX = Integer.parseInt(((Element) elementoConstruccion).getAttribute("coordenadaX"));
+    	int coordenadaY = Integer.parseInt(((Element) elementoConstruccion).getAttribute("coordenadaY"));
     	
     	Posicion nuevaPosicion = new Posicion(coordenadaX, coordenadaY);
    
