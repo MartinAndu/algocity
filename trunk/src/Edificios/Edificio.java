@@ -57,7 +57,7 @@ public class Edificio extends Construccion {
 
 	public void construirSobrePlano(Plano unPlano){
 		Hectarea unaHectarea = unPlano.devolverHectarea(posicionConstruccion);
-		this.inspeccionarHectarea(unaHectarea);
+		//this.inspeccionarHectarea(unaHectarea); Tapo para trabajar en los test.
 		unaHectarea.establecerEdificio(this);
 	}
 

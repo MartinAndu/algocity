@@ -291,8 +291,11 @@ public class Plano {
 	public static Plano hidratar(Node elementoPlano) {
 		Plano nuevoPlano = new Plano();
 		
-		nuevoPlano.dimensionM = Integer.parseInt(((Element) elementoPlano).getAttribute("dimensionM"));
-		nuevoPlano.dimensionN = Integer.parseInt(((Element) elementoPlano).getAttribute("dimensionN"));
+		int dimM = Integer.parseInt(((Element) elementoPlano).getAttribute("dimensionM"));
+		int dimN = Integer.parseInt(((Element) elementoPlano).getAttribute("dimensionN"));
+		
+		nuevoPlano.dimensionN = dimN;
+		nuevoPlano.dimensionM = dimM;
 		
 		HashMap<String, Hectarea> hectareasNuevas = new HashMap<String, Hectarea>();
 
@@ -315,6 +318,8 @@ public class Plano {
 		}
 		
 		nuevoPlano.hectareas = hectareasNuevas;
+		nuevoPlano.construirCaminos(dimN, dimM);
+		
 		return nuevoPlano;
 	}
 
