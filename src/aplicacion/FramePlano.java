@@ -8,10 +8,20 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
+
+
+
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
+
+import Ambientes.Ambiente;
+import Jugador.Jugador;
+import Jugador.JugadorMedio;
+import Jugador.JugadorParaTest;
+import Jugador.Turno;
 
 public class FramePlano extends JFrame implements ActionListener{
 
@@ -26,11 +36,19 @@ public class FramePlano extends JFrame implements ActionListener{
 	private JPanel panelDeInteraccion;
 	private PanelPlano panelPlano;
 	private JButton guardar,salir;
+	private Jugador jugador;
+	private Turno turno;
 	
 	FramePlano(){
 		super("Mapa General");
 		this.setBounds(0,0,500,500);
 		this.setLayout(new BorderLayout());
+		
+		
+		//Inicializa clase jugador que va a ser el modelo y el turno
+		this.jugador = new JugadorMedio();
+		Ambiente ambiente = jugador.generarAmbiente();
+		this.turno = new Turno(jugador,ambiente);
 		
 		Container c = this.getContentPane();
 		
@@ -82,9 +100,7 @@ public class FramePlano extends JFrame implements ActionListener{
 	}
 	
 	private void inicializarPanelPlano(){
-		panelPlano = new PanelPlano(300,300);
-		
-		
+		panelPlano = new PanelPlano(this.jugador);
 	}
 	public void mostrarVentana(){
 		this.setVisible(true);
