@@ -322,5 +322,13 @@ public class Plano {
 		
 		return nuevoPlano;
 	}
+	
+	public int obtenerAncho(){
+		return this.dimensionM;
+	}
+	
+	public int obtenerAlto(){
+		return this.dimensionN;
+	}
 
 }

@@ -2,6 +2,7 @@ package Jugador;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Observable;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -10,8 +11,10 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+
 
 import Ambientes.Ambiente;
 import Bomberos.EstacionDeBomberos;
@@ -34,7 +37,7 @@ import PlanoGeneral.Plano;
 import Poblacion.Poblacion;
 import Presupuesto.Presupuesto;
 
-public abstract class Jugador {
+public abstract class Jugador extends Observable{
 
 	protected Poblacion poblacion;
 	protected Presupuesto presupuesto;
@@ -186,10 +189,35 @@ public abstract class Jugador {
 	private void agregarAlPlano(Construccion construccion) {
 		construccion.construirSobrePlano(this.plano);
 		this.presupuesto.reducirPresupuesto(construccion.devolverCosto());
+		
+		//Interviene en la vista notificando que hubo cambio al observador
+		setChanged();
+	    this.notifyObservers();
 	}
 
 	public void presupuestoSeRedujoEnPorcentaje(int porcentajeDeReduccion) {
 		this.presupuesto.reducirEnPorcentaje(porcentajeDeReduccion);
 	}
+	
+	public Plano obtenerPlano(){
+		return this.plano;
+	}
+	
+	
+/*VER EL TEMA DE LOS TURNOS DESPUES
+	public void avanzarTurno() {
+
+		juego.avanzarTurno();
+        setChanged();
+        this.notifyObservers();
+		
+	}
+
+	public int turnosTranscurridos() {
+
+		return juego.turnosTranscurridos();
+		
+	}
+*/
 
 }

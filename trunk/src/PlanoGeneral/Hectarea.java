@@ -119,7 +119,7 @@ public class Hectarea implements Destruible {
 		}
 		else if(!(this.superficie).sePuedeConstruirUnPozoDeAgua()){
 			//throw new ExcepcionNoSePuedeConstruirEnEsteTerreno();//lo deshabilito para probar sin tener en cuenta los terrenos
-			;
+
 		}
 		this.construccion = unEdificio;
 		unEdificio.habilitarAccesoAlTransito();
@@ -256,7 +256,7 @@ public class Hectarea implements Destruible {
 		String tipoSuperficie = "tierra";
 		if(this.superficie.sePuedeConstruirUnPozoDeAgua()){
 			tipoSuperficie = "agua";
-;		}
+		}
 		
 		elementoHectarea.setAttribute("tipoSuperficie", tipoSuperficie);
 		
@@ -318,5 +318,9 @@ public class Hectarea implements Destruible {
 		hectareaNueva.canio = (ConexionDeAgua) construccion2;
 
 		return hectareaNueva;
-	}	
+	}
+	
+	public Superficie obtenerSuperficie(){
+		return this.superficie;
+	}
 }
