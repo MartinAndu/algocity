@@ -13,6 +13,7 @@ public class ModeloObservable extends Observable{
 	public ModeloObservable(int tamanioX,int tamanioY){
 		plano = new Plano(tamanioX,tamanioY);
 		//construccion = new Construccion(new Posicion(tamanioX,tamanioY));
+		//
 	}
 	
     public void inicializarModeloDato(Posicion posicion) {
