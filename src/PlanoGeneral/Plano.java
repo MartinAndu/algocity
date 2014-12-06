@@ -29,8 +29,8 @@ public class Plano {
 	protected int dimensionN;
 	
 	public Plano() {
-		dimensionN = 80;
-		dimensionM = 80;
+		dimensionN = 25;
+		dimensionM = 25;
 		hectareas = new HashMap<String, Hectarea>();
 		caminos = new HashMap<Hectarea, ArrayList<Hectarea>>();
 	}
