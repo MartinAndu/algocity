@@ -25,14 +25,14 @@ public class Hectarea implements Destruible {
 	public String identi;
 	protected Superficie superficie;
 	protected Construccion construccion;
-	protected boolean servicioElectrico;
-	protected boolean servicioAgua;
-	protected boolean accesoAlTransito;
 	protected ConexionDeAgua canio;
 	protected RutaPavimentada ruta;
 	protected LineasDeTension linea;
 	protected boolean poseePozoDeAgua;
 	protected boolean poseeCentralElectrica;
+	private boolean servicioAgua;
+	private boolean servicioElectrico;
+	private boolean accesoAlTransito;
 	
 	public Hectarea(Superficie superficie){
 		this.construccion = null;
