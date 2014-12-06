@@ -31,7 +31,9 @@ public class VistaModeloDato extends JPanel implements Observer{
         this.setPosicion(posicion);
         this.jugadorModelo = jugadorModelo;
         this.jugadorModelo.addObserver(this);
-    	setPreferredSize(new Dimension(25,25));
+        int anchoX = jugadorModelo.obtenerPlano().obtenerAncho();
+        int altoY = jugadorModelo.obtenerPlano().obtenerAlto();
+    	setPreferredSize(new Dimension(anchoX,altoY));
         addMouseListener(new ControladorMouse(jugadorModelo, this));
     }
    
@@ -51,8 +53,10 @@ public class VistaModeloDato extends JPanel implements Observer{
         if (superficie.sePuedeConstruirUnPozoDeAgua()) 
         	grafico.setColor(AZUL);
         
-        grafico.fillRect(0, 0, 25,25);
-        grafico.drawRect(0,0, 25, 25);
+        int anchoX = jugadorModelo.obtenerPlano().obtenerAncho();
+        int altoY = jugadorModelo.obtenerPlano().obtenerAlto();
+        grafico.fillRect(0, 0, anchoX,altoY);
+        grafico.drawRect(0,0, anchoX, altoY);
 	}
 	
 	public Posicion getPosicion() {
