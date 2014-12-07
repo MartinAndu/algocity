@@ -108,7 +108,7 @@ public class PlanoTest {
 			i++;
 		}
 		
-		assertEquals(79, i);
+		assertEquals(24, i);
 	}
 	
 	@Test
@@ -125,7 +125,7 @@ public class PlanoTest {
 			i++;
 		}
 		
-		assertEquals(79, i);
+		assertEquals(24, i);
 	}
 	
 	@Test
@@ -140,7 +140,7 @@ public class PlanoTest {
 			i++;
 		}
 		
-		assertEquals(158, i);
+		assertEquals(48, i);
 	}
 	
 	@Test
@@ -150,8 +150,8 @@ public class PlanoTest {
 		int x = posicion.devolverCoordenadaX();
 		int y = posicion.devolverCoordenadaY();
 		
-		assertEquals(10, x);
-		assertEquals(10, y);
+		assertEquals(3, x);
+		assertEquals(3, y);
 	}
 	
 	@Test 
@@ -160,7 +160,7 @@ public class PlanoTest {
 		Plano plano = new PlanoDeterminista();
 		Recorrido recorrido = plano.recorrerTodoDesdeUnaPosicionAleatoria();
 		
-		assertEquals(6399, recorrido.longDelRecorridoEnHectareas());
+		assertEquals(624, recorrido.longDelRecorridoEnHectareas());
 		
 	}
 	

@@ -1,12 +1,11 @@
 package src;
 import static org.junit.Assert.fail;
 
-import org.junit.Test;
 
-import Conectores.LineasDeTension;
-import ConstruccionGeneral.Destruible;
+import org.junit.Test;
 import ConstruccionGeneral.Posicion;
 import ConstruccionGeneral.Reconstruible;
+import Edificios.EdificioResidencial;
 import Excepciones.ExceptionConstruccionComplemtamenteReparada;
 
 public class ReconstruibleTest {
@@ -15,13 +14,17 @@ public class ReconstruibleTest {
 	public void reconstruibleReconstruirEnLineaDeTension() {
 		
 		Posicion unaPosicion = new Posicion(1, 1);
-		Destruible lineaDestruible = new LineasDeTension(unaPosicion);
-		lineaDestruible.destruirEnPorcentaje(50);
-		Reconstruible lineaReconstruible = (Reconstruible) lineaDestruible;
+		EdificioResidencial casa = new EdificioResidencial(unaPosicion);
+		casa.destruirEnPorcentaje(50);
+		Reconstruible casaReconstruible = (Reconstruible) casa;
 		
 		try {
-			lineaReconstruible.reconstruir(1000);
-			lineaReconstruible.reconstruir(1000);
+			casaReconstruible.reconstruir(1000);
+			casaReconstruible.reconstruir(1000);
+			casaReconstruible.reconstruir(1000);
+			casaReconstruible.reconstruir(1000);
+			casaReconstruible.reconstruir(1000);
+
 			fail();
 		} catch (ExceptionConstruccionComplemtamenteReparada e) {
 		}

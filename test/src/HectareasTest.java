@@ -79,7 +79,7 @@ public class HectareasTest {
 		RutaPavimentada ruta2 = new RutaPavimentada(otraPosicionMas);
 		ruta2.construirSobrePlano(plano);
 		
-		Posicion posicionDeLaCasa = new Posicion(2, 3);
+		Posicion posicionDeLaCasa = new Posicion(2, 2);
 		EdificioResidencial casa = new EdificioResidencial(posicionDeLaCasa);
 		casa.construirSobrePlano(plano);
 		

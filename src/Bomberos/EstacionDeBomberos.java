@@ -1,6 +1,7 @@
 package Bomberos;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import ConstruccionGeneral.Reconstruible;
@@ -41,13 +42,23 @@ public class EstacionDeBomberos {
 		if (!estacionHabilitada) {
 			return;
 		}
+		List<Reconstruible> reparados = new ArrayList<Reconstruible>();
+
+		Iterator<Reconstruible> it = this.edificiosAReconstruir.iterator();
 		
-		for(Reconstruible edificioAReconstruir: edificiosAReconstruir){
+		while (it.hasNext()) {
+			Reconstruible reconstruible = (Reconstruible) it.next();
 			try {
-				edificioAReconstruir.reconstruir(puntosDeReconstruccion);
+				reconstruible.reconstruir(puntosDeReconstruccion);
 			} catch (ExceptionConstruccionComplemtamenteReparada e) {
-				edificiosAReconstruir.remove(edificioAReconstruir);
+				reparados.add(reconstruible);
 			}
+		}
+		
+		Iterator<Reconstruible> itR = reparados.iterator();
+		while (itR.hasNext()) {
+			Reconstruible reconstruible = (Reconstruible) itR.next();
+			this.edificiosAReconstruir.remove(reconstruible);
 		}
 	}
 

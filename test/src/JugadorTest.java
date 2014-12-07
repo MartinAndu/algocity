@@ -133,7 +133,7 @@ public class JugadorTest {
 		jugador.crearCentralMineral(unaPosicionMas);
 		jugador.crearRutaPavimentada(otraPosicion);
 		jugador.crearRutaPavimentada(otraPosicionMas);
-		Posicion posicionDeLaCasa = new Posicion(2, 3);
+		Posicion posicionDeLaCasa = new Posicion(2, 4);
 		jugador.crearResidencia(posicionDeLaCasa);
 		
 		assertEquals(1715, jugador.obtenerPresupuesto());
