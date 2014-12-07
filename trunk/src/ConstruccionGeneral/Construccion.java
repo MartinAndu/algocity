@@ -1,6 +1,7 @@
 package ConstruccionGeneral;
 
 import org.w3c.dom.Document;
+
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
@@ -14,9 +15,12 @@ import Edificios.EdificioComercial;
 import Edificios.EdificioIndustrial;
 import Edificios.EdificioResidencial;
 import Edificios.PozoDeAgua;
-import Excepciones.ExceptionConstruccionComplemtamenteReparada;
+import Estados.EstadoConstruccion;
+import Estados.EstoyBien;
 import PlanoGeneral.Plano;
 import PuntosConstruccion.PuntosDeConstruccion;
+import Servicios.AdministradorServicios;
+import Superficies.Superficie;
 
 
 public abstract class Construccion implements Reconstruible, Destruible {
@@ -24,9 +28,12 @@ public abstract class Construccion implements Reconstruible, Destruible {
 	protected Posicion posicionConstruccion;
 	protected int costoDeConstruccion;
 	protected PuntosDeConstruccion puntosDeConstruccion;
+	protected String idConstruccion;
+	protected EstadoConstruccion estadoConstruccion;
 	
 	public Construccion(Posicion posicion) {
 		this.posicionConstruccion = posicion;
+		this.estadoConstruccion = new EstoyBien();
 	}
 
     public Element serializar(Document doc) {
@@ -82,9 +89,7 @@ public abstract class Construccion implements Reconstruible, Destruible {
     	}
     	return nuevaConstruccion;
     }
-    
-	public abstract int devolverConsumo();
-	
+    	
 	public int devolverCosto(){
 		return costoDeConstruccion;
 	}
@@ -96,19 +101,18 @@ public abstract class Construccion implements Reconstruible, Destruible {
 	public String devolverPosicionEnString() {
 		return (posicionConstruccion.enString());
 	}
+
+	public abstract void construirseSobre(Superficie superficie);
+
+	public abstract void construirJuntoA(Construccion construccionAAgregar);
+
+	public abstract void verificarServicios(AdministradorServicios administradorServicios);
 	
 	public abstract void construirSobrePlano(Plano plano);
-	
-	public void destruir() {
-		this.puntosDeConstruccion.decrementar();
-	}
-	
-	public void destruirEnPorcentaje(int porcentaje){
-		this.puntosDeConstruccion.decrementarEnPorcentaje(porcentaje);
-	}
-	
-	public void reconstruir(int puntosDeReconstruccion) throws ExceptionConstruccionComplemtamenteReparada {
-		this.puntosDeConstruccion.incrementar(puntosDeReconstruccion);
+
+	public String idConstruccion() {
+		return this.idConstruccion;
 	}
 
+	public abstract void quitarDelPlano();
 }

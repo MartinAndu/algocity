@@ -9,4 +9,9 @@ public class SuperficieConAgua extends Superficie {
 	public boolean sePuedeConstruirUnEdificioOCentral() {
 		return false;
 	}
+
+	@Override
+	public boolean sePuedeConstruirUnaConexion() {
+		return true;
+	}
 }

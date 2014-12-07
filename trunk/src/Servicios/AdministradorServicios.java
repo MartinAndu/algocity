@@ -12,11 +12,13 @@ public class AdministradorServicios {
 	private List<Servicio> servicios;
 	private List<String> listaDeServicios;
 	private List<String> listaDeProveedores;
+	private boolean huboUnCambio;
 	
 	public AdministradorServicios() {
 		this.servicios = new ArrayList<Servicio>();
 		this.listaDeServicios = new ArrayList<String>();
 		this.listaDeProveedores = new ArrayList<String>();
+		this.huboUnCambio = false;
 	}
 
 	public void agregarServicio(Servicio servicioAAgregar) {
@@ -24,6 +26,7 @@ public class AdministradorServicios {
 			this.listaDeServicios.add(servicioAAgregar.idServicio());
 			this.listaDeProveedores.add(servicioAAgregar.idProveedor());
 			this.servicios.add(servicioAAgregar);
+			this.huboUnCambio = true;
 			return;
 		}
 		
@@ -38,6 +41,7 @@ public class AdministradorServicios {
 			this.listaDeServicios.add(servicioAAgregar.idServicio());
 			this.listaDeProveedores.add(servicioAAgregar.idProveedor());
 			this.servicios.add(servicioAAgregar);
+			this.huboUnCambio = true;
 			return;
 		}
 	}
@@ -71,17 +75,21 @@ public class AdministradorServicios {
 		}
 		
 		if (!(this.listaDeProveedores.contains(servicioAQuitar.idProveedor()))) {
-			
+			return;
 		}
 		
 		int indiceServicio = this.listaDeProveedores.indexOf(servicioAQuitar.idProveedor());
 		this.listaDeProveedores.remove(indiceServicio);
 		this.listaDeServicios.remove(indiceServicio);
 		this.servicios.remove(indiceServicio);
-		
+		this.huboUnCambio = true;
 	}
 
-	
+	public boolean huboUnCambio() {
+		boolean seEncontroCambios = this.huboUnCambio;
+		this.huboUnCambio = false;
+		return seEncontroCambios;
+	}
 
 	
 

@@ -2,6 +2,7 @@ package Edificios;
 
 import ConstruccionGeneral.Posicion;
 import PuntosConstruccion.PuntosDeIndustria;
+import Servicios.AdministradorServicios;
 
 public class EdificioIndustrial extends Edificio {
 	
@@ -19,5 +20,13 @@ public class EdificioIndustrial extends Edificio {
 	
 	public int devolverCapacidadEmpleo(){
 		return CAPACIDAD_MAXIMA_EMPLEADOS;
+	}
+
+	@Override
+	protected boolean administradorPoseeServicioQueRequiero(
+			AdministradorServicios administrador) {
+		boolean poseeServicios = administrador.poseeElectricidad();
+		poseeServicios &= administrador.poseeAccesoAlTransito();
+		return poseeServicios;
 	}
 }

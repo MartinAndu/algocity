@@ -14,7 +14,6 @@ public class CentralEolica extends CentralElectrica {
 		this.costoDeConstruccion = COSTO_DE_CONSTRUCCION;
 		this.capacidadMaxDeAbastecimientoEnMW = CAPACIDAD_MAXIMA_DE_ABASTECIMIENTO;
 		this.puntosDeConstruccion = new PuntosDeCentralEolica();
-		
 	}
 
 	

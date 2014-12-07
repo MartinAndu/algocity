@@ -2,6 +2,7 @@ package Edificios;
 
 import ConstruccionGeneral.Posicion;
 import PuntosConstruccion.PuntosDeComercio;
+import Servicios.AdministradorServicios;
 
 public class EdificioComercial extends Edificio {
 	
@@ -15,6 +16,12 @@ public class EdificioComercial extends Edificio {
 		this.puntosDeConstruccion = new PuntosDeComercio();
 		
 	}
-	
+
+	@Override
+	protected boolean administradorPoseeServicioQueRequiero(
+			AdministradorServicios administrador) {
+		
+		return administrador.poseeLosServiciosBasicos();
+	}
 	
 }
