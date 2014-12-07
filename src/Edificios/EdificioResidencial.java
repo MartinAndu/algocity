@@ -2,6 +2,7 @@ package Edificios;
 
 import ConstruccionGeneral.Posicion;
 import PuntosConstruccion.PuntosDeResidencia;
+import Servicios.AdministradorServicios;
 
 public class EdificioResidencial extends Edificio {
 
@@ -19,6 +20,13 @@ public class EdificioResidencial extends Edificio {
 
 	public int devolverCapacidadAlojamiento(){
 		return CAPACIDAD_MAXIMA_HABITANTES;
+	}
+
+	@Override
+	protected boolean administradorPoseeServicioQueRequiero(
+			AdministradorServicios administrador) {
+	
+		return administrador.poseeLosServiciosBasicos();
 	}
 	
 }

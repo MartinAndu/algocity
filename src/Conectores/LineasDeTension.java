@@ -1,74 +1,41 @@
 package Conectores;
 
-import CentralesElectricas.CentralElectrica;
 import ConstruccionGeneral.Posicion;
-import PlanoGeneral.Hectarea;
-import PlanoGeneral.Plano;
-import PlanoGeneral.Recorrido;
+import Estados.MeFaltaLuz;
 import PuntosConstruccion.PuntosDeLineaTension;
+import Servicios.AdministradorServicios;
+import Servicios.BajaTension;
+import Servicios.Servicio;
 
 public  class LineasDeTension extends Conexion{
 
-
 	static int COSTO_CONSTRUCCION = 5;
-	static int RADIO_DE_DISTRIBUCION = 3;
 	
 	public LineasDeTension(Posicion unaPosicion) {
 		super(unaPosicion);
-		radioDeDistribucion = RADIO_DE_DISTRIBUCION;
-		costoDeConstruccion = COSTO_CONSTRUCCION;
+		this.costoDeConstruccion = COSTO_CONSTRUCCION;
 		this.puntosDeConstruccion = new PuntosDeLineaTension();
-		servicioQueTransmite="electricidad";
-		conectadoALaRed=false;
-	}
-	
-	public void construirSobrePlano(Plano plano){
-		miPlano=plano;
-		Hectarea unaHectarea = plano.devolverHectarea(posicionConstruccion);
-		unaHectarea.establecerConexionElectrica(this);
-		this.proveerServicioZona(miPlano);
-	}
-	
-	public void establecerCentralQueProveeEnergia(CentralElectrica unaCentralElectrica){
-		this.centralElectricaALAQuePertenece = unaCentralElectrica;
-	}
-	
-	
-	public boolean puedeProveerServicio(){
-		return true;
 	}
 
-	
-	/*private boolean excedeElConsumo(int consumoDeLaNuevaConexion){
-		int consumoActual = this.centralElectricaALAQuePertenece.obtenerCapacidadDeAbastecimientoEnMW();
-		int consumoMaximo = this.centralElectricaALAQuePertenece.obtenerCapacidadMaxDeAbastecimientoEnMW();
-		consumoActual += consumoDeLaNuevaConexion;		
-		return (consumoActual>consumoMaximo);
-	}*/
-	
-	public boolean conectadoALaRed(Hectarea unaHectarea){
-		Recorrido zonaCircundante= miPlano.recorrerZonaCircundante(posicionConstruccion, 1);
-		Hectarea hectareaActual;
-		marca=true;
-		while (zonaCircundante.tieneSiguiente()&&!conectadoALaRed){
-			hectareaActual=zonaCircundante.siguiente();
-			if (hectareaActual.tieneConexionElectrica()&&(!hectareaActual.obtenerLineaDeTension().marcado())&&
-				hectareaActual.obtenerLineaDeTension().conectadoALaRed(hectareaActual)){
-				this.habilitarConexion();
-				establecerCentralQueProveeEnergia(hectareaActual.obtenerLineaDeTension().centralElectricaALAQuePertenece());
-			}
-			if (hectareaActual.poseeCentralElectrica()){
-				this.habilitarConexion();
-				establecerCentralQueProveeEnergia(hectareaActual.obtenerCentral());
-			}
-		}
-		marca=false;
-		return conectadoALaRed;
+	@Override
+	protected boolean administradorPoseeServicioQueRequiero(
+			AdministradorServicios administrador) {
+		
+		return administrador.poseeElectricidad();
 	}
 
-	public CentralElectrica centralElectricaALAQuePertenece() {
-	
-		return centralElectricaALAQuePertenece;
+	@Override
+	protected Servicio servicioAProveer() {
+		return new BajaTension(idProveedor);
 	}
+
+	@Override
+	public void verificarServicios(AdministradorServicios administradorServicios) {
+		if (!administradorServicios.poseeElectricidad()) {
+			this.estadoConstruccion = new MeFaltaLuz();
+			this.quitarServicioZona();
+		}		
+	}
+	
 	
 }

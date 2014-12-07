@@ -1,60 +1,54 @@
 package CentralesElectricas;
 
-import java.util.ArrayList;
 import ConstruccionGeneral.Construccion;
 import ConstruccionGeneral.Posicion;
+import Estados.EstoyBien;
+import Estados.MeFaltaAgua;
+import Excepciones.ExcepcionCentralElectricaNoPoseeRedDeAgua;
+import Excepciones.ExcepcionHectareaYaContieneUnaConstruccion;
+import Excepciones.ExcepcionNoSePuedeConstruirEnEsteTerreno;
+import Excepciones.ExceptionConstruccionComplemtamenteReparada;
 import PlanoGeneral.Hectarea;
 import PlanoGeneral.Plano;
 import PlanoGeneral.Recorrido;
+import Servicios.AdministradorServicios;
+import Servicios.AltaTension;
+import Superficies.Superficie;
 
 public class CentralElectrica extends Construccion {
 	
 	protected int radioDeAbastecimientoEnHectareas;
 	protected int capacidadDeAbastecimientoEnMW;
 	protected int capacidadMaxDeAbastecimientoEnMW;
-	static String servicioQueProvee;
-	private ArrayList<Construccion> construcciones;
-
-	
-	static int CONSUMO_ELECTRICO = 0;
-	
-	ArrayList <Hectarea> hectareas;
+	protected String idProveedor;
+	private Plano plano;
 	
 	public CentralElectrica(Posicion posicion) {
 		super(posicion);
-		servicioQueProvee="electricidad";
+		this.idConstruccion = "central";
+		this.capacidadDeAbastecimientoEnMW = 0;
+		this.idProveedor = java.util.UUID.randomUUID().toString(); 
 	}
 	
 	public void construirSobrePlano(Plano unPlano){
-		construcciones=new ArrayList<Construccion>();
-		Hectarea unaHectarea = unPlano.devolverHectarea(posicionConstruccion);
-		unaHectarea.establecerCentral(this);
-		proveerElectricidadZona(unPlano);
-	}
-	
-	public void proveerElectricidadZona(Plano unPlano){
-		//Obtengo lo que hay en las zonas circundante de radio X correspondiente a la central
+		this.plano = unPlano;
+		Hectarea hectarea = unPlano.devolverHectarea(this.posicionConstruccion);
+		AdministradorServicios administrador = hectarea.serviciosAConsumir();
 		
-		Recorrido zonaCircundante = unPlano.recorrerZonaCircundante(posicionConstruccion, radioDeAbastecimientoEnHectareas);
-
-		
-		while (zonaCircundante.tieneSiguiente()){
-			
-			Hectarea hectareaActual = zonaCircundante.siguiente();
-			hectareaActual.habilitarServicio(servicioQueProvee);
-			
-	
+		if (!administrador.poseeAgua()) {
+			throw new ExcepcionCentralElectricaNoPoseeRedDeAgua();
 		}
-;
-		
+		hectarea.agregarConstruccion(this);
+		this.proveerElectricidadZona();
 	}
 	
-	public void agregarConstruccionQueConsumeElectricidad(Construccion unaConstruccion){
-		construcciones.add(unaConstruccion);
-	}
-	
-	public int obtenerRadioDeAbastecimientoEnHectareas(){
-		return radioDeAbastecimientoEnHectareas;
+	public void proveerElectricidadZona(){
+		Recorrido zonaCircundante = this.plano.recorrerZonaCircundante(posicionConstruccion, radioDeAbastecimientoEnHectareas);
+
+		while (zonaCircundante.tieneSiguiente()){
+			Hectarea hectarea = zonaCircundante.siguiente();
+			hectarea.agregarServicioAProveer(new AltaTension(this.idProveedor));
+		}	
 	}
 	
 	public int obtenerCapacidadDeAbastecimientoEnMW(){
@@ -70,8 +64,60 @@ public class CentralElectrica extends Construccion {
 	}
 
 	@Override
-	public int devolverConsumo() {
-		return CONSUMO_ELECTRICO;
+	public void construirJuntoA(Construccion construccionAAgregar) {
+		throw new ExcepcionHectareaYaContieneUnaConstruccion();
+	}
+
+	@Override
+	public void construirseSobre(Superficie superficie) {
+		if (!superficie.sePuedeConstruirUnEdificioOCentral()) {
+			throw new ExcepcionNoSePuedeConstruirEnEsteTerreno();
+		}
+	}
+
+	@Override
+	public void verificarServicios(AdministradorServicios administradorServicios) {
+		if (!administradorServicios.poseeAgua()) {
+			this.estadoConstruccion = new MeFaltaAgua();
+			this.quitarElectricidadZona();
+		}
+	}
+
+	private void quitarElectricidadZona() {
+		Recorrido zonaCircundante = this.plano.recorrerZonaCircundante(posicionConstruccion, radioDeAbastecimientoEnHectareas);
+
+		while (zonaCircundante.tieneSiguiente()){
+			Hectarea hectarea = zonaCircundante.siguiente();
+			hectarea.quitarServicioAProveer(new AltaTension(this.idProveedor));
+		}		
+	}
+
+	@Override
+	public void reconstruir(int puntosDeReconstruccion) throws ExceptionConstruccionComplemtamenteReparada {
+		try {
+			this.puntosDeConstruccion.incrementar(puntosDeReconstruccion);
+		} catch (ExceptionConstruccionComplemtamenteReparada e) {
+			this.estadoConstruccion = new EstoyBien();
+			this.proveerElectricidadZona();
+			throw new ExceptionConstruccionComplemtamenteReparada();
+		}	
+	}
+
+	@Override
+	public void destruir() {
+		this.puntosDeConstruccion.decrementar();
+		this.quitarElectricidadZona();
+	}
+
+	@Override
+	public void destruirEnPorcentaje(int porcentaje) {
+		this.puntosDeConstruccion.decrementarEnPorcentaje(porcentaje);
+		this.quitarElectricidadZona();
+	}
+
+	@Override
+	public void quitarDelPlano() {
+		this.quitarElectricidadZona();
 	}
 	
 }

@@ -9,4 +9,9 @@ public class SuperficieConTerrenoLlano extends Superficie{
 	public boolean sePuedeConstruirUnEdificioOCentral() {
 		return true;
 	}
+
+	@Override
+	public boolean sePuedeConstruirUnaConexion() {
+		return true;
+	}
 }

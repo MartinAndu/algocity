@@ -1,33 +1,43 @@
 package Conectores;
 
 import ConstruccionGeneral.Posicion;
-import PlanoGeneral.Hectarea;
-import PlanoGeneral.Plano;
+import Estados.MeFaltaTransito;
 import PuntosConstruccion.PuntosDeRuta;
+import Servicios.AccesoTransito;
+import Servicios.AdministradorServicios;
+import Servicios.Servicio;
 
 public class RutaPavimentada extends Conexion{
 
 	static int COSTO_CONSTRUCCION = 10;
-	static int RADIO_DE_DISTRIBUCION = 3;
 
 	public RutaPavimentada(Posicion unaPosicion) {
 		super(unaPosicion);
-		this.conectadoALaRed = true;
-		this.radioDeDistribucion = RADIO_DE_DISTRIBUCION;
 		this.costoDeConstruccion = COSTO_CONSTRUCCION;
 		this.puntosDeConstruccion = new PuntosDeRuta();
-		servicioQueTransmite="transito";
 	}
 
-	public void construirSobrePlano(Plano plano){
-		miPlano=plano;
-		Hectarea unaHectarea = plano.devolverHectarea(posicionConstruccion);
-		unaHectarea.establecerCalle(this);
-		this.habilitarConexion();
+	@Override
+	protected boolean administradorPoseeServicioQueRequiero(
+			AdministradorServicios administrador) {
+		
+		return true;
 	}
-	
-	public boolean conectadoALaRed(Hectarea unaHectarea){
-		return conectadoALaRed;
+
+	@Override
+	protected Servicio servicioAProveer() {
+		
+		return new AccesoTransito(idProveedor);
 	}
+
+	@Override
+	public void verificarServicios(AdministradorServicios administradorServicios) {
+
+		if (!administradorServicios.poseeAccesoAlTransito()) {
+			this.estadoConstruccion = new MeFaltaTransito();
+			this.quitarServicioZona();
+		}
+	}
+
 	
 }

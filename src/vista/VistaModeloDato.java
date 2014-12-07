@@ -66,9 +66,4 @@ public class VistaModeloDato extends JPanel implements Observer{
 		this.posicion = posicion;
 	}
 
-
-
-	
-		
-
 }

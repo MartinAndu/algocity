@@ -4,8 +4,13 @@ import static org.junit.Assert.fail;
 
 
 
+
 import org.junit.Test;
 
+import CentralesElectricas.CentralElectrica;
+import CentralesElectricas.CentralMineral;
+import Conectores.ConexionDeAgua;
+import Conectores.RutaPavimentada;
 import ConstruccionGeneral.Posicion;
 import Edificios.Edificio;
 import Edificios.EdificioComercial;
@@ -14,89 +19,74 @@ import Edificios.PozoDeAgua;
 import Excepciones.ExcepcionHectareaYaContieneUnaConstruccion;
 import Excepciones.ExcepcionHectareaNoBrindaLosServiciosNecesarios;
 import Excepciones.ExcepcionNoSePuedeConstruirEnEsteTerreno;
-import PlanoGeneral.Hectarea;
-import Superficies.SuperficieConTerrenoLlano;
-import junit.framework.Assert;
+import PlanoGeneral.Plano;
+import PlanoGeneral.PlanoDeterminista;
 
 public class HectareasTest {
-	@Test
-	public void hectareaSeCreaCorrectamente(){
-		Hectarea unaHectarea = new Hectarea(new SuperficieConTerrenoLlano());
-		Assert.assertFalse(unaHectarea.poseeConstruccion());
-		Assert.assertFalse(unaHectarea.poseeLosTresServicios());
-	}
 	
 	@Test
 	public void hectareaNoAgregaEdificioSiNoEstanLosServiciosBasicosYLanzaExcepcion(){
-		Posicion unaPosicion = new Posicion(5,5);
-		Hectarea unaHectarea = new Hectarea(new SuperficieConTerrenoLlano());
-        Edificio unEdificioComercial = new EdificioComercial(unaPosicion);
+		Plano plano = new PlanoDeterminista();
+		Posicion pos = new Posicion(1, 1);
+        Edificio unEdificioComercial = new EdificioComercial(pos);
         
-        boolean excepcionAtrapada = false;
         try {
-        	unaHectarea.establecerEdificio(unEdificioComercial);
+        	unEdificioComercial.construirSobrePlano(plano);
+        	fail();
         }
         catch (ExcepcionHectareaNoBrindaLosServiciosNecesarios excepcion){
-        	excepcionAtrapada = true;
         }
-        
-        Assert.assertTrue(excepcionAtrapada);
-        Assert.assertFalse(unaHectarea.poseeConstruccion());
-        Assert.assertEquals(unEdificioComercial.obtenerPosicion(), unaPosicion);
-        Assert.assertEquals(unaPosicion.devolverCoordenadaX(), 5);
-	}
-	
-	@Test
-	public void hectareaAgregaUnEdificioComercialAlTenerLos3ServiciosHabilitados(){
-		Posicion unaPosicion = new Posicion(5,5);
-		Hectarea unaHectarea = new Hectarea(new SuperficieConTerrenoLlano());
-		
-		unaHectarea.habilitarServicio("transito");
-		unaHectarea.habilitarServicio("agua");
-		unaHectarea.habilitarServicio("electricidad");
-		
-		Assert.assertTrue(unaHectarea.poseeLosTresServicios());
-		
-        Edificio unEdificioComercial = new EdificioComercial(unaPosicion);
-        unaHectarea.establecerEdificio(unEdificioComercial);
-        
-        Assert.assertTrue(unaHectarea.poseeConstruccion());
+       
 	}
 	
 	@Test
 	public void hectareaLanzaExcepcionAlEstablecerUnPozoDeAguaEnUnaSuperficieDeTierra(){
-		Posicion unaPosicion = new Posicion(5,5);
-		Hectarea unaHectarea = new Hectarea(new SuperficieConTerrenoLlano());
-		
-		PozoDeAgua unPozoDeAgua = new PozoDeAgua(unaPosicion);
-		
-		try{
-			unaHectarea.establecerPozoDeAgua(unPozoDeAgua);
-			fail("se deberia lanzar una excepcion");
-		}
-		catch (ExcepcionNoSePuedeConstruirEnEsteTerreno excepcion){
-		}
+		Plano plano = new PlanoDeterminista();
+		Posicion pos = new Posicion(1, 1);
+        PozoDeAgua pozo = new PozoDeAgua(pos);
+        
+        try {
+        	pozo.construirSobrePlano(plano);
+        	fail();
+        }
+        catch (ExcepcionNoSePuedeConstruirEnEsteTerreno e){
+        }
 	}
 	
 	@Test
 	public void hectareaLanzaExcepcionAlEstablecerUnEdificioConLaConstruccionOcupada(){
-		Posicion unaPosicion = new Posicion(5,5);
-		Posicion unaPosicion2 = new Posicion(52,54);
-		Hectarea unaHectarea = new Hectarea(new SuperficieConTerrenoLlano());
+		Plano plano = new PlanoDeterminista();
 		
-        Edificio unEdificioResidencial = new EdificioResidencial(unaPosicion);
-        Edificio unEdificioComercial = new EdificioComercial(unaPosicion2);
-        
-		unaHectarea.habilitarServicio("transito");
-		unaHectarea.habilitarServicio("agua");
-		unaHectarea.habilitarServicio("electricidad");
+		Posicion posicion = new Posicion(1, 2);
+		PozoDeAgua pozo = new PozoDeAgua(posicion);
+		pozo.construirSobrePlano(plano);
 		
-		try{
-			unaHectarea.establecerEdificio(unEdificioResidencial);
-			unaHectarea.establecerEdificio(unEdificioComercial);
-			fail("se deberia lanzar una excepcion");
-		}
-		catch (ExcepcionHectareaYaContieneUnaConstruccion excepcion){
+		Posicion otraPosicion = new Posicion(1, 3);
+		ConexionDeAgua canio1 = new ConexionDeAgua(otraPosicion);
+		canio1.construirSobrePlano(plano);
+		
+		Posicion otraPosicionMas = new Posicion(1, 4);
+		ConexionDeAgua canio2 = new ConexionDeAgua(otraPosicionMas);
+		canio2.construirSobrePlano(plano);		
+		
+		Posicion unaPosicionMas = new Posicion(1, 5);
+		CentralElectrica central = new CentralMineral(unaPosicionMas);
+		central.construirSobrePlano(plano);
+		
+		RutaPavimentada ruta1 = new RutaPavimentada(otraPosicion);
+		ruta1.construirSobrePlano(plano);
+		
+		RutaPavimentada ruta2 = new RutaPavimentada(otraPosicionMas);
+		ruta2.construirSobrePlano(plano);
+		
+		Posicion posicionDeLaCasa = new Posicion(2, 3);
+		EdificioResidencial casa = new EdificioResidencial(posicionDeLaCasa);
+		casa.construirSobrePlano(plano);
+		
+		try {
+			EdificioResidencial casa2 = new EdificioResidencial(posicionDeLaCasa);
+			casa2.construirSobrePlano(plano);
+		} catch (ExcepcionHectareaYaContieneUnaConstruccion e) {
 		}
 	}
 	
