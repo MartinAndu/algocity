@@ -1,17 +1,16 @@
 package src;
 
 import static org.junit.Assert.*;
-
 import java.util.ArrayList;
-
 import org.junit.Test;
-
 import Bomberos.EstacionDeBomberos;
 import Conectores.ConexionDeAgua;
-import Conectores.LineasDeTension;
 import ConstruccionGeneral.Posicion;
 import ConstruccionGeneral.Reconstruible;
+import Edificios.PozoDeAgua;
 import Excepciones.ExceptionConstruccionComplemtamenteReparada;
+import PlanoGeneral.Plano;
+import PlanoGeneral.PlanoDeterminista;
 import Presupuesto.Presupuesto;
 import Presupuesto.PresupuestoMedio;
 
@@ -22,21 +21,31 @@ public class EstacionDeBomberosTest {
 		
 		EstacionDeBomberos bomberos = new EstacionDeBomberos();
 		ArrayList<Reconstruible> reconstruibles = new ArrayList<Reconstruible>();
-		Posicion unaPosicion = new Posicion(1, 1); 
-		LineasDeTension linea = new LineasDeTension(unaPosicion);
-		ConexionDeAgua canio = new ConexionDeAgua(unaPosicion);
+		Posicion posicion = new Posicion(1, 1); 
+		Posicion posicion2 = new Posicion(1, 2);
+		PozoDeAgua pozo = new PozoDeAgua(posicion2);
+		ConexionDeAgua canio = new ConexionDeAgua(posicion);
 		Presupuesto presupuesto = new PresupuestoMedio();
-		linea.destruir();
+		Plano plano = new PlanoDeterminista();
+		
+		pozo.construirSobrePlano(plano);
+		canio.construirSobrePlano(plano);
+		
 		canio.destruir();
-		reconstruibles.add((Reconstruible) linea);
+		pozo.destruir();
+		
 		reconstruibles.add((Reconstruible) canio);
+		reconstruibles.add(pozo);
+		
 		bomberos.agregarReconstruibles(reconstruibles);
 		bomberos.habilitar(presupuesto);
 		bomberos.realizarReparaciones();
 		bomberos.realizarReparaciones();
+		bomberos.realizarReparaciones();
+		bomberos.realizarReparaciones();
 		
 		try {
-			linea.reconstruir(10000);
+			pozo.reconstruir(10000);
 			fail();
 		} catch (ExceptionConstruccionComplemtamenteReparada e) {
 		}
