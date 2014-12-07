@@ -101,6 +101,14 @@ public abstract class Construccion implements Reconstruible, Destruible {
 	public String devolverPosicionEnString() {
 		return (posicionConstruccion.enString());
 	}
+	
+	public String idConstruccion() {
+		return this.idConstruccion;
+	}
+	
+	public EstadoConstruccion estadoContruccion() {
+		return this.estadoConstruccion;
+	}
 
 	public abstract void construirseSobre(Superficie superficie);
 
@@ -110,9 +118,7 @@ public abstract class Construccion implements Reconstruible, Destruible {
 	
 	public abstract void construirSobrePlano(Plano plano);
 
-	public String idConstruccion() {
-		return this.idConstruccion;
-	}
+	
 
 	public abstract void quitarDelPlano();
 }
