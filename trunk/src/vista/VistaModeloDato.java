@@ -11,7 +11,6 @@ import javax.swing.JPanel;
 import controlador.ControladorMouse;
 import ConstruccionGeneral.Posicion;
 import Jugador.Jugador;
-import Superficies.Superficie;
 
 
 public class VistaModeloDato extends JPanel implements Observer{
@@ -23,18 +22,24 @@ public class VistaModeloDato extends JPanel implements Observer{
 	private Posicion posicion;
 	private Jugador jugadorModelo;
 	
-	private static Color AZUL = Color.BLUE;
-	private static Color ROJO = Color.RED;
 
 	
    public VistaModeloDato(Posicion posicion, Jugador jugadorModelo) {
         this.setPosicion(posicion);
+        ControladorMouse controlador = new ControladorMouse(jugadorModelo, this);
+        
+        jugadorModelo.establecerControlador(controlador);
+        jugadorModelo.addObserver(this);
         this.jugadorModelo = jugadorModelo;
-        this.jugadorModelo.addObserver(this);
+        
         int anchoX = jugadorModelo.darPlano().darAncho();
         int altoY = jugadorModelo.darPlano().darAlto();
     	setPreferredSize(new Dimension(anchoX,altoY));
-        addMouseListener(new ControladorMouse(jugadorModelo, this));
+    	
+    	
+    	
+        addMouseListener(controlador);
+        
     }
    
 	@Override
@@ -46,20 +51,9 @@ public class VistaModeloDato extends JPanel implements Observer{
 	
 	public void paintComponent(Graphics grafico) {
         super.paintComponent(grafico);
-       // Superficie superficie = jugadorModelo.obtenerPlano().devolverHectarea(posicion).obtenerSuperficie();
         
         jugadorModelo.darPlano().darHectarea(posicion).GraficarHectarea(grafico);
         
-        /*
-        grafico.setColor(Color.GREEN);
-        if (superficie.sePuedeConstruirUnPozoDeAgua()) 
-        	grafico.setColor(AZUL);
-        
-        int anchoX = jugadorModelo.obtenerPlano().obtenerAncho();
-        int altoY = jugadorModelo.obtenerPlano().obtenerAlto();
-        grafico.fillRect(0, 0, anchoX,altoY);
-        grafico.drawRect(0,0, anchoX, altoY);
-        */
 	}
 	
 	public Posicion getPosicion() {

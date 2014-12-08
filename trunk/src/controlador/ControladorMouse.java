@@ -25,6 +25,6 @@ public class ControladorMouse extends MouseAdapter {
     }
     
     public void mousePressed(MouseEvent mouseEvent) {
-    	botonConstruccionPresionado.prepararConstruccion(new Posicion(mouseEvent.getX(),mouseEvent.getY()));
+    	jugadorModelo.obtenerControlador().botonConstruccionPresionado.prepararConstruccion(vista.getPosicion());
     }
 }

@@ -28,7 +28,7 @@ import Superficies.Superficie;
 import Superficies.SuperficieConAgua;
 import Superficies.SuperficieConTerrenoLlano;
 
-public class Hectarea implements Destruible {
+public class Hectarea implements Destruible{
 	
 	public String identi;
 	protected Superficie superficie;
@@ -214,7 +214,7 @@ public class Hectarea implements Destruible {
 
 	
 	public void GraficarHectarea(Graphics g){
-		if (construcciones != null){
+		if (construcciones.size() > 0){
 			Iterator<Construccion> it = this.construcciones.iterator();
 	    	
 	    	while (it.hasNext()) {
@@ -222,7 +222,9 @@ public class Hectarea implements Destruible {
 				g.drawImage(construccion.graficar(), 0, 0, null);
 			}
 		}
-		g.drawImage(this.superficie.graficar(), 0, 0, null);
+		else{
+			g.drawImage(this.superficie.graficar(), 0, 0, null);
+		}
 	}
 	
 
