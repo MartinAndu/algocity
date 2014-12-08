@@ -6,7 +6,7 @@ import Jugador.Jugador;
 public class BotonTuberiaDeAgua extends BotonConstruccion{
 	
 	public BotonTuberiaDeAgua(Jugador jugadorModelo) {
-		super("RutaPavimentada",jugadorModelo);
+		super("TuberiaDeAgua",jugadorModelo);
 	}
 
 	/**
