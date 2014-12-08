@@ -218,21 +218,5 @@ public abstract class Jugador extends Observable{
 	public ControladorMouse darControlador(){
 		return this.controlador;
 	}
-	
-/*VER EL TEMA DE LOS TURNOS DESPUES
-	public void avanzarTurno() {
-
-		juego.avanzarTurno();
-        setChanged();
-        this.notifyObservers();
-		
-	}
-
-	public int turnosTranscurridos() {
-
-		return juego.turnosTranscurridos();
-		
-	}
-*/
 
 }

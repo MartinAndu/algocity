@@ -6,6 +6,10 @@ public class AdministradorTurnos {
 	private int turnoParaActuar;
 	protected int turnoMax;
 
+	public AdministradorTurnos() {
+		this.turnoParaActuar = this.generarUnTurno();
+	}
+	
 	public boolean esHoraDeUnEvento() {
 		if (this.turnosQuePasaron == this.turnoParaActuar) {
 			this.turnoParaActuar = this.generarUnTurno();
