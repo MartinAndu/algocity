@@ -34,14 +34,6 @@ public class Plano {
 		hectareas = new HashMap<String, Hectarea>();
 		caminos = new HashMap<Hectarea, ArrayList<Hectarea>>();
 	}
-	
-	//VERIFICAR ESTE CONSTRUCTOR
-	public Plano(int tamanioX, int tamanioY) {
-		dimensionN = tamanioX;
-		dimensionM = tamanioY;
-		hectareas = new HashMap<String, Hectarea>();
-		caminos = new HashMap<Hectarea, ArrayList<Hectarea>>();
-	}
 
 	protected void construirPlano(int dimensionN, int dimensionM) {
 		construirHectareas(dimensionN, dimensionM);
