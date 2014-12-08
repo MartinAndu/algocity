@@ -11,6 +11,7 @@ import Presupuesto.PresupuestoBajo;
 public class JugadorDificil extends Jugador {
 
 	public JugadorDificil() {
+		super();
 		this.plano = new PlanoAleatorio();
 		this.poblacion = new PoblacionAlta();
 		this.presupuesto = new PresupuestoBajo();

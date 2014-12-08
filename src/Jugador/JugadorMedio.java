@@ -11,6 +11,7 @@ import Presupuesto.PresupuestoMedio;
 public class JugadorMedio extends Jugador {
 
 	public JugadorMedio() {
+		super();
 		this.plano = new PlanoAleatorio();
 		this.poblacion = new PoblacionMedia();
 		this.presupuesto = new PresupuestoMedio();

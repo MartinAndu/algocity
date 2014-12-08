@@ -12,6 +12,7 @@ import Presupuesto.PresupuestoMedio;
 public class JugadorParaTest extends Jugador {
 	
 	public JugadorParaTest() {
+		super();
 		this.plano = new PlanoDeterminista();
 		this.poblacion = new PoblacionMedia();
 		this.presupuesto = new PresupuestoMedio();

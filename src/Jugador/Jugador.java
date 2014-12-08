@@ -2,6 +2,7 @@ package Jugador;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -45,6 +46,12 @@ public abstract class Jugador extends Observable{
 	protected EstacionDeBomberos estacionDeBomberos;
 	protected Constructor constructor;
 	protected String nombreJugador;
+	private List<Construccion> construcciones;
+	
+	public Jugador() {
+		this.construcciones = new ArrayList<Construccion>();
+	}
+			
 
 	public void establecerNombreJugador(String unNombre){
 		this.nombreJugador = unNombre;
@@ -189,6 +196,7 @@ public abstract class Jugador extends Observable{
 	private void agregarAlPlano(Construccion construccion) {
 		construccion.construirSobrePlano(this.plano);
 		this.presupuesto.reducirPresupuesto(construccion.devolverCosto());
+		this.construcciones.add(construccion);
 		
 		//Interviene en la vista notificando que hubo cambio al observador
 		setChanged();
