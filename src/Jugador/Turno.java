@@ -16,7 +16,7 @@ public class Turno implements Runnable{
 		this.ambiente = ambiente;
 		this.hilo = new Thread(this);
 		this.juegoContinua = true;
-		this.duracion = (5 * 60) * 1000;
+		this.duracion = (Turno.DURACION_EN_MINUTOS * 60) * 1000;
 	}
 		
 		
@@ -24,14 +24,12 @@ public class Turno implements Runnable{
 		this.hilo.start();
 	}
 	
-	@SuppressWarnings("static-access")
 	@Override
 	public void run() {
 		while (true) {
 			try {
-				this.hilo.sleep(duracion);
+				Thread.sleep(duracion);
 			} catch (InterruptedException e) {
-				e.printStackTrace();
 			}
 			if (!this.juegoContinua) {
 				break;
