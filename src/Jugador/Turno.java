@@ -4,6 +4,7 @@ import Ambientes.Ambiente;
 
 public class Turno implements Runnable{
 
+	static final int DURACION_EN_MINUTOS = 5;
 	private Jugador jugador;
 	private Ambiente ambiente;
 	private Thread hilo;
@@ -15,18 +16,20 @@ public class Turno implements Runnable{
 		this.ambiente = ambiente;
 		this.hilo = new Thread(this);
 		this.juegoContinua = true;
-		this.duracion = 3000;
+		this.duracion = (5 * 60) * 1000;
 	}
 		
 		
 	public void arrancar() {
 		this.hilo.start();
 	}
+	
+	@SuppressWarnings("static-access")
 	@Override
 	public void run() {
 		while (this.juegoContinua) {
 			try {
-				this.hilo.wait(duracion);
+				this.hilo.sleep(duracion);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
