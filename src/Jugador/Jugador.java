@@ -12,11 +12,10 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-
+import controlador.ControladorMouse;
 import Ambientes.Ambiente;
 import Bomberos.EstacionDeBomberos;
 import Catastrofe.Catastrofe;
@@ -46,12 +45,13 @@ public abstract class Jugador extends Observable{
 	protected EstacionDeBomberos estacionDeBomberos;
 	protected Constructor constructor;
 	protected String nombreJugador;
+	protected ControladorMouse controlador;
+	protected Construccion construccionPreparada;
 	private List<Construccion> construcciones;
 	
 	public Jugador() {
 		this.construcciones = new ArrayList<Construccion>();
 	}
-			
 
 	public void establecerNombreJugador(String unNombre){
 		this.nombreJugador = unNombre;
@@ -211,6 +211,13 @@ public abstract class Jugador extends Observable{
 		return this.plano;
 	}
 	
+	public void establecerControlador(ControladorMouse controlador){
+		this.controlador = controlador;
+	}
+	
+	public ControladorMouse obtenerControlador(){
+		return this.controlador;
+	}
 	
 /*VER EL TEMA DE LOS TURNOS DESPUES
 	public void avanzarTurno() {

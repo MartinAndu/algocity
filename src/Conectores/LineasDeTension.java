@@ -1,5 +1,8 @@
 package Conectores;
 
+import java.awt.image.BufferedImage;
+
+import aplicacion.Imagen;
 import ConstruccionGeneral.Posicion;
 import Estados.MeFaltaLuz;
 import PuntosConstruccion.PuntosDeLineaTension;
@@ -36,6 +39,10 @@ public  class LineasDeTension extends Conexion{
 			this.quitarServicioZona();
 		}		
 	}
+	
+	public BufferedImage graficar() {
+		return Imagen.loadImg("Images/Walls/LineaDeTension.jpg");
+	}	
 	
 	
 }

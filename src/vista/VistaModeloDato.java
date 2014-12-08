@@ -46,9 +46,11 @@ public class VistaModeloDato extends JPanel implements Observer{
 	
 	public void paintComponent(Graphics grafico) {
         super.paintComponent(grafico);
-        Superficie superficie = jugadorModelo.obtenerPlano().devolverHectarea(posicion).obtenerSuperficie();
+       // Superficie superficie = jugadorModelo.obtenerPlano().devolverHectarea(posicion).obtenerSuperficie();
         
+        jugadorModelo.obtenerPlano().devolverHectarea(posicion).GraficarHectarea(grafico);
         
+        /*
         grafico.setColor(Color.GREEN);
         if (superficie.sePuedeConstruirUnPozoDeAgua()) 
         	grafico.setColor(AZUL);
@@ -57,6 +59,7 @@ public class VistaModeloDato extends JPanel implements Observer{
         int altoY = jugadorModelo.obtenerPlano().obtenerAlto();
         grafico.fillRect(0, 0, anchoX,altoY);
         grafico.drawRect(0,0, anchoX, altoY);
+        */
 	}
 	
 	public Posicion getPosicion() {

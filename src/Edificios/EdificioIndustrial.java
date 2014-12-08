@@ -1,5 +1,8 @@
 package Edificios;
 
+import java.awt.image.BufferedImage;
+
+import aplicacion.Imagen;
 import ConstruccionGeneral.Posicion;
 import PuntosConstruccion.PuntosDeIndustria;
 import Servicios.AdministradorServicios;
@@ -28,5 +31,9 @@ public class EdificioIndustrial extends Edificio {
 		boolean poseeServicios = administrador.poseeElectricidad();
 		poseeServicios &= administrador.poseeAccesoAlTransito();
 		return poseeServicios;
+	}
+	
+	public BufferedImage graficar() {
+		return Imagen.loadImg("Images/Walls/EdificioIndustrial.jpg");
 	}
 }

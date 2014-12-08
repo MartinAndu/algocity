@@ -15,7 +15,7 @@ import Servicios.AdministradorServicios;
 import Servicios.AltaTension;
 import Superficies.Superficie;
 
-public class CentralElectrica extends Construccion {
+public abstract class CentralElectrica extends Construccion{
 	
 	protected int radioDeAbastecimientoEnHectareas;
 	protected int capacidadDeAbastecimientoEnMW;
@@ -119,5 +119,6 @@ public class CentralElectrica extends Construccion {
 	public void quitarDelPlano() {
 		this.quitarElectricidadZona();
 	}
+
 	
 }

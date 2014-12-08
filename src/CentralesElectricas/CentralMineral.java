@@ -1,5 +1,8 @@
 package CentralesElectricas;
 
+import java.awt.image.BufferedImage;
+
+import aplicacion.Imagen;
 import ConstruccionGeneral.Posicion;
 import PuntosConstruccion.PuntosDeCentralMineral;
 
@@ -15,6 +18,10 @@ public class CentralMineral extends CentralElectrica{
 		this.capacidadMaxDeAbastecimientoEnMW = CAPACIDAD_MAXIMA_DE_ABASTECIMIENTO;
 		this.puntosDeConstruccion = new PuntosDeCentralMineral();
 	}
+	
+	public BufferedImage graficar() {
+		return Imagen.loadImg("Images/Walls/CentralMineral.jpg");
+	}	
 
 
 }

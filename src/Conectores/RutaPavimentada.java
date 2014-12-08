@@ -1,5 +1,8 @@
 package Conectores;
 
+import java.awt.image.BufferedImage;
+
+import aplicacion.Imagen;
 import ConstruccionGeneral.Posicion;
 import Estados.MeFaltaTransito;
 import PuntosConstruccion.PuntosDeRuta;
@@ -39,5 +42,8 @@ public class RutaPavimentada extends Conexion{
 		}
 	}
 
+	public BufferedImage graficar() {
+		return Imagen.loadImg("Images/Walls/RutaPavimentada.jpg");
+	}	
 	
 }

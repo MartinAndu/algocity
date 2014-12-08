@@ -1,7 +1,9 @@
 package Edificios;
 
-import ConstruccionGeneral.Construccion;
+import java.awt.image.BufferedImage;
 
+import aplicacion.Imagen;
+import ConstruccionGeneral.Construccion;
 import ConstruccionGeneral.Posicion;
 import Estados.EstoyBien;
 import Excepciones.ExcepcionHectareaYaContieneUnaConstruccion;
@@ -106,4 +108,7 @@ public class PozoDeAgua extends Construccion {
 		this.quitarServicioZona();
 	}
 	
+	public BufferedImage graficar() {
+		return Imagen.loadImg("Images/Walls/PozoDeAgua.jpg");
+	}
 }

@@ -1,5 +1,7 @@
 package PlanoGeneral;
 
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -14,6 +16,7 @@ import Conectores.LineasDeTension;
 import Conectores.RutaPavimentada;
 import ConstruccionGeneral.Construccion;
 import ConstruccionGeneral.Destruible;
+import ConstruccionGeneral.Graficable;
 import ConstruccionGeneral.Reconstruible;
 import Edificios.Edificio;
 import Edificios.PozoDeAgua;
@@ -203,10 +206,23 @@ public class Hectarea implements Destruible {
 	}
 	//
 
+	
 	public Superficie obtenerSuperficie() {
 		return this.superficie;
 	}
 
+	
+	public void GraficarHectarea(Graphics g){
+		if (construcciones != null){
+			Iterator<Construccion> it = this.construcciones.iterator();
+	    	
+	    	while (it.hasNext()) {
+				Construccion construccion = (Construccion) it.next();
+				g.drawImage(construccion.graficar(), 0, 0, null);
+			}
+		}
+		g.drawImage(this.superficie.graficar(), 0, 0, null);
+	}
 	
 
 	

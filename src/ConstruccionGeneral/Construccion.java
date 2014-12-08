@@ -23,7 +23,7 @@ import Servicios.AdministradorServicios;
 import Superficies.Superficie;
 
 
-public abstract class Construccion implements Reconstruible, Destruible {
+public abstract class Construccion implements Reconstruible, Destruible,Graficable {
 
 	protected Posicion posicionConstruccion;
 	protected int costoDeConstruccion;
