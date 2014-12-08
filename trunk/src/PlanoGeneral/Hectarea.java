@@ -93,13 +93,14 @@ public class Hectarea implements Destruible {
     	this.construcciones.add(construccionAAgregar); 	
     }
     
-    public void quitarConstruccion() {
+    public Construccion quitarConstruccion() {
     	try {
     		Construccion construccion = this.construcciones.get(0);
-    		construccion.quitarDelPlano();
 			this.construcciones.remove(0);
+			return construccion;
 		} catch (Exception e) {
 		}
+		return null;
     }
     
 	@Override

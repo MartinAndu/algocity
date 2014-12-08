@@ -84,12 +84,15 @@ public abstract class CentralElectrica extends Construccion{
 	}
 
 	private void quitarElectricidadZona() {
-		Recorrido zonaCircundante = this.plano.recorrerZonaCircundante(posicionConstruccion, radioDeAbastecimientoEnHectareas);
+		try {
+			Recorrido zonaCircundante = this.plano.recorrerZonaCircundante(posicionConstruccion, radioDeAbastecimientoEnHectareas);
 
-		while (zonaCircundante.tieneSiguiente()){
-			Hectarea hectarea = zonaCircundante.siguiente();
-			hectarea.quitarServicioAProveer(new AltaTension(this.idProveedor));
-		}		
+			while (zonaCircundante.tieneSiguiente()){
+				Hectarea hectarea = zonaCircundante.siguiente();
+				hectarea.quitarServicioAProveer(new AltaTension(this.idProveedor));
+			}
+		} catch (NullPointerException e) {
+		}
 	}
 
 	@Override

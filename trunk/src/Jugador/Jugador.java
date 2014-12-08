@@ -33,6 +33,7 @@ import Edificios.EdificioComercial;
 import Edificios.EdificioIndustrial;
 import Edificios.EdificioResidencial;
 import Edificios.PozoDeAgua;
+import PlanoGeneral.Hectarea;
 import PlanoGeneral.Plano;
 import Poblacion.Poblacion;
 import Presupuesto.Presupuesto;
@@ -201,6 +202,15 @@ public abstract class Jugador extends Observable{
 		//Interviene en la vista notificando que hubo cambio al observador
 		setChanged();
 	    this.notifyObservers();
+	}
+	
+	public void destruirConstruccion(Posicion posicion) {
+		try {
+			Hectarea hectarea = this.plano.darHectarea(posicion);
+			Construccion construccion = hectarea.quitarConstruccion();
+			construccion.quitarDelPlano();
+		} catch (NullPointerException e) {
+		}
 	}
 
 	public void reducirPresupuestoEnPorcentaje(int porcentajeDeReduccion) {
