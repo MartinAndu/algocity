@@ -14,9 +14,9 @@ public class EdificioComercial extends Edificio {
 	
 	public EdificioComercial(Posicion unaPosicion){
 		super(unaPosicion);
-		this.costoDeConstruccion = COSTO_CONSTRUCCION;
+		this.costoConstruccion = COSTO_CONSTRUCCION;
 		this.consumoElectrico = CONSUMO_ELECTRICO;
-		this.puntosDeConstruccion = new PuntosDeComercio();
+		this.puntosConstruccion = new PuntosDeComercio();
 		
 	}
 

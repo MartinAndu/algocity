@@ -12,8 +12,8 @@ public class Terremoto extends Catastrofe{
 		Recorrido zonaCircundante= plano.recorrerTodoDesdeUnaPosicionAleatoria();
 		while (zonaCircundante.tieneSiguiente()){
 			Hectarea hectareaActual = zonaCircundante.siguiente();
-			hectareaActual.destruirEnPorcentaje((int) (100 - (1.5 * zonaCircundante.distanciaDesdeDondeParti())));
-			estructurasDestruidas.addAll(hectareaActual.devolverListaDeReconstruibles());
+			hectareaActual.destruirEnUnPorcentaje((int) (100 - (1.5 * zonaCircundante.distanciaDesdeDondeParti())));
+			estructurasDestruidas.addAll(hectareaActual.darListaDeReconstruibles());
 		}
 	}
 

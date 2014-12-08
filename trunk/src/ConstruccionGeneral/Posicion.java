@@ -10,11 +10,11 @@ public class Posicion {
             this.coordenadaY = y;
     }
    
-    public int devolverCoordenadaX(){
+    public int darCoordenadaX(){
             return this.coordenadaX;
     }
    
-    public int devolverCoordenadaY(){
+    public int darCoordenadaY(){
             return this.coordenadaY;
     }
 

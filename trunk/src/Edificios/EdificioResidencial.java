@@ -15,13 +15,13 @@ public class EdificioResidencial extends Edificio {
 
 	public EdificioResidencial(Posicion unaPosicion){
 		super(unaPosicion);
-		this.costoDeConstruccion = COSTO_CONSTRUCCION;
+		this.costoConstruccion = COSTO_CONSTRUCCION;
 		this.consumoElectrico = CONSUMO_ELECTRICO;
-		this.puntosDeConstruccion = new PuntosDeResidencia();
+		this.puntosConstruccion = new PuntosDeResidencia();
 		
 	}
 
-	public int devolverCapacidadAlojamiento(){
+	public int darCapacidadAlojamiento(){
 		return CAPACIDAD_MAXIMA_HABITANTES;
 	}
 

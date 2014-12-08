@@ -16,14 +16,14 @@ public class JugadorTest {
 		
 		Jugador jugador = new JugadorParaTest();
 		
-		assertEquals(5000, jugador.obtenerPresupuesto());
+		assertEquals(5000, jugador.darCantDineroEnPresupuesto());
 		
 		Catastrofe catastrofe = new Godzilla();
-		jugador.huboUnaCatastrofe(catastrofe);
+		jugador.destruirConstruccionesPorCatastrofe(catastrofe);
 		jugador.habilitarEstacionDeBomberos();
 		jugador.pasoUnTurno();
 		
-		assertEquals(3500, jugador.obtenerPresupuesto());
+		assertEquals(3500, jugador.darCantDineroEnPresupuesto());
 	}
 	
 	@Test
@@ -31,13 +31,13 @@ public class JugadorTest {
 		
 		Jugador jugador = new JugadorParaTest();
 		
-		assertEquals(5000, jugador.obtenerPresupuesto());
+		assertEquals(5000, jugador.darCantDineroEnPresupuesto());
 		
-		jugador.seCobraUnaComisionPorHabitante(10);
+		jugador.reducirPresupuestoPorHabitante(10);
 		jugador.pasoUnTurno();
 
 		
-		assertEquals(0, jugador.obtenerPresupuesto());
+		assertEquals(0, jugador.darCantDineroEnPresupuesto());
 
 	}
 	
@@ -46,11 +46,11 @@ public class JugadorTest {
 		
 		Jugador jugador = new JugadorParaTest();
 		
-		assertEquals(5000, jugador.obtenerPresupuesto());
+		assertEquals(5000, jugador.darCantDineroEnPresupuesto());
 		
-		jugador.presupuestoSeIncrementoEnPorcentaje(50);
+		jugador.incrementarPresupuestoEnPorcentaje(50);
 		
-		assertEquals(7500, jugador.obtenerPresupuesto());
+		assertEquals(7500, jugador.darCantDineroEnPresupuesto());
 	}
 	
 	@Test
@@ -58,13 +58,13 @@ public class JugadorTest {
 		
 		Jugador jugador = new JugadorParaTest();
 		
-		assertEquals(5000, jugador.obtenerPresupuesto());
+		assertEquals(5000, jugador.darCantDineroEnPresupuesto());
 		
 		Posicion posicion = new Posicion(1, 2);
 		
 		jugador.crearPozoDeAgua(posicion);
 		
-		assertEquals(4750, jugador.obtenerPresupuesto());
+		assertEquals(4750, jugador.darCantDineroEnPresupuesto());
 		
 	}
 	
@@ -77,12 +77,12 @@ public class JugadorTest {
 		Posicion otraPosicion = new Posicion(1, 3);
 		jugador.crearTuberiaDeAgua(otraPosicion);
 		
-		assertEquals(4745, jugador.obtenerPresupuesto());
+		assertEquals(4745, jugador.darCantDineroEnPresupuesto());
 		
 		Posicion otraPosicionMas = new Posicion(1, 4);
 		jugador.crearTuberiaDeAgua(otraPosicionMas);
 		
-		assertEquals(4740, jugador.obtenerPresupuesto());
+		assertEquals(4740, jugador.darCantDineroEnPresupuesto());
 	}
 	
 	@Test
@@ -98,7 +98,7 @@ public class JugadorTest {
 		Posicion unaPosicionMas = new Posicion(1, 5);
 		jugador.crearCentralMineral(unaPosicionMas);
 		
-		assertEquals(1740, jugador.obtenerPresupuesto());
+		assertEquals(1740, jugador.darCantDineroEnPresupuesto());
 	}
 	
 	@Test
@@ -116,7 +116,7 @@ public class JugadorTest {
 		jugador.crearRutaPavimentada(otraPosicion);
 		jugador.crearRutaPavimentada(otraPosicionMas);
 		
-		assertEquals(1720, jugador.obtenerPresupuesto());
+		assertEquals(1720, jugador.darCantDineroEnPresupuesto());
 	}
 	
 	@Test
@@ -136,7 +136,7 @@ public class JugadorTest {
 		Posicion posicionDeLaCasa = new Posicion(2, 4);
 		jugador.crearResidencia(posicionDeLaCasa);
 		
-		assertEquals(1715, jugador.obtenerPresupuesto());
+		assertEquals(1715, jugador.darCantDineroEnPresupuesto());
 	}
 	
 }

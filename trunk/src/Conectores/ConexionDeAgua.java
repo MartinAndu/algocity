@@ -15,8 +15,8 @@ public class ConexionDeAgua extends Conexion {
 	
 	public ConexionDeAgua(Posicion unaPosicion){
 		super(unaPosicion);
-		this.costoDeConstruccion = COSTO_CONSTRUCCION;
-		this.puntosDeConstruccion = new PuntosDeTuberia();
+		this.costoConstruccion = COSTO_CONSTRUCCION;
+		this.puntosConstruccion = new PuntosDeTuberia();
 	}
 
 	@Override

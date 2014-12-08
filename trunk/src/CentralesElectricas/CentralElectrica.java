@@ -30,9 +30,9 @@ public abstract class CentralElectrica extends Construccion{
 		this.idProveedor = java.util.UUID.randomUUID().toString(); 
 	}
 	
-	public void construirSobrePlano(Plano unPlano){
+	public void agregarAlPlano(Plano unPlano){
 		this.plano = unPlano;
-		Hectarea hectarea = unPlano.devolverHectarea(this.posicionConstruccion);
+		Hectarea hectarea = unPlano.darHectarea(this.posicionConstruccion);
 		AdministradorServicios administrador = hectarea.serviciosAConsumir();
 		
 		if (!administrador.poseeAgua()) {
@@ -64,12 +64,12 @@ public abstract class CentralElectrica extends Construccion{
 	}
 
 	@Override
-	public void construirJuntoA(Construccion construccionAAgregar) {
+	public void verificarAfinidadConConstruccion(Construccion construccionAAgregar) {
 		throw new ExcepcionHectareaYaContieneUnaConstruccion();
 	}
 
 	@Override
-	public void construirseSobre(Superficie superficie) {
+	public void verificarSuperficie(Superficie superficie) {
 		if (!superficie.sePuedeConstruirUnEdificioOCentral()) {
 			throw new ExcepcionNoSePuedeConstruirEnEsteTerreno();
 		}
@@ -95,7 +95,7 @@ public abstract class CentralElectrica extends Construccion{
 	@Override
 	public void reconstruir(int puntosDeReconstruccion) throws ExceptionConstruccionComplemtamenteReparada {
 		try {
-			this.puntosDeConstruccion.incrementar(puntosDeReconstruccion);
+			this.puntosConstruccion.incrementar(puntosDeReconstruccion);
 		} catch (ExceptionConstruccionComplemtamenteReparada e) {
 			this.estadoConstruccion = new EstoyBien();
 			this.proveerElectricidadZona();
@@ -105,13 +105,13 @@ public abstract class CentralElectrica extends Construccion{
 
 	@Override
 	public void destruir() {
-		this.puntosDeConstruccion.decrementar();
+		this.puntosConstruccion.decrementar();
 		this.quitarElectricidadZona();
 	}
 
 	@Override
-	public void destruirEnPorcentaje(int porcentaje) {
-		this.puntosDeConstruccion.decrementarEnPorcentaje(porcentaje);
+	public void destruirEnUnPorcentaje(int porcentaje) {
+		this.puntosConstruccion.decrementarEnPorcentaje(porcentaje);
 		this.quitarElectricidadZona();
 	}
 

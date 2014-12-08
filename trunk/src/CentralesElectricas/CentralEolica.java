@@ -14,9 +14,9 @@ public class CentralEolica extends CentralElectrica {
 	public CentralEolica(Posicion unaPosicion) {
 		super(unaPosicion);
 		this.radioDeAbastecimientoEnHectareas = RADIO_DE_ABASTECIMIENTO_EN_HECTAREAS;
-		this.costoDeConstruccion = COSTO_DE_CONSTRUCCION;
+		this.costoConstruccion = COSTO_DE_CONSTRUCCION;
 		this.capacidadMaxDeAbastecimientoEnMW = CAPACIDAD_MAXIMA_DE_ABASTECIMIENTO;
-		this.puntosDeConstruccion = new PuntosDeCentralEolica();
+		this.puntosConstruccion = new PuntosDeCentralEolica();
 	}
 
 	public BufferedImage graficar() {

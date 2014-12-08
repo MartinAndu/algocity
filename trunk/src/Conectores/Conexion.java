@@ -28,9 +28,9 @@ public abstract class Conexion extends Construccion {
 		this.idProveedor = java.util.UUID.randomUUID().toString(); 
 	}
 	
-	public void construirSobrePlano(Plano unPlano){
+	public void agregarAlPlano(Plano unPlano){
 		this.plano = unPlano;
-		Hectarea hectarea = unPlano.devolverHectarea(this.posicionConstruccion);
+		Hectarea hectarea = unPlano.darHectarea(this.posicionConstruccion);
 		AdministradorServicios administrador = hectarea.serviciosAConsumir();
 		
 		if (!this.administradorPoseeServicioQueRequiero(administrador)) {
@@ -55,14 +55,14 @@ public abstract class Conexion extends Construccion {
 	protected abstract Servicio servicioAProveer();
 
 	@Override
-	public void construirJuntoA(Construccion construccionAAgregar) {
-		if (this.idConstruccion != construccionAAgregar.idConstruccion()) {
+	public void verificarAfinidadConConstruccion(Construccion construccionAAgregar) {
+		if (this.idConstruccion != construccionAAgregar.darIdConstruccion()) {
 			throw new ExcepcionHectareaYaContieneUnaConstruccion();
 		}
 	}
 
 	@Override
-	public void construirseSobre(Superficie superficie) {
+	public void verificarSuperficie(Superficie superficie) {
 		if (!superficie.sePuedeConstruirUnaConexion()) {
 			throw new ExcepcionNoSePuedeConstruirEnEsteTerreno();
 		}
@@ -84,7 +84,7 @@ public abstract class Conexion extends Construccion {
 	@Override
 	public void reconstruir(int puntosDeReconstruccion) throws ExceptionConstruccionComplemtamenteReparada {
 		try {
-			this.puntosDeConstruccion.incrementar(puntosDeReconstruccion);
+			this.puntosConstruccion.incrementar(puntosDeReconstruccion);
 		} catch (ExceptionConstruccionComplemtamenteReparada e) {
 			this.estadoConstruccion = new EstoyBien();
 			this.proveerServicioZona();
@@ -94,13 +94,13 @@ public abstract class Conexion extends Construccion {
 
 	@Override
 	public void destruir() {
-		this.puntosDeConstruccion.decrementar();
+		this.puntosConstruccion.decrementar();
 		this.quitarServicioZona();
 	}
 
 	@Override
-	public void destruirEnPorcentaje(int porcentaje) {
-		this.puntosDeConstruccion.decrementarEnPorcentaje(porcentaje);
+	public void destruirEnUnPorcentaje(int porcentaje) {
+		this.puntosConstruccion.decrementarEnPorcentaje(porcentaje);
 		this.quitarServicioZona();
 	}
 	

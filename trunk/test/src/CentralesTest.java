@@ -23,7 +23,7 @@ public class CentralesTest {
 	public void centralesElectricasTiraExcepcionSiNoTienenAgua(){
 		Plano plano = new PlanoDeterminista();
 		PozoDeAgua pozo = new PozoDeAgua(new Posicion(1, 2));
-		pozo.construirSobrePlano(plano);
+		pozo.agregarAlPlano(plano);
 		
 		//centrales alrededor del pozo
 		CentralEolica centralEolica = new CentralEolica(new Posicion(1, 1));
@@ -32,11 +32,11 @@ public class CentralesTest {
 		//central lejos del pozo tira excepcion
 		CentralNuclear centralNuclear = new CentralNuclear(new Posicion(3, 1));
 		
-		centralEolica.construirSobrePlano(plano);
-		centralMineral.construirSobrePlano(plano);
+		centralEolica.agregarAlPlano(plano);
+		centralMineral.agregarAlPlano(plano);
 		
 		try {
-			centralNuclear.construirSobrePlano(plano);
+			centralNuclear.agregarAlPlano(plano);
 			fail();
 		} catch (ExcepcionCentralElectricaNoPoseeRedDeAgua e) {
 		}
@@ -47,12 +47,12 @@ public class CentralesTest {
 	public void centralElectricaSeConstruyeSobreSuperficieDeAguaTiraExcepcion(){
 		Plano plano = new PlanoDeterminista();
 		PozoDeAgua pozo = new PozoDeAgua(new Posicion(1, 2));
-		pozo.construirSobrePlano(plano);
+		pozo.agregarAlPlano(plano);
 		
 		CentralEolica centralEolica = new CentralEolica(new Posicion(2, 1));
 
 		try {
-			centralEolica.construirSobrePlano(plano);
+			centralEolica.agregarAlPlano(plano);
 			fail();
 		} catch (ExcepcionNoSePuedeConstruirEnEsteTerreno e) {
 		}
@@ -62,24 +62,24 @@ public class CentralesTest {
 	public void centralElectricaProveeEnegiaALaZonaCircandanteDeCuatroHectareas(){
 		Plano plano = new PlanoDeterminista();
 		PozoDeAgua pozo = new PozoDeAgua(new Posicion(1, 2));
-		pozo.construirSobrePlano(plano);
+		pozo.agregarAlPlano(plano);
 		CentralEolica centralEolica = new CentralEolica(new Posicion(1, 3));
-		centralEolica.construirSobrePlano(plano);
+		centralEolica.agregarAlPlano(plano);
 		
 		LineasDeTension cable = new LineasDeTension(new Posicion(1, 7));
 		LineasDeTension cable2 = new LineasDeTension(new Posicion(5, 3));
 		
 		//cables estan dentro de los limites de abastecimiento de la central
 		//por tanto se pueden establecer en el plano
-		cable.construirSobrePlano(plano);
-		cable2.construirSobrePlano(plano);
+		cable.agregarAlPlano(plano);
+		cable2.agregarAlPlano(plano);
 		
 		LineasDeTension cable3 = new LineasDeTension(new Posicion(6, 8));
 		//cables3 no se encuantra en los limites de abastecimiento y tira
 		//excepcion
 		
 		try {
-			cable3.construirSobrePlano(plano);
+			cable3.agregarAlPlano(plano);
 			fail();
 		} catch (ExcepcionHectareaNoBrindaLosServiciosNecesarios e) {
 		}
@@ -89,18 +89,18 @@ public class CentralesTest {
 	public void centralElectricaQuitaEnergiaALaZonaProvista(){
 		Plano plano = new PlanoDeterminista();
 		PozoDeAgua pozo = new PozoDeAgua(new Posicion(1, 2));
-		pozo.construirSobrePlano(plano);
+		pozo.agregarAlPlano(plano);
 		CentralEolica centralEolica = new CentralEolica(new Posicion(1, 3));
-		centralEolica.construirSobrePlano(plano);
+		centralEolica.agregarAlPlano(plano);
 		LineasDeTension cable = new LineasDeTension(new Posicion(1, 7));
 		LineasDeTension cable2 = new LineasDeTension(new Posicion(5, 3));
-		cable.construirSobrePlano(plano);
-		cable2.construirSobrePlano(plano);
+		cable.agregarAlPlano(plano);
+		cable2.agregarAlPlano(plano);
 		
 		centralEolica.quitarDelPlano();
 		
-		Assert.assertEquals("me falta luz", (cable.estadoContruccion()).enString());
-		Assert.assertEquals("me falta luz", (cable2.estadoContruccion()).enString());
+		Assert.assertEquals("me falta luz", (cable.darEstadoContruccion()).enString());
+		Assert.assertEquals("me falta luz", (cable2.darEstadoContruccion()).enString());
 		
 	}
 }

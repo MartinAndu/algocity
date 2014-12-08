@@ -76,7 +76,7 @@ public class Hectarea implements Destruible {
     }
     
     public void agregarConstruccion(Construccion construccionAAgregar) {
-    	construccionAAgregar.construirseSobre(this.superficie);
+    	construccionAAgregar.verificarSuperficie(this.superficie);
     	
     	if (this.construcciones.size() == 0) {
 			this.construcciones.add(construccionAAgregar);
@@ -87,7 +87,7 @@ public class Hectarea implements Destruible {
     	
     	while (it.hasNext()) {
 			Construccion construccion = (Construccion) it.next();
-			construccion.construirJuntoA(construccionAAgregar);
+			construccion.verificarAfinidadConConstruccion(construccionAAgregar);
 		}
     	
     	this.construcciones.add(construccionAAgregar); 	
@@ -113,16 +113,16 @@ public class Hectarea implements Destruible {
 	}
 
 	@Override
-	public void destruirEnPorcentaje(int porcentaje) {
+	public void destruirEnUnPorcentaje(int porcentaje) {
 		Iterator<Construccion> it = this.construcciones.iterator();
     	
     	while (it.hasNext()) {
 			Construccion construccion = (Construccion) it.next();
-			construccion.destruirEnPorcentaje(porcentaje);
+			construccion.destruirEnUnPorcentaje(porcentaje);
 		}
 	}
 	
-	public Collection<? extends Reconstruible> devolverListaDeReconstruibles() {
+	public Collection<? extends Reconstruible> darListaDeReconstruibles() {
 		return this.construcciones;
 	}
 	
@@ -207,7 +207,7 @@ public class Hectarea implements Destruible {
 	//
 
 	
-	public Superficie obtenerSuperficie() {
+	public Superficie darSuperficie() {
 		return this.superficie;
 	}
 

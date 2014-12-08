@@ -15,7 +15,7 @@ public abstract class Poblacion {
 		this.cantHabitantesCiudad += cantHabitantesASumar;
 	}
 
-	public int obtenerCantHabitantes() {
+	public int darCantHabitantes() {
 		return this.cantHabitantesCiudad;
 	}
 

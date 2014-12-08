@@ -56,8 +56,8 @@ public class Plano {
 
 	protected ArrayList<Hectarea> obtenerHectareasDelEntorno(Posicion posicion) {
 		
-		int x = posicion.devolverCoordenadaX();
-		int y = posicion.devolverCoordenadaY();
+		int x = posicion.darCoordenadaX();
+		int y = posicion.darCoordenadaY();
 		ArrayList<Hectarea> hectareasDelEntorno = new ArrayList<Hectarea>();
 		
 		String posicionDelEntornoString = (new Posicion(x+1, y)).enString();
@@ -139,21 +139,21 @@ public class Plano {
 
 	protected int calcularMayorDistanciaALosLimites(Posicion posicion) {
 		
-		int diferenciaPosicionAncho = this.dimensionM - posicion.devolverCoordenadaX();
-		int diferenciaPosicionAlto = this.dimensionN - posicion.devolverCoordenadaY();
+		int diferenciaPosicionAncho = this.dimensionM - posicion.darCoordenadaX();
+		int diferenciaPosicionAlto = this.dimensionN - posicion.darCoordenadaY();
 		int mayorDistanciaEnAncho = 0;
 		int mayorDistanciaEnAlto = 0;
 		
-		if (posicion.devolverCoordenadaX() < diferenciaPosicionAncho) {
+		if (posicion.darCoordenadaX() < diferenciaPosicionAncho) {
 			mayorDistanciaEnAncho = diferenciaPosicionAncho;
 		} else {
-			mayorDistanciaEnAncho = posicion.devolverCoordenadaX();
+			mayorDistanciaEnAncho = posicion.darCoordenadaX();
 		}
 		
-		if (posicion.devolverCoordenadaY() < diferenciaPosicionAlto) {
+		if (posicion.darCoordenadaY() < diferenciaPosicionAlto) {
 			mayorDistanciaEnAlto = diferenciaPosicionAlto;
 		} else {
-			mayorDistanciaEnAlto = posicion.devolverCoordenadaY();
+			mayorDistanciaEnAlto = posicion.darCoordenadaY();
 		}
 		
 		if (mayorDistanciaEnAlto < mayorDistanciaEnAncho) {
@@ -200,7 +200,7 @@ public class Plano {
 		return entornoParcial;
 	}
 	
-	public Recorrido generarRecorridolAleatorioDesdeUnaPosicionBorde() {
+	public Recorrido recorrerlAleatoriamenteDesdePosicionBorde() {
 		
 		Posicion posicionBorde = new Posicion(0, 0);
 		Direccion direccion = new Norte();
@@ -256,7 +256,7 @@ public class Plano {
 		return recorrido;
 	}
 
-	public Hectarea devolverHectarea(Posicion posicion) {
+	public Hectarea darHectarea(Posicion posicion) {
 		
 		return this.hectareas.get(posicion.enString());
 	}
@@ -315,11 +315,11 @@ public class Plano {
 		return nuevoPlano;
 	}
 	
-	public int obtenerAncho(){
+	public int darAncho(){
 		return this.dimensionM;
 	}
 	
-	public int obtenerAlto(){
+	public int darAlto(){
 		return this.dimensionN;
 	}
 

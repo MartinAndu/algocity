@@ -13,14 +13,14 @@ public abstract class Presupuesto {
 		return cantidadDeDinero;
 	}
 	
-	public void reducirPresupuesto(int unGasto){
+	public void reducir(int unGasto){
 		if (unGasto > cantidadDeDinero) {
 			throw new ExcepcionDineroInsuficiente();
 		}
 		cantidadDeDinero -= unGasto;
 	}
 	
-	public void aumentarPresupuesto(int unaSuma){
+	public void incrementar(int unaSuma){
 		cantidadDeDinero += unaSuma;
 	}
 

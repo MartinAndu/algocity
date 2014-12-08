@@ -15,13 +15,13 @@ public class EdificioIndustrial extends Edificio {
 	
 	public EdificioIndustrial(Posicion unaPosicion){
 		super(unaPosicion);
-		costoDeConstruccion = COSTO_CONSTRUCCION;
+		costoConstruccion = COSTO_CONSTRUCCION;
 		consumoElectrico = CONSUMO_ELECTRICO;
-		this.puntosDeConstruccion = new PuntosDeIndustria();
+		this.puntosConstruccion = new PuntosDeIndustria();
 
 	}
 	
-	public int devolverCapacidadEmpleo(){
+	public int darCapacidadEmpleo(){
 		return CAPACIDAD_MAXIMA_EMPLEADOS;
 	}
 

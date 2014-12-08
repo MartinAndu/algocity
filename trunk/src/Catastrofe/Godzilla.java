@@ -9,12 +9,12 @@ public class Godzilla extends Catastrofe {
 	
 	@Override
 	public void destruirCiudad(Plano plano) {
-		Recorrido zonaRecorridaPorGodzilla = plano.generarRecorridolAleatorioDesdeUnaPosicionBorde();
+		Recorrido zonaRecorridaPorGodzilla = plano.recorrerlAleatoriamenteDesdePosicionBorde();
 		
 		while (zonaRecorridaPorGodzilla.tieneSiguiente()){
 			Hectarea hectareaActual = zonaRecorridaPorGodzilla.siguiente();
 			hectareaActual.destruir();
-			estructurasDestruidas.addAll(hectareaActual.devolverListaDeReconstruibles());
+			estructurasDestruidas.addAll(hectareaActual.darListaDeReconstruibles());
 		}
 	
 	}
