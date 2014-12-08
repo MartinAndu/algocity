@@ -19,18 +19,20 @@ public class Turno implements Runnable{
 	}
 		
 		
+	public void arrancar() {
+		this.hilo.start();
+	}
 	@Override
 	public void run() {
 		while (this.juegoContinua) {
 			try {
 				this.hilo.wait(duracion);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			System.out.println("Soy el hilo ");
-			//this.jugador.pasoUnTurno();
-			//this.ambiente.pasoUnTurno();
+			this.jugador.pasoUnTurno();
+			this.ambiente.pasoUnTurno();
 		}
 	}
 	
