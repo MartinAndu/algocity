@@ -16,8 +16,8 @@ public class RutaPavimentada extends Conexion{
 
 	public RutaPavimentada(Posicion unaPosicion) {
 		super(unaPosicion);
-		this.costoDeConstruccion = COSTO_CONSTRUCCION;
-		this.puntosDeConstruccion = new PuntosDeRuta();
+		this.costoConstruccion = COSTO_CONSTRUCCION;
+		this.puntosConstruccion = new PuntosDeRuta();
 	}
 
 	@Override

@@ -10,7 +10,7 @@ public class EconomiaCreciente extends Economia {
 	@Override
 	public void ocurrir(Jugador jugador) {
 		int porcentajeDeCrecimiento = (int)(Math.random() * this.porcentajeDeCambioMax + 1); 
-		jugador.presupuestoSeIncrementoEnPorcentaje(porcentajeDeCrecimiento);
+		jugador.incrementarPresupuestoEnPorcentaje(porcentajeDeCrecimiento);
 
 	}
 

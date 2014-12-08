@@ -19,13 +19,13 @@ public class PresupuestoTest {
 		Presupuesto presupuestoPobre = new PresupuestoBajo();
 		int cantidadDinero = presupuestoPobre.obtenerCantidadDeDinero();
 		int sumaAAgregar = 2000;
-		presupuestoPobre.aumentarPresupuesto(sumaAAgregar);
+		presupuestoPobre.incrementar(sumaAAgregar);
 		int presupuestoEsperado = cantidadDinero + sumaAAgregar;
 		int cantidadDineroAlAumentarSuma = presupuestoPobre.obtenerCantidadDeDinero();
 		
 		Assert.assertEquals(presupuestoEsperado, cantidadDineroAlAumentarSuma);
 		
-		presupuestoPobre.reducirPresupuesto(sumaAAgregar);
+		presupuestoPobre.reducir(sumaAAgregar);
 		Assert.assertEquals(presupuestoPobre.obtenerCantidadDeDinero(), cantidadDinero);
 	}
 

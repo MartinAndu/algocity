@@ -23,12 +23,12 @@ public abstract class Edificio extends Construccion {
 		this.idConstruccion = "edificio";
 	}
 	
-	public int devolverConsumo(){
+	public int darConsumoElectrico(){
 		return consumoElectrico;
 	}
 
-	public void construirSobrePlano(Plano unPlano){
-		Hectarea hectarea = unPlano.devolverHectarea(posicionConstruccion);
+	public void agregarAlPlano(Plano unPlano){
+		Hectarea hectarea = unPlano.darHectarea(posicionConstruccion);
 		AdministradorServicios administrador = hectarea.serviciosAConsumir();
 		
 		if (!this.administradorPoseeServicioQueRequiero(administrador)) {
@@ -41,12 +41,12 @@ public abstract class Edificio extends Construccion {
 			AdministradorServicios administrador);
 
 	@Override
-	public void construirJuntoA(Construccion construccionAAgregar) {
+	public void verificarAfinidadConConstruccion(Construccion construccionAAgregar) {
 		throw new ExcepcionHectareaYaContieneUnaConstruccion();
 	}
 
 	@Override
-	public void construirseSobre(Superficie superficie) {
+	public void verificarSuperficie(Superficie superficie) {
 		if (!superficie.sePuedeConstruirUnEdificioOCentral()) {
 			throw new ExcepcionNoSePuedeConstruirEnEsteTerreno();
 		}
@@ -63,7 +63,7 @@ public abstract class Edificio extends Construccion {
 	@Override
 	public void reconstruir(int puntosDeReconstruccion) throws ExceptionConstruccionComplemtamenteReparada{
 		try {
-			this.puntosDeConstruccion.incrementar(puntosDeReconstruccion);
+			this.puntosConstruccion.incrementar(puntosDeReconstruccion);
 		} catch (ExceptionConstruccionComplemtamenteReparada e) {
 			this.estadoConstruccion = new EstoyBien();
 			throw new ExceptionConstruccionComplemtamenteReparada();
@@ -72,13 +72,13 @@ public abstract class Edificio extends Construccion {
 
 	@Override
 	public void destruir() {
-		this.puntosDeConstruccion.decrementar();
+		this.puntosConstruccion.decrementar();
 		this.estadoConstruccion = new EstoyDestruido();
 	}
 
 	@Override
-	public void destruirEnPorcentaje(int porcentaje) {
-		this.puntosDeConstruccion.decrementarEnPorcentaje(porcentaje);
+	public void destruirEnUnPorcentaje(int porcentaje) {
+		this.puntosConstruccion.decrementarEnPorcentaje(porcentaje);
 		this.estadoConstruccion = new EstoyDestruido();		
 	}
 

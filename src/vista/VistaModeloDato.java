@@ -31,8 +31,8 @@ public class VistaModeloDato extends JPanel implements Observer{
         this.setPosicion(posicion);
         this.jugadorModelo = jugadorModelo;
         this.jugadorModelo.addObserver(this);
-        int anchoX = jugadorModelo.obtenerPlano().obtenerAncho();
-        int altoY = jugadorModelo.obtenerPlano().obtenerAlto();
+        int anchoX = jugadorModelo.darPlano().darAncho();
+        int altoY = jugadorModelo.darPlano().darAlto();
     	setPreferredSize(new Dimension(anchoX,altoY));
         addMouseListener(new ControladorMouse(jugadorModelo, this));
     }
@@ -48,7 +48,7 @@ public class VistaModeloDato extends JPanel implements Observer{
         super.paintComponent(grafico);
        // Superficie superficie = jugadorModelo.obtenerPlano().devolverHectarea(posicion).obtenerSuperficie();
         
-        jugadorModelo.obtenerPlano().devolverHectarea(posicion).GraficarHectarea(grafico);
+        jugadorModelo.darPlano().darHectarea(posicion).GraficarHectarea(grafico);
         
         /*
         grafico.setColor(Color.GREEN);

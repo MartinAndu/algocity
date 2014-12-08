@@ -23,8 +23,8 @@ public class PanelPlano extends JPanel{
 		
 		listaDeVistas = new ListaDeVistas();
 		
-		int dimensionX = jugador.obtenerPlano().obtenerAncho();
-		int dimensionY = jugador.obtenerPlano().obtenerAlto();
+		int dimensionX = jugador.darPlano().darAncho();
+		int dimensionY = jugador.darPlano().darAlto();
 		setLayout(new GridLayout(dimensionX,dimensionY));
 	
 		for (int i = 1; i < dimensionX; i++) {

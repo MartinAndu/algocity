@@ -33,7 +33,7 @@ public abstract class BotonConstruccion extends JButton implements ActionListene
 	
 	@Override
 	public void actionPerformed(ActionEvent e){
-		this.jugadorModelo.obtenerControlador().establecerBotonConstruccionPresionado(this);
+		this.jugadorModelo.darControlador().establecerBotonConstruccionPresionado(this);
 	}
 
 }

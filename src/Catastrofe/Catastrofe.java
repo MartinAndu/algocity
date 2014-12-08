@@ -18,12 +18,12 @@ public abstract class Catastrofe implements Evento {
 	
 	public abstract void destruirCiudad(Plano plano);
 
-	public ArrayList<Reconstruible> obtenerListaDeEstructurasDestruidas() {
+	public ArrayList<Reconstruible> darListaConstruccionesDestruidas() {
 		return estructurasDestruidas;
 	}
 	
 	public void ocurrir(Jugador jugador) {
-		jugador.huboUnaCatastrofe(this);
+		jugador.destruirConstruccionesPorCatastrofe(this);
 	}
 
 }

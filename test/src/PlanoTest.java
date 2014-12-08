@@ -132,7 +132,7 @@ public class PlanoTest {
 	public void testPlanoRecorrerAleatorioDebePasarPorDoceHectareas() {
 		
 		Plano plano = new PlanoDeterminista();
-		Recorrido recorrido = plano.generarRecorridolAleatorioDesdeUnaPosicionBorde();
+		Recorrido recorrido = plano.recorrerlAleatoriamenteDesdePosicionBorde();
 		int i = 0;
 		
 		while (recorrido.tieneSiguiente()) {
@@ -147,8 +147,8 @@ public class PlanoTest {
 	public void testPlanoGenerarPosicionAleatoriaDeberiaEstarEnPosicionCorrecta(){		
 		Plano plano = new PlanoDeterminista();
 		Posicion posicion = plano.generarPosicionAleatoria();
-		int x = posicion.devolverCoordenadaX();
-		int y = posicion.devolverCoordenadaY();
+		int x = posicion.darCoordenadaX();
+		int y = posicion.darCoordenadaY();
 		
 		assertEquals(3, x);
 		assertEquals(3, y);

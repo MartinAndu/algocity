@@ -111,18 +111,18 @@ public abstract class Jugador extends Observable{
 		return nombreJugador;
 	}
 
-	public void poblacionSeIncrementoEnPorcetaje(int porcentajeDeIncrementoPoblacional) {
+	public void incrementarPoblacionEnPorcentaje(int porcentajeDeIncrementoPoblacional) {
 		poblacion.incrementar(porcentajeDeIncrementoPoblacional);
 		
 	}
 
-	public int obtenerPresupuesto() {
+	public int darCantDineroEnPresupuesto() {
 		return presupuesto.obtenerCantidadDeDinero();
 	}
 
-	public void huboUnaCatastrofe(Catastrofe catastrofe) {
+	public void destruirConstruccionesPorCatastrofe(Catastrofe catastrofe) {
 		catastrofe.destruirCiudad(this.plano);
-		ArrayList<Reconstruible> reconstruibles = catastrofe.obtenerListaDeEstructurasDestruidas();
+		ArrayList<Reconstruible> reconstruibles = catastrofe.darListaConstruccionesDestruidas();
 		estacionDeBomberos.agregarReconstruibles(reconstruibles);
 	}
 
@@ -134,12 +134,12 @@ public abstract class Jugador extends Observable{
 		this.estacionDeBomberos.realizarReparaciones();
 	}
 
-	public void seCobraUnaComisionPorHabitante(int comisionPorHabitante) {
-		int comisionTotal = comisionPorHabitante * this.poblacion.obtenerCantHabitantes();
-		this.presupuesto.reducirPresupuesto(comisionTotal);
+	public void reducirPresupuestoPorHabitante(int comisionPorHabitante) {
+		int comisionTotal = comisionPorHabitante * this.poblacion.darCantHabitantes();
+		this.presupuesto.reducir(comisionTotal);
 	}
 
-	public void presupuestoSeIncrementoEnPorcentaje(int porcentaje) {
+	public void incrementarPresupuestoEnPorcentaje(int porcentaje) {
 		this.presupuesto.incrementarEnPorcentaje(porcentaje);
 	}
 
@@ -194,8 +194,8 @@ public abstract class Jugador extends Observable{
 	}
 	
 	private void agregarAlPlano(Construccion construccion) {
-		construccion.construirSobrePlano(this.plano);
-		this.presupuesto.reducirPresupuesto(construccion.devolverCosto());
+		construccion.agregarAlPlano(this.plano);
+		this.presupuesto.reducir(construccion.darCosto());
 		this.construcciones.add(construccion);
 		
 		//Interviene en la vista notificando que hubo cambio al observador
@@ -203,11 +203,11 @@ public abstract class Jugador extends Observable{
 	    this.notifyObservers();
 	}
 
-	public void presupuestoSeRedujoEnPorcentaje(int porcentajeDeReduccion) {
+	public void reducirPresupuestoEnPorcentaje(int porcentajeDeReduccion) {
 		this.presupuesto.reducirEnPorcentaje(porcentajeDeReduccion);
 	}
 	
-	public Plano obtenerPlano(){
+	public Plano darPlano(){
 		return this.plano;
 	}
 	
@@ -215,7 +215,7 @@ public abstract class Jugador extends Observable{
 		this.controlador = controlador;
 	}
 	
-	public ControladorMouse obtenerControlador(){
+	public ControladorMouse darControlador(){
 		return this.controlador;
 	}
 	

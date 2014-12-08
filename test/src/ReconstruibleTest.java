@@ -15,7 +15,7 @@ public class ReconstruibleTest {
 		
 		Posicion unaPosicion = new Posicion(1, 1);
 		EdificioResidencial casa = new EdificioResidencial(unaPosicion);
-		casa.destruirEnPorcentaje(50);
+		casa.destruirEnUnPorcentaje(50);
 		Reconstruible casaReconstruible = (Reconstruible) casa;
 		
 		try {

@@ -31,7 +31,7 @@ public class HectareasTest {
         Edificio unEdificioComercial = new EdificioComercial(pos);
         
         try {
-        	unEdificioComercial.construirSobrePlano(plano);
+        	unEdificioComercial.agregarAlPlano(plano);
         	fail();
         }
         catch (ExcepcionHectareaNoBrindaLosServiciosNecesarios excepcion){
@@ -46,7 +46,7 @@ public class HectareasTest {
         PozoDeAgua pozo = new PozoDeAgua(pos);
         
         try {
-        	pozo.construirSobrePlano(plano);
+        	pozo.agregarAlPlano(plano);
         	fail();
         }
         catch (ExcepcionNoSePuedeConstruirEnEsteTerreno e){
@@ -59,33 +59,33 @@ public class HectareasTest {
 		
 		Posicion posicion = new Posicion(1, 2);
 		PozoDeAgua pozo = new PozoDeAgua(posicion);
-		pozo.construirSobrePlano(plano);
+		pozo.agregarAlPlano(plano);
 		
 		Posicion otraPosicion = new Posicion(1, 3);
 		ConexionDeAgua canio1 = new ConexionDeAgua(otraPosicion);
-		canio1.construirSobrePlano(plano);
+		canio1.agregarAlPlano(plano);
 		
 		Posicion otraPosicionMas = new Posicion(1, 4);
 		ConexionDeAgua canio2 = new ConexionDeAgua(otraPosicionMas);
-		canio2.construirSobrePlano(plano);		
+		canio2.agregarAlPlano(plano);		
 		
 		Posicion unaPosicionMas = new Posicion(1, 5);
 		CentralElectrica central = new CentralMineral(unaPosicionMas);
-		central.construirSobrePlano(plano);
+		central.agregarAlPlano(plano);
 		
 		RutaPavimentada ruta1 = new RutaPavimentada(otraPosicion);
-		ruta1.construirSobrePlano(plano);
+		ruta1.agregarAlPlano(plano);
 		
 		RutaPavimentada ruta2 = new RutaPavimentada(otraPosicionMas);
-		ruta2.construirSobrePlano(plano);
+		ruta2.agregarAlPlano(plano);
 		
 		Posicion posicionDeLaCasa = new Posicion(2, 2);
 		EdificioResidencial casa = new EdificioResidencial(posicionDeLaCasa);
-		casa.construirSobrePlano(plano);
+		casa.agregarAlPlano(plano);
 		
 		try {
 			EdificioResidencial casa2 = new EdificioResidencial(posicionDeLaCasa);
-			casa2.construirSobrePlano(plano);
+			casa2.agregarAlPlano(plano);
 		} catch (ExcepcionHectareaYaContieneUnaConstruccion e) {
 		}
 	}

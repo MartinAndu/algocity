@@ -28,8 +28,8 @@ public class EstacionDeBomberosTest {
 		Presupuesto presupuesto = new PresupuestoMedio();
 		Plano plano = new PlanoDeterminista();
 		
-		pozo.construirSobrePlano(plano);
-		canio.construirSobrePlano(plano);
+		pozo.agregarAlPlano(plano);
+		canio.agregarAlPlano(plano);
 		
 		canio.destruir();
 		pozo.destruir();

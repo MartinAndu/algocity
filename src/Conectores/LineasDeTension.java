@@ -16,8 +16,8 @@ public  class LineasDeTension extends Conexion{
 	
 	public LineasDeTension(Posicion unaPosicion) {
 		super(unaPosicion);
-		this.costoDeConstruccion = COSTO_CONSTRUCCION;
-		this.puntosDeConstruccion = new PuntosDeLineaTension();
+		this.costoConstruccion = COSTO_CONSTRUCCION;
+		this.puntosConstruccion = new PuntosDeLineaTension();
 	}
 
 	@Override

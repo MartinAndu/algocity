@@ -26,8 +26,8 @@ import Superficies.Superficie;
 public abstract class Construccion implements Reconstruible, Destruible,Graficable {
 
 	protected Posicion posicionConstruccion;
-	protected int costoDeConstruccion;
-	protected PuntosDeConstruccion puntosDeConstruccion;
+	protected int costoConstruccion;
+	protected PuntosDeConstruccion puntosConstruccion;
 	protected String idConstruccion;
 	protected EstadoConstruccion estadoConstruccion;
 	
@@ -41,8 +41,8 @@ public abstract class Construccion implements Reconstruible, Destruible,Graficab
         String nombreConstruccion = (this.getClass()).getSimpleName();
         
         elementoConstruccion.setAttribute("nombre", nombreConstruccion);        
-        elementoConstruccion.setAttribute("coordenadaX", Integer.toString((this.posicionConstruccion).devolverCoordenadaX()));
-        elementoConstruccion.setAttribute("coordenadaY", Integer.toString((this.posicionConstruccion).devolverCoordenadaY()));
+        elementoConstruccion.setAttribute("coordenadaX", Integer.toString((this.posicionConstruccion).darCoordenadaX()));
+        elementoConstruccion.setAttribute("coordenadaY", Integer.toString((this.posicionConstruccion).darCoordenadaY()));
        
         return elementoConstruccion;
     }
@@ -90,33 +90,33 @@ public abstract class Construccion implements Reconstruible, Destruible,Graficab
     	return nuevaConstruccion;
     }
     	
-	public int devolverCosto(){
-		return costoDeConstruccion;
+	public int darCosto(){
+		return costoConstruccion;
 	}
 
-	public Posicion obtenerPosicion(){
+	public Posicion darPosicion(){
 		return posicionConstruccion;
 	}
 
-	public String devolverPosicionEnString() {
+	public String darPosicionEnString() {
 		return (posicionConstruccion.enString());
 	}
 	
-	public String idConstruccion() {
+	public String darIdConstruccion() {
 		return this.idConstruccion;
 	}
 	
-	public EstadoConstruccion estadoContruccion() {
+	public EstadoConstruccion darEstadoContruccion() {
 		return this.estadoConstruccion;
 	}
 
-	public abstract void construirseSobre(Superficie superficie);
+	public abstract void verificarSuperficie(Superficie superficie);
 
-	public abstract void construirJuntoA(Construccion construccionAAgregar);
+	public abstract void verificarAfinidadConConstruccion(Construccion construccionAAgregar);
 
 	public abstract void verificarServicios(AdministradorServicios administradorServicios);
 	
-	public abstract void construirSobrePlano(Plano plano);
+	public abstract void agregarAlPlano(Plano plano);
 
 	
 

@@ -28,14 +28,14 @@ public class GuardarYCargarPartidasTest {
 		
 		Jugador unJugador = unJuego.crearJugador("Jorge");
 		
-		int presupuestoInicial = unJugador.obtenerPresupuesto();
+		int presupuestoInicial = unJugador.darCantDineroEnPresupuesto();
 		
 		Posicion unaPosicion = new Posicion(1,1);
 		
 		unJugador.crearTuberiaDeAgua(unaPosicion);
 		unJugador.crearResidencia(unaPosicion);
 
-		Assert.assertTrue(unJugador.obtenerPresupuesto() < presupuestoInicial);
+		Assert.assertTrue(unJugador.darCantDineroEnPresupuesto() < presupuestoInicial);
 
 		Assert.assertTrue(unJuego.hayJugadores());
 		
@@ -65,7 +65,7 @@ public class GuardarYCargarPartidasTest {
         
         Assert.assertTrue(excepcionAtrapada);
 		
-		Assert.assertTrue(jorgeResucitado.obtenerPresupuesto() < presupuestoInicial);
+		Assert.assertTrue(jorgeResucitado.darCantDineroEnPresupuesto() < presupuestoInicial);
 
 	}
 	
@@ -75,7 +75,7 @@ public class GuardarYCargarPartidasTest {
 		
 		Jugador unJugador = unJuego.crearJugador("Jorge");
 		
-		int presupuestoInicial = unJugador.obtenerPresupuesto();
+		int presupuestoInicial = unJugador.darCantDineroEnPresupuesto();
 		
 		Posicion unaPosicion = new Posicion(1,1);
 		
@@ -111,6 +111,6 @@ public class GuardarYCargarPartidasTest {
         
         Assert.assertTrue(excepcionAtrapada);
 		
-		Assert.assertTrue(jorgeResucitado.obtenerPresupuesto() < presupuestoInicial);
+		Assert.assertTrue(jorgeResucitado.darCantDineroEnPresupuesto() < presupuestoInicial);
 	}
 }

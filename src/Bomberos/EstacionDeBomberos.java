@@ -63,7 +63,7 @@ public class EstacionDeBomberos {
 	}
 
 	public void habilitar(Presupuesto presupuesto) {
-		presupuesto.reducirPresupuesto(this.costoDeHabilitacion);
+		presupuesto.reducir(this.costoDeHabilitacion);
 		this.estacionHabilitada = true;
 	}
 }

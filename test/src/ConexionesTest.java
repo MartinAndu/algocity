@@ -17,7 +17,7 @@ public class ConexionesTest {
 	public void conexionDeAguaSeConstruyeSeguidasYLanzanExcepcionCuandoNo() {
 		Plano plano = new PlanoDeterminista();
 		PozoDeAgua pozo = new PozoDeAgua(new Posicion(1, 2));
-		pozo.construirSobrePlano(plano);
+		pozo.agregarAlPlano(plano);
 		
 		ConexionDeAgua canio = new ConexionDeAgua(new Posicion(2, 2));
 		ConexionDeAgua canio2 = new ConexionDeAgua(new Posicion(3, 2));
@@ -25,13 +25,13 @@ public class ConexionesTest {
 		ConexionDeAgua canio4 = new ConexionDeAgua(new Posicion(6, 2));
 
 		//Se construyen perfectamente
-		canio.construirSobrePlano(plano);
-		canio2.construirSobrePlano(plano);
-		canio3.construirSobrePlano(plano);
+		canio.agregarAlPlano(plano);
+		canio2.agregarAlPlano(plano);
+		canio3.agregarAlPlano(plano);
 		
 		//tira excepcion
 		try {
-			canio4.construirSobrePlano(plano);
+			canio4.agregarAlPlano(plano);
 		} catch (ExcepcionHectareaNoBrindaLosServiciosNecesarios e) {
 		}
 
@@ -41,7 +41,7 @@ public class ConexionesTest {
 	public void conexionDeAguaSeConstruyeSeguidasYSiSeEliminaUnaLasSiguientesPierdenNoPuedenFuncionar() {
 		Plano plano = new PlanoDeterminista();
 		PozoDeAgua pozo = new PozoDeAgua(new Posicion(1, 2));
-		pozo.construirSobrePlano(plano);
+		pozo.agregarAlPlano(plano);
 		
 		ConexionDeAgua canio = new ConexionDeAgua(new Posicion(2, 2));
 		ConexionDeAgua canio2 = new ConexionDeAgua(new Posicion(3, 2));
@@ -49,17 +49,17 @@ public class ConexionesTest {
 		ConexionDeAgua canio4 = new ConexionDeAgua(new Posicion(5, 2));
 
 		//Se construyen perfectamente
-		canio.construirSobrePlano(plano);
-		canio2.construirSobrePlano(plano);
-		canio3.construirSobrePlano(plano);
-		canio4.construirSobrePlano(plano);
+		canio.agregarAlPlano(plano);
+		canio2.agregarAlPlano(plano);
+		canio3.agregarAlPlano(plano);
+		canio4.agregarAlPlano(plano);
 		
 		canio2.quitarDelPlano();
 		
-		Assert.assertEquals("me falta agua", (canio3.estadoContruccion()).enString());
-		Assert.assertEquals("me falta agua", (canio4.estadoContruccion()).enString());
+		Assert.assertEquals("me falta agua", (canio3.darEstadoContruccion()).enString());
+		Assert.assertEquals("me falta agua", (canio4.darEstadoContruccion()).enString());
 		
 		//El canio que antecede aun posee agua
-		Assert.assertEquals("estoy bien", (canio.estadoContruccion()).enString());
+		Assert.assertEquals("estoy bien", (canio.darEstadoContruccion()).enString());
 	}
 }

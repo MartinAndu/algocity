@@ -26,18 +26,18 @@ public class PozoDeAgua extends Construccion {
 	
 	public PozoDeAgua(Posicion unaPosicion){
 		super(unaPosicion);
-		this.costoDeConstruccion = COSTO_CONSTRUCCION;
+		this.costoConstruccion = COSTO_CONSTRUCCION;
 		this.radioDeAbastecimientoEnHectareas = 1;
 		this.idProveedor = java.util.UUID.randomUUID().toString(); 
 		this.idConstruccion = "pozo";
-		this.puntosDeConstruccion = new PuntosDePozo();	
+		this.puntosConstruccion = new PuntosDePozo();	
 	}
 
 	@Override
 	public void reconstruir(int puntosDeReconstruccion) throws ExceptionConstruccionComplemtamenteReparada{
 
 		try {
-			this.puntosDeConstruccion.incrementar(puntosDeReconstruccion);
+			this.puntosConstruccion.incrementar(puntosDeReconstruccion);
 		} catch (ExceptionConstruccionComplemtamenteReparada e) {
 			this.estadoConstruccion = new EstoyBien();
 			this.proveerServicioZona();
@@ -58,15 +58,15 @@ public class PozoDeAgua extends Construccion {
 
 	@Override
 	public void destruir() {
-		this.puntosDeConstruccion.decrementar();
+		this.puntosConstruccion.decrementar();
 		this.quitarServicioZona();		
 	}
 
 	
 
 	@Override
-	public void destruirEnPorcentaje(int porcentaje) {
-		this.puntosDeConstruccion.decrementarEnPorcentaje(porcentaje);
+	public void destruirEnUnPorcentaje(int porcentaje) {
+		this.puntosConstruccion.decrementarEnPorcentaje(porcentaje);
 		this.quitarServicioZona();
 	}
 	
@@ -80,14 +80,14 @@ public class PozoDeAgua extends Construccion {
 	}
 	
 	@Override
-	public void construirseSobre(Superficie superficie) {
+	public void verificarSuperficie(Superficie superficie) {
 		if (!superficie.sePuedeConstruirUnPozoDeAgua()) {
 			throw new ExcepcionNoSePuedeConstruirEnEsteTerreno();
 		}
 	}
 
 	@Override
-	public void construirJuntoA(Construccion construccionAAgregar) {
+	public void verificarAfinidadConConstruccion(Construccion construccionAAgregar) {
 		throw new ExcepcionHectareaYaContieneUnaConstruccion();
 	}
 
@@ -96,9 +96,9 @@ public class PozoDeAgua extends Construccion {
 	}
 
 	@Override
-	public void construirSobrePlano(Plano plano) {
+	public void agregarAlPlano(Plano plano) {
 		this.plano = plano;
-		Hectarea hectarea = plano.devolverHectarea(this.posicionConstruccion);
+		Hectarea hectarea = plano.darHectarea(this.posicionConstruccion);
 		hectarea.agregarConstruccion(this);
 		this.proveerServicioZona();		
 	}

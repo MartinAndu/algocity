@@ -78,7 +78,7 @@ public class PersistenciaConstruccionesTest {
 		
 		Construccion construccionCargada = Construccion.hidratar(doc);
 		Assert.assertNotNull(construccionCargada);
-		Assert.assertEquals(construccion1ConPosicion1.devolverPosicionEnString(), construccionCargada.devolverPosicionEnString());
+		Assert.assertEquals(construccion1ConPosicion1.darPosicionEnString(), construccionCargada.darPosicionEnString());
 	}
 
 }
