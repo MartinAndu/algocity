@@ -27,13 +27,15 @@ public class Turno implements Runnable{
 	@SuppressWarnings("static-access")
 	@Override
 	public void run() {
-		while (this.juegoContinua) {
+		while (true) {
 			try {
 				this.hilo.sleep(duracion);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			System.out.println("Soy el hilo ");
+			if (!this.juegoContinua) {
+				break;
+			}
 			this.jugador.pasoUnTurno();
 			this.ambiente.pasoUnTurno();
 		}
