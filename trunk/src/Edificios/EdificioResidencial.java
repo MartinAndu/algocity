@@ -1,5 +1,8 @@
 package Edificios;
 
+import java.awt.image.BufferedImage;
+
+import aplicacion.Imagen;
 import ConstruccionGeneral.Posicion;
 import PuntosConstruccion.PuntosDeResidencia;
 import Servicios.AdministradorServicios;
@@ -27,6 +30,10 @@ public class EdificioResidencial extends Edificio {
 			AdministradorServicios administrador) {
 	
 		return administrador.poseeLosServiciosBasicos();
+	}
+	
+	public BufferedImage graficar() {
+		return Imagen.loadImg("Images/Walls/EdificioResidencial.jpg");
 	}
 	
 }

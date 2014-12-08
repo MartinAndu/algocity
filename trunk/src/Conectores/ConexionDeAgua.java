@@ -1,7 +1,9 @@
 package Conectores;
 
-import ConstruccionGeneral.Posicion;
+import java.awt.image.BufferedImage;
 
+import aplicacion.Imagen;
+import ConstruccionGeneral.Posicion;
 import Estados.MeFaltaAgua;
 import PuntosConstruccion.PuntosDeTuberia;
 import Servicios.AdministradorServicios;
@@ -35,5 +37,9 @@ public class ConexionDeAgua extends Conexion {
 			AdministradorServicios administrador) {
 		return administrador.poseeAgua();
 	}
+	
+	public BufferedImage graficar() {
+		return Imagen.loadImg("Images/Walls/TuberiaDeAgua.jpg");
+	}	
 		
 }

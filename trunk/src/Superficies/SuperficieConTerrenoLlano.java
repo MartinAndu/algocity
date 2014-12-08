@@ -1,5 +1,9 @@
 package Superficies;
 
+import java.awt.image.BufferedImage;
+
+import aplicacion.Imagen;
+
 public class SuperficieConTerrenoLlano extends Superficie{
 
 	public boolean sePuedeConstruirUnPozoDeAgua(){
@@ -13,5 +17,11 @@ public class SuperficieConTerrenoLlano extends Superficie{
 	@Override
 	public boolean sePuedeConstruirUnaConexion() {
 		return true;
+	}
+
+	@Override
+	public BufferedImage graficar() {
+		return (Imagen.loadImg("Images/Walls/SuperficieConTerrenoLlano.jpg"));
+		
 	}
 }

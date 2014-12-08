@@ -1,5 +1,8 @@
 package CentralesElectricas;
 
+import java.awt.image.BufferedImage;
+
+import aplicacion.Imagen;
 import ConstruccionGeneral.Posicion;
 import PuntosConstruccion.PuntosDeCentralEolica;
 
@@ -16,7 +19,9 @@ public class CentralEolica extends CentralElectrica {
 		this.puntosDeConstruccion = new PuntosDeCentralEolica();
 	}
 
-	
+	public BufferedImage graficar() {
+		return Imagen.loadImg("Images/Walls/CentralEolica.jpg");
+	}	
 	
 
 }

@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 
 
 
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -20,7 +21,6 @@ import javax.swing.WindowConstants;
 import Ambientes.Ambiente;
 import Jugador.Jugador;
 import Jugador.JugadorMedio;
-import Jugador.JugadorParaTest;
 import Jugador.Turno;
 
 public class FramePlano extends JFrame implements ActionListener{
@@ -96,7 +96,7 @@ public class FramePlano extends JFrame implements ActionListener{
 	}
 	
 	private void inicializarPanelConstruccion(){
-		panelDeConstruccion = new PanelDeConstruccion();
+		panelDeConstruccion = new PanelDeConstruccion(jugador);
 	}
 	
 	private void inicializarPanelPlano(){
