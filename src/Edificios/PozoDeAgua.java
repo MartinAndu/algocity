@@ -71,12 +71,16 @@ public class PozoDeAgua extends Construccion {
 	}
 	
 	private void quitarServicioZona() {
-		Recorrido zonaCircundante = this.plano.recorrerZonaCircundante(posicionConstruccion, radioDeAbastecimientoEnHectareas);
+		try {
+			Recorrido zonaCircundante = this.plano.recorrerZonaCircundante(posicionConstruccion, radioDeAbastecimientoEnHectareas);
 
 		while (zonaCircundante.tieneSiguiente()){
 			Hectarea hectarea = zonaCircundante.siguiente();
 			hectarea.quitarServicioAProveer(new Agua(this.idProveedor));
-		}				
+		}	
+		} catch (NullPointerException e) {
+		}
+					
 	}
 	
 	@Override

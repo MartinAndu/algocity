@@ -73,12 +73,15 @@ public abstract class Conexion extends Construccion {
 	
 
 	protected void quitarServicioZona() {
-		Recorrido zonaCircundante = this.plano.recorrerZonaCircundante(posicionConstruccion, radioDeAbastecimientoEnHectareas);
+		try {
+			Recorrido zonaCircundante = this.plano.recorrerZonaCircundante(posicionConstruccion, radioDeAbastecimientoEnHectareas);
 
-		while (zonaCircundante.tieneSiguiente()){
-			Hectarea hectarea = zonaCircundante.siguiente();
-			hectarea.quitarServicioAProveer(this.servicioAProveer());
-		}		
+			while (zonaCircundante.tieneSiguiente()){
+				Hectarea hectarea = zonaCircundante.siguiente();
+				hectarea.quitarServicioAProveer(this.servicioAProveer());
+			}	
+		} catch (NullPointerException e) {
+		}
 	}
 
 	@Override

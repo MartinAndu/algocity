@@ -118,7 +118,5 @@ public abstract class Construccion implements Reconstruible, Destruible,Graficab
 	
 	public abstract void agregarAlPlano(Plano plano);
 
-	
-
 	public abstract void quitarDelPlano();
 }
