@@ -43,7 +43,7 @@ public class RutaPavimentada extends Conexion{
 	}
 
 	public BufferedImage graficar() {
-		return Imagen.loadImg("Images/Walls/RutaPavimentada.jpg");
+		return Imagen.loadImg("Images/Walls/RutaPavimentada.png");
 	}	
 	
 }

@@ -33,7 +33,7 @@ public class EdificioResidencial extends Edificio {
 	}
 	
 	public BufferedImage graficar() {
-		return Imagen.loadImg("Images/Walls/EdificioResidencial.jpg");
+		return Imagen.loadImg("Images/Walls/EdificioResidencial.png");
 	}
 	
 }

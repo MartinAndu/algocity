@@ -21,6 +21,6 @@ public class SuperficieConAgua extends Superficie {
 
 	@Override
 	public BufferedImage graficar() {
-		return (Imagen.loadImg("Images/Walls/SuperficieConAgua.jpg"));
+		return (Imagen.loadImg("Images/Walls/SuperficieConAgua.png"));
 	}
 }

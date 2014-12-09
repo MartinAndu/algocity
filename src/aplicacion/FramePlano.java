@@ -41,7 +41,7 @@ public class FramePlano extends JFrame implements ActionListener{
 	
 	FramePlano(){
 		super("Mapa General");
-		this.setBounds(0,0,500,500);
+		this.setBounds(0,0,1024,500);
 		this.setLayout(new BorderLayout());
 		
 		

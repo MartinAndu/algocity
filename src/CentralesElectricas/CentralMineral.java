@@ -20,7 +20,7 @@ public class CentralMineral extends CentralElectrica{
 	}
 	
 	public BufferedImage graficar() {
-		return Imagen.loadImg("Images/Walls/CentralMineral.jpg");
+		return Imagen.loadImg("Images/Walls/CentralMineral.png");
 	}	
 
 

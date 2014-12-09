@@ -2,6 +2,7 @@ package aplicacion;
 
 
 
+import java.awt.Color;
 import java.awt.Container;
 
 
@@ -9,9 +10,17 @@ import java.awt.Container;
 
 
 
+import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+
+
+
+
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -19,8 +28,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
+import Juego.AlgoCity;
 
-public class VentanaPrincipal extends JFrame implements ActionListener{
+
+public class VistaControlador extends JFrame implements ActionListener{
 	
 	/**
 	 * 
@@ -29,18 +40,24 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 	private JPanel panelMenu;
 	private Menu panelImagen;
 	private JButton inicioPartida,continuarPartida,verPuntaje,salir;
-	
+	private AlgoCity algoCity;
 
 	
-	public VentanaPrincipal() {
+	public VistaControlador() {
 		super("AlgoCity");
 		inicializarVentana();
 		
 	}
 
+	public void arrancar(AlgoCity algoCity){
+		this.algoCity = algoCity;
+		
+		this.mostrarVentana();
+	}
+	
 	private void inicializarVentana() {
 		
-    	this.setBounds(0,0,500,500);
+    	this.setBounds(0,0,1024,500);
     	
     	Container c= getContentPane();
     
@@ -58,34 +75,43 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 	
 	private void inicializarPanelImagen(){
 		panelImagen = new Menu();
-		panelImagen.setBounds(0,0,500,500);
+		panelImagen.setBounds(0,0,1024,500);
 		new Imagen();
-		panelImagen.setBackground(Imagen.loadImg("Images/Walls/Manhattan 1988.jpg"));
+		panelImagen.setBackground(Imagen.loadImg("Images/Walls/FondoAlgoCity.jpg"));
 	}
 	
 	private void inicializarPanelMenu(){
 		panelMenu = new JPanel();
-		//panelMenu.setBounds(x, y, width, height);
-		panelMenu.setBounds(150,150,200,265);
-		panelMenu.setLayout(new FlowLayout());
+		panelMenu.setBounds(430,150,200,265);
+		panelMenu.setLayout(new GridLayout(4,1));
 		
-		inicioPartida = new JButton(new ImageIcon(Imagen.loadImg("Images/Walls/Iniciar Partida.jpg")));
+		Color marron = new Color(165,42,42);
+		
+		inicioPartida = new JButton("Inicio Partida");
+		inicioPartida.setFont(new Font("Sans Serif", Font.PLAIN, 25));
+		inicioPartida.setBackground(marron);
 		inicioPartida.addActionListener(this);
 		panelMenu.add(inicioPartida);
-		continuarPartida = new JButton(new ImageIcon(Imagen.loadImg("Images/Walls/Continuar Partida.jpg")));
+		continuarPartida = new JButton("Continuar Partida");
 		continuarPartida.addActionListener(this);
+		continuarPartida.setFont(new Font("Sans Serif", Font.PLAIN, 25));
+		continuarPartida.setBackground(marron);
 		panelMenu.add(continuarPartida);
-		verPuntaje = new JButton(new ImageIcon(Imagen.loadImg("Images/Walls/Ver Puntajes.jpg")));
+		verPuntaje = new JButton("Ver Puntajes");
 		verPuntaje.addActionListener(this);
+		verPuntaje.setFont(new Font("Sans Serif", Font.PLAIN, 25));
+		verPuntaje.setBackground(marron);
 		panelMenu.add(verPuntaje);
-		salir = new JButton(new ImageIcon(Imagen.loadImg("Images/Walls/Salir.jpg")));
+		salir = new JButton("Salir");
 		salir.addActionListener(this);
+		salir.setFont(new Font("Sans Serif", Font.PLAIN, 25));
+		salir.setBackground(marron);
 		panelMenu.add(salir);
 		
 	}
 	
 
-	public void mostrarVentana(){
+	private void mostrarVentana(){
 		this.setVisible(true);
     	this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 	}

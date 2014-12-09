@@ -114,6 +114,6 @@ public class PozoDeAgua extends Construccion {
 	}
 	
 	public BufferedImage graficar() {
-		return Imagen.loadImg("Images/Walls/PozoDeAgua.jpg");
+		return Imagen.loadImg("Images/Walls/PozoDeAgua.png");
 	}
 }

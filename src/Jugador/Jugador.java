@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
+import javax.swing.JOptionPane;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Transformer;
@@ -35,6 +36,7 @@ import Edificios.EdificioComercial;
 import Edificios.EdificioIndustrial;
 import Edificios.EdificioResidencial;
 import Edificios.PozoDeAgua;
+import Excepciones.ExcepcionDineroInsuficiente;
 import PlanoGeneral.Hectarea;
 import PlanoGeneral.Plano;
 import Poblacion.Poblacion;
@@ -198,7 +200,11 @@ public abstract class Jugador extends Observable{
 	
 	private void agregarAlPlano(Construccion construccion) {
 		construccion.agregarAlPlano(this.plano);
-		this.presupuesto.reducir(construccion.darCosto());
+		try{
+			this.presupuesto.reducir(construccion.darCosto());
+		}catch (ExcepcionDineroInsuficiente e){
+			JOptionPane.showMessageDialog(null, "No hay dinero suficiente");
+		}
 		this.construcciones.add(construccion);
 		
 		//Interviene en la vista notificando que hubo cambio al observador
