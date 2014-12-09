@@ -34,6 +34,6 @@ public class EdificioIndustrial extends Edificio {
 	}
 	
 	public BufferedImage graficar() {
-		return Imagen.loadImg("Images/Walls/EdificioIndustrial.jpg");
+		return Imagen.loadImg("Images/Walls/EdificioIndustrial.png");
 	}
 }

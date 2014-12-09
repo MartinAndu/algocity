@@ -53,6 +53,7 @@ public class VistaModeloDato extends JPanel implements Observer{
 	public void paintComponent(Graphics grafico) {
         super.paintComponent(grafico);
         
+        this.setOpaque(false);
         jugadorModelo.darPlano().darHectarea(posicion).GraficarHectarea(grafico,this.vistaSubterranea);
 	}
 	

@@ -223,12 +223,12 @@ public class Hectarea implements Destruible{
 				Construccion construccion = (Construccion) it.next();
 				g.drawImage(construccion.graficar(), 0, 0, null);
 				if (vistaSubterranea && !construccion.esConstruibleBajoTierra())
-					g.drawImage(Imagen.loadImg("Images/Walls/SuperficieSubterranea.jpg"), 0, 0, null);
+					g.drawImage(Imagen.loadImg("Images/Walls/SuperficieSubterranea.png"), 0, 0, null);
 			}
 		}
 		else{
 			if (vistaSubterranea)
-				g.drawImage(Imagen.loadImg("Images/Walls/SuperficieSubterranea.jpg"), 0, 0, null);
+				g.drawImage(Imagen.loadImg("Images/Walls/SuperficieSubterranea.png"), 0, 0, null);
 			else
 				g.drawImage(this.superficie.graficar(), 0, 0, null);
 		}

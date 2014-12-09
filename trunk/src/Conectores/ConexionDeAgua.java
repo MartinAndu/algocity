@@ -40,7 +40,7 @@ public class ConexionDeAgua extends Conexion {
 	}
 	
 	public BufferedImage graficar() {
-		return Imagen.loadImg("Images/Walls/TuberiaDeAgua.jpg");
+		return Imagen.loadImg("Images/Walls/TuberiaDeAgua.png");
 	}	
 		
 }

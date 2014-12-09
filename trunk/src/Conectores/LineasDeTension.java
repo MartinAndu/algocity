@@ -41,7 +41,7 @@ public  class LineasDeTension extends Conexion{
 	}
 	
 	public BufferedImage graficar() {
-		return Imagen.loadImg("Images/Walls/LineaDeTension.jpg");
+		return Imagen.loadImg("Images/Walls/LineaDeTension.png");
 	}	
 	
 	

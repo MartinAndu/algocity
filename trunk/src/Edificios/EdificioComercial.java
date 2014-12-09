@@ -29,7 +29,7 @@ public class EdificioComercial extends Edificio {
 
 	@Override
 	public BufferedImage graficar() {
-		return Imagen.loadImg("Images/Walls/EdificioComercial.jpg");
+		return Imagen.loadImg("Images/Walls/EdificioComercial.png");
 	}
 	
 }

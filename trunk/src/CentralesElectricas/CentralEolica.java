@@ -20,7 +20,7 @@ public class CentralEolica extends CentralElectrica {
 	}
 
 	public BufferedImage graficar() {
-		return Imagen.loadImg("Images/Walls/CentralEolica.jpg");
+		return Imagen.loadImg("Images/Walls/CentralEolica.png");
 	}	
 	
 

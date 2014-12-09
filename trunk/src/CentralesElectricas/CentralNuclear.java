@@ -21,7 +21,7 @@ public class CentralNuclear extends CentralElectrica{
 	}
 	
 	public BufferedImage graficar() {
-		return Imagen.loadImg("Images/Walls/CentralNuclear.jpg");
+		return Imagen.loadImg("Images/Walls/CentralNuclear.png");
 	}	
 
 

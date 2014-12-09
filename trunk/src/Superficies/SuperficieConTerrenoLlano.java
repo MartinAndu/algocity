@@ -21,6 +21,6 @@ public class SuperficieConTerrenoLlano extends Superficie{
 
 	@Override
 	public BufferedImage graficar() {
-		return (Imagen.loadImg("Images/Walls/SuperficieConTerrenoLlano.jpg"));
+		return (Imagen.loadImg("Images/Walls/SuperficieConTerrenoLlano.png"));
 	}
 }
