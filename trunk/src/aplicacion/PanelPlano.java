@@ -18,6 +18,7 @@ public class PanelPlano extends JPanel{
 	private static final long serialVersionUID = 1L;
 
 	private ListaDeVistas listaDeVistas;
+	private boolean vistaNormal;
 	
 	public PanelPlano(Jugador jugador){
 		
@@ -38,5 +39,18 @@ public class PanelPlano extends JPanel{
 		setOpaque(true);
 
 	}
+	
+	public void establecerVistaNormal(boolean vistaNormal){
+		if (vistaNormal)
+			listaDeVistas.verVistaNormal();
+		else
+			listaDeVistas.verVistaSubterranea();
+			
+	}
+	
+
+
+	
+	
 	
 }

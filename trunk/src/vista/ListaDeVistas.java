@@ -1,6 +1,9 @@
 package vista;
 
+import java.util.Iterator;
 import java.util.LinkedList;
+
+import PlanoGeneral.Hectarea;
 
 public class ListaDeVistas {
 	private LinkedList<VistaModeloDato> lista;
@@ -10,8 +13,26 @@ public class ListaDeVistas {
 	}
 
 	public void agregar(VistaModeloDato vista) {
-		this.lista.add(vista);
+		this.lista.add(vista);	
+	}
+	
+
+	public void verVistaNormal() {
+
+		Iterator<VistaModeloDato> iterador = this.lista.iterator();
 		
+		while (iterador.hasNext()){
+			iterador.next().verVistaNormal();
+		}
+		
+	}
+
+	public void verVistaSubterranea() {
+		Iterator<VistaModeloDato> iterador = this.lista.iterator();
+		
+		while (iterador.hasNext()){
+			iterador.next().verVistaSubterranea();
+		}
 	}
 
 }

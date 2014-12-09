@@ -57,8 +57,8 @@ public class FramePlano extends JFrame implements ActionListener{
 		
 
 		inicializarPanelIzquierda();
-		inicializarPanelConstruccion();
 		inicializarPanelPlano();
+		inicializarPanelConstruccion();
 		inicializarBotones();
 		
 		panelLeft.add(panelDeConstruccion);
@@ -96,7 +96,7 @@ public class FramePlano extends JFrame implements ActionListener{
 	}
 	
 	private void inicializarPanelConstruccion(){
-		panelDeConstruccion = new PanelDeConstruccion(jugador);
+		panelDeConstruccion = new PanelDeConstruccion(jugador,panelPlano);
 	}
 	
 	private void inicializarPanelPlano(){

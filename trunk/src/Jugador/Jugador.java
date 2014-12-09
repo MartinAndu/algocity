@@ -1,5 +1,6 @@
 package Jugador;
 
+import java.awt.Component;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,7 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import vista.ListaDeVistas;
 import controlador.ControladorMouse;
 import Ambientes.Ambiente;
 import Bomberos.EstacionDeBomberos;
@@ -201,7 +203,7 @@ public abstract class Jugador extends Observable{
 		
 		//Interviene en la vista notificando que hubo cambio al observador
 		setChanged();
-	    this.notifyObservers();
+		this.notifyObservers();
 	}
 	
 	public void destruirConstruccion(Posicion posicion) {
@@ -211,6 +213,9 @@ public abstract class Jugador extends Observable{
 			construccion.quitarDelPlano();
 		} catch (NullPointerException e) {
 		}
+		
+		setChanged();
+	    this.notifyObservers();
 	}
 
 	public void reducirPresupuestoEnPorcentaje(int porcentajeDeReduccion) {
@@ -228,5 +233,7 @@ public abstract class Jugador extends Observable{
 	public ControladorMouse darControlador(){
 		return this.controlador;
 	}
+	
+	
 
 }

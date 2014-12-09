@@ -17,6 +17,7 @@ public class ConexionDeAgua extends Conexion {
 		super(unaPosicion);
 		this.costoConstruccion = COSTO_CONSTRUCCION;
 		this.puntosConstruccion = new PuntosDeTuberia();
+		this.esSubterraneo = true;
 	}
 
 	@Override
