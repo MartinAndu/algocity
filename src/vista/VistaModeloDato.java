@@ -9,8 +9,10 @@ import java.util.Observer;
 import javax.swing.JPanel;
 
 import controlador.ControladorMouse;
+import ConstruccionGeneral.Construccion;
 import ConstruccionGeneral.Posicion;
 import Jugador.Jugador;
+import PlanoGeneral.Hectarea;
 
 
 public class VistaModeloDato extends JPanel implements Observer{
@@ -21,6 +23,7 @@ public class VistaModeloDato extends JPanel implements Observer{
 	private static final long serialVersionUID = 1L;
 	private Posicion posicion;
 	private Jugador jugadorModelo;
+	boolean vistaSubterranea;
 	
 
 	
@@ -37,24 +40,34 @@ public class VistaModeloDato extends JPanel implements Observer{
     	setPreferredSize(new Dimension(anchoX,altoY));
     	
     	
-    	
+    	vistaSubterranea = false;
         addMouseListener(controlador);
         
     }
    
 	@Override
 	public void update(Observable o, Object obj) {
-		// TODO Auto-generated method stub
 		repaint();
-		
 	}
 	
 	public void paintComponent(Graphics grafico) {
         super.paintComponent(grafico);
         
-        jugadorModelo.darPlano().darHectarea(posicion).GraficarHectarea(grafico);
-        
+        jugadorModelo.darPlano().darHectarea(posicion).GraficarHectarea(grafico,this.vistaSubterranea);
 	}
+	
+	
+	public void verVistaNormal(){
+		this.vistaSubterranea = false;
+		repaint();
+	}
+	
+	public void verVistaSubterranea(){
+		this.vistaSubterranea = true;
+		repaint();
+	}
+	
+
 	
 	public Posicion getPosicion() {
 		return posicion;

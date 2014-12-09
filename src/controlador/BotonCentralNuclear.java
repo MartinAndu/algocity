@@ -1,12 +1,15 @@
 package controlador;
 
+import aplicacion.PanelPlano;
+import vista.VistaModeloDato;
 import ConstruccionGeneral.Posicion;
 import Jugador.Jugador;
 
 public class BotonCentralNuclear extends BotonConstruccion{
 	
-	public BotonCentralNuclear(Jugador jugadorModelo) {
-		super("CentralNuclear",jugadorModelo);
+	public BotonCentralNuclear(Jugador jugadorModelo,PanelPlano panelPlano) {
+		super("CentralNuclear",jugadorModelo,panelPlano);
+		vistaNormal = true;
 	}
 
 	/**
@@ -15,7 +18,7 @@ public class BotonCentralNuclear extends BotonConstruccion{
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	public void prepararConstruccion(Posicion posicion){
-		jugadorModelo.crearCentralNuclear(posicion);
+	public void prepararConstruccion(VistaModeloDato vista){
+		jugadorModelo.crearCentralNuclear(vista.getPosicion());
 	}
 }

@@ -1,5 +1,6 @@
 package PlanoGeneral;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
+import aplicacion.Imagen;
 import CentralesElectricas.CentralElectrica;
 import Conectores.ConexionDeAgua;
 import Conectores.LineasDeTension;
@@ -213,17 +215,22 @@ public class Hectarea implements Destruible{
 	}
 
 	
-	public void GraficarHectarea(Graphics g){
+	public void GraficarHectarea(Graphics g,boolean vistaSubterranea){
 		if (construcciones.size() > 0){
 			Iterator<Construccion> it = this.construcciones.iterator();
 	    	
 	    	while (it.hasNext()) {
 				Construccion construccion = (Construccion) it.next();
 				g.drawImage(construccion.graficar(), 0, 0, null);
+				if (vistaSubterranea && !construccion.esConstruibleBajoTierra())
+					g.drawImage(Imagen.loadImg("Images/Walls/SuperficieSubterranea.jpg"), 0, 0, null);
 			}
 		}
 		else{
-			g.drawImage(this.superficie.graficar(), 0, 0, null);
+			if (vistaSubterranea)
+				g.drawImage(Imagen.loadImg("Images/Walls/SuperficieSubterranea.jpg"), 0, 0, null);
+			else
+				g.drawImage(this.superficie.graficar(), 0, 0, null);
 		}
 	}
 	

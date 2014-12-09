@@ -30,6 +30,7 @@ public abstract class Construccion implements Reconstruible, Destruible,Graficab
 	protected PuntosDeConstruccion puntosConstruccion;
 	protected String idConstruccion;
 	protected EstadoConstruccion estadoConstruccion;
+	protected boolean esSubterraneo = false;
 	
 	public Construccion(Posicion posicion) {
 		this.posicionConstruccion = posicion;
@@ -108,6 +109,10 @@ public abstract class Construccion implements Reconstruible, Destruible,Graficab
 	
 	public EstadoConstruccion darEstadoContruccion() {
 		return this.estadoConstruccion;
+	}
+	
+	public boolean esConstruibleBajoTierra(){
+		return esSubterraneo;
 	}
 
 	public abstract void verificarSuperficie(Superficie superficie);
