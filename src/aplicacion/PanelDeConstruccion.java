@@ -4,6 +4,10 @@ import java.awt.GridLayout;
 
 import javax.swing.JPanel;
 
+import controlador.BotonCentralEolica;
+import controlador.BotonCentralMineral;
+import controlador.BotonCentralNuclear;
+import controlador.BotonComercio;
 import controlador.BotonIndustria;
 import controlador.BotonLineasDeTension;
 import controlador.BotonPozoDeAgua;
@@ -20,13 +24,18 @@ public class PanelDeConstruccion extends JPanel{
 	 */
 	private static final long serialVersionUID = 1L;
 	PanelDeConstruccion(Jugador jugadorModelo,PanelPlano panelPlano){
-		this.setLayout(new GridLayout(6,1));
+		this.setLayout(new GridLayout(10,1));
 		this.add(new BotonResidencia(jugadorModelo,panelPlano));
 		this.add(new BotonIndustria(jugadorModelo,panelPlano));
+		this.add(new BotonComercio(jugadorModelo,panelPlano));
 		this.add(new BotonPozoDeAgua(jugadorModelo,panelPlano));
 		this.add(new BotonTuberiaDeAgua(jugadorModelo,panelPlano));
 		this.add(new BotonRutaPavimentada(jugadorModelo,panelPlano));
 		this.add(new BotonLineasDeTension(jugadorModelo,panelPlano));
+		this.add(new BotonCentralNuclear(jugadorModelo,panelPlano));
+		this.add(new BotonCentralEolica(jugadorModelo,panelPlano));
+		this.add(new BotonCentralMineral(jugadorModelo,panelPlano));
+		
 	}
 	
 }
