@@ -2,6 +2,9 @@ package Servicios;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
 public class AdministradorServicios {
 	
 	static final String AGUA = "agua";
@@ -89,6 +92,16 @@ public class AdministradorServicios {
 		boolean seEncontroCambios = this.huboUnCambio;
 		this.huboUnCambio = false;
 		return seEncontroCambios;
+	}
+
+	public Node serializar(Document doc) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public static AdministradorServicios hidratar(Node item) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	
