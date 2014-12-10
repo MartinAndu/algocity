@@ -1,6 +1,5 @@
 package Jugador;
 
-import java.awt.Component;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +15,8 @@ import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+
+import aplicacion.VistaControlador;
 
 import vista.ListaDeVistas;
 import controlador.ControladorMouse;
@@ -53,6 +54,7 @@ public abstract class Jugador extends Observable{
 	protected ControladorMouse controlador;
 	protected Construccion construccionPreparada;
 	private List<Construccion> construcciones;
+	private VistaControlador vista;
 	
 	public Jugador() {
 		this.construcciones = new ArrayList<Construccion>();
@@ -129,6 +131,7 @@ public abstract class Jugador extends Observable{
 		catastrofe.destruirCiudad(this.plano);
 		ArrayList<Reconstruible> reconstruibles = catastrofe.darListaConstruccionesDestruidas();
 		estacionDeBomberos.agregarReconstruibles(reconstruibles);
+		this.vista.graficarCambiosEstadoConstrucciones(this.construcciones);
 	}
 
 	public void habilitarEstacionDeBomberos() {
@@ -137,6 +140,7 @@ public abstract class Jugador extends Observable{
 
 	public void pasoUnTurno() {
 		this.estacionDeBomberos.realizarReparaciones();
+		this.vista.graficarCambiosEstadoConstrucciones(this.construcciones);
 	}
 
 	public void reducirPresupuestoPorHabitante(int comisionPorHabitante) {
@@ -206,17 +210,19 @@ public abstract class Jugador extends Observable{
 			JOptionPane.showMessageDialog(null, "No hay dinero suficiente");
 		}
 		this.construcciones.add(construccion);
-		
+		this.vista.graficarCambiosEstadoConstrucciones(this.construcciones);
 		//Interviene en la vista notificando que hubo cambio al observador
 		setChanged();
 		this.notifyObservers();
 	}
 	
-	public void destruirConstruccion(Posicion posicion) {
+	public void eliminarConstruccion(Posicion posicion) {
 		try {
 			Hectarea hectarea = this.plano.darHectarea(posicion);
 			Construccion construccion = hectarea.quitarConstruccion();
 			construccion.quitarDelPlano();
+			this.construcciones.remove(construccion);
+			this.vista.graficarCambiosEstadoConstrucciones(this.construcciones);
 		} catch (NullPointerException e) {
 		}
 		
@@ -238,6 +244,10 @@ public abstract class Jugador extends Observable{
 	
 	public ControladorMouse darControlador(){
 		return this.controlador;
+	}
+	
+	public void establecerVista(VistaControlador vista) {
+		this.vista = vista;
 	}
 	
 	

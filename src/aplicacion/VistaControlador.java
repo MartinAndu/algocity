@@ -16,6 +16,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 
 
@@ -28,6 +29,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
+import ConstruccionGeneral.Construccion;
 import Juego.AlgoCity;
 
 
@@ -125,6 +127,12 @@ public class VistaControlador extends JFrame implements ActionListener{
 		}
 		if (e.getSource() == salir)
 			System.exit(0);
+		
+	}
+
+	public void graficarCambiosEstadoConstrucciones(
+			List<Construccion> construcciones) {
+		//encargado de crear; martin: verifica el estado de las construccion y lo grafica;
 		
 	}
 	
