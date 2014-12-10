@@ -1,8 +1,6 @@
 package PlanoGeneral;
 
-import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -13,18 +11,9 @@ import org.w3c.dom.Node;
 
 import aplicacion.Archivo;
 import aplicacion.Imagen;
-import CentralesElectricas.CentralElectrica;
-import Conectores.ConexionDeAgua;
-import Conectores.LineasDeTension;
-import Conectores.RutaPavimentada;
 import ConstruccionGeneral.Construccion;
 import ConstruccionGeneral.Destruible;
-import ConstruccionGeneral.Graficable;
 import ConstruccionGeneral.Reconstruible;
-import Edificios.Edificio;
-import Edificios.PozoDeAgua;
-import Excepciones.ExcepcionHectareaYaContieneUnaConstruccion;
-import Excepciones.ExcepcionNoSePuedeConstruirEnEsteTerreno;
 import Servicios.AdministradorServicios;
 import Servicios.Servicio;
 import Superficies.Superficie;
@@ -129,18 +118,18 @@ public class Hectarea implements Destruible{
 	public Collection<? extends Reconstruible> darListaDeReconstruibles() {
 		return this.construcciones;
 	}
-	
-    //no lo toco... pero necesita actualizarse/////////////////////////////////////////
-    
+
 	public Node serializar(Document doc, String posicionEnString) {
 		Element elementoHectarea = doc.createElement("Hectarea");
 		
 		elementoHectarea.setAttribute("posicion", posicionEnString);
-		elementoHectarea.setAttribute("tienePozo", Boolean.toString(this.poseePozoDeAgua));
-		elementoHectarea.setAttribute("tieneCentralElectrica", Boolean.toString(this.poseeCentralElectrica));
-		elementoHectarea.setAttribute("tieneServicioElectrico", Boolean.toString(this.servicioElectrico));
-		elementoHectarea.setAttribute("tieneServicioAgua", Boolean.toString(this.servicioAgua));
-		elementoHectarea.setAttribute("tieneAccesoTransito", Boolean.toString(this.accesoAlTransito));
+		elementoHectarea.setAttribute("identidad", this.identi);
+		
+		elementoHectarea.appendChild((this.administradorServicios).serializar(doc));
+		
+		for (Construccion construccion : this.construcciones) {
+			elementoHectarea.appendChild(construccion.serializar(doc));
+		}
 		
 		String tipoSuperficie = "tierra";
 		if(this.superficie.sePuedeConstruirUnPozoDeAgua()){
@@ -148,21 +137,6 @@ public class Hectarea implements Destruible{
 		}
 		
 		elementoHectarea.setAttribute("tipoSuperficie", tipoSuperficie);
-		
-		
-		if (ruta != null){
-			elementoHectarea.appendChild(this.ruta.serializar(doc));
-		}
-		
-		if (construccion != null){
-			elementoHectarea.appendChild(this.construccion.serializar(doc));
-		}
-		if (canio != null){
-			elementoHectarea.appendChild(this.canio.serializar(doc));
-		}
-		if (linea != null){
-			elementoHectarea.appendChild(this.linea.serializar(doc));
-		}
 
 		return elementoHectarea;
 	}
@@ -180,37 +154,22 @@ public class Hectarea implements Destruible{
 		
 		Hectarea hectareaNueva = new Hectarea(superficieNueva);
 		
-		hectareaNueva.poseePozoDeAgua = Boolean.parseBoolean(elementoHectarea.getAttribute("tienePozo"));
-		hectareaNueva.poseeCentralElectrica = Boolean.parseBoolean(elementoHectarea.getAttribute("tieneCentralElectrica"));
-		hectareaNueva.servicioAgua = Boolean.parseBoolean(elementoHectarea.getAttribute("tieneServicioAgua"));
-		hectareaNueva.accesoAlTransito = Boolean.parseBoolean(elementoHectarea.getAttribute("tieneAccesoTransito"));
-		hectareaNueva.servicioElectrico = Boolean.parseBoolean(elementoHectarea.getAttribute("tieneServicioElectrico"));
+		hectareaNueva.identi = elementoHectarea.getAttribute("identidad");
 		
-		Construccion construccion1 = null;
-		Construccion construccion2 = null;
+		AdministradorServicios administradorDeServiciosHidratado = AdministradorServicios.hidratar(elementoHectarea.getChildNodes().item(0));
 		
-		try{
-			construccion1 = Construccion.hidratar(elementoHectarea.getChildNodes().item(0));
-		}
-		catch(NullPointerException e){
-			construccion1 = null;
-		}
-		
-		try{
-			construccion2 = Construccion.hidratar(elementoHectarea.getChildNodes().item(1));
-		}
-		catch(NullPointerException e){
-			construccion2 = null;
-		}
-		
-		hectareaNueva.construccion = construccion1;
-		hectareaNueva.canio = (ConexionDeAgua) construccion2;
+		ArrayList<Construccion> construccionesHidratadas = new ArrayList<Construccion>();
 
+		for(int i = 1 ; i < (elementoHectarea.getChildNodes().getLength()) ; i++) {
+			Construccion construccionHidratada = Construccion.hidratar(elementoHectarea.getChildNodes().item(i));
+			construccionesHidratadas.add(construccionHidratada);
+		}
+		
+		hectareaNueva.construcciones = construccionesHidratadas;
+		hectareaNueva.administradorServicios = administradorDeServiciosHidratado;
 		return hectareaNueva;
 	}
-	//
 
-	
 	public Superficie darSuperficie() {
 		return this.superficie;
 	}
@@ -234,7 +193,5 @@ public class Hectarea implements Destruible{
 				g.drawImage(this.superficie.graficar(), 0, 0, null);
 		}
 	}
-	
 
-	
 }
