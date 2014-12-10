@@ -7,11 +7,13 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
 import Juego.AlgoCity;
+import Jugador.Jugador;
 
 public class FrameJugadorNuevo extends JFrame implements ActionListener{
 	
@@ -19,7 +21,7 @@ public class FrameJugadorNuevo extends JFrame implements ActionListener{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	JTextField tituloJugador,nombreJugador;
+	private JTextField tituloJugador,nombreJugador;
 	private JButton jugadorFacil,jugadorMedio,jugadorDificil,volver;
 	private JPanel panelBotones,panelNombres;
 	private Menu panelImagen;
@@ -27,7 +29,7 @@ public class FrameJugadorNuevo extends JFrame implements ActionListener{
 	private VistaControlador vistaAnterior;
 	
 	
-	public FrameJugadorNuevo(AlgoCity algoCity){
+	public FrameJugadorNuevo(AlgoCity algoCity,VistaControlador vistaAnterior){
 		super("Menu Nueva Partida");
 		this.algoCity = algoCity;
 		inicializarVentana();
@@ -120,13 +122,27 @@ public class FrameJugadorNuevo extends JFrame implements ActionListener{
 		else{
 			String nombre = nombreJugador.getText();
 			try{
+				Jugador jugador = null;
+				String  modo = "";
 				algoCity.verificarNombreJugador(nombre);
-				if (e.getSource() == jugadorFacil)
-					algoCity.crearJugadorFacil(nombre);
-				if (e.getSource() == jugadorMedio)
-					algoCity.crearJugadorMedio(nombre);
-				if (e.getSource() == jugadorDificil)
-					algoCity.crearJugadorDificil(nombre);
+				if (e.getSource() == jugadorFacil){
+					jugador = algoCity.crearJugadorFacil(nombre);
+					modo = "Facil";
+				}
+				if (e.getSource() == jugadorMedio){
+					jugador = algoCity.crearJugadorMedio(nombre);
+					modo = "Medio";
+				}
+				if (e.getSource() == jugadorDificil){
+					jugador = algoCity.crearJugadorDificil(nombre);
+					modo = "Dificil";
+				}
+				
+				JOptionPane.showMessageDialog(null, "Comenzando la partida en Modo" + modo);
+				algoCity.jugar(jugador);
+				this.setVisible(false);
+				vistaAnterior.visualizarMapa();
+				
 					
 			}catch(RuntimeException exception){
 				

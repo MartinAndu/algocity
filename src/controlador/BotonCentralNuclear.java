@@ -9,6 +9,7 @@ public class BotonCentralNuclear extends BotonConstruccion{
 	
 	public BotonCentralNuclear(Jugador jugadorModelo,PanelPlano panelPlano) {
 		super("CentralNuclear",jugadorModelo,panelPlano);
+		this.setToolTipText("Central Nuclear");
 		vistaNormal = true;
 	}
 

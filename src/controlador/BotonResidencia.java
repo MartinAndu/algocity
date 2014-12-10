@@ -12,6 +12,7 @@ public class BotonResidencia extends BotonConstruccion{
 	
 	public BotonResidencia(Jugador jugadorModelo,PanelPlano panelPlano) {
 		super("EdificioResidencial",jugadorModelo,panelPlano);
+		this.setToolTipText("Edificio Residencial");
 		vistaNormal = true;
 	}
 

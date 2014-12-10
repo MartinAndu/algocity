@@ -9,6 +9,7 @@ public class BotonCentralMineral extends BotonConstruccion{
 
 	public BotonCentralMineral(Jugador jugadorModelo,PanelPlano panelPlano) {
 		super("CentralMineral",jugadorModelo,panelPlano);
+		this.setToolTipText("Central Mineral");
 		vistaNormal = true;
 	}
 

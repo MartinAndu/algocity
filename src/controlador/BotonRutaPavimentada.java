@@ -10,6 +10,7 @@ public class BotonRutaPavimentada extends BotonConstruccion{
 	
 	public BotonRutaPavimentada(Jugador jugadorModelo,PanelPlano panelPlano) {
 		super("RutaPavimentada",jugadorModelo,panelPlano);
+		this.setToolTipText("Ruta Pavimentada");
 		vistaNormal = true;
 	}
 

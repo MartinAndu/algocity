@@ -9,6 +9,7 @@ public class BotonComercio extends BotonConstruccion{
 
 	public BotonComercio(Jugador jugadorModelo,PanelPlano panelPlano) {
 		super("EdificioComercial",jugadorModelo,panelPlano);
+		this.setToolTipText("Edificio Comercial");
 		vistaNormal = true;
 	}
 

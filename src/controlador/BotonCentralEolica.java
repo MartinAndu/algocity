@@ -11,6 +11,7 @@ public class BotonCentralEolica extends BotonConstruccion{
 
 	public BotonCentralEolica(Jugador jugadorModelo,PanelPlano panelPlano) {
 		super("CentralEolica",jugadorModelo,panelPlano);
+		this.setToolTipText("Central Eolica");
 		vistaNormal = true;
 	}
 
