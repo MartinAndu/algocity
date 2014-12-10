@@ -114,7 +114,11 @@ public abstract class Jugador extends Observable{
 		return nuevoJugador;
 	}
 	
-	private String obtenerNombre() {
+	public int obtenerCantidadPoblacion(){
+		return this.poblacion.darCantHabitantes();
+	}
+	
+	public String obtenerNombre() {
 		return nombreJugador;
 	}
 

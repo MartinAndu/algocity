@@ -2,9 +2,13 @@ package Juego;
 
 import java.io.File;
 import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+
 import org.w3c.dom.Document;
+
 import aplicacion.VistaControlador;
 import Ambientes.Ambiente;
 import Excepciones.ExcepcionJugadorIngresadoVacio;
@@ -66,6 +70,7 @@ public class AlgoCity {
 		JugadorMedio jugador = new JugadorMedio();
 		jugador.establecerNombreJugador(nombreJugador);
 		this.nombresJugadores.add(nombreJugador);
+		this.jugadorActual = jugador;
 		return jugador;
 	}
 	
@@ -73,6 +78,7 @@ public class AlgoCity {
 		JugadorDificil jugador = new JugadorDificil();
 		jugador.establecerNombreJugador(nombreJugador);
 		this.nombresJugadores.add(nombreJugador);
+		this.jugadorActual = jugador;
 		return jugador;
 	}
 	
@@ -80,12 +86,12 @@ public class AlgoCity {
 		JugadorFacil jugador = new JugadorFacil();
 		jugador.establecerNombreJugador(nombreJugador);
 		this.nombresJugadores.add(nombreJugador);
+		this.jugadorActual = jugador;
 		return jugador;
 	}
 	
 
 	public void jugar(Jugador jugador) {
-		this.jugadorActual = jugador;
 		Ambiente ambiente = jugador.generarAmbiente();
 		this.turno = new Turno(jugador, ambiente);
 		this.turno.arrancar();
@@ -93,6 +99,14 @@ public class AlgoCity {
 	
 	public Jugador obtenerJugadorActual(){
 		return this.jugadorActual;
+	}
+	
+	public void guardarPartida(){
+		try{
+			this.jugadorActual.guardarPartida();
+		}catch(Exception e){
+			JOptionPane.showMessageDialog(null, "No se pudo guardar la partida");
+		}
 	}
 	
 	

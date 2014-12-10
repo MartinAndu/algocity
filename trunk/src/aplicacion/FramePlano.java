@@ -3,6 +3,7 @@ package aplicacion;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,16 +15,14 @@ import java.awt.event.ActionListener;
 
 
 
+
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.WindowConstants;
-
-import Ambientes.Ambiente;
 import Juego.AlgoCity;
-import Jugador.Jugador;
-import Jugador.JugadorMedio;
-import Jugador.Turno;
 
 public class FramePlano extends JFrame implements ActionListener{
 
@@ -33,6 +32,7 @@ public class FramePlano extends JFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
 
 	private JPanel bar;	
+	private JTextField poblacion,dinero,dia,nombreJugador; 
 	private JPanel panelLeft;
 	private PanelDeConstruccion panelDeConstruccion;
 	private JPanel panelDeInteraccion;
@@ -45,6 +45,7 @@ public class FramePlano extends JFrame implements ActionListener{
 		this.setBounds(0,0,1024,500);
 		this.setLayout(new BorderLayout());
 		this.algoCity = algoCity;
+		
 		
 		
 		//Inicializa clase jugador que va a ser el modelo y el turno
@@ -62,7 +63,6 @@ public class FramePlano extends JFrame implements ActionListener{
 		
 		panelLeft.add(panelDeConstruccion);
 		panelLeft.add(panelDeInteraccion);
-		
 		c.add(panelLeft,BorderLayout.WEST);
 		c.add(panelPlano,BorderLayout.CENTER);
 		c.add(bar,BorderLayout.NORTH);
@@ -76,12 +76,24 @@ public class FramePlano extends JFrame implements ActionListener{
 		bar = new JPanel();
 		bar.setBounds(0, 0, 500, 100);
 		bar.setBackground(Color.GRAY);
+		bar.setLayout(new FlowLayout());
+		poblacion = new JTextField("Poblacion:" + algoCity.obtenerJugadorActual().obtenerCantidadPoblacion());
+		dinero = new JTextField("Dinero:$" + algoCity.obtenerJugadorActual().darCantDineroEnPresupuesto());
+		dia = new JTextField("Dia:");
+		nombreJugador = new JTextField(algoCity.obtenerJugadorActual().obtenerNombre());
+		
+		bar.add(poblacion);
+		bar.add(dinero);
+		bar.add(dia);
+		bar.add(nombreJugador);
+		
 	}
 	
 	private void inicializarPanelIzquierda(){
 		panelLeft = new JPanel();
 		panelLeft.setLayout(new GridLayout(2,1));
 	}
+	
 	private void inicializarBotones(){
 
 		panelDeInteraccion = new JPanel();
@@ -106,9 +118,12 @@ public class FramePlano extends JFrame implements ActionListener{
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 	}
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-		
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == guardar)
+			algoCity.guardarPartida();
+		if (e.getSource() == salir){
+			algoCity.finalizar(algoCity.obtenerJugadorActual());
+		}
 	}
 
 }
