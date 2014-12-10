@@ -30,6 +30,12 @@ public class AlgoCity {
 		this.levantarNombresJugadoresArchivo();
 	}
 	
+
+	public void verificarJugadoresRepetidos(String nombre){
+		
+	}
+	
+	
 	private void levantarNombresJugadoresArchivo() {
 		//deberia levantar de archivo una lista de los nombres de los jugadores 
 		//registrados
@@ -100,6 +106,7 @@ public class AlgoCity {
 
 	///////////no lo toco pero los que se usan son los metodos de arriba...no se si
 	///los que siguen alguno servira
+	
 	public Jugador crearJugador(String unNombre){
 		Jugador nuevoJugador = new JugadorParaTest();
 		nuevoJugador.establecerNombreJugador(unNombre);
