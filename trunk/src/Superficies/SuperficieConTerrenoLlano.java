@@ -2,6 +2,7 @@ package Superficies;
 
 import java.awt.image.BufferedImage;
 
+import aplicacion.Archivo;
 import aplicacion.Imagen;
 
 public class SuperficieConTerrenoLlano extends Superficie{
@@ -21,6 +22,6 @@ public class SuperficieConTerrenoLlano extends Superficie{
 
 	@Override
 	public BufferedImage graficar() {
-		return (Imagen.loadImg("Images/Walls/SuperficieConTerrenoLlano.png"));
+		return (Imagen.loadImg(Archivo.SuperficieConTerrenoLlano));
 	}
 }

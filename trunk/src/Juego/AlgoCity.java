@@ -10,8 +10,8 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
 
 import aplicacion.VistaControlador;
-
 import Ambientes.Ambiente;
+import Excepciones.ExcepcionJugadorIngresadoVacio;
 import Excepciones.ExcepcionJugadorYaExistente;
 import Jugador.Jugador;
 import Jugador.JugadorDificil;
@@ -29,12 +29,6 @@ public class AlgoCity {
 		this.nombresJugadores = new ArrayList<String>();
 		this.levantarNombresJugadoresArchivo();
 	}
-	
-
-	public void verificarJugadoresRepetidos(String nombre){
-		
-	}
-	
 	
 	private void levantarNombresJugadoresArchivo() {
 		//deberia levantar de archivo una lista de los nombres de los jugadores 
@@ -56,8 +50,19 @@ public class AlgoCity {
 		return null;
 	}
 	
+	public void verificarNombreJugador(String nombreJugador){
+		
+		if (nombreJugador.length() == 0){
+			throw new ExcepcionJugadorIngresadoVacio();
+		}
+		if (jugadorEstaRegistrado(nombreJugador))
+			throw new ExcepcionJugadorYaExistente();
+	}
+	
 	public boolean jugadorEstaRegistrado(String nombreJugador) {
 		///suponemos que nombreJugador no es un String vacio
+		if (nombreJugador == "")
+			throw new ExcepcionJugadorIngresadoVacio();
 		return this.nombresJugadores.contains(nombreJugador);
 	}
 	

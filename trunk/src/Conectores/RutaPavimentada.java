@@ -2,6 +2,7 @@ package Conectores;
 
 import java.awt.image.BufferedImage;
 
+import aplicacion.Archivo;
 import aplicacion.Imagen;
 import ConstruccionGeneral.Posicion;
 import Estados.MeFaltaTransito;
@@ -43,7 +44,7 @@ public class RutaPavimentada extends Conexion{
 	}
 
 	public BufferedImage graficar() {
-		return Imagen.loadImg("Images/Walls/RutaPavimentada.png");
+		return Imagen.loadImg(Archivo.RutaPavimentada);
 	}	
 	
 }

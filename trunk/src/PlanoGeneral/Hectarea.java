@@ -11,6 +11,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
+import aplicacion.Archivo;
 import aplicacion.Imagen;
 import CentralesElectricas.CentralElectrica;
 import Conectores.ConexionDeAgua;
@@ -223,12 +224,12 @@ public class Hectarea implements Destruible{
 				Construccion construccion = (Construccion) it.next();
 				g.drawImage(construccion.graficar(), 0, 0, null);
 				if (vistaSubterranea && !construccion.esConstruibleBajoTierra())
-					g.drawImage(Imagen.loadImg("Images/Walls/SuperficieSubterranea.png"), 0, 0, null);
+					g.drawImage(Imagen.loadImg(Archivo.SuperficieSubterranea), 0, 0, null);
 			}
 		}
 		else{
 			if (vistaSubterranea)
-				g.drawImage(Imagen.loadImg("Images/Walls/SuperficieSubterranea.png"), 0, 0, null);
+				g.drawImage(Imagen.loadImg(Archivo.SuperficieSubterranea), 0, 0, null);
 			else
 				g.drawImage(this.superficie.graficar(), 0, 0, null);
 		}

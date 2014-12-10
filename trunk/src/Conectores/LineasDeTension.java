@@ -2,6 +2,7 @@ package Conectores;
 
 import java.awt.image.BufferedImage;
 
+import aplicacion.Archivo;
 import aplicacion.Imagen;
 import ConstruccionGeneral.Posicion;
 import Estados.MeFaltaLuz;
@@ -41,7 +42,7 @@ public  class LineasDeTension extends Conexion{
 	}
 	
 	public BufferedImage graficar() {
-		return Imagen.loadImg("Images/Walls/LineaDeTension.png");
+		return Imagen.loadImg(Archivo.LineaDeTension);
 	}	
 	
 	
