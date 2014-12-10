@@ -9,6 +9,7 @@ public class BotonTuberiaDeAgua extends BotonConstruccion{
 	
 	public BotonTuberiaDeAgua(Jugador jugadorModelo,PanelPlano panelPlano) {
 		super("TuberiaDeAgua",jugadorModelo,panelPlano);
+		this.setToolTipText("Tuberia de Agua");
 		vistaNormal = false;
 	}
 

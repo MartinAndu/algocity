@@ -10,6 +10,7 @@ public class Turno implements Runnable{
 	private Thread hilo;
 	private boolean juegoContinua;
 	private int duracion;
+	private int numeroDeDia;
 	
 	public Turno(Jugador jugador, Ambiente ambiente) {
 		this.jugador = jugador;
@@ -17,6 +18,7 @@ public class Turno implements Runnable{
 		this.hilo = new Thread(this);
 		this.juegoContinua = true;
 		this.duracion = (Turno.DURACION_EN_MINUTOS * 60) * 1000;
+		this.numeroDeDia = 1;
 	}
 		
 		
@@ -34,9 +36,15 @@ public class Turno implements Runnable{
 			if (!this.juegoContinua) {
 				break;
 			}
+			numeroDeDia++;
 			this.jugador.pasoUnTurno();
 			this.ambiente.pasoUnTurno();
 		}
+		numeroDeDia = 1;
+	}
+	
+	public int obtenerNumeroDeDia(){
+		return this.numeroDeDia;
 	}
 	
 	public void terminar() {

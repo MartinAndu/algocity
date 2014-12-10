@@ -2,13 +2,9 @@ package Juego;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-
 import org.w3c.dom.Document;
-
 import aplicacion.VistaControlador;
 import Ambientes.Ambiente;
 import Excepciones.ExcepcionJugadorIngresadoVacio;
@@ -21,8 +17,10 @@ import Jugador.JugadorParaTest;
 import Jugador.Turno;
 
 public class AlgoCity {
+	ArrayList<Jugador> jugadores;
 	ArrayList<String> nombresJugadores;
 	private VistaControlador vistaControlador;
+	private Jugador jugadorActual;
 	private Turno turno;
 	
 	public AlgoCity(){
@@ -52,7 +50,7 @@ public class AlgoCity {
 	
 	public void verificarNombreJugador(String nombreJugador){
 		
-		if (nombreJugador.length() == 0){
+		if (nombreJugador.length() < 4){
 			throw new ExcepcionJugadorIngresadoVacio();
 		}
 		if (jugadorEstaRegistrado(nombreJugador))
@@ -61,8 +59,6 @@ public class AlgoCity {
 	
 	public boolean jugadorEstaRegistrado(String nombreJugador) {
 		///suponemos que nombreJugador no es un String vacio
-		if (nombreJugador == "")
-			throw new ExcepcionJugadorIngresadoVacio();
 		return this.nombresJugadores.contains(nombreJugador);
 	}
 	
@@ -89,10 +85,16 @@ public class AlgoCity {
 	
 
 	public void jugar(Jugador jugador) {
+		this.jugadorActual = jugador;
 		Ambiente ambiente = jugador.generarAmbiente();
 		this.turno = new Turno(jugador, ambiente);
 		this.turno.arrancar();
 	}
+	
+	public Jugador obtenerJugadorActual(){
+		return this.jugadorActual;
+	}
+	
 	
 	public void finalizar(Jugador jugador) {
 		this.turno.terminar();

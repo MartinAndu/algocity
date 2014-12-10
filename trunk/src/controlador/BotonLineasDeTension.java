@@ -9,6 +9,7 @@ public class BotonLineasDeTension extends BotonConstruccion{
 	
 	public BotonLineasDeTension(Jugador jugadorModelo,PanelPlano panelPlano) {
 		super("LineaDeTension",jugadorModelo,panelPlano);
+		this.setToolTipText("Linea de Tension");
 		vistaNormal = true;
 	}
 

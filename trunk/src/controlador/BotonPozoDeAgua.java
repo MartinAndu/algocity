@@ -9,6 +9,7 @@ public class BotonPozoDeAgua extends BotonConstruccion{
 	
 	public BotonPozoDeAgua(Jugador jugadorModelo,PanelPlano panelPlano) {
 		super("PozoDeAgua",jugadorModelo,panelPlano);
+		this.setToolTipText("Pozo de Agua");
 		vistaNormal = true;
 	}
 

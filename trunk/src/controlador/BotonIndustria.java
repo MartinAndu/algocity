@@ -9,6 +9,7 @@ public class BotonIndustria extends BotonConstruccion{
 	
 	public BotonIndustria(Jugador jugadorModelo,PanelPlano panelPlano) {
 		super("EdificioIndustrial",jugadorModelo,panelPlano);
+		this.setToolTipText("Edificio Industrial");
 		vistaNormal = true;
 	}
 
