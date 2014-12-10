@@ -40,17 +40,18 @@ public class VistaControlador extends JFrame implements ActionListener{
 	private Menu panelImagen;
 	private JButton inicioPartida,continuarPartida,verPuntaje,salir;
 	private AlgoCity algoCity;
+	private FrameJugadorNuevo frameJugador;
 
 	
 	public VistaControlador() {
 		super("AlgoCity");
 		inicializarVentana();
-		
 	}
 
 	public void arrancar(AlgoCity algoCity){
 		this.algoCity = algoCity;
 		
+		inicializarVentanaJugador();
 		this.mostrarVentana();
 	}
 	
@@ -109,6 +110,10 @@ public class VistaControlador extends JFrame implements ActionListener{
 		
 	}
 	
+	private void inicializarVentanaJugador(){
+		frameJugador = new FrameJugadorNuevo(algoCity);
+	}
+	
 
 	private void mostrarVentana(){
 		this.setVisible(true);
@@ -120,8 +125,11 @@ public class VistaControlador extends JFrame implements ActionListener{
 		// TODO Auto-generated method stub
 		if (e.getSource() == inicioPartida){
 			this.setVisible(false);
-			new FramePlano().mostrarVentana();
+			
+			frameJugador.mostrarVentana();
+			frameJugador.establecerVistaOrigen(this);
 		}
+		
 		if (e.getSource() == salir)
 			System.exit(0);
 		

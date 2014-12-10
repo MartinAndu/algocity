@@ -2,6 +2,7 @@ package CentralesElectricas;
 
 import java.awt.image.BufferedImage;
 
+import aplicacion.Archivo;
 import aplicacion.Imagen;
 import ConstruccionGeneral.Posicion;
 import PuntosConstruccion.PuntosDeCentralNuclear;
@@ -21,7 +22,7 @@ public class CentralNuclear extends CentralElectrica{
 	}
 	
 	public BufferedImage graficar() {
-		return Imagen.loadImg("Images/Walls/CentralNuclear.png");
+		return Imagen.loadImg(Archivo.CentralNuclear);
 	}	
 
 

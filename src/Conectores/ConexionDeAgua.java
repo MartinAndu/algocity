@@ -2,6 +2,7 @@ package Conectores;
 
 import java.awt.image.BufferedImage;
 
+import aplicacion.Archivo;
 import aplicacion.Imagen;
 import ConstruccionGeneral.Posicion;
 import Estados.MeFaltaAgua;
@@ -40,7 +41,7 @@ public class ConexionDeAgua extends Conexion {
 	}
 	
 	public BufferedImage graficar() {
-		return Imagen.loadImg("Images/Walls/TuberiaDeAgua.png");
+		return Imagen.loadImg(Archivo.TuberiaDeAgua);
 	}	
 		
 }

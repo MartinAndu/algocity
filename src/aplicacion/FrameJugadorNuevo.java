@@ -19,11 +19,13 @@ public class FrameJugadorNuevo extends JFrame implements ActionListener{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	JTextField nombreJugador;
+	JTextField tituloJugador,nombreJugador;
 	private JButton jugadorFacil,jugadorMedio,jugadorDificil,volver;
-	private JPanel panelBotones;
+	private JPanel panelBotones,panelNombres;
 	private Menu panelImagen;
 	private AlgoCity algoCity;
+	private VistaControlador vistaAnterior;
+	
 	
 	public FrameJugadorNuevo(AlgoCity algoCity){
 		super("Menu Nueva Partida");
@@ -42,7 +44,7 @@ public class FrameJugadorNuevo extends JFrame implements ActionListener{
     	inicializarPanelImagen();
 
 
-    	c.add(nombreJugador);
+    	c.add(panelNombres);
     	c.add(panelBotones);
     	c.add(panelImagen);
     	
@@ -58,8 +60,20 @@ public class FrameJugadorNuevo extends JFrame implements ActionListener{
 	}
 	
 	private void crearTextoJugador(){
+		panelNombres = new JPanel();
+		panelNombres.setBounds(400, 50, 300, 50);
+		panelNombres.setLayout(new GridLayout(2,1));
+		
+		
+		tituloJugador = new JTextField("Ingrese nombre del jugador:");
+		tituloJugador.setEditable(false);
+		
 		nombreJugador = new JTextField();
-		nombreJugador.setBounds(430, 0, 300, 50);
+		
+		panelNombres.add(tituloJugador);
+		panelNombres.add(nombreJugador);
+		
+		
 		
 	}
 	
@@ -88,6 +102,10 @@ public class FrameJugadorNuevo extends JFrame implements ActionListener{
 		
 	}
 	
+	public void establecerVistaOrigen(VistaControlador vistaAnterior){
+		this.vistaAnterior = vistaAnterior;
+	}
+	
 	public void mostrarVentana(){
 		this.setVisible(true);
     	this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -95,7 +113,27 @@ public class FrameJugadorNuevo extends JFrame implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		if (e.getSource() == volver){
+			this.setVisible(false);
+			vistaAnterior.setVisible(true);
+		}
+		else{
+			String nombre = nombreJugador.getText();
+			try{
+				algoCity.verificarNombreJugador(nombre);
+				if (e.getSource() == jugadorFacil)
+					algoCity.crearJugadorFacil(nombre);
+				if (e.getSource() == jugadorMedio)
+					algoCity.crearJugadorMedio(nombre);
+				if (e.getSource() == jugadorDificil)
+					algoCity.crearJugadorDificil(nombre);
+					
+			}catch(RuntimeException exception){
+				
+				
+			}
+		}
+			
 		
 	}
 	

@@ -2,6 +2,7 @@ package Edificios;
 
 import java.awt.image.BufferedImage;
 
+import aplicacion.Archivo;
 import aplicacion.Imagen;
 import ConstruccionGeneral.Posicion;
 import PuntosConstruccion.PuntosDeIndustria;
@@ -34,6 +35,6 @@ public class EdificioIndustrial extends Edificio {
 	}
 	
 	public BufferedImage graficar() {
-		return Imagen.loadImg("Images/Walls/EdificioIndustrial.png");
+		return Imagen.loadImg(Archivo.EdificioIndustrial);
 	}
 }

@@ -2,6 +2,7 @@ package Edificios;
 
 import java.awt.image.BufferedImage;
 
+import aplicacion.Archivo;
 import aplicacion.Imagen;
 import ConstruccionGeneral.Construccion;
 import ConstruccionGeneral.Posicion;
@@ -114,6 +115,6 @@ public class PozoDeAgua extends Construccion {
 	}
 	
 	public BufferedImage graficar() {
-		return Imagen.loadImg("Images/Walls/PozoDeAgua.png");
+		return Imagen.loadImg(Archivo.PozoDeAgua);
 	}
 }
