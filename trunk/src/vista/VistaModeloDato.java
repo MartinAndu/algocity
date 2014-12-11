@@ -24,7 +24,6 @@ public class VistaModeloDato extends JPanel implements Observer{
 	private Posicion posicion;
 	private Jugador jugadorModelo;
 	boolean vistaSubterranea;
-	
 
 	
    public VistaModeloDato(Posicion posicion, Jugador jugadorModelo) {

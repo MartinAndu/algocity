@@ -55,13 +55,19 @@ public abstract class Jugador extends Observable{
 	protected Construccion construccionPreparada;
 	private List<Construccion> construcciones;
 	private VistaControlador vista;
+	private int numeroDeDia;
 	
 	public Jugador() {
 		this.construcciones = new ArrayList<Construccion>();
+		numeroDeDia = 1;
 	}
 
 	public void establecerNombreJugador(String unNombre){
 		this.nombreJugador = unNombre;
+	}
+	
+	public int obtenerNumeroDeDia(){
+		return this.numeroDeDia;
 	}
 	
 	public abstract Ambiente generarAmbiente();
@@ -124,11 +130,11 @@ public abstract class Jugador extends Observable{
 
 	public void incrementarPoblacionEnPorcentaje(int porcentajeDeIncrementoPoblacional) {
 		poblacion.incrementar(porcentajeDeIncrementoPoblacional);
-		
 	}
 
 	public int darCantDineroEnPresupuesto() {
 		return presupuesto.obtenerCantidadDeDinero();
+		
 	}
 
 	public void destruirConstruccionesPorCatastrofe(Catastrofe catastrofe) {
@@ -145,6 +151,9 @@ public abstract class Jugador extends Observable{
 	public void pasoUnTurno() {
 		this.estacionDeBomberos.realizarReparaciones();
 		this.vista.graficarCambiosEstadoConstrucciones(this.construcciones);
+		numeroDeDia++;
+		setChanged();
+		this.notifyObservers();
 	}
 
 	public void reducirPresupuestoPorHabitante(int comisionPorHabitante) {

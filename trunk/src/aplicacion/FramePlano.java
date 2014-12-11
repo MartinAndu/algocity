@@ -17,11 +17,13 @@ import java.awt.event.ActionListener;
 
 
 
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
+
 import Juego.AlgoCity;
 
 public class FramePlano extends JFrame implements ActionListener{
@@ -32,7 +34,6 @@ public class FramePlano extends JFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
 
 	private JPanel bar;	
-	private JTextField poblacion,dinero,dia,nombreJugador; 
 	private JPanel panelLeft;
 	private PanelDeConstruccion panelDeConstruccion;
 	private JPanel panelDeInteraccion;
@@ -69,23 +70,10 @@ public class FramePlano extends JFrame implements ActionListener{
 
 		
 		this.setContentPane(c);
-		
 	}
 	
 	private void inicializarPanelArriba(){
-		bar = new JPanel();
-		bar.setBounds(0, 0, 500, 100);
-		bar.setBackground(Color.GRAY);
-		bar.setLayout(new FlowLayout());
-		poblacion = new JTextField("Poblacion:" + algoCity.obtenerJugadorActual().obtenerCantidadPoblacion());
-		dinero = new JTextField("Dinero:$" + algoCity.obtenerJugadorActual().darCantDineroEnPresupuesto());
-		dia = new JTextField("Dia:");
-		nombreJugador = new JTextField(algoCity.obtenerJugadorActual().obtenerNombre());
-		
-		bar.add(poblacion);
-		bar.add(dinero);
-		bar.add(dia);
-		bar.add(nombreJugador);
+		bar = new BarJugador(algoCity.obtenerJugadorActual());
 		
 	}
 	
