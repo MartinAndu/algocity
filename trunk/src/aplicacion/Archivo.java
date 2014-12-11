@@ -3,6 +3,7 @@ package aplicacion;
 public class Archivo {
 	private final static String RutaEstructura = "Images/Estructuras/";
 	private final static String RutaSuperficie = "Images/Superficies/";
+	private final static String RutaBotones = "Images/Botones/";
 	
 	public final static String EdificioResidencial = RutaEstructura + "EdificioResidencial.jpg";
 	
@@ -29,5 +30,7 @@ public class Archivo {
 	public final static String LineaDeTension = RutaEstructura + "LineaDeTension.jpg";
 	
 	public final static String RutaPavimentada = RutaEstructura + "RutaPavimentada.jpg";
+	
+	public final static String BotonEliminar = RutaBotones + "BotonEliminar.jpg";
 	
 }

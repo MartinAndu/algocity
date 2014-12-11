@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-import vista.VistaModeloDato;
 import aplicacion.Imagen;
 import aplicacion.PanelPlano;
 import ConstruccionGeneral.Posicion;
@@ -34,7 +33,7 @@ public abstract class BotonConstruccion extends JButton implements ActionListene
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public abstract void prepararConstruccion(VistaModeloDato vista);
+	public abstract void prepararAccion(Posicion posicion);
 	
 	
 	@Override
