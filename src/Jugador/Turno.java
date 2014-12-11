@@ -4,7 +4,7 @@ import Ambientes.Ambiente;
 
 public class Turno implements Runnable{
 
-	static final int DURACION_EN_MINUTOS = 5;
+	static final int DURACION_EN_MINUTOS = 3;
 	private Jugador jugador;
 	private Ambiente ambiente;
 	private Thread hilo;

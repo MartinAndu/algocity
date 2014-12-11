@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import aplicacion.Archivo;
 import aplicacion.Imagen;
 import ConstruccionGeneral.Posicion;
+import Estados.EstoyBien;
 import Estados.MeFaltaTransito;
 import PuntosConstruccion.PuntosDeRuta;
 import Servicios.AccesoTransito;
@@ -40,6 +41,9 @@ public class RutaPavimentada extends Conexion{
 		if (!administradorServicios.poseeAccesoAlTransito()) {
 			this.estadoConstruccion = new MeFaltaTransito();
 			this.quitarServicioZona();
+		}else {
+			this.estadoConstruccion = new EstoyBien();
+			this.proveerServicioZona();
 		}
 	}
 

@@ -57,6 +57,8 @@ public abstract class Edificio extends Construccion {
 		
 		if (!administradorServicios.poseeLosServiciosBasicos()) {
 			this.estadoConstruccion = new MeFaltaVarios();
+		}else {
+			this.estadoConstruccion = new EstoyBien();
 		}
 	}
 	
