@@ -64,9 +64,9 @@ public class Archivo {
 	
 	public final static String LineaDeTension = RutaEstructura + "LineaDeTension.jpg";
 	
-	public final static String LineaDeTensionSinServicio = RutaEstructura + "LineaDeTensionSinServicio.jpg";
+	public final static String LineaDeTensionSinServicio = RutaEstructuraSinServicio + "LineaDeTensionSinServicio.jpg";
 	
-	public final static String LineaDeTensionDestruida = RutaEstructura + "LineaDeTensionDestruida.jpg";
+	public final static String LineaDeTensionDestruida = RutaEstructuraDestruida + "LineaDeTensionDestruida.jpg";
 	
 	public final static String RutaPavimentada = RutaEstructura + "RutaPavimentada.jpg";
 	
