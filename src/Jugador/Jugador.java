@@ -219,12 +219,12 @@ public abstract class Jugador extends Observable{
 		construccion.agregarAlPlano(this.plano);
 		try{
 			this.presupuesto.reducir(construccion.darCosto());
-		}catch (ExcepcionDineroInsuficiente e){
-			JOptionPane.showMessageDialog(null, "No hay dinero suficiente");
-		}
-		this.construcciones.add(construccion);
-		this.vista.graficarCambiosEstadoConstrucciones(this.construcciones);
-		//Interviene en la vista notificando que hubo cambio al observador
+			this.construcciones.add(construccion);
+			this.vista.graficarCambiosEstadoConstrucciones(this.construcciones);
+			//Interviene en la vista notificando que hubo cambio al observador
+
+
+		}catch (ExcepcionDineroInsuficiente e){}
 		setChanged();
 		this.notifyObservers();
 	}

@@ -22,6 +22,10 @@ import java.util.List;
 
 
 
+
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -85,30 +89,29 @@ public class VistaControlador extends JFrame implements ActionListener{
 	
 	private void inicializarPanelMenu(){
 		panelMenu = new JPanel();
-		panelMenu.setBounds(430,150,200,265);
-		panelMenu.setLayout(new GridLayout(4,1));
+		panelMenu.setBounds(250,150,600,265);
+		panelMenu.setLayout(new GridLayout(3,1));
 		
-		Color marron = new Color(165,42,42);
 		
 		inicioPartida = new JButton("Inicio Partida");
-		inicioPartida.setFont(new Font("Sans Serif", Font.PLAIN, 25));
-		inicioPartida.setBackground(marron);
+		inicioPartida.setIcon(new ImageIcon(Imagen.loadImg(Archivo.BotonPartidaNueva)));
 		inicioPartida.addActionListener(this);
 		panelMenu.add(inicioPartida);
+		
 		continuarPartida = new JButton("Continuar Partida");
-		continuarPartida.addActionListener(this);
-		continuarPartida.setFont(new Font("Sans Serif", Font.PLAIN, 25));
-		continuarPartida.setBackground(marron);
+		continuarPartida.setIcon(new ImageIcon(Imagen.loadImg(Archivo.BotonContinuarPartida)));
 		panelMenu.add(continuarPartida);
+		
+		/*
 		verPuntaje = new JButton("Ver Puntajes");
 		verPuntaje.addActionListener(this);
 		verPuntaje.setFont(new Font("Sans Serif", Font.PLAIN, 25));
 		verPuntaje.setBackground(marron);
 		panelMenu.add(verPuntaje);
+		*/
+		
 		salir = new JButton("Salir");
-		salir.addActionListener(this);
-		salir.setFont(new Font("Sans Serif", Font.PLAIN, 25));
-		salir.setBackground(marron);
+		salir.setIcon(new ImageIcon(Imagen.loadImg(Archivo.BotonSalir)));
 		panelMenu.add(salir);
 		
 	}

@@ -35,5 +35,21 @@ public class Archivo {
 	
 	public final static String BotonBomberos = RutaBotones + "BotonBomberos.jpg";
 	
+	public final static String BotonComenzar = RutaBotones + "BotonComenzar.jpg";
+	
+	public final static String BotonContinuarPartida = RutaBotones + "BotonContinuarPartida.jpg";
+	
+	public final static String BotonGuardar = RutaBotones + "BotonGuardar.jpg";
+	
+	public final static String BotonPartidaNueva = RutaBotones + "BotonPartidaNueva.jpg";
+	
+	public final static String BotonSalir = RutaBotones + "BotonSalir.jpg";
+	
+	public final static String BotonVolver = RutaBotones + "BotonVolver.jpg";
+	
+	
+	
+	
+	
 	
 }
