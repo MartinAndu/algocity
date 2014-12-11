@@ -6,6 +6,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -27,14 +28,14 @@ public class FramePlano extends JFrame implements ActionListener{
 	private PanelPlano panelPlano;
 	private JButton guardar,salir;
 	private AlgoCity algoCity;
+	private VistaControlador vistaAnterior;
 	
-	FramePlano(AlgoCity algoCity){
+	FramePlano(AlgoCity algoCity,VistaControlador vistaAnterior){
 		super("Mapa General");
 		this.setBounds(0,0,1300,700);
 		this.setLayout(new BorderLayout());
 		this.algoCity = algoCity;
-		
-		
+		this.vistaAnterior = vistaAnterior;
 		
 		//Inicializa clase jugador que va a ser el modelo y el turno
 		
@@ -73,7 +74,10 @@ public class FramePlano extends JFrame implements ActionListener{
 
 		panelDeInteraccion = new JPanel();
 		guardar = new JButton("Guardar");
+		guardar.setIcon(new ImageIcon(Imagen.loadImg(Archivo.BotonGuardar)));
+		
 		salir = new JButton("Salir");
+		salir.setIcon(new ImageIcon(Imagen.loadImg(Archivo.BotonSalir)));
 		
 
 		panelDeInteraccion.add(guardar);
@@ -99,6 +103,8 @@ public class FramePlano extends JFrame implements ActionListener{
 		if (e.getSource() == salir){
 			try {
 				algoCity.finalizar(algoCity.obtenerJugadorActual());
+				vistaAnterior.setVisible(true);
+				this.dispose();
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

@@ -117,8 +117,9 @@ public class PozoDeAgua extends Construccion {
 	public BufferedImage graficar() {
 		if (estadoConstruccion.enString() == "estoy bien")
 			return Imagen.loadImg(Archivo.PozoDeAgua);
+		if (estadoConstruccion.enString() == "estoy destruido")
+			return Imagen.loadImg(Archivo.PozoDeAguaDestruido);
 		else
 			return Imagen.loadImg(Archivo.PozoDeAguaSinServicio);
-		
 	}
 }

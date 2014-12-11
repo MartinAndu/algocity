@@ -21,7 +21,11 @@ public class CentralEolica extends CentralElectrica {
 	}
 
 	public BufferedImage graficar() {
-		return Imagen.loadImg(Archivo.CentralEolica);
+		if (estadoConstruccion.enString() == "estoy bien")
+			return Imagen.loadImg(Archivo.CentralEolica);
+		if (estadoConstruccion.enString() == "estoy destruido")
+			return Imagen.loadImg(Archivo.CentralEolicaDestruida);
+		return Imagen.loadImg(Archivo.CentralEolicaSinServicio);
 	}	
 	
 

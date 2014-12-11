@@ -21,7 +21,11 @@ public class CentralMineral extends CentralElectrica{
 	}
 	
 	public BufferedImage graficar() {
-		return Imagen.loadImg(Archivo.CentralMineral);
+		if (estadoConstruccion.enString() == "estoy bien")
+			return Imagen.loadImg(Archivo.CentralMineral);
+		if (estadoConstruccion.enString() == "estoy destruido")
+			return Imagen.loadImg(Archivo.CentralMineralDestruida);
+		return Imagen.loadImg(Archivo.CentralMineralSinServicio);
 	}	
 
 

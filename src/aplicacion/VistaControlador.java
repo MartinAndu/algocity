@@ -43,7 +43,7 @@ public class VistaControlador extends JFrame implements ActionListener{
 	}
 	
 	public void visualizarMapa(){
-		new FramePlano(this.algoCity).mostrarVentana();
+		new FramePlano(this.algoCity,this).mostrarVentana();
 	}
 	
 	private void inicializarVentana() {

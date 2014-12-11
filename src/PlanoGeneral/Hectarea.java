@@ -180,6 +180,8 @@ public class Hectarea implements Destruible{
 		
 		if (vistaSubterranea){
 			g.drawImage(Imagen.loadImg(Archivo.SuperficieSubterranea), 0, 0, null);
+			if (superficie.sePuedeConstruirUnPozoDeAgua())
+				g.drawImage(this.superficie.graficar(), 0, 0, null);
 			
 			if (construcciones.size() > 0){
 				Iterator<Construccion> it = this.construcciones.iterator();
