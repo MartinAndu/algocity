@@ -35,6 +35,9 @@ public class EdificioIndustrial extends Edificio {
 	}
 	
 	public BufferedImage graficar() {
-		return Imagen.loadImg(Archivo.EdificioIndustrial);
+		if (estadoConstruccion.enString() == "estoy bien")
+			return Imagen.loadImg(Archivo.EdificioIndustrial);
+		else
+			return Imagen.loadImg(Archivo.EdificioIndustrialSinServicio);
 	}
 }

@@ -30,7 +30,10 @@ public class EdificioComercial extends Edificio {
 
 	@Override
 	public BufferedImage graficar() {
-		return Imagen.loadImg(Archivo.EdificioComercial);
+		if (estadoConstruccion.enString() == "estoy bien")
+			return Imagen.loadImg(Archivo.EdificioComercial);
+		else
+			return Imagen.loadImg(Archivo.EdificioComercialSinServicio);
 	}
 	
 }

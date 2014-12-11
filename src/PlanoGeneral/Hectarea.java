@@ -176,27 +176,33 @@ public class Hectarea implements Destruible{
 
 	
 	public void GraficarHectarea(Graphics g,boolean vistaSubterranea){
-		boolean hayConstruccion = false;
 		Construccion construccion = null;
-		if (construcciones.size() > 0){
-			Iterator<Construccion> it = this.construcciones.iterator();
-	    	while (it.hasNext()) {
-				construccion = (Construccion) it.next();
-				hayConstruccion = true;	
-				if (construccion.esConstruibleBajoTierra()){
-					if (!vistaSubterranea)
-						hayConstruccion = false;
+		
+		if (vistaSubterranea){
+			g.drawImage(Imagen.loadImg(Archivo.SuperficieSubterranea), 0, 0, null);
+			
+			if (construcciones.size() > 0){
+				Iterator<Construccion> it = this.construcciones.iterator();
+				while (it.hasNext()) {
+					construccion = (Construccion) it.next();
+					
+					if (construccion.esConstruibleBajoTierra())
+						g.drawImage(construccion.graficar(), 0, 0, null);
 				}
 			}
+			
 		}
-		
-		if (hayConstruccion)
-			g.drawImage(construccion.graficar(), 0, 0, null);
 		else{
-			if (vistaSubterranea)
-				g.drawImage(Imagen.loadImg(Archivo.SuperficieSubterranea), 0, 0, null);
-			else
-				g.drawImage(this.superficie.graficar(), 0, 0, null);
+			g.drawImage(this.superficie.graficar(), 0, 0, null);
+			if (construcciones.size() > 0){
+				Iterator<Construccion> it = this.construcciones.iterator();
+		    	while (it.hasNext()) {
+					construccion = (Construccion) it.next();
+					if (!construccion.esConstruibleBajoTierra())
+						g.drawImage(construccion.graficar(), 0, 0, null);
+				}
+		    	
+			}
 		}
 		
 	}

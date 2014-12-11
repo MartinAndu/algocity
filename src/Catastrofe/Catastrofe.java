@@ -3,6 +3,8 @@ package Catastrofe;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import Administradores.Evento;
 import ConstruccionGeneral.Reconstruible;
 import Jugador.Jugador;
@@ -11,7 +13,7 @@ import PlanoGeneral.Plano;
 public abstract class Catastrofe implements Evento {
 	
 	protected ArrayList<Reconstruible> estructurasDestruidas;
-
+	
 	public Catastrofe() {
 		this.estructurasDestruidas = new ArrayList<Reconstruible>();
 	}
