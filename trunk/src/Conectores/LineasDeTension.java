@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import aplicacion.Archivo;
 import aplicacion.Imagen;
 import ConstruccionGeneral.Posicion;
+import Estados.EstoyBien;
 import Estados.MeFaltaLuz;
 import PuntosConstruccion.PuntosDeLineaTension;
 import Servicios.AdministradorServicios;
@@ -38,7 +39,10 @@ public  class LineasDeTension extends Conexion{
 		if (!administradorServicios.poseeElectricidad()) {
 			this.estadoConstruccion = new MeFaltaLuz();
 			this.quitarServicioZona();
-		}		
+		}else {
+			this.estadoConstruccion = new EstoyBien();
+			this.proveerServicioZona();
+		}	
 	}
 	
 	public BufferedImage graficar() {

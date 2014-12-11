@@ -80,6 +80,9 @@ public abstract class CentralElectrica extends Construccion{
 		if (!administradorServicios.poseeAgua()) {
 			this.estadoConstruccion = new MeFaltaAgua();
 			this.quitarElectricidadZona();
+		}else {
+			this.estadoConstruccion = new EstoyBien();
+			this.proveerElectricidadZona();
 		}
 	}
 

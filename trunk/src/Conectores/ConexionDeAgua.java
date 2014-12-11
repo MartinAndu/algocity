@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import aplicacion.Archivo;
 import aplicacion.Imagen;
 import ConstruccionGeneral.Posicion;
+import Estados.EstoyBien;
 import Estados.MeFaltaAgua;
 import PuntosConstruccion.PuntosDeTuberia;
 import Servicios.AdministradorServicios;
@@ -31,6 +32,9 @@ public class ConexionDeAgua extends Conexion {
 		if (!administradorServicios.poseeAgua()) {
 			this.estadoConstruccion = new MeFaltaAgua();
 			this.quitarServicioZona();
+		}else {
+			this.estadoConstruccion = new EstoyBien();
+			this.proveerServicioZona();
 		}
 	}
 
