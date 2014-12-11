@@ -6,6 +6,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -72,9 +73,12 @@ public class FramePlano extends JFrame implements ActionListener{
 	private void inicializarBotones(){
 
 		panelDeInteraccion = new JPanel();
-		guardar = new JButton("Guardar");
-		salir = new JButton("Salir");
 		
+		guardar = new JButton("");
+		guardar.setIcon(new ImageIcon(Imagen.loadImg(Archivo.BotonGuardar)));
+		
+		salir = new JButton("");
+		salir.setIcon(new ImageIcon(Imagen.loadImg(Archivo.BotonSalirMini)));
 
 		panelDeInteraccion.add(guardar);
 		panelDeInteraccion.add(salir);

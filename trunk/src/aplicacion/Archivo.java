@@ -64,7 +64,13 @@ public class Archivo {
 	
 	public final static String LineaDeTension = RutaEstructura + "LineaDeTension.jpg";
 	
+	public final static String LineaDeTensionSinServicio = RutaEstructura + "LineaDeTensionSinServicio.jpg";
+	
+	public final static String LineaDeTensionDestruida = RutaEstructura + "LineaDeTensionDestruida.jpg";
+	
 	public final static String RutaPavimentada = RutaEstructura + "RutaPavimentada.jpg";
+	
+	public final static String RutaPavimentadaSinServicio = RutaEstructuraSinServicio + "RutaPavimentadaSinServicio.jpg";
 	
 	public final static String RutaPavimentadaDestruida = RutaEstructuraDestruida + "RutaPavimentadaDestruida.jpg";
 	
@@ -83,6 +89,9 @@ public class Archivo {
 	public final static String BotonSalir = RutaBotones + "BotonSalir.jpg";
 	
 	public final static String BotonVolver = RutaBotones + "BotonVolver.jpg";
+	
+	public final static String BotonSalirMini = RutaBotones + "BotonSalirMini.jpg";
+	
 	
 	public final static String BotonFacil = RutaBotones + "BotonFacil.jpg";
 	

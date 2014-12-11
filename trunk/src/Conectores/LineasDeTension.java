@@ -46,7 +46,11 @@ public  class LineasDeTension extends Conexion{
 	}
 	
 	public BufferedImage graficar() {
-		return Imagen.loadImg(Archivo.LineaDeTension);
+		if (estadoConstruccion.enString() == "estoy bien")
+			return Imagen.loadImg(Archivo.LineaDeTension);
+		if (estadoConstruccion.enString() == "estoy destruido")
+			return Imagen.loadImg(Archivo.LineaDeTensionDestruida);
+		return Imagen.loadImg(Archivo.LineaDeTensionSinServicio);
 	}	
 	
 	
