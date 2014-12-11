@@ -150,7 +150,11 @@ public abstract class Jugador extends Observable{
 	}
 
 	public void habilitarEstacionDeBomberos() {
-		this.estacionDeBomberos.habilitar(presupuesto);		
+		try{
+			this.estacionDeBomberos.habilitar(presupuesto);
+			setChanged();
+			this.notifyObservers();
+		}catch(ExcepcionDineroInsuficiente e){}
 	}
 
 	public void pasoUnTurno() {
@@ -221,17 +225,19 @@ public abstract class Jugador extends Observable{
 	}
 	
 	private void agregarAlPlano(Construccion construccion) {
-		construccion.agregarAlPlano(this.plano);
 		try{
 			this.presupuesto.reducir(construccion.darCosto());
+			construccion.agregarAlPlano(this.plano);
 			this.construcciones.add(construccion);
 			this.vista.graficarCambiosEstadoConstrucciones(this.construcciones);
 			//Interviene en la vista notificando que hubo cambio al observador
 
 
 		}catch (ExcepcionDineroInsuficiente e){}
+		
 		setChanged();
 		this.notifyObservers();
+
 	}
 	
 	public void eliminarConstruccion(Posicion posicion) {

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import ConstruccionGeneral.Reconstruible;
 import Excepciones.ExceptionConstruccionComplemtamenteReparada;
 import Presupuesto.Presupuesto;
@@ -60,6 +62,10 @@ public class EstacionDeBomberos {
 			Reconstruible reconstruible = (Reconstruible) itR.next();
 			this.edificiosAReconstruir.remove(reconstruible);
 		}
+		
+
+		
+		JOptionPane.showMessageDialog(null, "Edificios reparandose");
 	}
 
 	public void habilitar(Presupuesto presupuesto) {

@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 import ConstruccionGeneral.Posicion;
 import Jugador.Jugador;
@@ -36,6 +37,7 @@ public class BotonBomberos extends JButton implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		jugadorModelo.habilitarEstacionDeBomberos();
+		JOptionPane.showMessageDialog(null, "Reparando edificios....");
 	}
 	
 }

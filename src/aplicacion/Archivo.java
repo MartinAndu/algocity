@@ -2,7 +2,7 @@ package aplicacion;
 
 public class Archivo {
 	private final static String RutaEstructura = "Images/Estructuras/";
-	private final static String RutaEstructuraSinServicio = "Images/Estructuras/SinServicio";
+	private final static String RutaEstructuraSinServicio = "Images/Estructuras/SinServicio/";
 	private final static String RutaSuperficie = "Images/Superficies/";
 	private final static String RutaBotones = "Images/Botones/";
 	
