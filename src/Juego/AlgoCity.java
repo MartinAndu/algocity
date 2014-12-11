@@ -22,7 +22,6 @@ import Jugador.JugadorFacil;
 import Jugador.JugadorMedio;
 import Jugador.Turno;
 
-import java.util.Iterator;
 import org.w3c.dom.Element;
 
 
@@ -76,12 +75,10 @@ public class AlgoCity {
 	private Element serializar(Document doc) {
 		Element elementoJuego = doc.createElement("Juego");
 
-		Iterator<String> it = this.nombresJugadores.iterator();
-
-		while (it.hasNext()) {
-			String nombreJugador = (String) it.next();
-			//elementoJuego.appendChild(nombreJugador);
-    		elementoJuego.setAttribute(nombreJugador, nombreJugador);
+		int i = 0;
+		for (String nombreJugador: nombresJugadores){
+    		elementoJuego.setAttribute("nombreJugador"+Integer.toString(i), nombreJugador);
+    		i = i + 1;
 		}
     	return elementoJuego;
 	}
@@ -95,9 +92,8 @@ public class AlgoCity {
 		int cantidadJugadoresRegistrados = elementoJuego.getAttributes().getLength();
 
 		for(int i = 0 ; i < (cantidadJugadoresRegistrados) ; i++){
-			String numeroJugador = Integer.toString(i);
-			String nombreJugador = elementoJuego.getAttribute(numeroJugador);
-			nombresJugadoresHidratado.add(nombreJugador);			
+			String nombreJugador = elementoJuego.getAttribute(""+Integer.toString(i));
+			nombresJugadoresHidratado.add(nombreJugador);
 		}
 
 		juegoHidratado.nombresJugadores = nombresJugadoresHidratado;

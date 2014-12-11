@@ -1,7 +1,5 @@
 package Excepciones;
 
-import javax.swing.JOptionPane;
-
 public class ExceptionConstruccionComplemtamenteReparada extends Exception {
 
 	/**

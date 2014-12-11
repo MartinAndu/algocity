@@ -1,7 +1,5 @@
 package controlador;
 
-import java.awt.event.ActionEvent;
-
 import aplicacion.PanelPlano;
 import ConstruccionGeneral.Posicion;
 import Jugador.Jugador;

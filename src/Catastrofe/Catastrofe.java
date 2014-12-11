@@ -3,8 +3,6 @@ package Catastrofe;
 
 import java.util.ArrayList;
 
-import javax.swing.JOptionPane;
-
 import Administradores.Evento;
 import ConstruccionGeneral.Reconstruible;
 import Jugador.Jugador;
