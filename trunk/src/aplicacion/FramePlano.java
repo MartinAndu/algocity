@@ -104,7 +104,7 @@ public class FramePlano extends JFrame implements ActionListener{
 			try {
 				algoCity.finalizar(algoCity.obtenerJugadorActual());
 				vistaAnterior.setVisible(true);
-				this.dispose();
+				this.setVisible(false);
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

@@ -26,7 +26,7 @@ public class PanelDeConstruccion extends JPanel{
 	 */
 	private static final long serialVersionUID = 1L;
 	PanelDeConstruccion(Jugador jugadorModelo,PanelPlano panelPlano){
-		this.setLayout(new GridLayout(12,2));
+		this.setLayout(new GridLayout(15,1));
 		this.add(new BotonResidencia(jugadorModelo,panelPlano));
 		this.add(new BotonIndustria(jugadorModelo,panelPlano));
 		this.add(new BotonComercio(jugadorModelo,panelPlano));
