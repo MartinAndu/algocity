@@ -32,6 +32,8 @@ public class EdificioComercial extends Edificio {
 	public BufferedImage graficar() {
 		if (estadoConstruccion.enString() == "estoy bien")
 			return Imagen.loadImg(Archivo.EdificioComercial);
+		if (estadoConstruccion.enString() == "estoy destruido")
+			return Imagen.loadImg(Archivo.EdificioComercialDestruido);
 		else
 			return Imagen.loadImg(Archivo.EdificioComercialSinServicio);
 	}

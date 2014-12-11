@@ -5,6 +5,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -82,24 +83,28 @@ public class FrameJugadorNuevo extends JFrame implements ActionListener{
 	
 	private void crearPanelBotones(){
 		panelBotones = new JPanel();
-		panelBotones.setBounds(430,150,200,265);
+		panelBotones.setBounds(250,150,600,265);
 		panelBotones.setLayout(new GridLayout(4,1));
 		
-		jugadorFacil = new JButton("Jugador Facil");
+		jugadorFacil = new JButton("");
+		jugadorFacil.setIcon(new ImageIcon(Imagen.loadImg(Archivo.BotonFacil)));
 		jugadorFacil.addActionListener(this);
 		panelBotones.add(jugadorFacil);
 
-		jugadorMedio = new JButton("Jugador Medio");
+		jugadorMedio = new JButton("");
+		jugadorMedio.setIcon(new ImageIcon(Imagen.loadImg(Archivo.BotonMedio)));
 		jugadorMedio.addActionListener(this);
 		panelBotones.add(jugadorMedio);
 		
 
-		jugadorDificil = new JButton("Jugador Dificil");
+		jugadorDificil = new JButton("");
+		jugadorDificil.setIcon(new ImageIcon(Imagen.loadImg(Archivo.BotonDificil)));
 		jugadorDificil.addActionListener(this);
 		panelBotones.add(jugadorDificil);
 		
 
 		volver = new JButton("Volver");
+		volver.setIcon(new ImageIcon(Imagen.loadImg(Archivo.BotonVolver)));
 		volver.addActionListener(this);
 		panelBotones.add(volver);
 		
@@ -138,7 +143,7 @@ public class FrameJugadorNuevo extends JFrame implements ActionListener{
 					jugador = algoCity.crearJugadorDificil(nombre);
 					modo = "Dificil";
 				}
-				JOptionPane.showMessageDialog(null, "Comenzando la partida en Modo" + modo);
+				JOptionPane.showMessageDialog(null, "Comenzando la partida en Modo " + modo);
 				vistaAnterior.visualizarMapa();
 				this.dispose();
 				jugador.establecerVista(vistaAnterior);
@@ -150,7 +155,6 @@ public class FrameJugadorNuevo extends JFrame implements ActionListener{
 				
 			}
 		}
-			
 		
 	}
 	

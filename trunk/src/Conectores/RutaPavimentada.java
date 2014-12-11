@@ -44,7 +44,10 @@ public class RutaPavimentada extends Conexion{
 	}
 
 	public BufferedImage graficar() {
-		return Imagen.loadImg(Archivo.RutaPavimentada);
+		if (estadoConstruccion.enString() == "estoy bien")
+			return Imagen.loadImg(Archivo.RutaPavimentada);
+		else
+			return Imagen.loadImg(Archivo.RutaPavimentadaDestruida);
 	}	
 	
 }
