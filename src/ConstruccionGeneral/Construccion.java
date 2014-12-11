@@ -32,6 +32,7 @@ public abstract class Construccion implements Reconstruible, Destruible,Graficab
 	protected EstadoConstruccion estadoConstruccion;
 	protected boolean esSubterraneo = false;
 	
+	
 	public Construccion(Posicion posicion) {
 		this.posicionConstruccion = posicion;
 		this.estadoConstruccion = new EstoyBien();
