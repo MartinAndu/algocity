@@ -31,7 +31,7 @@ public class BotonBomberos extends JButton implements ActionListener{
 		this.addActionListener(this);
 		this.jugadorModelo = jugadorModelo;
 		this.setIcon(new ImageIcon(Imagen.loadImg(Archivo.BotonBomberos)));
-		this.setToolTipText("Habilitar estacion de bomberos");
+		this.setToolTipText("Habilitar estacion de bomberos $1500");
 		this.referenciaAlPlano = referenciaAlPlano; 
 	}
 

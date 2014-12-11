@@ -18,6 +18,7 @@ import java.awt.event.ActionListener;
 
 
 
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -110,7 +111,12 @@ public class FramePlano extends JFrame implements ActionListener{
 		if (e.getSource() == guardar)
 			algoCity.guardarPartida();
 		if (e.getSource() == salir){
-			algoCity.finalizar(algoCity.obtenerJugadorActual());
+			try {
+				algoCity.finalizar(algoCity.obtenerJugadorActual());
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 	}
 

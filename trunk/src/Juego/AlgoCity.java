@@ -34,7 +34,7 @@ public class AlgoCity {
 	
 	public AlgoCity() throws Exception{
 		this.nombresJugadores = new ArrayList<String>();
-		this.levantarNombresJugadoresArchivo("jugadores");
+		//this.levantarNombresJugadoresArchivo("jugadores");
 	}
 
 	public AlgoCity levantarNombresJugadoresArchivo(String nombreArchivoJugadores) throws Exception{ // Levanta un archivo con la lista de nombres de jugadores registrados.
