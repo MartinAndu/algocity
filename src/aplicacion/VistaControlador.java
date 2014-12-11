@@ -55,7 +55,6 @@ public class VistaControlador extends JFrame implements ActionListener{
 	}
 	
 	public void visualizarMapa(){
-		System.out.println("SDS");
 		new FramePlano(this.algoCity).mostrarVentana();
 	}
 	

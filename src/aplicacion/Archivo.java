@@ -33,4 +33,7 @@ public class Archivo {
 	
 	public final static String BotonEliminar = RutaBotones + "BotonEliminar.jpg";
 	
+	public final static String BotonBomberos = RutaBotones + "BotonBomberos.jpg";
+	
+	
 }
