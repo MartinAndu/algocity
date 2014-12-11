@@ -18,7 +18,6 @@ import org.w3c.dom.Element;
 
 import aplicacion.VistaControlador;
 
-import vista.ListaDeVistas;
 import controlador.ControladorMouse;
 import Ambientes.Ambiente;
 import Bomberos.EstacionDeBomberos;
@@ -142,7 +141,7 @@ public abstract class Jugador extends Observable{
 		catastrofe.destruirCiudad(this.plano);
 		ArrayList<Reconstruible> reconstruibles = catastrofe.darListaConstruccionesDestruidas();
 		estacionDeBomberos.agregarReconstruibles(reconstruibles);
-		this.vista.graficarCambiosEstadoConstrucciones(this.construcciones);
+		//this.vista.graficarCambiosEstadoConstrucciones(this.construcciones);
 		
 
 		setChanged();
@@ -159,7 +158,7 @@ public abstract class Jugador extends Observable{
 
 	public void pasoUnTurno() {
 		this.estacionDeBomberos.realizarReparaciones();
-		this.vista.graficarCambiosEstadoConstrucciones(this.construcciones);
+		//this.vista.graficarCambiosEstadoConstrucciones(this.construcciones);
 		numeroDeDia++;
 		setChanged();
 		this.notifyObservers();
@@ -229,7 +228,7 @@ public abstract class Jugador extends Observable{
 			this.presupuesto.reducir(construccion.darCosto());
 			construccion.agregarAlPlano(this.plano);
 			this.construcciones.add(construccion);
-			this.vista.graficarCambiosEstadoConstrucciones(this.construcciones);
+			//this.vista.graficarCambiosEstadoConstrucciones(this.construcciones);
 			//Interviene en la vista notificando que hubo cambio al observador
 
 

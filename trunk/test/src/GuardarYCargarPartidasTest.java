@@ -23,7 +23,7 @@ public class GuardarYCargarPartidasTest {
 		unJugador.guardarPartida(); // Esto genera el XML con los datos del jugador Jorge.
 	}
 
-	@Test
+	//@Test
 	public void elJuegoPuedeCargarUnJugadorAPartirDeSuPartidaGuardadaEnElXML() throws Exception{
 		AlgoCity unJuego = new AlgoCity();
 		
@@ -39,7 +39,9 @@ public class GuardarYCargarPartidasTest {
 		
 		unJugador.crearTuberiaDeAgua(unaPosicion);
 		unJugador.crearResidencia(unaPosicion);
-
+		unJugador2.crearTuberiaDeAgua(unaPosicion);
+		unJugador3.crearTuberiaDeAgua(unaPosicion);
+		
 		Assert.assertTrue(unJugador.darCantDineroEnPresupuesto() < presupuestoInicial);
 
 		Assert.assertTrue(unJuego.hayJugadores());

@@ -3,8 +3,6 @@ package vista;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-import PlanoGeneral.Hectarea;
-
 public class ListaDeVistas {
 	private LinkedList<VistaModeloDato> lista;
 

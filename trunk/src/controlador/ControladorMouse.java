@@ -3,7 +3,6 @@ package controlador;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import ConstruccionGeneral.Posicion;
 import Jugador.Jugador;
 import vista.VistaModeloDato;
 

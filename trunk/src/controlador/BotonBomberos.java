@@ -8,7 +8,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
-import ConstruccionGeneral.Posicion;
 import Jugador.Jugador;
 import aplicacion.Archivo;
 import aplicacion.Imagen;

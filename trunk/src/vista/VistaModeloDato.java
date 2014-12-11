@@ -1,6 +1,5 @@
 package vista;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.util.Observable;
@@ -9,10 +8,8 @@ import java.util.Observer;
 import javax.swing.JPanel;
 
 import controlador.ControladorMouse;
-import ConstruccionGeneral.Construccion;
 import ConstruccionGeneral.Posicion;
 import Jugador.Jugador;
-import PlanoGeneral.Hectarea;
 
 
 public class VistaModeloDato extends JPanel implements Observer{

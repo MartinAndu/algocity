@@ -18,7 +18,6 @@ public class PanelPlano extends JPanel{
 	private static final long serialVersionUID = 1L;
 
 	private ListaDeVistas listaDeVistas;
-	private boolean vistaNormal;
 	
 	public PanelPlano(Jugador jugador){
 		

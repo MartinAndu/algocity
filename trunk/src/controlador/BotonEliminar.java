@@ -5,8 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
-
 import aplicacion.Archivo;
 import aplicacion.Imagen;
 import aplicacion.PanelPlano;
