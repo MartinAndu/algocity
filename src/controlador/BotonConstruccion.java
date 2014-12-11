@@ -25,7 +25,7 @@ public abstract class BotonConstruccion extends JButton implements ActionListene
 		this.setPreferredSize(new Dimension(30,30));
 		this.addActionListener(this);
 		this.jugadorModelo = jugadorModelo;
-		this.setIcon(new ImageIcon(Imagen.loadImg("Images/Walls/" + nombreDeLaConstruccion + ".jpg")));
+		this.setIcon(new ImageIcon(Imagen.loadImg("Images/Estructuras/" + nombreDeLaConstruccion + ".jpg")));
 		this.referenciaAlPlano = referenciaAlPlano; 
 	}
 

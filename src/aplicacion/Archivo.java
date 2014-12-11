@@ -1,30 +1,33 @@
 package aplicacion;
 
 public class Archivo {
-	public final static String EdificioResidencial = "Images/Walls/EdificioResidencial.jpg";
+	private final static String RutaEstructura = "Images/Estructuras/";
+	private final static String RutaSuperficie = "Images/Superficies/";
 	
-	public final static String EdificioIndustrial = "Images/Walls/EdificioIndustrial.jpg";
+	public final static String EdificioResidencial = RutaEstructura + "EdificioResidencial.jpg";
 	
-	public final static String EdificioComercial = "Images/Walls/EdificioComercial.jpg";
+	public final static String EdificioIndustrial = RutaEstructura + "EdificioIndustrial.jpg";
 	
-	public final static String SuperficieConAgua = "Images/Walls/SuperficieConAgua.jpg";
+	public final static String EdificioComercial = RutaEstructura + "EdificioComercial.jpg";
 	
-	public final static String SuperficieConTerrenoLlano = "Images/Walls/SuperficieConTerrenoLlano.jpg";
+	public final static String SuperficieConAgua = RutaSuperficie + "SuperficieConAgua.jpg";
 	
-	public final static String SuperficieSubterranea = "Images/Walls/SuperficieSubterranea.jpg";
+	public final static String SuperficieConTerrenoLlano = RutaSuperficie + "SuperficieConTerrenoLlano.jpg";
 	
-	public final static String PozoDeAgua = "Images/Walls/PozoDeAgua.jpg";
+	public final static String SuperficieSubterranea = RutaSuperficie + "SuperficieSubterranea.jpg";
 	
-	public final static String CentralEolica = "Images/Walls/CentralEolica.jpg";
+	public final static String PozoDeAgua = RutaEstructura + "PozoDeAgua.jpg";
 	
-	public final static String CentralMineral  = "Images/Walls/CentralMineral.jpg";
+	public final static String CentralEolica = RutaEstructura + "CentralEolica.jpg";
 	
-	public final static String CentralNuclear = "Images/Walls/CentralNuclear.jpg";
+	public final static String CentralMineral  = RutaEstructura + "CentralMineral.jpg";
 	
-	public final static String TuberiaDeAgua = "Images/Walls/TuberiaDeAgua.jpg";
+	public final static String CentralNuclear = RutaEstructura + "CentralNuclear.jpg";
 	
-	public final static String LineaDeTension = "Images/Walls/LineaDeTension.jpg";
+	public final static String TuberiaDeAgua = RutaEstructura + "TuberiaDeAgua.jpg";
 	
-	public final static String RutaPavimentada = "Images/Walls/RutaPavimentada.jpg";
+	public final static String LineaDeTension = RutaEstructura + "LineaDeTension.jpg";
+	
+	public final static String RutaPavimentada = RutaEstructura + "RutaPavimentada.jpg";
 	
 }

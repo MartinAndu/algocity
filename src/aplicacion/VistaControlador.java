@@ -21,6 +21,7 @@ import java.util.List;
 
 
 
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -54,6 +55,7 @@ public class VistaControlador extends JFrame implements ActionListener{
 	}
 	
 	public void visualizarMapa(){
+		System.out.println("SDS");
 		new FramePlano(this.algoCity).mostrarVentana();
 	}
 	

@@ -32,6 +32,7 @@ public class FrameJugadorNuevo extends JFrame implements ActionListener{
 	public FrameJugadorNuevo(AlgoCity algoCity,VistaControlador vistaAnterior){
 		super("Menu Nueva Partida");
 		this.algoCity = algoCity;
+		this.vistaAnterior = vistaAnterior;
 		inicializarVentana();
 	}
 	
@@ -137,12 +138,12 @@ public class FrameJugadorNuevo extends JFrame implements ActionListener{
 					jugador = algoCity.crearJugadorDificil(nombre);
 					modo = "Dificil";
 				}
-				
 				JOptionPane.showMessageDialog(null, "Comenzando la partida en Modo" + modo);
-				algoCity.jugar(jugador);
-				this.setVisible(false);
 				vistaAnterior.visualizarMapa();
-				
+				this.dispose();
+				jugador.establecerVista(vistaAnterior);
+				algoCity.jugar(jugador);
+
 					
 			}catch(RuntimeException exception){
 				
