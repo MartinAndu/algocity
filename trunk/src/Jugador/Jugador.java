@@ -138,10 +138,15 @@ public abstract class Jugador extends Observable{
 	}
 
 	public void destruirConstruccionesPorCatastrofe(Catastrofe catastrofe) {
+		JOptionPane.showMessageDialog(null, "¡Oh no ha pasado (un)" + catastrofe.getClass().getName() + "por la ciudad!" );
 		catastrofe.destruirCiudad(this.plano);
 		ArrayList<Reconstruible> reconstruibles = catastrofe.darListaConstruccionesDestruidas();
 		estacionDeBomberos.agregarReconstruibles(reconstruibles);
 		this.vista.graficarCambiosEstadoConstrucciones(this.construcciones);
+		
+
+		setChanged();
+		this.notifyObservers();
 	}
 
 	public void habilitarEstacionDeBomberos() {

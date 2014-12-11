@@ -41,7 +41,10 @@ public class ConexionDeAgua extends Conexion {
 	}
 	
 	public BufferedImage graficar() {
-		return Imagen.loadImg(Archivo.TuberiaDeAgua);
+		if (estadoConstruccion.enString() == "estoy bien")
+			return Imagen.loadImg(Archivo.TuberiaDeAgua);
+		else
+			return Imagen.loadImg(Archivo.TuberiaDeAguaSinServicio);
 	}	
 		
 }

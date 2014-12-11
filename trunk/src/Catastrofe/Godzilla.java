@@ -6,7 +6,6 @@ import PlanoGeneral.Recorrido;
 
 public class Godzilla extends Catastrofe {
 	
-	
 	@Override
 	public void destruirCiudad(Plano plano) {
 		Recorrido zonaRecorridaPorGodzilla = plano.recorrerlAleatoriamenteDesdePosicionBorde();

@@ -6,7 +6,6 @@ import PlanoGeneral.Recorrido;
 
 
 public class Terremoto extends Catastrofe{
-
 	
 	public void destruirCiudad(Plano plano) {
 		Recorrido zonaCircundante= plano.recorrerTodoDesdeUnaPosicionAleatoria();
