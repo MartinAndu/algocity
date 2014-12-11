@@ -34,11 +34,11 @@ public class AlgoCity {
 	
 	public AlgoCity() throws Exception{
 		this.nombresJugadores = new ArrayList<String>();
-		//this.levantarNombresJugadoresArchivo("jugadores");
+		//this.levantarNombresJugadoresArchivo();
 	}
 
-	public AlgoCity levantarNombresJugadoresArchivo(String nombreArchivoJugadores) throws Exception{ // Levanta un archivo con la lista de nombres de jugadores registrados.
-		File archivo = new File(nombreArchivoJugadores);
+	public AlgoCity levantarNombresJugadoresArchivo() throws Exception{ // Levanta un archivo con la lista de nombres de jugadores registrados.
+		File archivo = new File("jugadores.xml");
 		
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		DocumentBuilder db = dbf.newDocumentBuilder();
@@ -52,8 +52,7 @@ public class AlgoCity {
 		return AlgoCity.hidratar(doc);
 	}
 
-
-	private Element guardarNombresJugadores() throws Exception{
+	public Element guardarNombresJugadores() throws Exception{
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		DocumentBuilder db = dbf.newDocumentBuilder();
 		Document doc = db.newDocument();
@@ -75,15 +74,14 @@ public class AlgoCity {
 	}
 	
 	private Element serializar(Document doc) {
-    	Element elementoJuego = doc.createElement("Juego");
+		Element elementoJuego = doc.createElement("Juego");
 
-    	Iterator<String> it = this.nombresJugadores.iterator();
-    	int i = 0;
-    	while (it.hasNext()) {
-    		String string = (String) it.next();
-    		String numeroJugador = Integer.toString(i);
-    		elementoJuego.setAttribute(numeroJugador, string);
-			i++;
+		Iterator<String> it = this.nombresJugadores.iterator();
+
+		while (it.hasNext()) {
+			String nombreJugador = (String) it.next();
+			//elementoJuego.appendChild(nombreJugador);
+    		elementoJuego.setAttribute(nombreJugador, nombreJugador);
 		}
     	return elementoJuego;
 	}
@@ -95,13 +93,13 @@ public class AlgoCity {
 		ArrayList<String> nombresJugadoresHidratado = new ArrayList<String>();
 		
 		int cantidadJugadoresRegistrados = elementoJuego.getAttributes().getLength();
-		
+
 		for(int i = 0 ; i < (cantidadJugadoresRegistrados) ; i++){
 			String numeroJugador = Integer.toString(i);
 			String nombreJugador = elementoJuego.getAttribute(numeroJugador);
 			nombresJugadoresHidratado.add(nombreJugador);			
 		}
-		
+
 		juegoHidratado.nombresJugadores = nombresJugadoresHidratado;
 		return juegoHidratado;
 	}
@@ -187,8 +185,7 @@ public class AlgoCity {
 			JOptionPane.showMessageDialog(null, "No se pudo guardar la partida");
 		}
 	}
-	
-	
+
 	public void finalizar(Jugador jugador) throws Exception {
 		this.turno.terminar();
 		
@@ -198,5 +195,13 @@ public class AlgoCity {
 		}//suponemos que guarda la partida en un archivo con su nombre
 		
 		this.guardarNombresJugadores();
+	}
+	
+	public boolean hayJugadores(){
+		return (!nombresJugadores.isEmpty());
+	}
+	
+	public String obtenerNombrePrimerJugadorRegistrado(){
+		return nombresJugadores.get(0);
 	}
 }

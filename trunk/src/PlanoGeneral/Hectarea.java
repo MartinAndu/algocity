@@ -125,7 +125,7 @@ public class Hectarea implements Destruible{
 		elementoHectarea.setAttribute("posicion", posicionEnString);
 		elementoHectarea.setAttribute("identidad", this.identi);
 		
-		elementoHectarea.appendChild((this.administradorServicios).serializar(doc));
+		//elementoHectarea.appendChild((this.administradorServicios).serializar(doc));
 		
 		for (Construccion construccion : this.construcciones) {
 			elementoHectarea.appendChild(construccion.serializar(doc));
