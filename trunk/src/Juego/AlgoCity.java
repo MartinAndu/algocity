@@ -6,9 +6,12 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
-
 import aplicacion.VistaControlador;
 import Ambientes.Ambiente;
 import Excepciones.ExcepcionJugadorIngresadoVacio;
@@ -17,26 +20,92 @@ import Jugador.Jugador;
 import Jugador.JugadorDificil;
 import Jugador.JugadorFacil;
 import Jugador.JugadorMedio;
-import Jugador.JugadorParaTest;
 import Jugador.Turno;
 
+import java.util.Iterator;
+import org.w3c.dom.Element;
+
+
 public class AlgoCity {
-	ArrayList<Jugador> jugadores;
 	ArrayList<String> nombresJugadores;
 	private VistaControlador vistaControlador;
 	private Jugador jugadorActual;
 	private Turno turno;
 	
-	public AlgoCity(){
+	public AlgoCity() throws Exception{
 		this.nombresJugadores = new ArrayList<String>();
-		this.levantarNombresJugadoresArchivo();
+		this.levantarNombresJugadoresArchivo("jugadores");
+	}
+
+	public AlgoCity levantarNombresJugadoresArchivo(String nombreArchivoJugadores) throws Exception{ // Levanta un archivo con la lista de nombres de jugadores registrados.
+		File archivo = new File(nombreArchivoJugadores);
+		
+		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+		DocumentBuilder db = dbf.newDocumentBuilder();
+		Document doc = db.newDocument();
+		
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		doc = dBuilder.parse(archivo);
+		doc.getDocumentElement().normalize();
+
+		return AlgoCity.hidratar(doc);
+	}
+
+
+	private Element guardarNombresJugadores() throws Exception{
+		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+		DocumentBuilder db = dbf.newDocumentBuilder();
+		Document doc = db.newDocument();
+		
+		Element juegoSerializado = this.serializar(doc);
+		
+		doc.appendChild(juegoSerializado);
+		TransformerFactory transformerFactory = TransformerFactory.newInstance();
+		Transformer transformer = transformerFactory.newTransformer();
+		DOMSource source = new DOMSource(doc);
+		
+		String nombreArchivo = "jugadores.xml";
+		
+		File archivoDestino = new File(nombreArchivo);
+		StreamResult result = new StreamResult(archivoDestino);
+		transformer.transform(source,result);
+		
+    	return juegoSerializado;
 	}
 	
-	private void levantarNombresJugadoresArchivo() {
-		//deberia levantar de archivo una lista de los nombres de los jugadores 
-		//registrados
+	private Element serializar(Document doc) {
+    	Element elementoJuego = doc.createElement("Juego");
+
+    	Iterator<String> it = this.nombresJugadores.iterator();
+    	int i = 0;
+    	while (it.hasNext()) {
+    		String string = (String) it.next();
+    		String numeroJugador = Integer.toString(i);
+    		elementoJuego.setAttribute(numeroJugador, string);
+			i++;
+		}
+    	return elementoJuego;
 	}
-	
+
+	public static AlgoCity hidratar(Document doc) throws Exception {
+		Element elementoJuego = (Element)doc.getElementsByTagName("Juego").item(0);
+
+		AlgoCity juegoHidratado = new AlgoCity();
+		ArrayList<String> nombresJugadoresHidratado = new ArrayList<String>();
+		
+		int cantidadJugadoresRegistrados = elementoJuego.getAttributes().getLength();
+		
+		for(int i = 0 ; i < (cantidadJugadoresRegistrados) ; i++){
+			String numeroJugador = Integer.toString(i);
+			String nombreJugador = elementoJuego.getAttribute(numeroJugador);
+			nombresJugadoresHidratado.add(nombreJugador);			
+		}
+		
+		juegoHidratado.nombresJugadores = nombresJugadoresHidratado;
+		return juegoHidratado;
+	}
+
 	public void iniciar() {
 		this.vistaControlador = new VistaControlador();
 		this.vistaControlador.arrancar(this);
@@ -45,11 +114,21 @@ public class AlgoCity {
 	public ArrayList<String> darListaJugadoresRegistrados() {
 		return this.nombresJugadores;
 	}
-	
-	public Jugador cargarJugador(String nombreJugador) {
-		//deberia cargar de archivo cuyo nombre, es el nombre del jugador
-		//la partida correspondiente y devolverla
-		return null;
+
+	public Jugador cargarJugador(String nombreJugador) throws Exception{
+		File archivo = new File(nombreJugador);
+		
+		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+		DocumentBuilder db = dbf.newDocumentBuilder();
+		Document doc = db.newDocument();
+		
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		doc = dBuilder.parse(archivo);
+		doc.getDocumentElement().normalize();
+		
+		Jugador unJugadorCargado = Jugador.hidratar(doc); // Me devuelve una instancia del jugador hidratado.
+		return unJugadorCargado;
 	}
 	
 	public void verificarNombreJugador(String nombreJugador){
@@ -110,7 +189,7 @@ public class AlgoCity {
 	}
 	
 	
-	public void finalizar(Jugador jugador) {
+	public void finalizar(Jugador jugador) throws Exception {
 		this.turno.terminar();
 		
 		try {
@@ -119,51 +198,5 @@ public class AlgoCity {
 		}//suponemos que guarda la partida en un archivo con su nombre
 		
 		this.guardarNombresJugadores();
-	}
-
-	private void guardarNombresJugadores() {
-		//deberia guardar la lista actual de nombres de jugadores
-	}
-
-	///////////no lo toco pero los que se usan son los metodos de arriba...no se si
-	///los que siguen alguno servira
-	
-	public Jugador crearJugador(String unNombre){
-		Jugador nuevoJugador = new JugadorParaTest();
-		nuevoJugador.establecerNombreJugador(unNombre);
-		
-		if(jugadores.contains(nuevoJugador)){
-			throw new ExcepcionJugadorYaExistente();
-		}
-		jugadores.add(nuevoJugador);
-		return nuevoJugador;
-	}
-	
-	public void agregarJugador(Jugador unJugador){
-		jugadores.add(unJugador);
-	}
-	
-	public boolean hayJugadores(){
-		return (!jugadores.isEmpty());
-	}
-
-	public void cargarPartidaJugador(String nombreArchivo) throws Exception { // (Dado el archivo de la partida de un jugador, lo manda a hidratar y lo agrega).
-		File archivo = new File(nombreArchivo);
-		
-		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-		DocumentBuilder db = dbf.newDocumentBuilder();
-		Document doc = db.newDocument();
-		
-		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-		doc = dBuilder.parse(archivo);
-		doc.getDocumentElement().normalize();
-		
-		Jugador unJugadorCargado = Jugador.hidratar(doc); // Me devuelve una instancia del jugador hidratado.
-		this.agregarJugador(unJugadorCargado);
-	}
-	
-	public Jugador obtenerPrimerJugadorRegistrado(){
-		return jugadores.get(0);
 	}
 }
