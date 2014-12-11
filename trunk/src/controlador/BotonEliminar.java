@@ -13,10 +13,9 @@ import aplicacion.PanelPlano;
 import ConstruccionGeneral.Posicion;
 import Jugador.Jugador;
 
-public class BotonEliminar extends JButton implements ActionListener{
+public class BotonEliminar extends BotonInteraccionPanel implements ActionListener{
 	Jugador jugadorModelo;
 	PanelPlano referenciaAlPlano;
-	protected boolean vistaNormal;
 
 	/**
 	 * 
@@ -24,11 +23,11 @@ public class BotonEliminar extends JButton implements ActionListener{
 	private static final long serialVersionUID = 1L;
 	
 	public BotonEliminar(Jugador jugadorModelo,PanelPlano referenciaAlPlano) {
-		super("");
 		this.setPreferredSize(new Dimension(30,30));
 		this.addActionListener(this);
 		this.jugadorModelo = jugadorModelo;
 		this.setIcon(new ImageIcon(Imagen.loadImg(Archivo.BotonEliminar)));
+		this.setToolTipText("Eliminar Construccion");
 		this.referenciaAlPlano = referenciaAlPlano; 
 	}
 
@@ -38,8 +37,7 @@ public class BotonEliminar extends JButton implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-		
+		this.jugadorModelo.darControlador().establecerBotonConstruccionPresionado(this);
 	}
 
 }

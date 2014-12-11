@@ -12,7 +12,7 @@ public class ControladorMouse extends MouseAdapter {
 
 	Jugador jugadorModelo;
     VistaModeloDato vista;
-    BotonConstruccion botonConstruccionPresionado;
+    BotonInteraccionPanel botonInteraccionPresionado;
     
 
     public ControladorMouse(Jugador jugadorModelo, VistaModeloDato vista) {
@@ -20,11 +20,11 @@ public class ControladorMouse extends MouseAdapter {
         this.vista = vista;
     }
 
-    public void establecerBotonConstruccionPresionado(BotonConstruccion botonConstruccionPresionado){
-    	this.botonConstruccionPresionado = botonConstruccionPresionado;
+    public void establecerBotonConstruccionPresionado(BotonInteraccionPanel botonInteraccionPresionado){
+    	this.botonInteraccionPresionado = botonInteraccionPresionado;
     }
     
     public void mousePressed(MouseEvent mouseEvent) {
-    	jugadorModelo.darControlador().botonConstruccionPresionado.prepararAccion(vista.getPosicion());
+    	jugadorModelo.darControlador().botonInteraccionPresionado.prepararAccion(vista.getPosicion());
     }
 }

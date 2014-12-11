@@ -43,7 +43,7 @@ public class FramePlano extends JFrame implements ActionListener{
 	
 	FramePlano(AlgoCity algoCity){
 		super("Mapa General");
-		this.setBounds(0,0,1024,500);
+		this.setBounds(0,0,1300,700);
 		this.setLayout(new BorderLayout());
 		this.algoCity = algoCity;
 		

@@ -32,7 +32,7 @@ public class PozoDeAgua extends Construccion {
 		this.idProveedor = java.util.UUID.randomUUID().toString(); 
 		this.idConstruccion = "pozo";
 		this.puntosConstruccion = new PuntosDePozo();
-		this.esSubterraneo = true;
+		this.esSubterraneo = false;
 	}
 
 	@Override
