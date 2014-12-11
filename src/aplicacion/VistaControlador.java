@@ -85,14 +85,7 @@ public class VistaControlador extends JFrame implements ActionListener{
 		continuarPartida = new JButton("Continuar Partida");
 		continuarPartida.setIcon(new ImageIcon(Imagen.loadImg(Archivo.BotonContinuarPartida)));
 		panelMenu.add(continuarPartida);
-		
-		/*
-		verPuntaje = new JButton("Ver Puntajes");
-		verPuntaje.addActionListener(this);
-		verPuntaje.setFont(new Font("Sans Serif", Font.PLAIN, 25));
-		verPuntaje.setBackground(marron);
-		panelMenu.add(verPuntaje);
-		*/
+
 		
 		salir = new JButton("Salir");
 		salir.setIcon(new ImageIcon(Imagen.loadImg(Archivo.BotonSalir)));
