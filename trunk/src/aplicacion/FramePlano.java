@@ -76,9 +76,11 @@ public class FramePlano extends JFrame implements ActionListener{
 		
 		guardar = new JButton("");
 		guardar.setIcon(new ImageIcon(Imagen.loadImg(Archivo.BotonGuardar)));
+		guardar.addActionListener(this);
 		
 		salir = new JButton("");
 		salir.setIcon(new ImageIcon(Imagen.loadImg(Archivo.BotonSalirMini)));
+		salir.addActionListener(this);
 
 		panelDeInteraccion.add(guardar);
 		panelDeInteraccion.add(salir);
