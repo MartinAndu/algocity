@@ -127,7 +127,7 @@ public class FrameCargarPartida extends JFrame implements ActionListener{
 		}
 		
 		if (e.getSource() == cargarPartida){
-			vistaAnterior.visualizarMapa();
+			
 			this.dispose();
 			Jugador jugador = null;
 			try {
@@ -135,6 +135,9 @@ public class FrameCargarPartida extends JFrame implements ActionListener{
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
+			
+			algoCity.establecerJugadorActual(jugador);
+			vistaAnterior.visualizarMapa();
 			jugador.establecerVista(vistaAnterior);
 			algoCity.jugar(jugador);
 		}
