@@ -39,6 +39,12 @@ public abstract class Poblacion {
 		if(tipoPoblacion.equals("PoblacionMedia")){
 			nuevaPoblacion = new PoblacionMedia();
 		}
+		else if (tipoPoblacion.equals("PoblacionAlta")){
+			nuevaPoblacion = new PoblacionAlta();
+		}
+		else if (tipoPoblacion.equals("PoblacionBaja")){
+			nuevaPoblacion = new PoblacionBaja();
+		}
 		
 		nuevaPoblacion.cantHabitantesCiudad = cantidadDeHabitantes;
 		

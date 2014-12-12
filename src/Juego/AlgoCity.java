@@ -1,6 +1,7 @@
 package Juego;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
@@ -12,6 +13,7 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
+
 import aplicacion.VistaControlador;
 import Ambientes.Ambiente;
 import Excepciones.ExcepcionJugadorIngresadoVacio;
@@ -33,22 +35,26 @@ public class AlgoCity {
 	
 	public AlgoCity() throws Exception{
 		this.nombresJugadores = new ArrayList<String>();
-		//this.levantarNombresJugadoresArchivo();
+		this.levantarNombresJugadoresArchivo();
 	}
 
-	public AlgoCity levantarNombresJugadoresArchivo() throws Exception{ // Levanta un archivo con la lista de nombres de jugadores registrados.
-		File archivo = new File("jugadores.xml");
-		
-		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-		DocumentBuilder db = dbf.newDocumentBuilder();
-		Document doc = db.newDocument();
-		
-		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-		doc = dBuilder.parse(archivo);
-		doc.getDocumentElement().normalize();
-
-		return AlgoCity.hidratar(doc);
+	public void levantarNombresJugadoresArchivo() throws Exception{ // Levanta un archivo con la lista de nombres de jugadores registrados.
+		try {
+			File archivo = new File("jugadores.xml");
+			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+			DocumentBuilder db = dbf.newDocumentBuilder();
+			Document doc = db.newDocument();
+			
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			doc = dBuilder.parse(archivo);
+			doc.getDocumentElement().normalize();
+			
+			this.hidratar(doc);
+		}
+		catch (FileNotFoundException excepcion) {
+			this.guardarNombresJugadores();
+		}
 	}
 
 	public Element guardarNombresJugadores() throws Exception{
@@ -77,16 +83,18 @@ public class AlgoCity {
 
 		int i = 0;
 		for (String nombreJugador: nombresJugadores){
+			if (nombreJugador == ""){
+				continue;
+			}
     		elementoJuego.setAttribute("nombreJugador"+Integer.toString(i), nombreJugador);
     		i = i + 1;
 		}
     	return elementoJuego;
 	}
 
-	public static AlgoCity hidratar(Document doc) throws Exception {
+	public void hidratar(Document doc) throws Exception {
 		Element elementoJuego = (Element)doc.getElementsByTagName("Juego").item(0);
 
-		AlgoCity juegoHidratado = new AlgoCity();
 		ArrayList<String> nombresJugadoresHidratado = new ArrayList<String>();
 		
 		int cantidadJugadoresRegistrados = elementoJuego.getAttributes().getLength();
@@ -96,8 +104,7 @@ public class AlgoCity {
 			nombresJugadoresHidratado.add(nombreJugador);
 		}
 
-		juegoHidratado.nombresJugadores = nombresJugadoresHidratado;
-		return juegoHidratado;
+		this.nombresJugadores = nombresJugadoresHidratado;
 	}
 
 	public void iniciar() {
@@ -110,7 +117,7 @@ public class AlgoCity {
 	}
 
 	public Jugador cargarJugador(String nombreJugador) throws Exception{
-		File archivo = new File(nombreJugador);
+		File archivo = new File(nombreJugador+".xml");
 		
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		DocumentBuilder db = dbf.newDocumentBuilder();
