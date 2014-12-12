@@ -181,6 +181,10 @@ public class AlgoCity {
 		return this.jugadorActual;
 	}
 	
+	public void establecerJugadorActual(Jugador jugadorActual){
+		this.jugadorActual = jugadorActual;
+	}
+	
 	public void guardarPartida(){
 		try{
 			this.jugadorActual.guardarPartida();
