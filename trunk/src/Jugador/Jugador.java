@@ -98,6 +98,13 @@ public abstract class Jugador extends Observable{
 		elementoJugador.appendChild(this.poblacion.serializar(doc));
 		elementoJugador.appendChild(this.plano.serializar(doc));
 		
+		Element elementoConstrucciones = doc.createElement("Construcciones");
+		elementoJugador.appendChild(elementoConstrucciones);
+		
+		for (Construccion unaConstruccion : this.construcciones) {
+			elementoConstrucciones.appendChild(unaConstruccion.serializar(doc)); //r de escape = construcciones
+		}
+		
 		return elementoJugador;
 	}
 	
@@ -115,6 +122,14 @@ public abstract class Jugador extends Observable{
 
 		Plano nuevoPlano = Plano.hidratar( elementoJugador.getElementsByTagName("Plano").item(0) );
 		nuevoJugador.plano = nuevoPlano;
+
+		ArrayList<Construccion> construccionesHidratadas = new ArrayList<Construccion>();
+		Element elementoConstrucciones =  (Element) ((Element) elementoJugador).getElementsByTagName("Construcciones").item(0);
+		for(int i=0; i< elementoConstrucciones.getChildNodes().getLength(); i++) {
+			Construccion construccion = Construccion.hidratar(elementoConstrucciones.getChildNodes().item(i));
+			construccionesHidratadas.add(construccion);
+		}
+		nuevoJugador.construcciones = construccionesHidratadas;
 
 		return nuevoJugador;
 	}
