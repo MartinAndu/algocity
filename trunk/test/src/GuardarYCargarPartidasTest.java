@@ -32,5 +32,13 @@ public class GuardarYCargarPartidasTest {
 		
 		unJugador.guardarPartida(); // Esto genera el XML con los datos del jugador.
 		unJugador2.guardarPartida();
+		
+	}
+	@Test
+	public void cargaListaDeJugadores() throws Exception{
+		AlgoCity unJuego = new AlgoCity();
+		
+		Assert.assertFalse(unJuego.darListaJugadoresRegistrados().isEmpty());
+		Assert.assertEquals(unJuego.obtenerNombrePrimerJugadorRegistrado(), "Jorge");
 	}
 }
