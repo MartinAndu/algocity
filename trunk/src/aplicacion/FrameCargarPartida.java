@@ -100,7 +100,7 @@ public class FrameCargarPartida extends JFrame implements ActionListener{
 		cargarPartida = new JButton();
 		cargarPartida.setIcon(new ImageIcon(Imagen.loadImg(Archivo.BotonContinuarPartida)));
 		cargarPartida.addActionListener(this);
-		panelBotones.add(volver);
+		panelBotones.add(cargarPartida);
 		
 
 		volver = new JButton();

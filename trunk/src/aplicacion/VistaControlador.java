@@ -84,11 +84,13 @@ public class VistaControlador extends JFrame implements ActionListener{
 		
 		continuarPartida = new JButton("Continuar Partida");
 		continuarPartida.setIcon(new ImageIcon(Imagen.loadImg(Archivo.BotonContinuarPartida)));
+		continuarPartida.addActionListener(this);
 		panelMenu.add(continuarPartida);
 
 		
 		salir = new JButton("Salir");
 		salir.setIcon(new ImageIcon(Imagen.loadImg(Archivo.BotonSalir)));
+		salir.addActionListener(this);
 		panelMenu.add(salir);
 		
 	}
@@ -105,6 +107,11 @@ public class VistaControlador extends JFrame implements ActionListener{
 		if (e.getSource() == inicioPartida){
 			this.setVisible(false);
 			new FrameJugadorNuevo(algoCity,this).mostrarVentana();
+		}
+		
+		if (e.getSource() == continuarPartida){
+			this.setVisible(false);
+			new FrameCargarPartida(algoCity,this).mostrarVentana();
 		}
 		
 		if (e.getSource() == salir)
