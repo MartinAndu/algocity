@@ -71,15 +71,7 @@ public class FrameCargarPartida extends JFrame implements ActionListener{
 		listaSeleccionableDeJugadores = new JComboBox();
 		listaSeleccionableDeJugadores.setBounds(400, 50, 300, 50);
 		
-		
-
-		
-		try {
-			algoCity.levantarNombresJugadoresArchivo();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	
 		ArrayList<String> nombresJugadores = algoCity.darListaJugadoresRegistrados();
 		
 		Iterator<String> it = nombresJugadores.iterator();
@@ -126,7 +118,7 @@ public class FrameCargarPartida extends JFrame implements ActionListener{
 			vistaAnterior.setVisible(true);
 		}
 		
-		if (e.getSource() == cargarPartida){
+		if (e.getSource() == cargarPartida && !listaSeleccionableDeJugadores.getSelectedItem().toString().isEmpty()){
 			
 			this.dispose();
 			Jugador jugador = null;

@@ -192,6 +192,7 @@ public class Hectarea implements Destruible{
 		else{
 			g.drawImage(this.superficie.graficar(), 0, 0, null);
 			if (construcciones.size() > 0){
+				
 				Iterator<Construccion> it = this.construcciones.iterator();
 		    	while (it.hasNext()) {
 					construccion = (Construccion) it.next();
