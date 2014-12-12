@@ -100,7 +100,7 @@ public class AlgoCity {
 		int cantidadJugadoresRegistrados = elementoJuego.getAttributes().getLength();
 
 		for(int i = 0 ; i < (cantidadJugadoresRegistrados) ; i++){
-			String nombreJugador = elementoJuego.getAttribute(""+Integer.toString(i));
+			String nombreJugador = elementoJuego.getAttribute("nombreJugador"+Integer.toString(i));
 			nombresJugadoresHidratado.add(nombreJugador);
 		}
 
