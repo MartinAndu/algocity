@@ -55,7 +55,6 @@
 		</junit>
 	</target>
 
-
 	<target name="init">
 		<mkdir dir="${reports.xml.dir}" />
 		<mkdir dir="${reports.html.dir}" />
@@ -63,6 +62,25 @@
 
 	<target name="test" depends="ejecutar.tests" description="Compile, run the tests and generate JUnit reports."/>
 
+	<target name="compilar.paquete" depends="test">
+	<javac srcdir="src" destdir="${build}/classes" debug="no"></javac>
+	</target>
+
+	<target name="empaquetar" depends="compilar.paquete">
+	<copydir src="Images"
+	dest="${build}/classes/Images"
+	includes="**/*.pngjava " />
+	<jar destfile="${build}/dist/GPS.jar" basedir="${build}/classes"/>
+	</target>
+
+	<target name="ejecutar.aplicacion" depends="empaquetar">
+	<java classname="aplicacion.Main" fork="true">
+	<classpath refid="classpath"/>
+	<classpath location="${build}/dist/GPS.jar" />
+	</java>
+	</target>
+
+	
   <!-- Ivy installation -->
   <target name="download-ivy" unless="skip.download">
     <mkdir dir="${ivy.jar.dir}"/>
