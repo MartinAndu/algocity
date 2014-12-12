@@ -125,8 +125,6 @@ public class Hectarea implements Destruible{
 		elementoHectarea.setAttribute("posicion", posicionEnString);
 		elementoHectarea.setAttribute("identidad", this.identi);
 		
-		//elementoHectarea.appendChild((this.administradorServicios).serializar(doc));
-		
 		for (Construccion construccion : this.construcciones) {
 			elementoHectarea.appendChild(construccion.serializar(doc));
 		}
@@ -155,18 +153,15 @@ public class Hectarea implements Destruible{
 		Hectarea hectareaNueva = new Hectarea(superficieNueva);
 		
 		hectareaNueva.identi = elementoHectarea.getAttribute("identidad");
-		
-		AdministradorServicios administradorDeServiciosHidratado = AdministradorServicios.hidratar(elementoHectarea.getChildNodes().item(0));
-		
+
 		ArrayList<Construccion> construccionesHidratadas = new ArrayList<Construccion>();
 
-		for(int i = 1 ; i < (elementoHectarea.getChildNodes().getLength()) ; i++) {
+		for(int i = 0 ; i < (elementoHectarea.getChildNodes().getLength()) ; i++) {
 			Construccion construccionHidratada = Construccion.hidratar(elementoHectarea.getChildNodes().item(i));
 			construccionesHidratadas.add(construccionHidratada);
 		}
 		
 		hectareaNueva.construcciones = construccionesHidratadas;
-		hectareaNueva.administradorServicios = administradorDeServiciosHidratado;
 		return hectareaNueva;
 	}
 

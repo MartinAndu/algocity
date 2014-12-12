@@ -10,14 +10,12 @@ import Jugador.Jugador;
 
 public class GuardarYCargarPartidasTest {
 
-	@Test
+	@Test 
 	public void elJuegoPuedeCargarUnJugadorAPartirDeSuPartidaGuardadaEnElXML() throws Exception{
 		AlgoCity unJuego = new AlgoCity();
 		
 		Jugador unJugador = unJuego.crearJugadorMedio("Jorge");
-		Jugador unJugador2 = unJuego.crearJugadorMedio("Alberto");
-		unJuego.crearJugadorMedio("Roberto");
-		
+
 		unJuego.guardarNombresJugadores();
 		
 		int presupuestoInicial = unJugador.darCantDineroEnPresupuesto();
@@ -31,14 +29,6 @@ public class GuardarYCargarPartidasTest {
 		Assert.assertTrue(unJuego.hayJugadores());
 		
 		unJugador.guardarPartida(); // Esto genera el XML con los datos del jugador.
-		unJugador2.guardarPartida();
 		
-	}
-	@Test
-	public void cargaListaDeJugadores() throws Exception{
-		AlgoCity unJuego = new AlgoCity();
-		
-		Assert.assertFalse(unJuego.darListaJugadoresRegistrados().isEmpty());
-		Assert.assertEquals(unJuego.obtenerNombrePrimerJugadorRegistrado(), "Jorge");
 	}
 }
