@@ -26,6 +26,7 @@ public class Hectarea implements Destruible{
 	protected Superficie superficie;
 	private AdministradorServicios administradorServicios;
 	private ArrayList<Construccion> construcciones;
+	private boolean catastrofeOcurriendo;
 
 	
 	public Hectarea(Superficie superficie){
@@ -33,6 +34,7 @@ public class Hectarea implements Destruible{
 		this.superficie = superficie;
 		this.administradorServicios = new AdministradorServicios();
 		this.construcciones = new ArrayList<Construccion>();
+		this.catastrofeOcurriendo = false;
 	}
 	
     @Override
@@ -103,6 +105,7 @@ public class Hectarea implements Destruible{
 			Construccion construccion = (Construccion) it.next();
 			construccion.destruir();
 		}
+    	
 	}
 
 	@Override
@@ -168,38 +171,47 @@ public class Hectarea implements Destruible{
 	public Superficie darSuperficie() {
 		return this.superficie;
 	}
+	
+	public void hayUnaCatastrofeOcurriendo(){
+		this.catastrofeOcurriendo = true;
+	}
 
 	
 	public void GraficarHectarea(Graphics g,boolean vistaSubterranea){
 		Construccion construccion = null;
 		
-		if (vistaSubterranea){
-			g.drawImage(Imagen.loadImg(Archivo.SuperficieSubterranea), 0, 0, null);
-			if (superficie.sePuedeConstruirUnPozoDeAgua())
-				g.drawImage(this.superficie.graficar(), 0, 0, null);
-			
-			if (construcciones.size() > 0){
-				Iterator<Construccion> it = this.construcciones.iterator();
-				while (it.hasNext()) {
-					construccion = (Construccion) it.next();
-					
-					if (construccion.esConstruibleBajoTierra())
-						g.drawImage(construccion.graficar(), 0, 0, null);
-				}
-			}
-			
-		}
-		else{
-			g.drawImage(this.superficie.graficar(), 0, 0, null);
-			if (construcciones.size() > 0){
+		if (catastrofeOcurriendo){
+			g.drawImage(Imagen.loadImg("Images/Walls/Godzilla.jpg"),0,0,null);
+			catastrofeOcurriendo = false;
+		}else{
+			if (vistaSubterranea){
+				g.drawImage(Imagen.loadImg(Archivo.SuperficieSubterranea), 0, 0, null);
+				if (superficie.sePuedeConstruirUnPozoDeAgua())
+					g.drawImage(this.superficie.graficar(), 0, 0, null);
 				
-				Iterator<Construccion> it = this.construcciones.iterator();
-		    	while (it.hasNext()) {
-					construccion = (Construccion) it.next();
-					if (!construccion.esConstruibleBajoTierra())
-						g.drawImage(construccion.graficar(), 0, 0, null);
+				if (construcciones.size() > 0){
+					Iterator<Construccion> it = this.construcciones.iterator();
+					while (it.hasNext()) {
+						construccion = (Construccion) it.next();
+						
+						if (construccion.esConstruibleBajoTierra())
+							g.drawImage(construccion.graficar(), 0, 0, null);
+					}
 				}
-		    	
+				
+			}
+			else{
+				g.drawImage(this.superficie.graficar(), 0, 0, null);
+				if (construcciones.size() > 0){
+					
+					Iterator<Construccion> it = this.construcciones.iterator();
+			    	while (it.hasNext()) {
+						construccion = (Construccion) it.next();
+						if (!construccion.esConstruibleBajoTierra())
+							g.drawImage(construccion.graficar(), 0, 0, null);
+					}
+			    	
+				}
 			}
 		}
 		

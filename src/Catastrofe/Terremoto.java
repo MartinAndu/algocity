@@ -1,5 +1,6 @@
 package Catastrofe;
 
+import Jugador.Jugador;
 import PlanoGeneral.Hectarea;
 import PlanoGeneral.Plano;
 import PlanoGeneral.Recorrido;
@@ -16,4 +17,11 @@ public class Terremoto extends Catastrofe{
 		}
 	}
 
+	@Override
+	public void mostrarDestruccion(Jugador jugador) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 }

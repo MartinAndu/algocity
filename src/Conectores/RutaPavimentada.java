@@ -50,8 +50,10 @@ public class RutaPavimentada extends Conexion{
 	public BufferedImage graficar() {
 		if (estadoConstruccion.enString() == "estoy bien")
 			return Imagen.loadImg(Archivo.RutaPavimentada);
-		else
+		if (estadoConstruccion.enString() == "estoy destruido")
 			return Imagen.loadImg(Archivo.RutaPavimentadaDestruida);
+		else
+			return Imagen.loadImg(Archivo.RutaPavimentadaSinServicio);
 	}	
 	
 }

@@ -113,12 +113,13 @@ public class FrameCargarPartida extends JFrame implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
 		if (e.getSource() == volver){
 			this.setVisible(false);
 			vistaAnterior.setVisible(true);
 		}
 		
-		if (e.getSource() == cargarPartida && !listaSeleccionableDeJugadores.getSelectedItem().toString().isEmpty()){
+		if (e.getSource() == cargarPartida && listaSeleccionableDeJugadores.getItemCount()>0){
 			
 			this.dispose();
 			Jugador jugador = null;

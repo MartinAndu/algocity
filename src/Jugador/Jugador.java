@@ -158,11 +158,16 @@ public abstract class Jugador extends Observable{
 		estacionDeBomberos.agregarReconstruibles(reconstruibles);
 		//this.vista.graficarCambiosEstadoConstrucciones(this.construcciones);
 		
+		catastrofe.mostrarDestruccion(this);
 
 		setChanged();
 		this.notifyObservers();
 	}
 
+	public void avisarALaVistaQueGodzillaPaso(){
+		setChanged();
+		this.notifyObservers();
+	}
 	public void habilitarEstacionDeBomberos() {
 		try{
 			this.estacionDeBomberos.habilitar(presupuesto);
