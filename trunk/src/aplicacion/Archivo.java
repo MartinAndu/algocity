@@ -92,18 +92,13 @@ public class Archivo {
 	
 	public final static String BotonSalirMini = RutaBotones + "BotonSalirMini.jpg";
 	
-	
 	public final static String BotonFacil = RutaBotones + "BotonFacil.jpg";
 	
 	public final static String BotonMedio = RutaBotones + "BotonMedio.jpg";
 	
 	public final static String BotonDificil = RutaBotones + "BotonDificil.jpg";
 	
-	
-	
-	
-	
-	
+		
 	
 	
 }

@@ -17,6 +17,7 @@ public class Turno implements Runnable{
 		this.hilo = new Thread(this);
 		this.juegoContinua = true;
 		this.duracion = (Turno.DURACION_EN_MINUTOS * 60) * 1000;
+//		this.duracion = (Turno.DURACION_EN_MINUTOS * 60) * 100;
 	}
 		
 		
