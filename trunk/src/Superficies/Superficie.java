@@ -1,11 +1,17 @@
 package Superficies;
 
-import ConstruccionGeneral.Graficable;
 
-public abstract class Superficie implements Graficable{
+public abstract class Superficie{
+	protected String idSuperficie;
+	
+	public String obtenerId(){
+		return this.idSuperficie;
+	}
+	
 	public abstract boolean sePuedeConstruirUnPozoDeAgua();
 	
 	public abstract boolean sePuedeConstruirUnEdificioOCentral();
 	
 	public abstract boolean sePuedeConstruirUnaConexion();
+	
 }

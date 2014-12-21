@@ -1,9 +1,6 @@
 package Conectores;
 
-import java.awt.image.BufferedImage;
 
-import aplicacion.Archivo;
-import aplicacion.Imagen;
 import ConstruccionGeneral.Posicion;
 import Estados.EstoyBien;
 import Estados.MeFaltaLuz;
@@ -20,6 +17,7 @@ public  class LineasDeTension extends Conexion{
 		super(unaPosicion);
 		this.costoConstruccion = COSTO_CONSTRUCCION;
 		this.puntosConstruccion = new PuntosDeLineaTension();
+		this.idTipoDeConstruccion = "LineasDeTension";
 	}
 
 	@Override
@@ -44,14 +42,5 @@ public  class LineasDeTension extends Conexion{
 			this.proveerServicioZona();
 		}	
 	}
-	
-	public BufferedImage graficar() {
-		if (estadoConstruccion.enString() == "estoy bien")
-			return Imagen.loadImg(Archivo.LineaDeTension);
-		if (estadoConstruccion.enString() == "estoy destruido")
-			return Imagen.loadImg(Archivo.LineaDeTensionDestruida);
-		return Imagen.loadImg(Archivo.LineaDeTensionSinServicio);
-	}	
-	
 	
 }

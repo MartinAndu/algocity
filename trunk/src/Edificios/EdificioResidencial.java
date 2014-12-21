@@ -1,9 +1,6 @@
 package Edificios;
 
-import java.awt.image.BufferedImage;
 
-import aplicacion.Archivo;
-import aplicacion.Imagen;
 import ConstruccionGeneral.Posicion;
 import PuntosConstruccion.PuntosDeResidencia;
 import Servicios.AdministradorServicios;
@@ -19,7 +16,7 @@ public class EdificioResidencial extends Edificio {
 		this.costoConstruccion = COSTO_CONSTRUCCION;
 		this.consumoElectrico = CONSUMO_ELECTRICO;
 		this.puntosConstruccion = new PuntosDeResidencia();
-		
+		this.idTipoDeConstruccion = "EdificioResidencial";
 	}
 
 	public int darCapacidadAlojamiento(){
@@ -31,15 +28,6 @@ public class EdificioResidencial extends Edificio {
 			AdministradorServicios administrador) {
 	
 		return administrador.poseeLosServiciosBasicos();
-	}
-	
-	public BufferedImage graficar() {
-		if (estadoConstruccion.enString() == "estoy bien")
-			return Imagen.loadImg(Archivo.EdificioResidencial);
-		if (estadoConstruccion.enString() == "estoy destruido")
-			return Imagen.loadImg(Archivo.EdificioResidencialDestruido);
-		else
-			return Imagen.loadImg(Archivo.EdificioResidencialSinServicio);
 	}
 	
 }
