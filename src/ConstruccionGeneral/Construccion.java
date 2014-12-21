@@ -23,12 +23,13 @@ import Servicios.AdministradorServicios;
 import Superficies.Superficie;
 
 
-public abstract class Construccion implements Reconstruible, Destruible,Graficable {
+public abstract class Construccion implements Reconstruible, Destruible {
 
 	protected Posicion posicionConstruccion;
 	protected int costoConstruccion;
 	protected PuntosDeConstruccion puntosConstruccion;
 	protected String idConstruccion;
+	protected String idTipoDeConstruccion;
 	protected EstadoConstruccion estadoConstruccion;
 	protected boolean esSubterraneo = false;
 	
@@ -114,6 +115,10 @@ public abstract class Construccion implements Reconstruible, Destruible,Graficab
 	
 	public boolean esConstruibleBajoTierra(){
 		return esSubterraneo;
+	}
+	
+	public String obteneridTipoDeConstruccion(){
+		return this.idTipoDeConstruccion;
 	}
 
 	public abstract void verificarSuperficie(Superficie superficie);

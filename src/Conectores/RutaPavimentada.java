@@ -1,9 +1,5 @@
 package Conectores;
 
-import java.awt.image.BufferedImage;
-
-import aplicacion.Archivo;
-import aplicacion.Imagen;
 import ConstruccionGeneral.Posicion;
 import Estados.EstoyBien;
 import Estados.MeFaltaTransito;
@@ -20,6 +16,7 @@ public class RutaPavimentada extends Conexion{
 		super(unaPosicion);
 		this.costoConstruccion = COSTO_CONSTRUCCION;
 		this.puntosConstruccion = new PuntosDeRuta();
+		this.idTipoDeConstruccion = "RutaPavimentada";
 	}
 
 	@Override
@@ -45,15 +42,5 @@ public class RutaPavimentada extends Conexion{
 			this.estadoConstruccion = new EstoyBien();
 			this.proveerServicioZona();
 		}
-	}
-
-	public BufferedImage graficar() {
-		if (estadoConstruccion.enString() == "estoy bien")
-			return Imagen.loadImg(Archivo.RutaPavimentada);
-		if (estadoConstruccion.enString() == "estoy destruido")
-			return Imagen.loadImg(Archivo.RutaPavimentadaDestruida);
-		else
-			return Imagen.loadImg(Archivo.RutaPavimentadaSinServicio);
 	}	
-	
 }

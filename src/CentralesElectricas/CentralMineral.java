@@ -18,6 +18,7 @@ public class CentralMineral extends CentralElectrica{
 		this.costoConstruccion = COSTO_DE_CONSTRUCCION;
 		this.capacidadMaxDeAbastecimientoEnMW = CAPACIDAD_MAXIMA_DE_ABASTECIMIENTO;
 		this.puntosConstruccion = new PuntosDeCentralMineral();
+		this.idTipoDeConstruccion = "CentralMineral";
 	}
 	
 	public BufferedImage graficar() {

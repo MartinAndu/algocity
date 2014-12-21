@@ -1,6 +1,6 @@
 package PlanoGeneral;
 
-import java.awt.Graphics;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -9,8 +9,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
-import aplicacion.Archivo;
-import aplicacion.Imagen;
+
 import ConstruccionGeneral.Construccion;
 import ConstruccionGeneral.Destruible;
 import ConstruccionGeneral.Reconstruible;
@@ -43,6 +42,9 @@ public class Hectarea implements Destruible{
         return (x.identi == identi);
     }
  
+    public ArrayList<Construccion> obtenerConstrucciones(){
+    	return this.construcciones;
+    }
     public AdministradorServicios serviciosAConsumir() {
     	return this.administradorServicios;
     }
@@ -175,46 +177,14 @@ public class Hectarea implements Destruible{
 	public void hayUnaCatastrofeOcurriendo(){
 		this.catastrofeOcurriendo = true;
 	}
-
 	
-	public void GraficarHectarea(Graphics g,boolean vistaSubterranea){
-		Construccion construccion = null;
-		
-		if (catastrofeOcurriendo){
-			g.drawImage(Imagen.loadImg("Images/Walls/Godzilla.jpg"),0,0,null);
-			catastrofeOcurriendo = false;
-		}else{
-			if (vistaSubterranea){
-				g.drawImage(Imagen.loadImg(Archivo.SuperficieSubterranea), 0, 0, null);
-				if (superficie.sePuedeConstruirUnPozoDeAgua())
-					g.drawImage(this.superficie.graficar(), 0, 0, null);
-				
-				if (construcciones.size() > 0){
-					Iterator<Construccion> it = this.construcciones.iterator();
-					while (it.hasNext()) {
-						construccion = (Construccion) it.next();
-						
-						if (construccion.esConstruibleBajoTierra())
-							g.drawImage(construccion.graficar(), 0, 0, null);
-					}
-				}
-				
-			}
-			else{
-				g.drawImage(this.superficie.graficar(), 0, 0, null);
-				if (construcciones.size() > 0){
-					
-					Iterator<Construccion> it = this.construcciones.iterator();
-			    	while (it.hasNext()) {
-						construccion = (Construccion) it.next();
-						if (!construccion.esConstruibleBajoTierra())
-							g.drawImage(construccion.graficar(), 0, 0, null);
-					}
-			    	
-				}
-			}
-		}
-		
+	public void seAcaboLaCatastrofe(){
+		this.catastrofeOcurriendo = false;
 	}
+
+	public boolean obtenerEstadoCatastrofe(){
+		return this.catastrofeOcurriendo;
+	}
+	
 
 }

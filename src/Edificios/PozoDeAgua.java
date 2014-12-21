@@ -1,9 +1,5 @@
 package Edificios;
 
-import java.awt.image.BufferedImage;
-
-import aplicacion.Archivo;
-import aplicacion.Imagen;
 import ConstruccionGeneral.Construccion;
 import ConstruccionGeneral.Posicion;
 import Estados.EstoyBien;
@@ -33,6 +29,7 @@ public class PozoDeAgua extends Construccion {
 		this.idConstruccion = "pozo";
 		this.puntosConstruccion = new PuntosDePozo();
 		this.esSubterraneo = false;
+		this.idTipoDeConstruccion = "PozoDeAgua";
 	}
 
 	@Override
@@ -114,12 +111,5 @@ public class PozoDeAgua extends Construccion {
 		this.quitarServicioZona();
 	}
 	
-	public BufferedImage graficar() {
-		if (estadoConstruccion.enString() == "estoy bien")
-			return Imagen.loadImg(Archivo.PozoDeAgua);
-		if (estadoConstruccion.enString() == "estoy destruido")
-			return Imagen.loadImg(Archivo.PozoDeAguaDestruido);
-		else
-			return Imagen.loadImg(Archivo.PozoDeAguaSinServicio);
-	}
+	
 }

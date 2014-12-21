@@ -1,9 +1,6 @@
 package Conectores;
 
-import java.awt.image.BufferedImage;
 
-import aplicacion.Archivo;
-import aplicacion.Imagen;
 import ConstruccionGeneral.Posicion;
 import Estados.EstoyBien;
 import Estados.MeFaltaAgua;
@@ -20,6 +17,7 @@ public class ConexionDeAgua extends Conexion {
 		this.costoConstruccion = COSTO_CONSTRUCCION;
 		this.puntosConstruccion = new PuntosDeTuberia();
 		this.esSubterraneo = true;
+		this.idTipoDeConstruccion = "ConexionDeAgua";
 	}
 
 	@Override
@@ -43,13 +41,6 @@ public class ConexionDeAgua extends Conexion {
 			AdministradorServicios administrador) {
 		return administrador.poseeAgua();
 	}
-	
-	public BufferedImage graficar() {
-		if (estadoConstruccion.enString() == "estoy bien")
-			return Imagen.loadImg(Archivo.TuberiaDeAgua);
-		if (estadoConstruccion.enString() == "estoy destruido")
-			return Imagen.loadImg(Archivo.TuberiaDeAguaDestruida);
-		return Imagen.loadImg(Archivo.TuberiaDeAguaSinServicio);
-	}	
+
 		
 }

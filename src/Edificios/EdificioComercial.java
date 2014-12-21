@@ -1,9 +1,6 @@
 package Edificios;
 
-import java.awt.image.BufferedImage;
 
-import aplicacion.Archivo;
-import aplicacion.Imagen;
 import ConstruccionGeneral.Posicion;
 import PuntosConstruccion.PuntosDeComercio;
 import Servicios.AdministradorServicios;
@@ -18,7 +15,7 @@ public class EdificioComercial extends Edificio {
 		this.costoConstruccion = COSTO_CONSTRUCCION;
 		this.consumoElectrico = CONSUMO_ELECTRICO;
 		this.puntosConstruccion = new PuntosDeComercio();
-		
+		this.idTipoDeConstruccion = "EdificioComercial"; 
 	}
 
 	@Override
@@ -26,16 +23,6 @@ public class EdificioComercial extends Edificio {
 			AdministradorServicios administrador) {
 		
 		return administrador.poseeLosServiciosBasicos();
-	}
-
-	@Override
-	public BufferedImage graficar() {
-		if (estadoConstruccion.enString() == "estoy bien")
-			return Imagen.loadImg(Archivo.EdificioComercial);
-		if (estadoConstruccion.enString() == "estoy destruido")
-			return Imagen.loadImg(Archivo.EdificioComercialDestruido);
-		else
-			return Imagen.loadImg(Archivo.EdificioComercialSinServicio);
 	}
 	
 }
